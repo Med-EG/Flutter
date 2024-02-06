@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:med_eg/customWidgets/custom_textFormField.dart';
+import 'package:med_eg/widgets/custom_textFormField.dart';
 
 import '../constants/colors.dart';
 
