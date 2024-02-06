@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:med_eg/constants/texts.dart';
 import 'package:med_eg/customWidgets/signUP_with.dart';
 import '../constants/colors.dart';
-
 class SignUp1 extends StatefulWidget {
   const SignUp1({super.key});
 
@@ -13,6 +12,8 @@ class SignUp1 extends StatefulWidget {
 
 class _SignUp1State extends State<SignUp1> {
   bool agree = false;
+  TextEditingController _NationalIDController = TextEditingController();
+  String _message = '';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -51,6 +52,7 @@ class _SignUp1State extends State<SignUp1> {
               SizedBox(
                 height: screenHeight * 0.06,
                 child: TextFormField(
+                  controller: _NationalIDController,
                     decoration: InputDecoration(
                         labelText: 'National ID',
                         labelStyle: const TextStyle(color: Color(lightGrey)),
@@ -122,7 +124,21 @@ class _SignUp1State extends State<SignUp1> {
               SizedBox(height: screenHeight * 0.01),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/signUp2');
+                  if(_NationalIDController.text.length==14 && agree == true)
+                  {
+                    Navigator.pushNamed(context, '/signUp2');
+                  }
+                  else if (_NationalIDController.text.isEmpty || agree == false)
+                  {
+                    setState(() {
+                      _message="Fill the Fields";
+                    });
+                  }
+                  else{
+                    setState(() {
+                      _message="National ID must be 14 characters";
+                    });
+                  }
                 },
                 child: Container(
                   height: 51,
@@ -161,6 +177,7 @@ class _SignUp1State extends State<SignUp1> {
               SizedBox(
                 height: screenHeight * 0.1,
               ),
+              Text(_message,style: const TextStyle(color: Colors.red,fontWeight: FontWeight.w500),),
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
