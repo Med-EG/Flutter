@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:med_eg/constants/texts.dart';
-import 'package:med_eg/widgets/signUP_with.dart';
+import 'package:med_eg/customWidgets/signUP_with.dart';
 import '../constants/colors.dart';
 class SignUp1 extends StatefulWidget {
   const SignUp1({super.key});
@@ -45,7 +45,7 @@ class _SignUp1State extends State<SignUp1> {
               ),
               const Text('Register',
                   style: TextStyle(
-                      color: Color(darkBlue),
+                      color: Color(kTextColor),
                       fontWeight: FontWeight.w600,
                       fontSize: 28)),
               SizedBox(height: screenHeight * 0.05),
@@ -72,7 +72,7 @@ class _SignUp1State extends State<SignUp1> {
                     Checkbox(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(4)),
-                      activeColor: const Color(darkBlue),
+                      activeColor: const Color(kTextColor),
                       value: agree,
                       onChanged: (val) {
                         setState(() {
@@ -86,33 +86,33 @@ class _SignUp1State extends State<SignUp1> {
                           text: 'I agree with ',
                           style: TextStyle(
                               fontSize: 13,
-                              color: Color(darkBlue),
+                              color: Color(kTextColor),
                               fontWeight: FontWeight.w500),
                         ),
                         TextSpan(
                           text: 'Terms ',
                           style: TextStyle(
                               fontSize: 13,
-                              color: Color(blue),
+                              color: Color(kPrimaryColor),
                               fontWeight: FontWeight.w500,
                               decoration: TextDecoration.underline,
-                              decorationColor: Color(blue),
+                              decorationColor: Color(kPrimaryColor),
                               decorationThickness: 2),
                         ),
                         TextSpan(
                           text: 'and ',
                           style: TextStyle(
                               fontSize: 13,
-                              color: Color(darkBlue),
+                              color: Color(kTextColor),
                               fontWeight: FontWeight.w500),
                         ),
                         TextSpan(
                           text: 'Privacy Policy',
                           style: TextStyle(
                               fontSize: 13,
-                              color: Color(blue),
+                              color: Color(kPrimaryColor),
                               decoration: TextDecoration.underline,
-                              decorationColor: Color(blue),
+                              decorationColor: Color(kPrimaryColor),
                               fontWeight: FontWeight.w500,
                               decorationThickness: 2),
                         ),
@@ -144,7 +144,7 @@ class _SignUp1State extends State<SignUp1> {
                   height: 51,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(72),
-                      color: const Color(blue)),
+                      color: const Color(kPrimaryColor)),
                   child: const Center(
                     child: Text(
                       'Register',
@@ -162,14 +162,14 @@ class _SignUp1State extends State<SignUp1> {
                     text: 'You already have an account ? ',
                     style: TextStyle(
                         fontSize: 13,
-                        color: Color(darkBlue),
+                        color: Color(kTextColor),
                         fontWeight: FontWeight.w500),
                   ),
                   TextSpan(
                     text: 'Login',
                     style: TextStyle(
                         fontSize: 13,
-                        color: Color(blue),
+                        color: Color(kPrimaryColor),
                         fontWeight: FontWeight.w500),
                   ),
                 ]),
