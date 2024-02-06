@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:med_eg/customWidgets/custom_textFormField.dart';
 
 import '../constants/colors.dart';
 
@@ -57,7 +58,10 @@ class SignUp2 extends StatelessWidget {
                             shape: BoxShape.circle,
                             color: Colors.blue, // Color of the circle
                           ),
-                          child: const Icon(Icons.add,color: Colors.white,),
+                          child: const Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ],
