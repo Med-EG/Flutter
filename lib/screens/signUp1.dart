@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:med_eg/constants/texts.dart';
-import 'package:med_eg/customWidgets/signUP_with.dart';
+import 'package:med_eg/widgets/signUP_with.dart';
 import '../constants/colors.dart';
 
 class SignUp1 extends StatefulWidget {
