@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:med_eg/widgets/custom_textFormField.dart';
+
 
 import '../constants/colors.dart';
 
@@ -74,7 +74,7 @@ class SignUp2 extends StatelessWidget {
                   height: 51,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
-                      color: const Color(blue)),
+                      color: const Color(kPrimaryColor)),
                   child: const Center(
                     child: Text(
                       'Next',

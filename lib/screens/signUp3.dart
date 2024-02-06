@@ -39,7 +39,7 @@ class SignUp3 extends StatelessWidget {
                         text: 'Shady',
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            color: Color(blue),
+                            color: Color(kPrimaryColor),
                             fontSize: 22))
                   ],
                 ),
@@ -70,7 +70,7 @@ class SignUp3 extends StatelessWidget {
                 width: screenWidth * 0.5,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: const Color(blue)),
+                    color: const Color(kPrimaryColor)),
                 child: const Center(
                   child: Text(
                     'Next',
