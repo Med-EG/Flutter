@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(18),
         child: Column(children: [
           Searchbar(),
-          IconCard(image: 'assets/images/PNG/images/Stethoscope.png')
+          //IconCard(image: 'Flutter/assets/images/PNG/Medicine_icon.png')
         ],),
       ),
     );
