@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/customWidgets/customIconCard.dart';
+import 'package:med_eg/customWidgets/customSearchBar.dart';
+
+import '../constants/colors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -25,11 +29,13 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(14),
+        padding: const EdgeInsets.all(18),
         child: Column(children: [
-         // SearchBar(),
+          Searchbar(),
+          IconCard(image: 'assets/images/PNG/images/Stethoscope.png')
         ],),
       ),
     );
   }
 }
+
