@@ -1,27 +1,37 @@
 import 'package:flutter/material.dart';
 
 class IconCard extends StatelessWidget {
-  const IconCard({super.key, required this.image});
-  final String image ;
+  const IconCard({super.key, required this.image, required this.text});
+  final String image;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Stack(
-          children: [
-            Container(
+    return GestureDetector(
+      onTap: () {},
+      child: Column(
+        children: [
+          Card(
+            child: Container(
               decoration: BoxDecoration(boxShadow: [
                 BoxShadow(
-                    color: Colors.grey.withOpacity(0.4),
+                    color: const Color(0xFFf1f3f5).withOpacity(0.4),
                     offset: const Offset(5, 5),
-                    blurRadius: 10)
+                    blurRadius: 10),
               ]),
-              child: Image.asset(image),
-            )
-          ],
-        )
-      ],
+              height: 70,
+              child: Image.asset(
+                image,
+                height: 50,
+              ),
+            ),
+          ),
+          Text(
+            text,
+            style:const TextStyle(color: Color(0xFFc9cdda)),
+          )
+        ],
+      ),
     );
   }
 }
