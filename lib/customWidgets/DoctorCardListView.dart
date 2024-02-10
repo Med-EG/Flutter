@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/customWidgets/customDoctorCard.dart';
+import 'package:med_eg/customWidgets/customDoctorinfoCard.dart';
 import 'package:med_eg/models/doctorInfoModel.dart';
 
 class DoctorCardListView extends StatelessWidget {
@@ -19,11 +19,10 @@ class DoctorCardListView extends StatelessWidget {
       height: 180,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: Doctors.length,
-          reverse: true,
+          itemCount: Doctors.length,   
           physics:const BouncingScrollPhysics(),
           itemBuilder: (context, index) {
-            return DoctorCard(doctor: Doctors[index]);
+            return DoctorInfoCard(doctor: Doctors[index]);
           }),
     );
   }

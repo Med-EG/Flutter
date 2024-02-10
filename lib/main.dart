@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/screens/HomeScreen.dart';
+import 'package:med_eg/screens/NoPatientAppointmentsScreen.dart';
+import 'package:med_eg/screens/ShowAppointmentPatient.dart';
 import 'package:med_eg/screens/signUp1.dart';
 import 'package:med_eg/screens/signUp2.dart';
 import 'package:med_eg/screens/signUp3.dart';
@@ -25,9 +27,10 @@ class MyApp extends StatelessWidget {
         '/signUp1':(context) => const SignUp1(),
         '/signUp2':(context) => const SignUp2(),
         '/signUp3':(context) => const SignUp3(),
+        'HomeScreen':(context)=>const HomeScreen()
       },
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+      home: const ShowPatientAppointments(),
     );
   }
 }
