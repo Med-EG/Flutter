@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/screens/signUp1.dart';
-import 'package:med_eg/screens/signUp2.dart';
-import 'package:med_eg/screens/signUp3.dart';
+import 'package:med_eg/views/signUp1.dart';
+import 'package:med_eg/views/signUp2.dart';
+import 'package:med_eg/views/signUp3.dart';
+import 'package:med_eg/views/test.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
         '/signUp3':(context) => const SignUp3(),
       },
       debugShowCheckedModeBanner: false,
-      home: const SignUp1(),
+      home: const SignUp2(),
     );
   }
 }
