@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/models/doctorInfoModel.dart';
 
-class DoctorCard extends StatelessWidget {
-  const DoctorCard(
+class DoctorInfoCard extends StatelessWidget {
+  const DoctorInfoCard(
       {super.key, required this.doctor,
       });
       final DoctorModel doctor;

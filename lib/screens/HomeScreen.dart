@@ -8,7 +8,7 @@ import '../constants/colors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +24,9 @@ class HomeScreen extends StatelessWidget {
             backgroundColor: Colors.white,
             activeColor:const Color(kPrimaryColor),
             gap: 8,
+            onTabChange: (value){
+
+            },
             tabs:const [
               GButton(
                 icon: Icons.home_rounded,
@@ -35,7 +38,7 @@ class HomeScreen extends StatelessWidget {
               ),
               GButton(
                 icon: Icons.edit_calendar_rounded,
-                text: 'Calendar',
+                text: 'Appointments',
               ),
               GButton(
                 icon: Icons.person_3_rounded,
