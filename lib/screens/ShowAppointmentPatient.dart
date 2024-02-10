@@ -20,7 +20,6 @@ class ShowPatientAppointments extends StatelessWidget {
                     color: Color(kTextColor),
                     fontSize: 30,
                     fontWeight: FontWeight.bold),),
-
                 AppointmentListView(),
                SizedBox(height: 40,)
           ],

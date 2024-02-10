@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/screens/CreateMedicineAlert.dart';
 import 'package:med_eg/screens/HomeScreen.dart';
+import 'package:med_eg/screens/NoAlertScreen.dart';
 import 'package:med_eg/screens/NoPatientAppointmentsScreen.dart';
 import 'package:med_eg/screens/ShowAppointmentPatient.dart';
 import 'package:med_eg/screens/signUp1.dart';
@@ -27,10 +29,11 @@ class MyApp extends StatelessWidget {
         '/signUp1':(context) => const SignUp1(),
         '/signUp2':(context) => const SignUp2(),
         '/signUp3':(context) => const SignUp3(),
-        'HomeScreen':(context)=>const HomeScreen()
+        'HomeScreen':(context)=>const HomeScreen(),
+        'CreateMedicineAlert':(context) => const CreateMedicineAlert(),
       },
       debugShowCheckedModeBanner: false,
-      home: const ShowPatientAppointments(),
+      home: const NoAlertScreen(),
     );
   }
 }
