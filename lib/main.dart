@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/customWidgets/customDropDownTextField.dart';
-import 'package:med_eg/screens/CreateMedicineAlert.dart';
-import 'package:med_eg/screens/HomeScreen.dart';
 import 'package:med_eg/screens/signUp1.dart';
+import 'package:med_eg/screens/signUp10.dart';
+import 'package:med_eg/screens/signUp11.dart';
+import 'package:med_eg/screens/signUp12.dart';
 import 'package:med_eg/screens/signUp2.dart';
 import 'package:med_eg/screens/signUp3.dart';
+import 'package:med_eg/screens/signUp7.dart';
+import 'package:med_eg/screens/signUp8.dart';
+import 'package:med_eg/screens/signUp9.dart';
+
+
 
 void main() {
   runApp(const MyApp());
@@ -19,19 +24,24 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-        
-      ),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+          fontFamily: 'Encode Sans Expanded'),
       routes: {
-        '/signUp1':(context) => const SignUp1(),
-        '/signUp2':(context) => const SignUp2(),
-        '/signUp3':(context) => const SignUp3(),
-        'HomeScreen':(context)=>const HomeScreen(),
-        'CreateMedicineAlert':(context) => const CreateMedicineAlert(),
+
+        '/signUp1': (context) => const SignUp1(),
+        '/signUp2': (context) => const SignUp2(),
+        '/signUp3': (context) => const SignUp3(),
+        '/signUp7': (context) => const SignUp7(),
+        '/signUp8': (context) => const SignUp8(),
+        '/signUp9': (context) => const SignUp9(),
+        '/signUp10': (context) => const SignUp10(),
+        '/signUp11': (context) => const SignUp11(),
+        '/signUp12': (context) => const SignUp12(),
       },
       debugShowCheckedModeBanner: false,
-      home: const DropDownTextField1(),
+      home: const SignUp2(),
+
     );
   }
 }

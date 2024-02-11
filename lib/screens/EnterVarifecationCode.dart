@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/customWidgets/customButton.dart';
 import 'package:med_eg/screens/createNewPassword.dart';
+
+import '../customWidgets/custom_button.dart';
 
 
 class EnterVerficationCode extends StatelessWidget {
@@ -34,7 +35,7 @@ String id ='EnterVerficationCode';
                   
                 ),
            ),
-           Spacer(flex: 1,),
+           const Spacer(flex: 1,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -117,12 +118,16 @@ String id ='EnterVerficationCode';
                     const Text('Didn\'t receive verfication?',style: TextStyle(color: Colors.black),),
                     GestureDetector(onTap: (){},
                     
-                    child: const Text('Resend',style: TextStyle(color: Color(kPrimaryColor)),),)
+                    child: const Text('Resend',style: TextStyle(color: kPrimaryColor),),)
                   ],
                 ),
           ),
           const Spacer(flex: 5,),
-         CustomButton(customButtonText: 'Reset the password', routeName: CreateNewPassword().id),
+          CustomButton(text: 'Reset the password', color: kPrimaryColor,
+         onTap: () {
+           Navigator.pushNamed(context, CreateNewPassword().id);
+         },
+         ),
          const Spacer(flex: 4,)
         ],
       ),

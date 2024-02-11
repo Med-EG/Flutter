@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-
-import '../constants/colors.dart';
+import '../customWidgets/custom_arrow_back.dart';
+import '../customWidgets/custom_button.dart';
+import '../customWidgets/custom_form.dart';
+import '../customWidgets/custom_profile_container.dart';
 
 class SignUp2 extends StatelessWidget {
   const SignUp2({super.key});
@@ -14,75 +15,41 @@ class SignUp2 extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.all(32.0),
+          padding: const EdgeInsets.all(24.0),
           child: Column(
             children: [
               Row(
                 children: [
-                  IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: const Icon(Icons.arrow_back_ios)),
+                  const CustomArrowBack(),
                   SizedBox(
                     width: screenWidth * 0.25,
                   ),
                   SvgPicture.asset('assets/images/Frame.svg')
                 ],
               ),
+              Expanded(
+                child: SingleChildScrollView(
+                    child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    SizedBox(
+                      height: screenHeight * 0.02,
+                    ),
+                    const CustomProfileContainer(),
+                    const CustomFormWidget(),
+                  ],
+                )),
+              ),
               SizedBox(
                 height: screenHeight * 0.02,
               ),
-              Container(
-                  height: 130,
-                  width: 130,
-                  decoration: const BoxDecoration(
-                    color: Color(0xffE7E7E7),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Stack(
-                    children: [
-                      Center(
-                        child: Image.asset(
-                          'assets/images/Image.png',
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        left: 100,
-                        right: 0,
-                        child: Container(
-                          height: 42,
-                          width: 42,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.blue, // Color of the circle
-                          ),
-                          child: const Icon(
-                            Icons.add,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  )),
-              GestureDetector(
+              CustomButton(
+                text: 'Next',
+                color: Colors.blue,
                 onTap: () {
                   Navigator.pushNamed(context, '/signUp3');
                 },
-                child: Container(
-                  height: 51,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: const Color(kPrimaryColor)),
-                  child: const Center(
-                    child: Text(
-                      'Next',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  ),
-                ),
-              ),
+              )
             ],
           ),
         ),
