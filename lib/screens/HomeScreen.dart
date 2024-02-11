@@ -23,9 +23,8 @@ class HomeScreen extends StatelessWidget {
             backgroundColor: Colors.white,
             activeColor:kPrimaryColor,
             gap: 8,
-            onTabChange: (value){
-
-            },
+            
+            onTabChange: (value){},
             tabs:const [
               GButton(
                 icon: Icons.home_rounded,
