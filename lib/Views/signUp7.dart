@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
-import '../customWidgets/custom_arrow_back.dart';
-import '../customWidgets/custom_button.dart';
-import '../customWidgets/custom_circle_container.dart';
-import '../customWidgets/custom_textFormField.dart';
-import '../customWidgets/custom_text_information.dart';
+import '../widgets/custom_arrow_back.dart';
+import '../widgets/custom_button.dart';
+import '../widgets/custom_circle_container.dart';
+import '../widgets/custom_textFormField.dart';
+import '../widgets/custom_text_information.dart';
 
-class SignUp11 extends StatelessWidget {
-  const SignUp11({super.key});
+
+class SignUp7 extends StatelessWidget {
+  const SignUp7({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +17,9 @@ class SignUp11 extends StatelessWidget {
       child: Scaffold(
         body: Stack(
           children: [
-            const Positioned(
+             const Positioned(
                 right: -80, top: -80, child: CustomCircleContainer()),
-            const Positioned(
+             const Positioned(
                 left: -180, bottom: -180, child: CustomCircleContainer()),
             Positioned.fill(
               child: Padding(
@@ -29,25 +30,29 @@ class SignUp11 extends StatelessWidget {
                     children: [
                       const CustomArrowBack(),
                       const CustomTextInformation(
-                          text: 'Relatives', color: kPrimaryColor),
+                          text: 'Disease', color: kPrimaryColor),
                       const CustomTextInformation(
                           text: 'Information', color: darkBlue),
                       SizedBox(
-                        height: screenHeight * 0.15,
+                        height: screenHeight * 0.075,
                       ),
-                      const CustomTextFormField(hint: 'Degree Of Relativity'),
+                      const CustomTextFormField(hint: 'Disease Name'),
                       const CustomTextFormField(
-                        hint: 'Genetic Diseases',
+                        hint: 'Disease Description',
                         maxLines: 5,
                       ),
+                      const CustomTextFormField(
+                        hint: 'Notes',
+                        maxLines: 2,
+                      ),
                       SizedBox(
-                        height: screenHeight * 0.21,
+                        height: screenHeight * 0.15,
                       ),
                       CustomButton(
                         text: 'Save',
                         color: kPrimaryColor,
                         onTap: () {
-                          Navigator.pushNamed(context, '/signUp12');
+                          Navigator.pushNamed(context, '/signUp8');
                         },
                       )
                     ],

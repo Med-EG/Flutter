@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../constants/colors.dart';
-import '../customWidgets/custom_button.dart';
+import '../widgets/custom_button.dart';
 
 class SignUp3 extends StatelessWidget {
   const SignUp3({super.key});

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/customWidgets/signUP_with.dart';
-import 'package:med_eg/screens/RestPassword.dart';
+import 'package:med_eg/widgets/signUP_with.dart';
+import 'package:med_eg/Views/RestPassword.dart';
 
-import '../customWidgets/custom_button.dart';
+import '../widgets/custom_button.dart';
 
 
 class Login extends StatefulWidget {

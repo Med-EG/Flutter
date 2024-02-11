@@ -2,9 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/screens/loginScreen.dart';
+import 'package:med_eg/Views/loginScreen.dart';
 
-import '../customWidgets/custom_button.dart';
+import '../widgets/custom_button.dart';
 
 class LetsGetStarted extends StatelessWidget {
   LetsGetStarted({super.key});

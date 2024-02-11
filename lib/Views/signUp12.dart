@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:med_eg/constants/colors.dart';
-import '../customWidgets/custom_text_information.dart';
+import '../widgets/custom_text_information.dart';
 
 class SignUp12 extends StatelessWidget {
   const SignUp12({super.key});

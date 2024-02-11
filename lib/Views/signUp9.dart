@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import '../constants/colors.dart';
-import '../customWidgets/custom_arrow_back.dart';
-import '../customWidgets/custom_button.dart';
-import '../customWidgets/custom_circle_container.dart';
-import '../customWidgets/custom_textFormField.dart';
-import '../customWidgets/custom_text_information.dart';
+import '../widgets/custom_arrow_back.dart';
+import '../widgets/custom_button.dart';
+import '../widgets/custom_circle_container.dart';
+import '../widgets/custom_textFormField.dart';
+import '../widgets/custom_text_information.dart';
 
-
-class SignUp8 extends StatelessWidget {
-  const SignUp8({super.key});
+class SignUp9 extends StatelessWidget {
+  const SignUp9({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,30 +28,36 @@ class SignUp8 extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const CustomArrowBack(),
-                      const CustomTextInformation(
-                          text: 'Medicine', color: kPrimaryColor),
+                      const CustomTextInformation(text: 'Allergy', color: kPrimaryColor),
                       const CustomTextInformation(
                           text: 'Information', color: darkBlue),
                       SizedBox(
-                        height: screenHeight * 0.075,
+                        height: screenHeight * 0.04,
                       ),
-                      const CustomTextFormField(hint: 'Medicine Name'),
+                      const CustomTextFormField(hint: 'Allergy Name'),
                       const CustomTextFormField(
-                        hint: 'Dose',
+                        hint: 'Allergean Name',
                       ),
-                      const CustomTextFormField(hint: 'Frequency'),
-                      const CustomTextFormField(
-                        hint: 'Notes',
-                        maxLines: 3,
+                       Row(
+                        children: [
+                          Expanded(child: CustomTextFormField(hint: 'Start Date',icon: IconButton(onPressed: (){}, icon: const Icon(Icons.calendar_month)),)),
+                          const Expanded(
+                            child:  CustomTextFormField(
+                              hint: 'Security Level',
+                            ),
+                          ),
+                        ],
                       ),
+                      const CustomTextFormField(hint: 'Body Response',maxLines: 2),
+                      const CustomTextFormField(hint: 'Notes', maxLines: 3),
                       SizedBox(
-                        height: screenHeight * 0.14,
+                        height: screenHeight * 0.04,
                       ),
                       CustomButton(
                         text: 'Save',
                         color: kPrimaryColor,
                         onTap: () {
-                          Navigator.pushNamed(context, '/signUp9');
+                          Navigator.pushNamed(context, '/signUp10');
                         },
                       )
                     ],

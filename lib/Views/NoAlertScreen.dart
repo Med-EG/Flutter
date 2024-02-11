@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/customWidgets/CustomAddButton.dart';
+import 'package:med_eg/widgets/CustomAddButton.dart';
 
 
 class NoAlertScreen extends StatelessWidget {

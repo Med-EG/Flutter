@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/screens/loginScreen.dart';
+import 'package:med_eg/Views/loginScreen.dart';
 
-import '../customWidgets/custom_button.dart';
+import '../widgets/custom_button.dart';
 
 class ChooseUserType extends StatelessWidget {
    ChooseUserType({super.key});

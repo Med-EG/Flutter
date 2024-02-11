@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/customWidgets/AppointmentsListView.dart';
+import 'package:med_eg/widgets/AppointmentsListView.dart';
 
 
 class ShowPatientAppointments extends StatelessWidget {
