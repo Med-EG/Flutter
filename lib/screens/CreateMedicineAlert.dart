@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/customWidgets/customDropDownTextField.dart';
 
 class CreateMedicineAlert extends StatefulWidget {
   const CreateMedicineAlert({super.key});
@@ -10,9 +11,14 @@ class CreateMedicineAlert extends StatefulWidget {
 class _CreateMedicineAlertState extends State<CreateMedicineAlert> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
-      
+    return const Scaffold(
+      body: Center(
+        child: Column(
+          children: [
+            DropDownTextField1(),
+          ],
+        ),
+      ),
     );
   }
 }
