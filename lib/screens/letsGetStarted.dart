@@ -2,8 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/customWidgets/customButton.dart';
 import 'package:med_eg/screens/loginScreen.dart';
+
+import '../customWidgets/custom_button.dart';
 
 class LetsGetStarted extends StatelessWidget {
   LetsGetStarted({super.key});
@@ -29,7 +30,7 @@ class LetsGetStarted extends StatelessWidget {
               'Lets\'s Get Started',
               style: TextStyle(
                   fontSize: 30,
-                  color: Color(kTextColor),
+                  color: darkBlue,
                   fontWeight: FontWeight.bold),
             ),
             SizedBox(
@@ -37,13 +38,15 @@ class LetsGetStarted extends StatelessWidget {
             ),
             const Text(
               'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatu',
-              style: TextStyle(fontSize: 20, color: Color(kTextColor)),
+              style: TextStyle(fontSize: 20, color:darkBlue),
               textAlign: TextAlign.center,
             ),
             SizedBox(
               height: screenHieght * 0.08,
             ),
-            CustomButton(customButtonText: 'Log in', routeName: Login().id),
+            CustomButton(text: 'Log in', color: kPrimaryColor, onTap: () {
+              Navigator.pushNamed(context, Login().id);
+            },),
             SizedBox(
               height: screenHieght * 0.02,
             ),
@@ -55,12 +58,12 @@ class LetsGetStarted extends StatelessWidget {
                 child: Center(
                     child: Text(
                   'Sign up',
-                  style: TextStyle(color: Color(kPrimaryColor), fontSize: 20),
+                  style: TextStyle(color: kPrimaryColor, fontSize: 20),
                 )),
                 width: 310,
                 height: 51,
                 decoration: BoxDecoration(
-                    border: Border.all(color: const Color(kPrimaryColor)),
+                    border: Border.all(color: kPrimaryColor),
                     borderRadius: BorderRadius.circular(72),
                     color: Colors.white),
               ),

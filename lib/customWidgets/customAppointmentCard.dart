@@ -13,7 +13,7 @@ class AppointmentCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 30),
       child: Container(
         decoration: BoxDecoration(
-            color:const Color(kPrimaryColor).withOpacity(0.16),
+            color: kPrimaryColor.withOpacity(0.16),
             borderRadius: BorderRadius.circular(18),
             border: Border.all(color: Colors.transparent)),
         height: 70,
@@ -32,7 +32,7 @@ class AppointmentCard extends StatelessWidget {
                   child: Text(
                     appointment.doctorName,
                     style: const TextStyle(
-                        color: Color(kTextColor),
+                        color: darkBlue,
                         fontSize: 25,
                         fontWeight: FontWeight.bold),
                   ),
@@ -42,18 +42,15 @@ class AppointmentCard extends StatelessWidget {
                     children: [
                       Text(
                         appointment.day,
-                        style: const TextStyle(
-                            color: Color(kTextColor), fontSize: 15),
+                        style: const TextStyle(color: darkBlue, fontSize: 15),
                       ),
                       Text(
                         appointment.date,
-                        style: const TextStyle(
-                            color: Color(kTextColor), fontSize: 15),
+                        style: const TextStyle(color: darkBlue, fontSize: 15),
                       ),
                       Text(
                         appointment.time,
-                        style: const TextStyle(
-                            color: Color(kTextColor), fontSize: 15),
+                        style: const TextStyle(color: darkBlue, fontSize: 15),
                       ),
                     ],
                   ),

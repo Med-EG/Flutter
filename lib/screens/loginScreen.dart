@@ -1,9 +1,9 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/customWidgets/customButton.dart';
 import 'package:med_eg/customWidgets/signUP_with.dart';
 import 'package:med_eg/screens/RestPassword.dart';
+
+import '../customWidgets/custom_button.dart';
 
 
 class Login extends StatefulWidget {
@@ -54,7 +54,7 @@ bool _obscureText = true;
                         label: const Text('Enter E-mail address'),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: const BorderSide(color: Color(kPrimaryColor)),
+                          borderSide: const BorderSide(color: kPrimaryColor),
                         ),
                       ),
                  ),
@@ -77,7 +77,7 @@ bool _obscureText = true;
                     label: const Text('Enter password'),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16),
-                      borderSide: const BorderSide(color: Color(kPrimaryColor)),
+                      borderSide: const BorderSide(color: kPrimaryColor),
                     ),
                   ),
                           ),
@@ -94,7 +94,9 @@ bool _obscureText = true;
              ],
            ),
            SizedBox(height: screenHieght*0.08,),
-           CustomButton(customButtonText: 'Login', routeName: Login().id),
+           CustomButton(text: 'Login', color: kPrimaryColor, onTap: () {
+             Navigator.pushNamed(context, Login().id);
+           },),
            SizedBox(height: screenHieght*0.01,),
          
            Row(

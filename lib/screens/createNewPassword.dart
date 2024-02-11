@@ -1,8 +1,8 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/customWidgets/customButton.dart';
 import 'package:med_eg/screens/loginScreen.dart';
+
+import '../customWidgets/custom_button.dart';
 
 class CreateNewPassword extends StatefulWidget {
    CreateNewPassword({super.key});
@@ -60,7 +60,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                     
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16),
-                      borderSide: const BorderSide(color: Color(kPrimaryColor)),
+                      borderSide: const BorderSide(color: kPrimaryColor),
                     ),
                   ),
                           ),
@@ -83,13 +83,15 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                     
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16),
-                      borderSide: const BorderSide(color: Color(kPrimaryColor)),
+                      borderSide: const BorderSide(color: kPrimaryColor),
                     ),
                   ),
                           ),
             ),
             const Spacer(flex: 4,),
-            CustomButton(customButtonText: 'Reset the password', routeName: Login().id),
+            CustomButton(text: 'Reset the password', color: kPrimaryColor,onTap: () {
+              Navigator.pushNamed(context, Login().id);
+            },),
             const Spacer(flex: 5,)
         ],
       ),

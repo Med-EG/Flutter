@@ -1,9 +1,8 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/customWidgets/customButton.dart';
 import 'package:med_eg/screens/EnterVarifecationCode.dart';
+
+import '../customWidgets/custom_button.dart';
 class ResetPassword extends StatefulWidget {
    ResetPassword({super.key});
 
@@ -35,13 +34,13 @@ class _ResetPasswordState extends State<ResetPassword> {
         child: Column(
             children: [
              const Padding(
-                padding: const EdgeInsets.only(right: 5),
+                padding:  EdgeInsets.only(right: 5),
                 child: Text(
                   'Forget the password?',
                   style: TextStyle(fontSize: 30, color: Color(0xff223A6A)),
                 ),
               ),
-              Spacer(flex: 1,),
+              const Spacer(flex: 1,),
               Row(
                 children: [
                   Expanded(
@@ -117,12 +116,14 @@ class _ResetPasswordState extends State<ResetPassword> {
                  const Text('Didn\'t receive verfication?',style: TextStyle(color: Colors.black),),
                   GestureDetector(onTap: (){},
                   
-                  child: const Text('Resend',style: TextStyle(color: Color(kPrimaryColor)),),)
+                  child: const Text('Resend',style: TextStyle(color: kPrimaryColor),),)
                 ],
               ),
-              Spacer(flex: 5,),
-              CustomButton(customButtonText: 'Reset the password', routeName: EnterVerficationCode().id),
-              Spacer(flex:3)
+              const Spacer(flex: 5,),
+              CustomButton(text: 'Reset the password',color: kPrimaryColor, onTap: () {
+                Navigator.pushNamed(context, EnterVerficationCode().id);
+              },),
+              const Spacer(flex:3)
             ],
             
             

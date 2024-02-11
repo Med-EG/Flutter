@@ -21,7 +21,7 @@ class NoAlertScreen extends StatelessWidget {
               const Text(
                 'Medicine alerts',
                 style: TextStyle(
-                    color: Color(kTextColor),
+                    color: darkBlue,
                     fontSize: 30,
                     fontWeight: FontWeight.bold),
               ),

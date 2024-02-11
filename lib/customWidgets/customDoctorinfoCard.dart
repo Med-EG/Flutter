@@ -24,7 +24,7 @@ class DoctorInfoCard extends StatelessWidget {
             Text(
               doctor.doctorName,
               style: const TextStyle(
-                  color: Color(kTextColor), fontWeight: FontWeight.bold),
+                  color: darkBlue, fontWeight: FontWeight.bold),
             ),
            const SizedBox(height: 5,),
             Text(doctor.specification,
@@ -45,19 +45,19 @@ class DoctorInfoCard extends StatelessWidget {
                      
                       const Icon(
                         Icons.star_rounded,
-                        color: Color(kPrimaryColor),
+                        color: kPrimaryColor,
                       ),
                       Text(
                         doctor.rate.toString(),
-                        style: const TextStyle(color: Color(kPrimaryColor)),
+                        style: const TextStyle(color: kPrimaryColor),
                       )
                     ],
                   ),
                 ),
                const Spacer(flex: 4,),
-               const Icon(Icons.location_on_rounded,color: Color(lightGrey),),
+               const Icon(Icons.location_on_rounded,color: lightGrey,),
                const Spacer(flex: 1,),
-                Text(doctor.location,style:const TextStyle(color: Color(lightGrey),fontSize: 13,),),
+                Text(doctor.location,style:const TextStyle(color: lightGrey,fontSize: 13,),),
                const Spacer(flex: 6,)
               ],
               

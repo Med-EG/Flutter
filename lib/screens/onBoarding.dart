@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/customWidgets/OnBoardingDots.dart';
-import 'package:med_eg/customWidgets/customButton.dart';
 import 'package:med_eg/models/onboardingmodel.dart';
 import 'package:med_eg/screens/loginScreen.dart';
+
+import '../customWidgets/custom_button.dart';
 
 
 class OnBording extends StatelessWidget {
@@ -133,8 +134,11 @@ class OnBording extends StatelessWidget {
                                 onBoardingScreens[index]
                                         .isThisLastHomeBordingScreen
                                     ? CustomButton(
-                                        customButtonText: 'Get Started',
-                                        routeName: Login().id )
+                                        text:  'Get Started',
+                                        color: kPrimaryColor,
+                                        onTap: () {
+                                          Navigator.pushNamed(context, Login().id);
+                                        },)
                                     : FloatingActionButton(
                                         onPressed: () {
                                           _controller.nextPage(
@@ -145,7 +149,7 @@ class OnBording extends StatelessWidget {
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(30)),
-                                        backgroundColor: const Color(kPrimaryColor),
+                                        backgroundColor: kPrimaryColor,
                                         child: const Icon(Icons.arrow_forward_ios,
                                             color: Colors.white)),
                                             SizedBox(height: screenHieght*0.03),

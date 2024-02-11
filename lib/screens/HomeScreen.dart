@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:med_eg/customWidgets/DoctorCardListView.dart';
 import 'package:med_eg/customWidgets/customIconCard.dart';
 import 'package:med_eg/customWidgets/customSearchBar.dart';
-
+import 'package:google_nav_bar/google_nav_bar.dart';
 import '../constants/colors.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -19,10 +18,10 @@ class HomeScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(5),
           child: GNav(
-            tabBackgroundColor: const Color(kPrimaryColor).withOpacity(0.2),
+            tabBackgroundColor: kPrimaryColor.withOpacity(0.2),
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
             backgroundColor: Colors.white,
-            activeColor:const Color(kPrimaryColor),
+            activeColor:kPrimaryColor,
             gap: 8,
             
             onTabChange: (value){},
@@ -119,7 +118,7 @@ class HomeScreen extends StatelessWidget {
                     const Text(
                       'Top Doctors',
                       style: TextStyle(
-                          color: Color(kTextColor),
+                          color: darkBlue,
                           fontSize: 25,
                           fontWeight: FontWeight.bold),
                     ),
@@ -131,7 +130,7 @@ class HomeScreen extends StatelessWidget {
                       child: const Text(
                         'See all',
                         style:
-                            TextStyle(color: Color(kPrimaryColor), fontSize: 18),
+                            TextStyle(color: darkBlue, fontSize: 18),
                       ),
                     ),
                   ],
