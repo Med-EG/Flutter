@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/customWidgets/customDropDownTextField.dart';
 import 'package:med_eg/screens/CreateMedicineAlert.dart';
 import 'package:med_eg/screens/HomeScreen.dart';
-import 'package:med_eg/screens/NoAlertScreen.dart';
-import 'package:med_eg/screens/NoPatientAppointmentsScreen.dart';
-import 'package:med_eg/screens/ShowAppointmentPatient.dart';
 import 'package:med_eg/screens/signUp1.dart';
 import 'package:med_eg/screens/signUp2.dart';
 import 'package:med_eg/screens/signUp3.dart';
@@ -33,7 +31,7 @@ class MyApp extends StatelessWidget {
         'CreateMedicineAlert':(context) => const CreateMedicineAlert(),
       },
       debugShowCheckedModeBanner: false,
-      home: const NoAlertScreen(),
+      home: const DropDownTextField1(),
     );
   }
 }

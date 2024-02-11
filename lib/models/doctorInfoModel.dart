@@ -1,7 +1,7 @@
 class DoctorModel
 {
 
-    final String image;
+  final String image;
   final String doctorName;
   final String specification;
   final double rate;
