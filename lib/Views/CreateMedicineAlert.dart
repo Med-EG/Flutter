@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/customWidgets/customDropDownTextField.dart';
+import 'package:med_eg/widgets/customDropDownTextField.dart';
 
 class CreateMedicineAlert extends StatefulWidget {
   const CreateMedicineAlert({super.key});

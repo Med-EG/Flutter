@@ -1,4 +1,3 @@
-import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdownfield2/dropdownfield2.dart';
 

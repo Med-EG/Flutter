@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/screens/signUp1.dart';
-import 'package:med_eg/screens/signUp10.dart';
-import 'package:med_eg/screens/signUp11.dart';
-import 'package:med_eg/screens/signUp12.dart';
-import 'package:med_eg/screens/signUp2.dart';
-import 'package:med_eg/screens/signUp3.dart';
-import 'package:med_eg/screens/signUp7.dart';
-import 'package:med_eg/screens/signUp8.dart';
-import 'package:med_eg/screens/signUp9.dart';
+import 'package:med_eg/Views/signUp1.dart';
+import 'package:med_eg/Views/signUp10.dart';
+import 'package:med_eg/Views/signUp11.dart';
+import 'package:med_eg/Views/signUp12.dart';
+import 'package:med_eg/Views/signUp2.dart';
+import 'package:med_eg/Views/signUp3.dart';
+import 'package:med_eg/Views/signUp7.dart';
+import 'package:med_eg/Views/signUp8.dart';
+import 'package:med_eg/Views/signUp9.dart';
 
 
 

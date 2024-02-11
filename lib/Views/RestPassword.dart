@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/screens/EnterVarifecationCode.dart';
+import 'package:med_eg/Views/EnterVarifecationCode.dart';
 
-import '../customWidgets/custom_button.dart';
+import '../widgets/custom_button.dart';
 class ResetPassword extends StatefulWidget {
    ResetPassword({super.key});
 

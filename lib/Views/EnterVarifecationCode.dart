@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/screens/createNewPassword.dart';
+import 'package:med_eg/Views/createNewPassword.dart';
 
-import '../customWidgets/custom_button.dart';
+import '../widgets/custom_button.dart';
 
 
 class EnterVerficationCode extends StatelessWidget {

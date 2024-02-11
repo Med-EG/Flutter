@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/customWidgets/DoctorCardListView.dart';
-import 'package:med_eg/customWidgets/customIconCard.dart';
-import 'package:med_eg/customWidgets/customSearchBar.dart';
+import 'package:med_eg/widgets/DoctorCardListView.dart';
+import 'package:med_eg/widgets/customIconCard.dart';
+import 'package:med_eg/widgets/customSearchBar.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import '../constants/colors.dart';
 
