@@ -4,9 +4,9 @@ import 'package:med_eg/Views/EnterVarifecationCode.dart';
 
 import '../widgets/custom_button.dart';
 class ResetPassword extends StatefulWidget {
-   ResetPassword({super.key});
+   const ResetPassword({super.key});
 
-  String id ='ResetPassword';
+ final String id ='ResetPassword';
 
   @override
   State<ResetPassword> createState() => _ResetPasswordState();

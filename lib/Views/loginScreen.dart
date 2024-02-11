@@ -7,8 +7,8 @@ import '../widgets/custom_button.dart';
 
 
 class Login extends StatefulWidget {
-   Login({super.key});
-   String id ='login';
+   const Login({super.key});
+  final String id ='login';
 
   @override
   State<Login> createState() => _LoginState();

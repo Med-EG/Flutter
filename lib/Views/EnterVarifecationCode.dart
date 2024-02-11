@@ -7,9 +7,9 @@ import '../widgets/custom_button.dart';
 
 
 class EnterVerficationCode extends StatelessWidget {
-   EnterVerficationCode({super.key});
+   const EnterVerficationCode({super.key});
 
-String id ='EnterVerficationCode';
+final String id ='EnterVerficationCode';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
