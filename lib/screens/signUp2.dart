@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:med_eg/widgets/custom_form.dart';
-import '../widgets/custom_arrow_back.dart';
-import '../widgets/custom_button.dart';
-import '../widgets/custom_profile_container.dart';
+import '../customWidgets/custom_arrow_back.dart';
+import '../customWidgets/custom_button.dart';
+import '../customWidgets/custom_form.dart';
+import '../customWidgets/custom_profile_container.dart';
 
 class SignUp2 extends StatelessWidget {
   const SignUp2({super.key});

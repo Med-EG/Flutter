@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/screens/CreateMedicineAlert.dart';
-
 class CustomAddButton extends StatelessWidget {
   const CustomAddButton({super.key, required this.borderRadius, required this.plusIcon});
   final double borderRadius;
@@ -20,7 +18,7 @@ class CustomAddButton extends StatelessWidget {
               spreadRadius: 5,
               blurRadius: 15,
               offset: const Offset(0, 8),)],
-            color: const Color(kPrimaryColor),
+            color: kPrimaryColor,
             borderRadius: BorderRadius.circular(borderRadius)),
         child: Icon(
           plusIcon ? Icons.add : Icons.minimize,

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/widgets/custom_arrow_back.dart';
-import 'package:med_eg/widgets/custom_button.dart';
-import 'package:med_eg/widgets/custom_circle_container.dart';
-import 'package:med_eg/widgets/custom_textFormField.dart';
-import 'package:med_eg/widgets/custom_text_information.dart';
+import '../constants/colors.dart';
+import '../customWidgets/custom_arrow_back.dart';
+import '../customWidgets/custom_button.dart';
+import '../customWidgets/custom_circle_container.dart';
+import '../customWidgets/custom_textFormField.dart';
+import '../customWidgets/custom_text_information.dart';
 
-class SignUp11 extends StatelessWidget {
-  const SignUp11({super.key});
+
+class SignUp8 extends StatelessWidget {
+  const SignUp8({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,25 +30,29 @@ class SignUp11 extends StatelessWidget {
                     children: [
                       const CustomArrowBack(),
                       const CustomTextInformation(
-                          text: 'Relatives', color: blue),
+                          text: 'Medicine', color: kPrimaryColor),
                       const CustomTextInformation(
                           text: 'Information', color: darkBlue),
                       SizedBox(
-                        height: screenHeight * 0.15,
+                        height: screenHeight * 0.075,
                       ),
-                      const CustomTextFormField(hint: 'Degree Of Relativity'),
+                      const CustomTextFormField(hint: 'Medicine Name'),
                       const CustomTextFormField(
-                        hint: 'Genetic Diseases',
-                        maxLines: 5,
+                        hint: 'Dose',
+                      ),
+                      const CustomTextFormField(hint: 'Frequency'),
+                      const CustomTextFormField(
+                        hint: 'Notes',
+                        maxLines: 3,
                       ),
                       SizedBox(
-                        height: screenHeight * 0.21,
+                        height: screenHeight * 0.14,
                       ),
                       CustomButton(
                         text: 'Save',
-                        color: blue,
+                        color: kPrimaryColor,
                         onTap: () {
-                          Navigator.pushNamed(context, '/signUp12');
+                          Navigator.pushNamed(context, '/signUp9');
                         },
                       )
                     ],
