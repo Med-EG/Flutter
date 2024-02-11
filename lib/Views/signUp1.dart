@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:med_eg/constants/texts.dart';
 import '../constants/colors.dart';
-import '../customWidgets/custom_button.dart';
-import '../customWidgets/custom_textFormField.dart';
-import '../customWidgets/signUP_with.dart';
+import '../widgets/custom_button.dart';
+import '../widgets/custom_textFormField.dart';
+import '../widgets/signUP_with.dart';
 
 class SignUp1 extends StatefulWidget {
   const SignUp1({super.key});

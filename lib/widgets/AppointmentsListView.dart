@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/customWidgets/customAppointmentCard.dart';
+import 'package:med_eg/widgets/customAppointmentCard.dart';
 import 'package:med_eg/models/appointmentModel.dart';
 
 class AppointmentListView extends StatelessWidget {
