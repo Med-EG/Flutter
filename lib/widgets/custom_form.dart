@@ -63,8 +63,7 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                   hint: 'Emergency Contact',
                   textinputType: TextInputType.numberWithOptions(),
                 )),
-                Expanded(
-                    child: IconButton(onPressed: () {}, icon: Icon(Icons.add)))
+                IconButton(onPressed: () {}, icon: const Icon(Icons.add))
               ],
             ),
             const Row(

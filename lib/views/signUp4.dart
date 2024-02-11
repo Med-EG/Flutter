@@ -37,7 +37,7 @@ class SignUp4 extends StatelessWidget {
               ),
             ),
             const Center(child: Text('Welcome to medical record' ,style:TextStyle(fontSize: 32) ,)),
-            Text('What is electronic medical record /n it is scn')
+           
           ],
         ),
       ),

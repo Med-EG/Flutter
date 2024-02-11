@@ -15,7 +15,7 @@ final void Function()? onTap;
       child: Container(
         height: 51,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(72),
+            borderRadius: BorderRadius.circular(16),
             color: color),
         child:  Center(
           child: Text(

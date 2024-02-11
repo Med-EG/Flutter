@@ -15,30 +15,29 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8),
-      child: SizedBox(
-        height: 45,
-        child: TextFormField(
-          keyboardType: textinputType,
-          onChanged: onChanged,
-          cursorColor: grey,
-          maxLines: 1,
-          validator: (value) {
-            if(value?.isEmpty ?? true)
-            {
-              return 'Field is required';
-            }
-            else {
-              return null;
-            }
-          },
-          decoration: InputDecoration(
-              border: buildBorder(),
-              hintText: hint,
-              hintStyle: const TextStyle(color: lightGrey),
-              enabledBorder: buildBorder(grey),
-              focusedBorder: buildBorder(blue),
-              suffixIcon: icon),
-        ),
+      child: TextFormField(
+        keyboardType: textinputType,
+        onChanged: onChanged,
+        cursorColor: grey,
+        maxLines: maxLines,
+        validator: (value) {
+          if(value?.isEmpty ?? true)
+          {
+            return 'Field is required';
+          }
+          else {
+            return null;
+          }
+        },
+        decoration: InputDecoration(
+            border: buildBorder(),
+            fillColor: Colors.white,
+            filled: true,
+            hintText: hint,
+            hintStyle: const TextStyle(color: lightGrey),
+            enabledBorder: buildBorder(grey),
+            focusedBorder: buildBorder(blue),
+            suffixIcon: icon),
       ),
     );
   }

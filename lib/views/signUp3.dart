@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:med_eg/constants/colors.dart';
+import 'package:med_eg/widgets/custom_button.dart';
 
 class SignUp3 extends StatelessWidget {
   const SignUp3({super.key});
@@ -8,7 +9,7 @@ class SignUp3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
+     double screenWidth = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         body: Center(
@@ -16,8 +17,8 @@ class SignUp3 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 197,
-                width: 197,
+                height: screenHeight * 0.5,
+                width: screenWidth * 0.5,
                 decoration: const BoxDecoration(
                     color: Color(0xffD9D9D9), shape: BoxShape.circle),
                 child: Padding(
@@ -65,19 +66,10 @@ class SignUp3 extends StatelessWidget {
                     color: Color(0xff9DA3B1)),
               ),
               SizedBox(height: screenHeight*0.1,),
-              Container(
-                height: 40,
-                width: screenWidth * 0.5,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: blue),
-                child: const Center(
-                  child: Text(
-                    'Next',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                ),
-              ),
+               CustomButton(text: 'Next', color: blue,
+              onTap: () {
+                Navigator.pushNamed(context, '/signUp7');
+              },)
             ],
           ),
         ),

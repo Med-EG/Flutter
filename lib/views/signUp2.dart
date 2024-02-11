@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:med_eg/widgets/custom_form.dart';
+import '../widgets/custom_arrow_back.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_profile_container.dart';
 
@@ -19,12 +20,7 @@ class SignUp2 extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  IconButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: const Icon(Icons.arrow_back_ios)),
+                  const CustomArrowBack(),
                   SizedBox(
                     width: screenWidth * 0.25,
                   ),
