@@ -5,8 +5,8 @@ import 'package:med_eg/Views/loginScreen.dart';
 import '../widgets/custom_button.dart';
 
 class CreateNewPassword extends StatefulWidget {
-   CreateNewPassword({super.key});
-  String id ='CreateNewPassword';
+   const CreateNewPassword({super.key});
+ final String id ='CreateNewPassword';
 
   @override
   State<CreateNewPassword> createState() => _CreateNewPasswordState();

@@ -6,8 +6,8 @@ import 'package:med_eg/Views/loginScreen.dart';
 import '../widgets/custom_button.dart';
 
 class ChooseUserType extends StatelessWidget {
-   ChooseUserType({super.key});
-  String id='ChooseUserType';
+  const ChooseUserType({super.key});
+  final String id = 'ChooseUserType';
 
   @override
   Widget build(BuildContext context) {
@@ -17,25 +17,50 @@ class ChooseUserType extends StatelessWidget {
         padding: const EdgeInsets.all(27),
         child: Column(
           children: [
-             SizedBox(height: screenHieght*0.06,),
-              Container(
-                height: screenHieght*0.3,
+            SizedBox(
+              height: screenHieght * 0.06,
+            ),
+            Container(
+                height: screenHieght * 0.3,
                 child: SvgPicture.asset('assets/SVG/Frame.svg')),
-                SizedBox(height: screenHieght*0.007,),
-                const Text('You are a...',style: TextStyle(fontSize: 35,color: darkBlue,fontWeight: FontWeight.bold),),
-                 SizedBox(height: screenHieght*0.08,),
-                CustomButton(text: 'Patient',color: kPrimaryColor,onTap: () {
-                  Navigator.pushNamed(context, Login().id);
-                },),
-                 SizedBox(height: screenHieght*0.035,),
-                CustomButton(text: 'Doctor',color: kPrimaryColor,onTap: () {
-                  Navigator.pushNamed(context, Login().id);
-                },),
-                 SizedBox(height: screenHieght*0.035,),
-                CustomButton(text:  'Doctor assistant', color: kPrimaryColor,onTap: () {
-                  Navigator.pushNamed(context, Login().id);
-                },)
-      
+            SizedBox(
+              height: screenHieght * 0.007,
+            ),
+            const Text(
+              'You are a...',
+              style: TextStyle(
+                  fontSize: 35, color: darkBlue, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: screenHieght * 0.08,
+            ),
+            CustomButton(
+              text: 'Patient',
+              color: kPrimaryColor,
+              onTap: () {
+                Navigator.pushNamed(context, Login().id);
+              },
+            ),
+            SizedBox(
+              height: screenHieght * 0.035,
+            ),
+            CustomButton(
+              text: 'Doctor',
+              color: kPrimaryColor,
+              onTap: () {
+                Navigator.pushNamed(context, Login().id);
+              },
+            ),
+            SizedBox(
+              height: screenHieght * 0.035,
+            ),
+            CustomButton(
+              text: 'Doctor assistant',
+              color: kPrimaryColor,
+              onTap: () {
+                Navigator.pushNamed(context, Login().id);
+              },
+            )
           ],
         ),
       ),
