@@ -1,14 +1,12 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/Views/loginScreen.dart';
-
 import '../widgets/custom_button.dart';
 
 class LetsGetStarted extends StatelessWidget {
-  LetsGetStarted({super.key});
-  String id = 'LetsGetStarted';
+  const LetsGetStarted({super.key});
+ final String id = 'LetsGetStarted';
   @override
   Widget build(BuildContext context) {
     double screenHieght = MediaQuery.of(context).size.height;
