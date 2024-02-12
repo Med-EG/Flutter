@@ -125,7 +125,7 @@ final String id ='EnterVerficationCode';
           const Spacer(flex: 5,),
           CustomButton(text: 'Reset the password', color: kPrimaryColor,
          onTap: () {
-           Navigator.pushNamed(context, CreateNewPassword().id);
+           Navigator.pushNamed(context, const CreateNewPassword().id);
          },
          ),
          const Spacer(flex: 4,)
