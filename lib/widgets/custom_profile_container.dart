@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/constants/colors.dart';
 
 class CustomProfileContainer extends StatelessWidget {
   const CustomProfileContainer({
@@ -7,9 +8,12 @@ class CustomProfileContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Container(
-        height: 130,
-        width: 130,
+        height: screenHeight * 0.2,
+        width: screenWidth * 0.2,
         decoration: const BoxDecoration(
           color: Color(0xffE7E7E7),
           shape: BoxShape.circle,
@@ -18,7 +22,7 @@ class CustomProfileContainer extends StatelessWidget {
           children: [
             Center(
               child: Image.asset(
-                'assets/images/Image.png',
+                'assets/images/PNG/Image.png',
               ),
             ),
             Positioned(
@@ -26,11 +30,11 @@ class CustomProfileContainer extends StatelessWidget {
               left: 100,
               right: 0,
               child: Container(
-                height: 42,
-                width: 42,
+                height: screenHeight * 0.05,
+                width: screenWidth * 0.05,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.blue, // Color of the circle
+                  color: kPrimaryColor, // Color of the circle
                 ),
                 child: const Icon(
                   Icons.add,

@@ -24,7 +24,7 @@ class SignUp2 extends StatelessWidget {
                   SizedBox(
                     width: screenWidth * 0.25,
                   ),
-                  SvgPicture.asset('assets/images/Frame.svg')
+                    SvgPicture.asset('assets/images/SVG/Frame (1).svg')
                 ],
               ),
               Expanded(
