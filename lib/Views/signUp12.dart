@@ -23,14 +23,17 @@ class SignUp12 extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(32.0),
                 child: SvgPicture.asset(
-                  'assets/images/Stroke 3.svg',
+                  'assets/images/SVG/4Stroke 3.svg',
                   color: Colors.white,
                 ),
               ),
             ),
-            const CustomTextInformation(text: 'Your medical Record', color: darkBlue),
-            const CustomTextInformation(text: 'have been Created', color: darkBlue),
-            const CustomTextInformation(text: 'Successfully', color: kPrimaryColor),
+            const CustomTextInformation(
+                text: 'Your medical Record', color: darkBlue),
+            const CustomTextInformation(
+                text: 'have been Created', color: darkBlue),
+            const CustomTextInformation(
+                text: 'Successfully', color: kPrimaryColor),
           ],
         ),
       ),
