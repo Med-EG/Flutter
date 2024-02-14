@@ -149,7 +149,7 @@ class OnBording extends StatelessWidget {
                                           color: kPrimaryColor,
                                           onTap: () {
                                             Navigator.pushNamed(
-                                                context,const Login().id);
+                                                context,'/signUp1');
                                           },
                                         ),
                                     )

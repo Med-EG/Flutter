@@ -1,10 +1,10 @@
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:med_eg/constants/colors.dart';
 
 // ignore: must_be_immutable
 class HalfTextFieldHalfDropDown extends StatefulWidget {
- 
   final bool isItDoseTextField;
   final List<DropDownValueModel> timeList = const [
     DropDownValueModel(name: 'AM', value: "AM"),
@@ -20,8 +20,11 @@ class HalfTextFieldHalfDropDown extends StatefulWidget {
       value: "mg",
     ),
   ];
-   HalfTextFieldHalfDropDown({super.key, required this.isItDoseTextField,});
-  int selectedValue=0;
+  HalfTextFieldHalfDropDown({
+    super.key,
+    required this.isItDoseTextField,
+  });
+  int selectedValue = 0;
   @override
   State<HalfTextFieldHalfDropDown> createState() =>
       _HalfTextFieldHalfDropDownState();
@@ -39,10 +42,11 @@ class _HalfTextFieldHalfDropDownState extends State<HalfTextFieldHalfDropDown> {
           Expanded(
             child: TextField(
               keyboardType: TextInputType.number,
+              //trying to make the textfield only take numbers from 1 to 12 for the time textfield
+              // inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^1[012]$'))],
               decoration: InputDecoration(
                 labelText: widget.isItDoseTextField ? 'Dose' : 'Time',
                 fillColor: Colors.white,
-                //hintText: widget.hintText,
                 hintStyle: const TextStyle(color: lightGrey),
                 enabledBorder: buildBorder(grey),
                 focusedBorder: buildBorder(grey),
@@ -61,7 +65,7 @@ class _HalfTextFieldHalfDropDownState extends State<HalfTextFieldHalfDropDown> {
             child: DropDownTextField(
               initialValue: widget.isItDoseTextField ? 'ml' : 'Am',
               textFieldDecoration: InputDecoration(
-                border: InputBorder.none,
+                  border: InputBorder.none,
                   contentPadding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   enabledBorder: InputBorder.none,
@@ -70,9 +74,11 @@ class _HalfTextFieldHalfDropDownState extends State<HalfTextFieldHalfDropDown> {
               dropdownColor: Colors.white,
               dropDownList:
                   widget.isItDoseTextField ? widget.doseList : widget.timeList,
-              onChanged: (value) {setState(() {
-               widget.selectedValue=value;
-              });},
+              onChanged: (value) {
+                setState(() {
+                  widget.selectedValue = value;
+                });
+              },
             ),
           ),
         ],

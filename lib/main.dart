@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/CreateMedicineAlert.dart';
 import 'package:med_eg/Views/loginScreen.dart';
 import 'package:med_eg/Views/onBoarding.dart';
 import 'package:med_eg/Views/signUp1.dart';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
         const Login().id:(context) => const Login(),
       },
       debugShowCheckedModeBanner: false,
-      home:  OnBording(),
+      home: const  CreateMedicineAlert(),
 
     );
   }
