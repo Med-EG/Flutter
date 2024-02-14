@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-
 import '../constants/colors.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField(
-      {super.key, required this.hint, this.maxLines = 1, this.onChanged, this.textinputType, this.icon});
+      {super.key,
+      required this.hint,
+      this.maxLines = 1,
+      this.onChanged,
+      this.textinputType,
+      this.icon});
 
   final String hint;
   final int maxLines;
@@ -21,17 +25,15 @@ class CustomTextFormField extends StatelessWidget {
         cursorColor: grey,
         maxLines: maxLines,
         validator: (value) {
-          if(value?.isEmpty ?? true)
-          {
+          if (value?.isEmpty ?? true) {
             return 'Field is required';
-          }
-          else {
+          } else {
             return null;
           }
         },
         decoration: InputDecoration(
             border: buildBorder(),
-            fillColor: Colors.white,
+            fillColor: offWhite,
             filled: true,
             hintText: hint,
             hintStyle: const TextStyle(color: lightGrey),

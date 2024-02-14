@@ -24,7 +24,7 @@ class SignUp3 extends StatelessWidget {
                     color: Color(0xffD9D9D9), shape: BoxShape.circle),
                 child: Padding(
                   padding: const EdgeInsets.all(48.0),
-                  child: SvgPicture.asset('assets/images/Stroke 3.svg'),
+                  child: SvgPicture.asset('assets/images/SVG/Stroke 3.svg'),
                 ),
               ),
               SizedBox(
