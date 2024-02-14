@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/Views/CreateMedicineAlert.dart';
+import 'package:med_eg/Views/loginScreen.dart';
+import 'package:med_eg/Views/onBoarding.dart';
 import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/Views/signUp10.dart';
 import 'package:med_eg/Views/signUp11.dart';
@@ -40,9 +42,10 @@ class MyApp extends StatelessWidget {
         '/signUp10': (context) => const SignUp10(),
         '/signUp11': (context) => const SignUp11(),
         '/signUp12': (context) => const SignUp12(),
+        const Login().id:(context) => const Login(),
       },
       debugShowCheckedModeBanner: false,
-      home:  CreateMedicineAlert(),
+      home: const  CreateMedicineAlert(),
 
     );
   }

@@ -8,7 +8,7 @@ import '../widgets/custom_button.dart';
 
 class Login extends StatefulWidget {
    const Login({super.key});
-  final String id ='login';
+  final String id ='Login';
 
   @override
   State<Login> createState() => _LoginState();
@@ -41,7 +41,7 @@ bool _obscureText = true;
            children:[ Column(
             
              children: [
-              SizedBox(height:50),
+             const SizedBox(height:50),
                Padding(
                  padding: const EdgeInsets.only(right: 10,left: 10),
                  child: TextField(
@@ -87,7 +87,7 @@ bool _obscureText = true;
              children: [
               const Spacer(flex: 11,),
                GestureDetector(
-                onTap: (){Navigator.pushNamed(context, ResetPassword().id);},
+                onTap: (){Navigator.pushNamed(context,const ResetPassword().id);},
                 child: const Text('forget the password?',style: TextStyle(fontSize: 12,color: Colors.black),),
                ),
                const Spacer(flex: 1,)
@@ -95,7 +95,7 @@ bool _obscureText = true;
            ),
            SizedBox(height: screenHieght*0.08,),
            CustomButton(text: 'Login', color: kPrimaryColor, onTap: () {
-             Navigator.pushNamed(context, Login().id);
+             Navigator.pushNamed(context,const Login().id);
            },),
            SizedBox(height: screenHieght*0.01,),
          

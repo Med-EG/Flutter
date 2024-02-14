@@ -24,7 +24,7 @@ class OnBording extends StatelessWidget {
           actions: [
             GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, Login().id);
+                  Navigator.pushNamed(context,const Login().id);
                 },
                 child: const Padding(
                   padding: EdgeInsets.all(18.0),
@@ -54,7 +54,7 @@ class OnBording extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Image.asset(
-                          height: screenHieght * 0.35,
+                          height: screenHieght * 0.3,
                           onBoardingScreens[index].imagePath),
                       //                 Container(
                       //               height: 30,
@@ -77,7 +77,7 @@ class OnBording extends StatelessWidget {
                         child: Container(
                           height: screenHieght * 0.03,
                           child:
-                              Image.asset('assets/images/Ellipse 34 (1).png'),
+                              Image.asset('assets/images/PNG/Ellipse 34 (1).png'),
                         ),
                       ),
 
@@ -142,14 +142,17 @@ class OnBording extends StatelessWidget {
                                 SizedBox(height: screenHieght * 0.06),
                                 onBoardingScreens[index]
                                         .isThisLastHomeBordingScreen
-                                    ? CustomButton(
-                                        text: 'Get Started',
-                                        color: kPrimaryColor,
-                                        onTap: () {
-                                          Navigator.pushNamed(
-                                              context, Login().id);
-                                        },
-                                      )
+                                    ? Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal:10),
+                                      child: CustomButton(
+                                          text: 'Get Started',
+                                          color: kPrimaryColor,
+                                          onTap: () {
+                                            Navigator.pushNamed(
+                                                context,'/signUp1');
+                                          },
+                                        ),
+                                    )
                                     : FloatingActionButton(
                                         onPressed: () {
                                           _controller.nextPage(

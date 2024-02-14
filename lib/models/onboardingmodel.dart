@@ -20,17 +20,17 @@ class OnBordingModel  {
  
 }
  List<OnBordingModel>onBoardingScreens=<OnBordingModel>[
-    OnBordingModel(imagePath: 'assets/images/firstHomeBordong.png', firstDotColor: Colors.black,
+    OnBordingModel(imagePath: 'assets/images/PNG/firstHomeBordong.png', firstDotColor: Colors.black,
     secondDotColor: Colors.transparent, thirdDotColor: Colors.transparent,homeBordingTitle: 'Welcome to',
     homeBordingDescreption: 'Securely store, access, and manage your medical records anytime, anywhere',
     isThisLastHomeBordingScreen: false),
 
-    OnBordingModel(imagePath: 'assets/images/secondHomeBording.png', firstDotColor: Colors.transparent,
+    OnBordingModel(imagePath: 'assets/images/PNG/secondHomeBording.png', firstDotColor: Colors.transparent,
     secondDotColor: Colors.black, thirdDotColor: Colors.transparent,homeBordingTitle: 'Never miss a dose!',
     homeBordingDescreption: 'MedEG helps you manage medications effortlessly. Receive reminders',
     isThisLastHomeBordingScreen: false),
 
-    OnBordingModel(imagePath: 'assets/images/thirdHomeBording.png', firstDotColor: Colors.transparent,
+    OnBordingModel(imagePath: 'assets/images/PNG/thirdHomeBording.png', firstDotColor: Colors.transparent,
     secondDotColor: Colors.transparent, thirdDotColor: Colors.black,homeBordingTitle: 'Book your appointments',
     homeBordingDescreption: 'Book appointments easily and Fast',
     isThisLastHomeBordingScreen: true),
