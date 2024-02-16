@@ -4,13 +4,13 @@ import '../constants/colors.dart';
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField(
       {super.key,
-      required this.hint,
+      required this.label,
       this.maxLines = 1,
       this.onChanged,
       this.textinputType,
       this.icon});
 
-  final String hint;
+  final String label;
   final int maxLines;
   final void Function(String)? onChanged;
   final TextInputType? textinputType;
@@ -35,8 +35,8 @@ class CustomTextFormField extends StatelessWidget {
             border: buildBorder(),
             fillColor: offWhite,
             filled: true,
-            hintText: hint,
-            hintStyle: const TextStyle(color: lightGrey),
+            labelText: label,
+            labelStyle: const TextStyle(color: lightGrey),
             enabledBorder: buildBorder(grey),
             focusedBorder: buildBorder(kPrimaryColor),
             suffixIcon: icon),

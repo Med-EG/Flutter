@@ -24,43 +24,43 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
               children: [
                 Expanded(
                     child: CustomTextFormField(
-                  hint: 'First Name',
+                  label: 'First Name',
                 )),
-                Expanded(child: CustomTextFormField(hint: 'Last Name'))
+                Expanded(child: CustomTextFormField(label: 'Last Name'))
               ],
             ),
-            const CustomTextFormField(hint: 'E-mail'),
+            const CustomTextFormField(label: 'E-mail'),
             CustomTextFormField(
-                hint: 'Enter Password',
+                label: 'Enter Password',
                 icon: IconButton(
                     onPressed: () {}, icon: const Icon(Icons.remove_red_eye))),
             CustomTextFormField(
-                hint: 'Re-enter Password',
+                label: 'Re-enter Password',
                 icon: IconButton(
                     onPressed: () {}, icon: const Icon(Icons.remove_red_eye))),
             Row(
               children: [
                 const Expanded(
                     child: CustomTextFormField(
-                  hint: 'Gender',
+                  label: 'Gender',
                 )),
                 Expanded(
                     child: CustomTextFormField(
-                  hint: 'Date of birth',
+                  label: 'Date of birth',
                   icon: IconButton(
                       onPressed: () {}, icon: const Icon(Icons.calendar_month)),
                 ))
               ],
             ),
             const CustomTextFormField(
-              hint: 'Phone number',
+              label: 'Phone number',
               textinputType: TextInputType.numberWithOptions(),
             ),
             Row(
               children: [
                 const Expanded(
                     child: CustomTextFormField(
-                  hint: 'Emergency Contact',
+                  label: 'Emergency Contact',
                   textinputType: TextInputType.numberWithOptions(),
                 )),
                 IconButton(onPressed: () {}, icon: const Icon(Icons.add))
@@ -70,12 +70,12 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
               children: [
                 Expanded(
                     child: CustomTextFormField(
-                  hint: 'Country',
+                  label: 'Country',
                 )),
-                Expanded(child: CustomTextFormField(hint: 'City'))
+                Expanded(child: CustomTextFormField(label: 'City'))
               ],
             ),
-            const CustomTextFormField(hint: 'Street'),
+            const CustomTextFormField(label: 'Street'),
           ],
         ),
       ),
