@@ -57,7 +57,7 @@ class _SignUp1State extends State<SignUp1> {
               SizedBox(
                 height: screenHeight * 0.06,
                 child:
-                    const CustomTextFormField(hint: 'Natinal Id', maxLines: 1),
+                    const CustomTextFormField(label: 'Natinal Id', maxLines: 1),
               ),
               SizedBox(
                 height: screenHeight * 0.001,

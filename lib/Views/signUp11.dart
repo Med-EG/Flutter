@@ -35,9 +35,9 @@ class SignUp11 extends StatelessWidget {
                       SizedBox(
                         height: screenHeight * 0.15,
                       ),
-                      const CustomTextFormField(hint: 'Degree Of Relativity'),
+                      const CustomTextFormField(label: 'Degree Of Relativity'),
                       const CustomTextFormField(
-                        hint: 'Genetic Diseases',
+                        label: 'Genetic Diseases',
                         maxLines: 5,
                       ),
                       SizedBox(

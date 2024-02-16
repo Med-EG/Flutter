@@ -36,19 +36,19 @@ class SignUp10 extends StatelessWidget {
                       SizedBox(
                         height: screenHeight * 0.04,
                       ),
-                      const CustomTextFormField(hint: 'Operation Name'),
+                      const CustomTextFormField(label: 'Operation Name'),
                       const CustomTextFormField(
-                        hint: 'Surgeon Name',
+                        label: 'Surgeon Name',
                       ),
                       CustomTextFormField(
-                        hint: 'Operation Date',
+                        label: 'Operation Date',
                         icon: IconButton(
                             onPressed: () {},
                             icon: const Icon(Icons.calendar_month)),
                       ),
                       const CustomTextFormField(
-                          hint: 'Complications', maxLines: 2),
-                      const CustomTextFormField(hint: 'Notes', maxLines: 3),
+                          label: 'Complications', maxLines: 2),
+                      const CustomTextFormField(label: 'Notes', maxLines: 3),
                       SizedBox(
                         height: screenHeight * 0.04,
                       ),

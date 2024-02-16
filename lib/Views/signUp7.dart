@@ -36,13 +36,13 @@ class SignUp7 extends StatelessWidget {
                       SizedBox(
                         height: screenHeight * 0.075,
                       ),
-                      const CustomTextFormField(hint: 'Disease Name'),
+                      const CustomTextFormField(label: 'Disease Name'),
                       const CustomTextFormField(
-                        hint: 'Disease Description',
+                        label: 'Disease Description',
                         maxLines: 5,
                       ),
                       const CustomTextFormField(
-                        hint: 'Notes',
+                        label: 'Notes',
                         maxLines: 2,
                       ),
                       SizedBox(
