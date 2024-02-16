@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         '/signUp12': (context) => const SignUp12(),
       },
       debugShowCheckedModeBanner: false,
-      home:  OnBording(),
+      home: OnBording(),
     );
   }
 }
