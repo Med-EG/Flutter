@@ -11,6 +11,8 @@ import 'package:med_eg/Views/signUp7.dart';
 import 'package:med_eg/Views/signUp8.dart';
 import 'package:med_eg/Views/signUp9.dart';
 
+import 'Views/loginScreen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -38,9 +40,11 @@ class MyApp extends StatelessWidget {
         '/signUp10': (context) => const SignUp10(),
         '/signUp11': (context) => const SignUp11(),
         '/signUp12': (context) => const SignUp12(),
+        const Login().id:(context) => const Login(),
       },
       debugShowCheckedModeBanner: false,
       home: OnBording(),
+
     );
   }
 }

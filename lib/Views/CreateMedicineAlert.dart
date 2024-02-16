@@ -11,6 +11,7 @@ class CreateMedicineAlert extends StatefulWidget {
 }
 
 List<Widget> widgets = [];
+int counter = 0;
 
 class _CreateMedicineAlertState extends State<CreateMedicineAlert> {
   @override
@@ -19,14 +20,14 @@ class _CreateMedicineAlertState extends State<CreateMedicineAlert> {
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 14),
+            padding: const EdgeInsets.symmetric(horizontal: 14),
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 60,
                 ),
-                DropDownTextField1(),
-                SizedBox(
+                const DropDownTextField1(),
+                const SizedBox(
                   height: 30,
                 ),
                 HalfTextFieldHalfDropDown(isItDoseTextField: true),
@@ -41,34 +42,38 @@ class _CreateMedicineAlertState extends State<CreateMedicineAlert> {
                       plusIcon: true,
                       onTap: () {
                         setState(() {
-                          widgets.add(Column(
-                            children: [
-                              HalfTextFieldHalfDropDown(isItDoseTextField: false),
-                              Row(
+                          widgets.insert(
+                              counter,
+                              Column(
                                 children: [
-                                  const Spacer(
-                                    flex: 1,
-                                  ),
-                                  CustomAddButton(
-                                    borderRadius: 14,
-                                    plusIcon: false,
-                                    onTap: () {
-                                      setState(() {
-                                        int indexToRemove = widgets.length - 2;
-                                        widgets.removeAt(indexToRemove);
-                                      });
-                                    },
-                                  ),
+                                  HalfTextFieldHalfDropDown(
+                                      isItDoseTextField: false),
+                                  Row(
+                                    children: [
+                                      const Spacer(
+                                        flex: 1,
+                                      ),
+                                      CustomAddButton(
+                                        borderRadius: 14,
+                                        plusIcon: false,
+                                        onTap: () {
+                                          setState(() {
+                                            widgets.removeAt(counter);
+                                            counter-1;
+                                          });
+                                        },
+                                      ),
+                                    ],
+                                  )
                                 ],
-                              )
-                            ],
-                          ));
+                              ));
+                          counter + 1;
                         });
                       },
                     )
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Column(
                   children: widgets,
                 )

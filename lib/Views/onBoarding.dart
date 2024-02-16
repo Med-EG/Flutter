@@ -22,7 +22,7 @@ class OnBording extends StatelessWidget {
           actions: [
             GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context,  '/signUp2');
+                  Navigator.pushNamed(context, 'Login');
                 },
                 child: const Padding(
                   padding: EdgeInsets.all(18.0),
@@ -52,7 +52,7 @@ class OnBording extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Image.asset(
-                          height: screenHieght * 0.35,
+                          height: screenHieght * 0.3,
                           onBoardingScreens[index].imagePath),
                       //                 Container(
                       //               height: 30,
@@ -70,14 +70,14 @@ class OnBording extends StatelessWidget {
                       //             )]),
                       //               ),
 
-                      // Padding(
-                      //   padding: const EdgeInsets.only(bottom: 5),
-                      //   child: Container(
-                      //     height: screenHieght * 0.03,
-                      //     child:
-                      //         Image.asset('assets/images/Ellipse 34 (1).png'),
-                      //   ),
-                      // ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 5),
+                        child: Container(
+                          height: screenHieght * 0.03,
+                          child:
+                              Image.asset('assets/images/Ellipse 34 (1).png'),
+                        ),
+                      ),
 
                       Expanded(
                         child: Padding(
@@ -145,7 +145,7 @@ class OnBording extends StatelessWidget {
                                         color: kPrimaryColor,
                                         onTap: () {
                                           Navigator.pushNamed(
-                                              context, '/signUp2' );
+                                              context, 'Login');
                                         },
                                       )
                                     : FloatingActionButton(
