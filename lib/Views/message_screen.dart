@@ -1,51 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:med_eg/constants/colors.dart';
+import 'package:med_eg/widgets/message_list_tile.dart';
 
 class MessageScreen extends StatelessWidget {
   const MessageScreen({super.key});
-
+final String id = 'messageScreen';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
+
     return SafeArea(
       child: Scaffold(
         body: Center(
           child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                SvgPicture.asset('assets/images/SVG/Frame (1).svg'),
+              padding: const EdgeInsets.all(16),
+              child: Column(children: [
                 SizedBox(
-                  height: screenHeight * 0.02,
+                  height: screenHeight * 0.05,
                 ),
                 const Text(
-                  'Medical Record ID',
+                  'Message',
                   style: TextStyle(
                       color: darkBlue,
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
-                  height: screenHeight * 0.01,
+                  height: screenHeight * 0.05,
                 ),
-                const Text(
-                  '# 123456',
-                  style: TextStyle(
-                      color: kPrimaryColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold),
-                ),
-                 SingleChildScrollView(
-                  child: Column(
-                    children: [
-                     
-                    ],
-                  ),
+                Expanded(
+                  child: ListView.builder(itemBuilder: (context, index) {
+                    return const MessageListTile();
+                  }),
                 )
-              ],
-            ),
-          ),
+              ])),
         ),
       ),
     );

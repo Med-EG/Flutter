@@ -7,7 +7,7 @@ import '../widgets/custom_arrow_back.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
-
+final String id = 'chatScreen';
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -32,7 +32,7 @@ class ChatScreen extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(itemBuilder: (context, index) {
-                return const ChatBubble();
+                return const ChatBubbleForFriend();
               }),
             ),
             const CustomTextFormField(label: 'type message here...')

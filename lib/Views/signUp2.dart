@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:med_eg/Views/signUp3.dart';
 import '../widgets/custom_arrow_back.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_form.dart';
@@ -7,7 +8,7 @@ import '../widgets/custom_profile_container.dart';
 
 class SignUp2 extends StatelessWidget {
   const SignUp2({super.key});
-
+final String id = 'signUp2';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -47,7 +48,7 @@ class SignUp2 extends StatelessWidget {
                 text: 'Next',
                 color: Colors.blue,
                 onTap: () {
-                  Navigator.pushNamed(context, '/signUp3');
+                  Navigator.pushNamed(context, const SignUp3().id);
                 },
               )
             ],

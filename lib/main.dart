@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/message_screen.dart';
 import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/Views/signUp10.dart';
 import 'package:med_eg/Views/signUp11.dart';
@@ -11,6 +12,7 @@ import 'package:med_eg/Views/signUp8.dart';
 import 'package:med_eg/Views/signUp9.dart';
 import 'Views/chat_screen.dart';
 import 'Views/loginScreen.dart';
+import 'Views/signUp4.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,21 +31,22 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           fontFamily: 'Encode Sans Expanded'),
       routes: {
-        '/signUp1': (context) => const SignUp1(),
-        '/signUp2': (context) => const SignUp2(),
-        '/signUp3': (context) => const SignUp3(),
-        '/signUp6': (context) => const SignUp6(),
-        '/signUp7': (context) => const SignUp7(),
-        '/signUp8': (context) => const SignUp8(),
-        '/signUp9': (context) => const SignUp9(),
-        '/signUp10': (context) => const SignUp10(),
-        '/signUp11': (context) => const SignUp11(),
-        '/signUp12': (context) => const SignUp12(),
-        const Login().id:(context) => const Login(),
+        const SignUp1().id: (context) => const SignUp1(),
+        const SignUp2().id: (context) => const SignUp2(),
+        const SignUp3().id: (context) => const SignUp3(),
+        const SignUp4().id: (context) => const SignUp4(),
+        const SignUp6().id: (context) => const SignUp6(),
+        const SignUp7().id: (context) => const SignUp7(),
+        const SignUp8().id: (context) => const SignUp8(),
+        const SignUp9().id: (context) => const SignUp9(),
+        const SignUp10().id: (context) => const SignUp10(),
+        const SignUp11().id: (context) => const SignUp11(),
+        const SignUp12().id: (context) => const SignUp12(),
+        const Login().id: (context) => const Login(),
+        const ChatScreen().id: (context) => const ChatScreen(),
       },
       debugShowCheckedModeBanner: false,
-      home: const ChatScreen(),
-
+      home: const MessageScreen(),
     );
   }
 }
