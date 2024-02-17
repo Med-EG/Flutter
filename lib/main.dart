@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/Views/onBoarding.dart';
 import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/Views/signUp10.dart';
 import 'package:med_eg/Views/signUp11.dart';
@@ -10,7 +9,7 @@ import 'package:med_eg/Views/signUp6.dart';
 import 'package:med_eg/Views/signUp7.dart';
 import 'package:med_eg/Views/signUp8.dart';
 import 'package:med_eg/Views/signUp9.dart';
-
+import 'Views/chat_screen.dart';
 import 'Views/loginScreen.dart';
 
 void main() {
@@ -43,7 +42,7 @@ class MyApp extends StatelessWidget {
         const Login().id:(context) => const Login(),
       },
       debugShowCheckedModeBanner: false,
-      home: OnBording(),
+      home: const ChatScreen(),
 
     );
   }
