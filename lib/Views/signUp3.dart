@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/signUp6.dart';
 import 'package:med_eg/widgets/success_signUp.dart';
 import '../constants/colors.dart';
 import '../widgets/custom_button.dart';
 
 class SignUp3 extends StatelessWidget {
   const SignUp3({super.key});
-
+final String id = 'signUp3';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -63,7 +64,7 @@ class SignUp3 extends StatelessWidget {
                   text: 'Next',
                   color: kPrimaryColor,
                   onTap: () {
-                    Navigator.pushNamed(context, '/signUp6');
+                    Navigator.pushNamed(context, const SignUp6().id);
                   },
                 ),
               )
