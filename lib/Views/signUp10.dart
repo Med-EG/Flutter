@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/signUp6.dart';
 import '../constants/colors.dart';
 import '../widgets/custom_arrow_back.dart';
 import '../widgets/custom_button.dart';
@@ -9,7 +10,7 @@ import '../widgets/custom_text_information.dart';
 
 class SignUp10 extends StatelessWidget {
   const SignUp10({super.key});
-
+final String id = 'signUp10';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -36,19 +37,19 @@ class SignUp10 extends StatelessWidget {
                       SizedBox(
                         height: screenHeight * 0.04,
                       ),
-                      const CustomTextFormField(hint: 'Operation Name'),
+                      const CustomTextFormField(label: 'Operation Name'),
                       const CustomTextFormField(
-                        hint: 'Surgeon Name',
+                        label: 'Surgeon Name',
                       ),
                       CustomTextFormField(
-                        hint: 'Operation Date',
+                        label: 'Operation Date',
                         icon: IconButton(
                             onPressed: () {},
                             icon: const Icon(Icons.calendar_month)),
                       ),
                       const CustomTextFormField(
-                          hint: 'Complications', maxLines: 2),
-                      const CustomTextFormField(hint: 'Notes', maxLines: 3),
+                          label: 'Complications', maxLines: 2),
+                      const CustomTextFormField(label: 'Notes', maxLines: 3),
                       SizedBox(
                         height: screenHeight * 0.04,
                       ),
@@ -56,7 +57,7 @@ class SignUp10 extends StatelessWidget {
                         text: 'Save',
                         color: kPrimaryColor,
                         onTap: () {
-                          Navigator.pushNamed(context, '/signUp11');
+                          Navigator.pushNamed(context, const SignUp6().id);
                         },
                       )
                     ],

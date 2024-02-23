@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/signUp6.dart';
 import '../constants/colors.dart';
 import '../widgets/custom_arrow_back.dart';
 import '../widgets/custom_button.dart';
@@ -8,7 +9,7 @@ import '../widgets/custom_text_information.dart';
 
 class SignUp9 extends StatelessWidget {
   const SignUp9({super.key});
-
+final String id = 'signUp9';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -34,22 +35,22 @@ class SignUp9 extends StatelessWidget {
                       SizedBox(
                         height: screenHeight * 0.04,
                       ),
-                      const CustomTextFormField(hint: 'Allergy Name'),
+                      const CustomTextFormField(label: 'Allergy Name'),
                       const CustomTextFormField(
-                        hint: 'Allergean Name',
+                        label: 'Allergean Name',
                       ),
                        Row(
                         children: [
-                          Expanded(child: CustomTextFormField(hint: 'Start Date',icon: IconButton(onPressed: (){}, icon: const Icon(Icons.calendar_month)),)),
+                          Expanded(child: CustomTextFormField(label: 'Start Date',icon: IconButton(onPressed: (){}, icon: const Icon(Icons.calendar_month)),)),
                           const Expanded(
                             child:  CustomTextFormField(
-                              hint: 'Security Level',
+                              label: 'Security Level',
                             ),
                           ),
                         ],
                       ),
-                      const CustomTextFormField(hint: 'Body Response',maxLines: 2),
-                      const CustomTextFormField(hint: 'Notes', maxLines: 3),
+                      const CustomTextFormField(label: 'Body Response',maxLines: 2),
+                      const CustomTextFormField(label: 'Notes', maxLines: 3),
                       SizedBox(
                         height: screenHeight * 0.04,
                       ),
@@ -57,7 +58,7 @@ class SignUp9 extends StatelessWidget {
                         text: 'Save',
                         color: kPrimaryColor,
                         onTap: () {
-                          Navigator.pushNamed(context, '/signUp10');
+                          Navigator.pushNamed(context, const SignUp6().id);
                         },
                       )
                     ],

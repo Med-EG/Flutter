@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:med_eg/Views/signUp2.dart';
 import 'package:med_eg/constants/texts.dart';
 import '../constants/colors.dart';
 import '../widgets/custom_button.dart';
@@ -8,7 +9,7 @@ import '../widgets/signUP_with.dart';
 
 class SignUp1 extends StatefulWidget {
   const SignUp1({super.key});
-
+final String id = 'signUp1';
   @override
   State<SignUp1> createState() => _SignUp1State();
 }
@@ -57,7 +58,7 @@ class _SignUp1State extends State<SignUp1> {
               SizedBox(
                 height: screenHeight * 0.06,
                 child:
-                    const CustomTextFormField(hint: 'Natinal Id', maxLines: 1),
+                    const CustomTextFormField(label: 'Natinal Id', maxLines: 1),
               ),
               SizedBox(
                 height: screenHeight * 0.001,
@@ -133,7 +134,7 @@ class _SignUp1State extends State<SignUp1> {
                 onTap: () {
                   if (nationalIDController.text.length == 14 &&
                       agree == true) {
-                    Navigator.pushNamed(context, '/signUp2');
+                    Navigator.pushNamed(context, const SignUp2().id);
                   } else if (nationalIDController.text.isEmpty ||
                       agree == false) {
                     setState(() {

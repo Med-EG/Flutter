@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/signUp6.dart';
 import 'package:med_eg/constants/colors.dart';
 import '../widgets/custom_arrow_back.dart';
 import '../widgets/custom_button.dart';
@@ -9,7 +10,7 @@ import '../widgets/custom_text_information.dart';
 
 class SignUp7 extends StatelessWidget {
   const SignUp7({super.key});
-
+final String id = 'signUp7';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -36,13 +37,13 @@ class SignUp7 extends StatelessWidget {
                       SizedBox(
                         height: screenHeight * 0.075,
                       ),
-                      const CustomTextFormField(hint: 'Disease Name'),
+                      const CustomTextFormField(label: 'Disease Name'),
                       const CustomTextFormField(
-                        hint: 'Disease Description',
+                        label: 'Disease Description',
                         maxLines: 5,
                       ),
                       const CustomTextFormField(
-                        hint: 'Notes',
+                        label: 'Notes',
                         maxLines: 2,
                       ),
                       SizedBox(
@@ -52,7 +53,7 @@ class SignUp7 extends StatelessWidget {
                         text: 'Save',
                         color: kPrimaryColor,
                         onTap: () {
-                          Navigator.pushNamed(context, '/signUp8');
+                          Navigator.pushNamed(context, const SignUp6().id);
                         },
                       )
                     ],

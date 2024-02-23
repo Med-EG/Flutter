@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
+import 'package:med_eg/Views/signUp6.dart';
+import 'package:med_eg/widgets/success_signUp.dart';
 import '../constants/colors.dart';
 import '../widgets/custom_button.dart';
 
 class SignUp3 extends StatelessWidget {
   const SignUp3({super.key});
-
+final String id = 'signUp3';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -17,19 +17,8 @@ class SignUp3 extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                height: screenHeight * 0.5,
-                width: screenWidth * 0.5,
-                decoration: const BoxDecoration(
-                    color: Color(0xffD9D9D9), shape: BoxShape.circle),
-                child: Padding(
-                  padding: const EdgeInsets.all(48.0),
-                  child: SvgPicture.asset('assets/images/SVG/Stroke 3.svg'),
-                ),
-              ),
-              SizedBox(
-                height: screenHeight * 0.05,
-              ),
+              const SuccessSignUp(
+                  color: 0xffD9D9D9, image: 'assets/images/SVG/Stroke 3.svg'),
               const Text.rich(
                 TextSpan(
                   children: [
@@ -69,12 +58,15 @@ class SignUp3 extends StatelessWidget {
               SizedBox(
                 height: screenHeight * 0.1,
               ),
-              CustomButton(
-                text: 'Next',
-                color: kPrimaryColor,
-                onTap: () {
-                  Navigator.pushNamed(context, '/signUp7');
-                },
+              SizedBox(
+                width: screenWidth * 0.5,
+                child: CustomButton(
+                  text: 'Next',
+                  color: kPrimaryColor,
+                  onTap: () {
+                    Navigator.pushNamed(context, const SignUp6().id);
+                  },
+                ),
               )
             ],
           ),
