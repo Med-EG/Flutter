@@ -8,7 +8,7 @@ import '../widgets/custom_profile_container.dart';
 
 class SignUp2 extends StatelessWidget {
   const SignUp2({super.key});
-final String id = 'signUp2';
+final String id = 'SignUp2';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;

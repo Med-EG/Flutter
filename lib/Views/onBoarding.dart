@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/loginScreen.dart';
+import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/OnBoardingDots.dart';
 import 'package:med_eg/models/onboardingmodel.dart';
 import '../widgets/custom_button.dart';
 
-class OnBording extends StatelessWidget {
-  OnBording({super.key});
-
-  final int currentIndex = 0;
-  final PageController _controller = PageController();
+class OnBording extends StatefulWidget {
+  const OnBording({super.key});
   final String id = 'OnBording';
+
+  @override
+  State<OnBording> createState() => _OnBordingState();
+}
+
+class _OnBordingState extends State<OnBording> {
+  final int currentIndex = 0;
+
+  final PageController _controller = PageController();
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +32,7 @@ class OnBording extends StatelessWidget {
           actions: [
             GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, 'Login');
+                  Navigator.pushNamed(context,const SignUp1().id);
                 },
                 child: const Padding(
                   padding: EdgeInsets.all(18.0),
@@ -75,7 +85,7 @@ class OnBording extends StatelessWidget {
                         child: Container(
                           height: screenHieght * 0.03,
                           child:
-                              Image.asset('assets/images/Ellipse 34 (1).png'),
+                              Image.asset('assets/images/PNG/Ellipse 34.png'),
                         ),
                       ),
 
@@ -145,7 +155,7 @@ class OnBording extends StatelessWidget {
                                         color: kPrimaryColor,
                                         onTap: () {
                                           Navigator.pushNamed(
-                                              context, 'Login');
+                                              context,const Login().id);
                                         },
                                       )
                                     : FloatingActionButton(

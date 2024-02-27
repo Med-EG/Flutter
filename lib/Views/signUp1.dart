@@ -9,7 +9,7 @@ import '../widgets/signUP_with.dart';
 
 class SignUp1 extends StatefulWidget {
   const SignUp1({super.key});
-final String id = 'signUp1';
+final String id = 'SignUp1';
   @override
   State<SignUp1> createState() => _SignUp1State();
 }
@@ -207,27 +207,16 @@ class _SignUp1State extends State<SignUp1> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: screenHeight * 0.005,
-              ),
-              const SignUpWith(
-                image: 'assets/images/facebook.svg',
-                text: signFacebook,
-              ),
-              SizedBox(
-                height: screenHeight / 50,
-              ),
-              const SignUpWith(
-                image: 'assets/images/google.svg',
-                text: signGoogle,
-              ),
-              SizedBox(
-                height: screenHeight / 50,
-              ),
-              const SignUpWith(
-                image: 'assets/images/dribbble.svg',
-                text: signEmail,
-              ),
+              SizedBox(height: screenHeight*0.03,),
+           
+                       const SignUpWith(image: 'assets/images/PNG/facebook.png',text: 'Login with Facebook',),
+                      SizedBox(height: screenHeight*0.02,),
+                      
+                      const SignUpWith(image: 'assets/images/PNG/google.png',text: 'Login with Google',),
+                      SizedBox(height: screenHeight*0.02,),
+                      
+                      const SignUpWith(image: 'assets/images/PNG/dribbble.png',text: 'Login with your E-mail',),
+                        
             ],
           ),
         ),

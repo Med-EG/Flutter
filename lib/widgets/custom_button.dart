@@ -13,7 +13,7 @@ final void Function()? onTap;
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 51,
+        height: 57,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             color: color),
