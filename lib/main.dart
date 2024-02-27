@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/Views/EnterVarifecationCode.dart';
-import 'package:med_eg/Views/HomeScreen.dart';
-import 'package:med_eg/Views/RestPassword.dart';
-import 'package:med_eg/Views/createNewPassword.dart';
-import 'package:med_eg/Views/onBoarding.dart';
+import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/Views/signUp10.dart';
 import 'package:med_eg/Views/signUp11.dart';
@@ -49,14 +45,11 @@ class MyApp extends StatelessWidget {
         const SignUp12().id: (context) => const SignUp12(),
         const Login().id: (context) => const Login(),
         const ChatScreen().id: (context) => const ChatScreen(),
-        const OnBording().id: (context) => const OnBording(),
-        const CreateNewPassword().id:(context) => const CreateNewPassword(),
-         ResetPassword().id :(context) => ResetPassword(),
-        const EnterVerficationCode().id :(context) =>const EnterVerficationCode(),
-        const HomeScreen().id :(context) => const HomeScreen(),
+        const FindDoctor().id: (context) => const FindDoctor(),
       },
       debugShowCheckedModeBanner: false,
-      home: Login(),
+      home: const SignUp2(),
+
     );
   }
 }

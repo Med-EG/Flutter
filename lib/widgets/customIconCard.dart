@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class IconCard extends StatelessWidget {
-  const IconCard({super.key, required this.image, required this.text});
+  const IconCard({super.key, required this.image, required this.text, this.onTap});
   final String image;
   final String text;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
+   double screenHeight = MediaQuery.of(context).size.height;
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Column(
         children: [
           Card(
@@ -19,7 +21,7 @@ class IconCard extends StatelessWidget {
                     offset: const Offset(5, 5),
                     blurRadius: 10),
               ]),
-              height: 70,
+              height: screenHeight * 0.07,
               child: Image.asset(
                 image,
                 height: 50,
