@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/Views/message_screen.dart';
+import 'package:med_eg/Views/EnterVarifecationCode.dart';
+import 'package:med_eg/Views/HomeScreen.dart';
+import 'package:med_eg/Views/RestPassword.dart';
+import 'package:med_eg/Views/createNewPassword.dart';
+import 'package:med_eg/Views/onBoarding.dart';
 import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/Views/signUp10.dart';
 import 'package:med_eg/Views/signUp11.dart';
@@ -13,6 +17,7 @@ import 'package:med_eg/Views/signUp9.dart';
 import 'Views/chat_screen.dart';
 import 'Views/loginScreen.dart';
 import 'Views/signUp4.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -44,9 +49,14 @@ class MyApp extends StatelessWidget {
         const SignUp12().id: (context) => const SignUp12(),
         const Login().id: (context) => const Login(),
         const ChatScreen().id: (context) => const ChatScreen(),
+        const OnBording().id: (context) => const OnBording(),
+        const CreateNewPassword().id:(context) => const CreateNewPassword(),
+         ResetPassword().id :(context) => ResetPassword(),
+        const EnterVerficationCode().id :(context) =>const EnterVerficationCode(),
+        const HomeScreen().id :(context) => const HomeScreen(),
       },
       debugShowCheckedModeBanner: false,
-      home: const MessageScreen(),
+      home: Login(),
     );
   }
 }
