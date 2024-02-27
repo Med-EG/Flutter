@@ -8,13 +8,15 @@ class CustomTextFormField extends StatelessWidget {
       this.maxLines = 1,
       this.onChanged,
       this.textinputType,
-      this.icon});
+      this.icon,
+      this.obscureText = false});
 
   final String label;
   final int maxLines;
   final void Function(String)? onChanged;
   final TextInputType? textinputType;
   final IconButton? icon;
+  final bool obscureText;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,6 +26,7 @@ class CustomTextFormField extends StatelessWidget {
         onChanged: onChanged,
         cursorColor: grey,
         maxLines: maxLines,
+        obscureText: obscureText,
         validator: (value) {
           if (value?.isEmpty ?? true) {
             return 'Field is required';

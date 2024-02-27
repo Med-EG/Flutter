@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/Views/message_screen.dart';
+import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/Views/signUp10.dart';
 import 'package:med_eg/Views/signUp11.dart';
@@ -44,9 +44,10 @@ class MyApp extends StatelessWidget {
         const SignUp12().id: (context) => const SignUp12(),
         const Login().id: (context) => const Login(),
         const ChatScreen().id: (context) => const ChatScreen(),
+         const FindDoctor().id: (context) => const FindDoctor(),
       },
       debugShowCheckedModeBanner: false,
-      home: const MessageScreen(),
+      home: const SignUp2(),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/loginScreen.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/OnBoardingDots.dart';
 import 'package:med_eg/models/onboardingmodel.dart';
@@ -22,7 +23,7 @@ class OnBording extends StatelessWidget {
           actions: [
             GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, 'Login');
+                  Navigator.pushNamed(context, const Login().id);
                 },
                 child: const Padding(
                   padding: EdgeInsets.all(18.0),
@@ -70,14 +71,14 @@ class OnBording extends StatelessWidget {
                       //             )]),
                       //               ),
 
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 5),
-                        child: Container(
-                          height: screenHieght * 0.03,
-                          child:
-                              Image.asset('assets/images/Ellipse 34 (1).png'),
-                        ),
-                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(bottom: 5),
+                      //   child: Container(
+                      //     height: screenHieght * 0.03,
+                      //     child:
+                      //         Image.asset('assets/images/PNG/AppLogo.png'),
+                      //   ),
+                      // ),
 
                       Expanded(
                         child: Padding(

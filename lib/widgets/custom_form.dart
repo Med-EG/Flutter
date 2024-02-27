@@ -36,6 +36,7 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                     onPressed: () {}, icon: const Icon(Icons.remove_red_eye))),
             CustomTextFormField(
                 label: 'Re-enter Password',
+                obscureText: true,
                 icon: IconButton(
                     onPressed: () {}, icon: const Icon(Icons.remove_red_eye))),
             Row(
