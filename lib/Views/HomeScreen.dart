@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/chat_screen.dart';
 import 'package:med_eg/widgets/DoctorCardListView.dart';
 import 'package:med_eg/widgets/customIconCard.dart';
 import 'package:med_eg/widgets/customSearchBar.dart';
@@ -7,6 +8,7 @@ import '../constants/colors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+  final String id='HomeScreen';
   
   @override
   Widget build(BuildContext context) {
@@ -25,16 +27,18 @@ class HomeScreen extends StatelessWidget {
             gap: 8,
             
             onTabChange: (value){},
-            tabs:const [
+            tabs: [
               GButton(
                 icon: Icons.home_rounded,
                 text: 'home',
               ),
               GButton(
+                onPressed: (){Navigator.pushNamed(context, ChatScreen().id);},
                 icon: Icons.chat_bubble_rounded,
                 text: 'Chats',
               ),
               GButton(
+
                 icon: Icons.edit_calendar_rounded,
                 text: 'Appointments',
               ),
@@ -109,7 +113,10 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 10,),
-              Image.asset('assets/images/PNG/Rectangle 31.png'),
+
+              //Need to adjust the image that is in miidile of home screen
+              
+              Stack(children: [Image.asset('assets/images/PNG/Rectangle 31.png')]),
               const SizedBox(height: 20,),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -130,7 +137,7 @@ class HomeScreen extends StatelessWidget {
                       child: const Text(
                         'See all',
                         style:
-                            TextStyle(color: darkBlue, fontSize: 18),
+                            TextStyle(color: kPrimaryColor, fontSize: 18),
                       ),
                     ),
                   ],

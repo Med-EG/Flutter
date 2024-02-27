@@ -14,6 +14,7 @@ import 'Views/chat_screen.dart';
 import 'Views/loginScreen.dart';
 import 'Views/signUp4.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -44,10 +45,11 @@ class MyApp extends StatelessWidget {
         const SignUp12().id: (context) => const SignUp12(),
         const Login().id: (context) => const Login(),
         const ChatScreen().id: (context) => const ChatScreen(),
-         const FindDoctor().id: (context) => const FindDoctor(),
+        const FindDoctor().id: (context) => const FindDoctor(),
       },
       debugShowCheckedModeBanner: false,
       home: const SignUp2(),
+
     );
   }
 }

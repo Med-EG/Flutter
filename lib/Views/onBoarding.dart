@@ -5,12 +5,20 @@ import 'package:med_eg/widgets/OnBoardingDots.dart';
 import 'package:med_eg/models/onboardingmodel.dart';
 import '../widgets/custom_button.dart';
 
-class OnBording extends StatelessWidget {
-  OnBording({super.key});
-
-  final int currentIndex = 0;
-  final PageController _controller = PageController();
+class OnBording extends StatefulWidget {
+  const OnBording({super.key});
   final String id = 'OnBording';
+
+  @override
+  State<OnBording> createState() => _OnBordingState();
+}
+
+class _OnBordingState extends State<OnBording> {
+  final int currentIndex = 0;
+
+  final PageController _controller = PageController();
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +32,7 @@ class OnBording extends StatelessWidget {
             GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(context, const Login().id);
+
                 },
                 child: const Padding(
                   padding: EdgeInsets.all(18.0),
@@ -71,6 +80,7 @@ class OnBording extends StatelessWidget {
                       //             )]),
                       //               ),
 
+
                       // Padding(
                       //   padding: const EdgeInsets.only(bottom: 5),
                       //   child: Container(
@@ -79,6 +89,7 @@ class OnBording extends StatelessWidget {
                       //         Image.asset('assets/images/PNG/AppLogo.png'),
                       //   ),
                       // ),
+
 
                       Expanded(
                         child: Padding(
@@ -146,7 +157,7 @@ class OnBording extends StatelessWidget {
                                         color: kPrimaryColor,
                                         onTap: () {
                                           Navigator.pushNamed(
-                                              context, 'Login');
+                                              context,const Login().id);
                                         },
                                       )
                                     : FloatingActionButton(
