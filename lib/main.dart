@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/Views/EnterVarifecationCode.dart';
+import 'package:med_eg/Views/HomeScreen.dart';
 import 'package:med_eg/Views/RestPassword.dart';
 import 'package:med_eg/Views/createNewPassword.dart';
 import 'package:med_eg/Views/onBoarding.dart';
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
         const CreateNewPassword().id:(context) => const CreateNewPassword(),
          ResetPassword().id :(context) => ResetPassword(),
         const EnterVerficationCode().id :(context) =>const EnterVerficationCode(),
+        const HomeScreen().id :(context) => const HomeScreen(),
       },
       debugShowCheckedModeBanner: false,
       home: Login(),
