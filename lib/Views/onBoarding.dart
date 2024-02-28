@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/Views/loginScreen.dart';
-import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/OnBoardingDots.dart';
 import 'package:med_eg/models/onboardingmodel.dart';
@@ -32,7 +31,8 @@ class _OnBordingState extends State<OnBording> {
           actions: [
             GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context,const SignUp1().id);
+                  Navigator.pushNamed(context, const Login().id);
+
                 },
                 child: const Padding(
                   padding: EdgeInsets.all(18.0),
@@ -80,14 +80,16 @@ class _OnBordingState extends State<OnBording> {
                       //             )]),
                       //               ),
 
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 5),
-                        child: Container(
-                          height: screenHieght * 0.03,
-                          child:
-                              Image.asset('assets/images/PNG/Ellipse 34.png'),
-                        ),
-                      ),
+
+                      // Padding(
+                      //   padding: const EdgeInsets.only(bottom: 5),
+                      //   child: Container(
+                      //     height: screenHieght * 0.03,
+                      //     child:
+                      //         Image.asset('assets/images/PNG/AppLogo.png'),
+                      //   ),
+                      // ),
+
 
                       Expanded(
                         child: Padding(
