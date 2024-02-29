@@ -49,7 +49,7 @@ class _OnBordingState extends State<OnBording> {
         body: Stack(children: [
           PageView.builder(
               controller: _controller,
-              physics: const NeverScrollableScrollPhysics(),
+              //physics: const NeverScrollableScrollPhysics(),
               itemCount: onBoardingScreens.length,
               onPageChanged: (int index) {
                 setState() {

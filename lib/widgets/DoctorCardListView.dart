@@ -7,10 +7,10 @@ class DoctorCardListView extends StatelessWidget {
 
   final List<DoctorModel> Doctors = const [
    
-   DoctorModel(image: 'assets/images/PNG/UserPhoto.png', doctorName: 'Name', specification: 'specification', rate: 4.8, location: 'location'),
-   DoctorModel(image: 'assets/images/PNG/UserPhoto.png', doctorName: 'Name', specification: 'specification', rate: 4.8, location: 'location'),
-   DoctorModel(image: 'assets/images/PNG/UserPhoto.png', doctorName: 'Name', specification: 'specification', rate: 4.8, location: 'location'),
-   DoctorModel(image: 'assets/images/PNG/UserPhoto.png', doctorName: 'Name', specification: 'specification', rate: 4.8, location: 'location')
+   DoctorModel(image: 'assets/images/PNG/Dr.png', doctorName: 'Name', specification: 'specification', rate: 4.8, location: 'location'),
+   DoctorModel(image: 'assets/images/PNG/Dr.png', doctorName: 'Name', specification: 'specification', rate: 4.8, location: 'location'),
+   DoctorModel(image: 'assets/images/PNG/Dr.png', doctorName: 'Name', specification: 'specification', rate: 4.8, location: 'location'),
+   DoctorModel(image: 'assets/images/PNG/Dr.png', doctorName: 'Name', specification: 'specification', rate: 4.8, location: 'location')
   ];
 
   @override

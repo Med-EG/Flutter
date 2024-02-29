@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/EnterVarifecationCode.dart';
+import 'package:med_eg/Views/HomeScreen.dart';
+import 'package:med_eg/Views/NoPatientAppointmentsScreen.dart';
+import 'package:med_eg/Views/RestPassword.dart';
+import 'package:med_eg/Views/check_reservation.dart';
+import 'package:med_eg/Views/createNewPassword.dart';
 import 'package:med_eg/Views/find_doctor.dart';
+import 'package:med_eg/Views/message_screen.dart';
+import 'package:med_eg/Views/onBoarding.dart';
+import 'package:med_eg/Views/reserve_doctor.dart';
 import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/Views/signUp10.dart';
 import 'package:med_eg/Views/signUp11.dart';
@@ -13,7 +22,6 @@ import 'package:med_eg/Views/signUp9.dart';
 import 'Views/chat_screen.dart';
 import 'Views/loginScreen.dart';
 import 'Views/signUp4.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -46,10 +54,19 @@ class MyApp extends StatelessWidget {
         const Login().id: (context) => const Login(),
         const ChatScreen().id: (context) => const ChatScreen(),
         const FindDoctor().id: (context) => const FindDoctor(),
+        const MessageScreen().id: (context) => const MessageScreen(),
+        ResetPassword().id: (context) => ResetPassword(),
+        const EnterVerficationCode().id: (context) =>
+            const EnterVerficationCode(),
+        const CreateNewPassword().id: (context) => const CreateNewPassword(),
+        const HomeScreen().id: (context) => const HomeScreen(),
+        const NoPatientAppoointment().id: (context) =>
+            const NoPatientAppoointment(),
+            const ReserveDoctor().id: (context) => const ReserveDoctor(),
+            CheckReservation().id:(context) => CheckReservation(),
       },
       debugShowCheckedModeBanner: false,
-      home: const SignUp2(),
-
+      home: const OnBording(),
     );
   }
 }

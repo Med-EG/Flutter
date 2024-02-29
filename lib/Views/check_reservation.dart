@@ -9,7 +9,7 @@ import '../widgets/success_signUp.dart';
 
 class CheckReservation extends StatelessWidget {
   const CheckReservation({super.key});
-  final String id = '';
+  final String id = 'CheckReservation';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
