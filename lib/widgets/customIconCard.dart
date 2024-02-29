@@ -21,7 +21,7 @@ class IconCard extends StatelessWidget {
                     offset: const Offset(5, 5),
                     blurRadius: 10),
               ]),
-              height: screenHeight * 0.07,
+              height: screenHeight * 0.05,
               child: Image.asset(
                 image,
                 height: 50,
@@ -30,7 +30,9 @@ class IconCard extends StatelessWidget {
           ),
           Text(
             text,
-            style:const TextStyle(color: Color(0xFFc9cdda)),
+            style:const TextStyle(color: Color(0xFFc9cdda),
+            fontSize: 12
+            ),
           )
         ],
       ),

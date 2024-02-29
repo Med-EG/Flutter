@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/Views/HomeScreen.dart';
 import 'package:med_eg/Views/signUp1.dart';
+import 'package:med_eg/Views/signUp2.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/custom_circle_container.dart';
 import 'package:med_eg/widgets/signUP_with.dart';
@@ -166,7 +167,7 @@ class _LoginState extends State<Login> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, const SignUp1().id);
+                          Navigator.pushNamed(context, const SignUp2().id);
                         },
                         child: const Text(
                           'signup',

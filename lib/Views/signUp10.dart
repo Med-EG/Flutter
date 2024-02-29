@@ -10,7 +10,7 @@ import '../widgets/custom_text_information.dart';
 
 class SignUp10 extends StatelessWidget {
   const SignUp10({super.key});
-final String id = '';
+final String id = 'SignUp10';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
