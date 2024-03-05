@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:med_eg/Views/signUp2.dart';
-import 'package:med_eg/constants/texts.dart';
 import '../constants/colors.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_textFormField.dart';
@@ -25,11 +24,12 @@ class _SignUp1State extends State<SignUp1> {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.all(32.0),
+          padding: const EdgeInsets.symmetric(vertical:20,horizontal: 20),
           child: Column(
             children: [
               Expanded(
                 child: Row(
+                  
                   children: [
                     IconButton(
                         onPressed: () {},
@@ -37,7 +37,7 @@ class _SignUp1State extends State<SignUp1> {
                     const Spacer(
                       flex: 3,
                     ),
-                    SvgPicture.asset('assets/images/Frame.svg'),
+                    SvgPicture.asset('assets/images/SVG/Frame (1).svg',height: screenHeight*0.09,),
                     const Spacer(
                       flex: 4,
                     )
@@ -54,14 +54,14 @@ class _SignUp1State extends State<SignUp1> {
 
                       fontWeight: FontWeight.w600,
                       fontSize: 28)),
-              SizedBox(height: screenHeight * 0.05),
+              SizedBox(height: screenHeight * 0.06),
               SizedBox(
-                height: screenHeight * 0.06,
+                height: screenHeight * 0.09,
                 child:
-                    const CustomTextFormField(label: 'Natinal Id', maxLines: 1),
+                    const CustomTextFormField(label: 'National Id', maxLines: 1),
               ),
               SizedBox(
-                height: screenHeight * 0.001,
+                height: screenHeight * 0.004,
               ),
               Expanded(
                 child: Row(
@@ -154,7 +154,7 @@ class _SignUp1State extends State<SignUp1> {
                 ),
               ),
               SizedBox(
-                height: screenHeight * 0.02,
+                height: screenHeight * 0.03,
               ),
               const Text.rich(
                 TextSpan(children: [
@@ -176,7 +176,7 @@ class _SignUp1State extends State<SignUp1> {
                 ]),
               ),
               SizedBox(
-                height: screenHeight * 0.1,
+                height: screenHeight * 0.05,
               ),
               Text(
                 _message,
@@ -188,7 +188,7 @@ class _SignUp1State extends State<SignUp1> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: screenWidth * 0.2,
+                      width: screenWidth * 0.3,
                       height: 1,
                       color: lightGrey,
                     ),
@@ -200,7 +200,7 @@ class _SignUp1State extends State<SignUp1> {
                           color: lightGrey),
                     ),
                     Container(
-                      width: screenWidth * 0.2,
+                      width: screenWidth * 0.3,
                       height: 1,
                       color: lightGrey,
                     )

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/Views/HomeScreen.dart';
-import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/Views/signUp2.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/custom_circle_container.dart';

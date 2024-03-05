@@ -4,6 +4,7 @@ import 'package:med_eg/Views/HomeScreen.dart';
 import 'package:med_eg/Views/NoPatientAppointmentsScreen.dart';
 import 'package:med_eg/Views/RestPassword.dart';
 import 'package:med_eg/Views/check_reservation.dart';
+import 'package:med_eg/Views/chooseUserType.dart';
 import 'package:med_eg/Views/createNewPassword.dart';
 import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/message_screen.dart';
@@ -63,10 +64,11 @@ class MyApp extends StatelessWidget {
         const NoPatientAppoointment().id: (context) =>
             const NoPatientAppoointment(),
             const ReserveDoctor().id: (context) => const ReserveDoctor(),
-            CheckReservation().id:(context) => CheckReservation(),
+            const CheckReservation().id:(context) =>const CheckReservation(),
+            const ChooseUserType().id:(context) => const ChooseUserType(),
       },
       debugShowCheckedModeBanner: false,
-      home: const OnBording(),
+      home: const SignUp1(),
     );
   }
 }
