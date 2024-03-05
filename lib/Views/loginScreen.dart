@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/Views/HomeScreen.dart';
+import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/Views/signUp2.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/custom_circle_container.dart';
@@ -150,7 +150,7 @@ class _LoginState extends State<Login> {
                       text: 'Login',
                       color: kPrimaryColor,
                       onTap: () {
-                        Navigator.pushNamed(context,const HomeScreen().id);
+                        Navigator.pushNamed(context,const PatientHomeScreen().id);
                       },
                     ),
                   ),

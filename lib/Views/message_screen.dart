@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:med_eg/Views/HomeScreen.dart';
+import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/Views/NoPatientAppointmentsScreen.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/message_list_tile.dart';
@@ -32,7 +32,7 @@ final String id = 'MessageScreen';
             onTabChange: (value){},
             tabs: [
               GButton(
-                onPressed: (){Navigator.pushNamed(context, const HomeScreen().id,);},
+                onPressed: (){Navigator.pushNamed(context, const PatientHomeScreen().id,);},
                 icon: Icons.home_rounded,
                 text: 'home',
               ),

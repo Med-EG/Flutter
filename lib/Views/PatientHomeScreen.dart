@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/Views/NoPatientAppointmentsScreen.dart';
-import 'package:med_eg/Views/chat_screen.dart';
 import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/message_screen.dart';
 import 'package:med_eg/widgets/DoctorCardListView.dart';
@@ -9,8 +8,8 @@ import 'package:med_eg/widgets/customSearchBar.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import '../constants/colors.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class PatientHomeScreen extends StatelessWidget {
+  const PatientHomeScreen({super.key});
   final String id='HomeScreen';
   
   @override
@@ -94,28 +93,28 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 10,),
                Row(
                 children: [
-                  Spacer(
+                const  Spacer(
                     flex: 1,
                   ),
                   GestureDetector(
                     onTap: (){Navigator.popAndPushNamed(context,const FindDoctor().id);},
-                    child: IconCard(
+                    child: const IconCard(
                         image: 'assets/images/PNG/Stethoscope.png',
                         text: 'Doctors'),
                   ),
-                  Spacer(
+                 const Spacer(
                     flex: 1,
                   ),
-                  IconCard(
+                 const IconCard(
                     image: 'assets/images/PNG/Medicine_icon.png',
                     text: 'Medicine',
                   ),
-                  Spacer(
+                  const Spacer(
                     flex: 1,
                   ),
-                  IconCard(
+                  const IconCard(
                       image: 'assets/images/PNG/Record_icon.png', text: 'Record'),
-                  Spacer(
+                  const Spacer(
                     flex: 1,
                   ),
                 ],
