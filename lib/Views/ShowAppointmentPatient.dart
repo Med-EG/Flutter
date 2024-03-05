@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/widgets/AppointmentsListView.dart';
+import 'package:med_eg/widgets/AppointmentListViewForDoctor.dart';
 
 
 class ShowPatientAppointments extends StatelessWidget {
@@ -9,7 +9,7 @@ class ShowPatientAppointments extends StatelessWidget {
  
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       body: Center(
         child: Column(
           children: [
@@ -20,8 +20,8 @@ class ShowPatientAppointments extends StatelessWidget {
                     color: darkBlue,
                     fontSize: 30,
                     fontWeight: FontWeight.bold),),
-                AppointmentListView(),
-               SizedBox(height: 40,)
+                AppointmentListViewForDoctor(),
+               SizedBox(height: 40,),
           ],
         ),
       ),

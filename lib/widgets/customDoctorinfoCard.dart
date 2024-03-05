@@ -13,7 +13,7 @@ class DoctorInfoCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(5),
       child: Card(
-        elevation: 3,
+        elevation: 9,
         child: Container(
           decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(16),border: Border.all(color: Colors.grey.withOpacity(0.4))),
           width: 140,

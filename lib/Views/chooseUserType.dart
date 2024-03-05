@@ -40,7 +40,7 @@ class ChooseUserType extends StatelessWidget {
               text: 'Patient',
               color: kPrimaryColor,
               onTap: () {
-                Navigator.pushNamed(context,const Login().id);
+                Navigator.pushNamed(context,const SignUp1().id);
               },
             ),
             SizedBox(

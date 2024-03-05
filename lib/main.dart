@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/DoctorCalendar.dart';
+import 'package:med_eg/Views/ShowAppointmentsInfoDoctor.dart';
 import 'package:med_eg/Views/EnterVarifecationCode.dart';
-import 'package:med_eg/Views/HomeScreen.dart';
+import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/Views/NoPatientAppointmentsScreen.dart';
 import 'package:med_eg/Views/RestPassword.dart';
 import 'package:med_eg/Views/check_reservation.dart';
@@ -8,7 +10,6 @@ import 'package:med_eg/Views/chooseUserType.dart';
 import 'package:med_eg/Views/createNewPassword.dart';
 import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/message_screen.dart';
-import 'package:med_eg/Views/onBoarding.dart';
 import 'package:med_eg/Views/reserve_doctor.dart';
 import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/Views/signUp10.dart';
@@ -60,15 +61,17 @@ class MyApp extends StatelessWidget {
         const EnterVerficationCode().id: (context) =>
             const EnterVerficationCode(),
         const CreateNewPassword().id: (context) => const CreateNewPassword(),
-        const HomeScreen().id: (context) => const HomeScreen(),
+        const PatientHomeScreen().id: (context) => const PatientHomeScreen(),
         const NoPatientAppoointment().id: (context) =>
             const NoPatientAppoointment(),
-            const ReserveDoctor().id: (context) => const ReserveDoctor(),
-            const CheckReservation().id:(context) =>const CheckReservation(),
-            const ChooseUserType().id:(context) => const ChooseUserType(),
+        const ReserveDoctor().id: (context) => const ReserveDoctor(),
+        const CheckReservation().id: (context) => const CheckReservation(),
+        const ChooseUserType().id: (context) => const ChooseUserType(),
+        const DoctorCalendar().id: (context) => const DoctorCalendar(),
+         ShowAppointmentInfoDoctor().id:(context) => ShowAppointmentInfoDoctor(),
       },
       debugShowCheckedModeBanner: false,
-      home: const SignUp1(),
+      home: const DoctorCalendar(),
     );
   }
 }

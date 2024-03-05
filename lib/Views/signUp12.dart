@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/Views/HomeScreen.dart';
+import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/custom_button.dart';
 import 'package:med_eg/widgets/success_signUp.dart';
@@ -26,7 +26,7 @@ class SignUp12 extends StatelessWidget {
                 text: 'Done',
                 color: kPrimaryColor,
                 onTap: () {
-                  Navigator.pushNamed(context, const HomeScreen().id);
+                  Navigator.pushNamed(context, const PatientHomeScreen().id);
                 },
               ),
             )

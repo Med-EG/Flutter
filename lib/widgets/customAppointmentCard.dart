@@ -33,7 +33,7 @@ class AppointmentCard extends StatelessWidget {
                     appointment.doctorName,
                     style: const TextStyle(
                         color: darkBlue,
-                        fontSize: 25,
+                        fontSize: 22,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
