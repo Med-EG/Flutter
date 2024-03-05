@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:med_eg/Views/chat_screen.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/models/appointmentModel.dart';
-import 'package:med_eg/models/doctorInfoModel.dart';
 import 'package:med_eg/widgets/custom_arrow_back.dart';
 import 'package:med_eg/widgets/custom_button.dart';
+import 'package:med_eg/widgets/custom_circle_container.dart';
 
 class ShowAppointmentInfoDoctor extends StatelessWidget {
-  ShowAppointmentInfoDoctor({super.key});
+ const ShowAppointmentInfoDoctor({super.key});
   final String id = 'DoctorShowAppointmentInfo';
 
   @override
@@ -17,83 +18,93 @@ class ShowAppointmentInfoDoctor extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: Stack(
+        children: [
+           const Positioned(
+              right: -80, top: -80, child: CustomCircleContainer()),
+          const Positioned(
+              left: -180, bottom: -180, child: CustomCircleContainer()),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+              child: Column(
                 children: [
-                 const CustomArrowBack(),
-                 const Spacer(flex: 1,),
-                  SvgPicture.asset(
-                    'assets/images/SVG/Frame (1).svg',
-                    height: screenHeight * 0.1,
-                    width: screenWidth*0.5,
-                  ),
-                  const Spacer(flex:1,),
-
-                ],
-              ),
-              SizedBox(height: screenHeight*0.05,),
-              Row(
-                children: [
-                  Spacer(flex: 1,),
-                  Column(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(
-                        appointmentSelected.doctorName,
-                        style: TextStyle(
-                            color: darkBlue,
-                            fontSize: 26,
-                            fontWeight: FontWeight.w600),
+                     const CustomArrowBack(),
+                     const Spacer(flex: 1,),
+                      SvgPicture.asset(
+                        'assets/images/SVG/Frame (1).svg',
+                        height: screenHeight * 0.1,
+                        width: screenWidth*0.5,
                       ),
-                      Text(
-                            appointmentSelected.day,
-                            style: TextStyle(
-                                color: darkBlue,
-                                fontSize: 20,
-                               // fontWeight: FontWeight.w600
-                                ),
-                          ),
-                      Row(
+                      const Spacer(flex:1,),
+      
+                    ],
+                  ),
+                  SizedBox(height: screenHeight*0.05,),
+                  Row(
+                    children: [
+                      Spacer(flex: 1,),
+                      Column(
                         children: [
-                          
                           Text(
-                            appointmentSelected.date,
-                            style: TextStyle(
+                            appointmentSelected.doctorName,
+                            style:const TextStyle(
                                 color: darkBlue,
-                                fontSize: 20,
-                               // fontWeight: FontWeight.w600
-                                ),
+                                fontSize: 26,
+                                fontWeight: FontWeight.w600),
                           ),
                           Text(
-                            appointmentSelected.time,
-                            style: TextStyle(
-                                color: darkBlue,
-                                fontSize: 20,
-                               // fontWeight: FontWeight.w600
-                                ),
+                                appointmentSelected.day,
+                                style:const TextStyle(
+                                    color: darkBlue,
+                                    fontSize: 20,
+                                   // fontWeight: FontWeight.w600
+                                    ),
+                              ),
+                          Row(
+                            children: [
+                              
+                              Text(
+                                appointmentSelected.date,
+                                style:const TextStyle(
+                                    color: darkBlue,
+                                    fontSize: 20,
+                                   // fontWeight: FontWeight.w600
+                                    ),
+                              ),
+                              Text(
+                                appointmentSelected.time,
+                                style:const TextStyle(
+                                    color: darkBlue,
+                                    fontSize: 20,
+                                   // fontWeight: FontWeight.w600
+                                    ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
+                     const Spacer(flex: 5,),
+                      Image.asset(appointmentSelected.doctorImage,height: screenHeight*0.13,),
+                     const Spacer(flex: 1,)
                     ],
                   ),
-                  Spacer(flex: 5,),
-                  Image.asset(appointmentSelected.doctorImage,height: screenHeight*0.13,),
-                  Spacer(flex: 1,)
+                  SizedBox(height: screenHeight*0.15,),
+                 const CustomButton(text: 'View Medical Record', color: kPrimaryColor),
+                  SizedBox(height: screenHeight*0.05,),
+                  CustomButton(text: 'Go to chat', color: kPrimaryColor,onTap: () {
+                   Navigator.pushNamed(context, ChatScreen().id);
+                 },),
+                  SizedBox(height: screenHeight*0.17,),
+                 const CustomButton(text: 'Delete appointment', color: Color(0xffe24040)),
                 ],
               ),
-              SizedBox(height: screenHeight*0.15,),
-              CustomButton(text: 'View Medical Record', color: kPrimaryColor),
-              SizedBox(height: screenHeight*0.05,),
-              CustomButton(text: 'Go to chat', color: kPrimaryColor),
-              SizedBox(height: screenHeight*0.17,),
-              CustomButton(text: 'Delete appointment', color: Color(0xffe24040)),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
