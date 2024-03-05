@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/Views/loginScreen.dart';
-
 import '../widgets/custom_button.dart';
 
 class ChooseUserType extends StatelessWidget {
@@ -12,6 +12,7 @@ class ChooseUserType extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenHieght = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(27),
@@ -22,7 +23,8 @@ class ChooseUserType extends StatelessWidget {
             ),
             Container(
                 height: screenHieght * 0.3,
-                child: SvgPicture.asset('assets/SVG/Frame.svg')),
+                width: screenWidth*0.4,
+                child: SvgPicture.asset('assets/images/SVG/Frame (1).svg')),
             SizedBox(
               height: screenHieght * 0.007,
             ),
@@ -38,7 +40,7 @@ class ChooseUserType extends StatelessWidget {
               text: 'Patient',
               color: kPrimaryColor,
               onTap: () {
-                Navigator.pushNamed(context, Login().id);
+                Navigator.pushNamed(context,const Login().id);
               },
             ),
             SizedBox(
