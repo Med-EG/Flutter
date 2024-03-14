@@ -93,13 +93,13 @@ class ShowAppointmentInfoDoctor extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: screenHeight*0.15,),
-                 const CustomButton(text: 'View Medical Record', color: kPrimaryColor),
+                  CustomButton(text: 'View Medical Record', color: kPrimaryColor,),
                   SizedBox(height: screenHeight*0.05,),
                   CustomButton(text: 'Go to chat', color: kPrimaryColor,onTap: () {
                    Navigator.pushNamed(context, ChatScreen().id);
                  },),
                   SizedBox(height: screenHeight*0.17,),
-                 const CustomButton(text: 'Delete appointment', color: Color(0xffe24040)),
+                 const CustomButton( text: 'Delete appointment', color: Color(0xffe24040)),
                 ],
               ),
             ),

@@ -8,4 +8,12 @@ class DoctorModel
   final String location;
 
  const DoctorModel({required this.image, required this.doctorName, required this.specification, required this.rate, required this.location});
+
+// factory DoctorModel.fromJson(jsonData)
+// {
+
+//   return
+// }
+
 }
+

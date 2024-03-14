@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/Views/signUp2.dart';
 import 'package:med_eg/constants/colors.dart';
+import 'package:med_eg/helper/API.dart';
 import 'package:med_eg/widgets/custom_circle_container.dart';
 import 'package:med_eg/widgets/signUP_with.dart';
 import 'package:med_eg/Views/RestPassword.dart';
@@ -9,8 +10,9 @@ import 'package:med_eg/Views/RestPassword.dart';
 import '../widgets/custom_button.dart';
 
 class Login extends StatefulWidget {
-  const Login({super.key});
+  Login({super.key});
   final String id = 'Login';
+  final Future<String?> token = Api().getToken();
 
   @override
   State<Login> createState() => _LoginState();
@@ -20,10 +22,12 @@ class _LoginState extends State<Login> {
   bool _obscureText = true;
 
   //TextEditingController _passwordController =
-    //  TextEditingController(text: '***');
+  //  TextEditingController(text: '***');
 
   @override
   Widget build(BuildContext context) {
+    String? email;
+    String? password;
     double screenHieght = MediaQuery.of(context).size.height;
 
     return Scaffold(
@@ -69,7 +73,9 @@ class _LoginState extends State<Login> {
                   Padding(
                     padding: const EdgeInsets.only(right: 10, left: 10),
                     child: TextField(
-                      onSubmitted: (value) {},
+                      onSubmitted: (value) {
+                        email = value;
+                      },
                       decoration: InputDecoration(
                         contentPadding: const EdgeInsets.symmetric(
                             vertical: 23, horizontal: 15),
@@ -93,7 +99,9 @@ class _LoginState extends State<Login> {
                     padding: const EdgeInsets.only(right: 10, left: 10),
                     child: TextField(
                       obscureText: _obscureText,
-                      onSubmitted: (value) {},
+                      onSubmitted: (value) {
+                        password = value;
+                      },
                       decoration: InputDecoration(
                         contentPadding: const EdgeInsets.symmetric(
                             vertical: 23, horizontal: 15),
@@ -149,7 +157,10 @@ class _LoginState extends State<Login> {
                     child: CustomButton(
                       text: 'Login',
                       color: kPrimaryColor,
-                      onTap: () {
+                      onTap: () async {
+                        await Api().post(
+                            url: 'https://api-medeg.online/medEG/patient/login',
+                            body: {'email': email, 'password': password});
                         Navigator.pushNamed(context,const PatientHomeScreen().id);
                       },
                     ),

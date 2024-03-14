@@ -94,7 +94,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                   ),
                   const Spacer(flex: 4,),
                   CustomButton(text: 'Reset the password', color: kPrimaryColor,onTap: () {
-                    Navigator.pushNamed(context, const Login().id);
+                    Navigator.pushNamed(context,  Login().id);
                   },),
                   const Spacer(flex: 5,)
               ],
