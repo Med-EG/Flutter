@@ -62,7 +62,7 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                 ),
               ),
             ),
-            Padding(
+Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 obscureText: _obscureText1,

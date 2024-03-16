@@ -10,6 +10,9 @@ import 'package:med_eg/Views/chooseUserType.dart';
 import 'package:med_eg/Views/createNewPassword.dart';
 import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/message_screen.dart';
+import 'package:med_eg/Views/faqs_screen.dart';
+import 'package:med_eg/Views/medical_record.dart';
+import 'package:med_eg/Views/patient_profile.dart';
 import 'package:med_eg/Views/reserve_doctor.dart';
 import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/Views/signUp10.dart';
@@ -72,6 +75,13 @@ class MyApp extends StatelessWidget {
       },
       debugShowCheckedModeBanner: false,
       home:  Login(),
+
+        const PatientProfile().id: (context) => const PatientProfile(),
+        const FAQSScreen().id: (context) => const FAQSScreen(),
+        const MedicalRecord().id: (context) => const MedicalRecord()
+      },
+      debugShowCheckedModeBanner: false,
+      home: const MedicalRecord(),
     );
   }
 }
