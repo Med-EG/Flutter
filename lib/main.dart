@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/check_reservation.dart';
+import 'package:med_eg/Views/faqs_screen.dart';
 import 'package:med_eg/Views/find_doctor.dart';
+import 'package:med_eg/Views/medical_record.dart';
+import 'package:med_eg/Views/patient_profile.dart';
+import 'package:med_eg/Views/reserve_doctor.dart';
 import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/Views/signUp10.dart';
 import 'package:med_eg/Views/signUp11.dart';
@@ -13,7 +18,6 @@ import 'package:med_eg/Views/signUp9.dart';
 import 'Views/chat_screen.dart';
 import 'Views/loginScreen.dart';
 import 'Views/signUp4.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -46,10 +50,14 @@ class MyApp extends StatelessWidget {
         const Login().id: (context) => const Login(),
         const ChatScreen().id: (context) => const ChatScreen(),
         const FindDoctor().id: (context) => const FindDoctor(),
+        const ReserveDoctor().id: (context) => const ReserveDoctor(),
+        const CheckReservation().id: (context) => const CheckReservation(),
+        const PatientProfile().id: (context) => const PatientProfile(),
+        const FAQSScreen().id: (context) => const FAQSScreen(),
+        const MedicalRecord().id: (context) => const MedicalRecord()
       },
       debugShowCheckedModeBanner: false,
-      home: const SignUp2(),
-
+      home: const MedicalRecord(),
     );
   }
 }

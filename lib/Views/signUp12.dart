@@ -5,7 +5,7 @@ import '../widgets/custom_text_information.dart';
 
 class SignUp12 extends StatelessWidget {
   const SignUp12({super.key});
-final String id = '';
+final String id = 'SignUp12';
   @override
   Widget build(BuildContext context) {
 

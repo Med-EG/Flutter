@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/signUp10.dart';
 import 'package:med_eg/Views/signUp11.dart';
-import 'package:med_eg/Views/signUp12.dart';
 import 'package:med_eg/Views/signUp7.dart';
 import 'package:med_eg/Views/signUp8.dart';
 import 'package:med_eg/Views/signUp9.dart';
@@ -11,7 +11,7 @@ import '../widgets/new_record_container.dart';
 
 class SignUp6 extends StatelessWidget {
   const SignUp6({super.key});
-final String id = '';
+final String id = 'SignUp6';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -115,7 +115,7 @@ final String id = '';
                 text: 'Done',
                 color: kPrimaryColor,
                 onTap: () {
-                  Navigator.pushNamed(context, const SignUp12().id);
+                  Navigator.pushNamed(context, const FindDoctor().id);
                 },
               ),
             )

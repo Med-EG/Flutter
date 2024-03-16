@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:med_eg/Views/signUp2.dart';
-import 'package:med_eg/constants/texts.dart';
 import '../constants/colors.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_textFormField.dart';

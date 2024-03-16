@@ -9,7 +9,7 @@ import '../widgets/custom_arrow_back.dart';
 
 class FindDoctor extends StatelessWidget {
   const FindDoctor({super.key});
-  final String id = '';
+  final String id = 'FindDoctor';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.width;
@@ -18,74 +18,74 @@ class FindDoctor extends StatelessWidget {
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Row(
-                children: [
-                  CustomArrowBack(),
-                  Text(
-                    'Find Doctor',
-                    style: TextStyle(
-                        color: darkBlue,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
-                  )
-                ],
-              ),
-              const CustomTextFormField(
-                  label: 'Search doctors , articles ....'),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 16),
-                child: Text(
-                  'Categories',
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: darkBlue,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              GridView.builder(
-                  shrinkWrap: true,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                      crossAxisSpacing: 4,
-                      mainAxisSpacing: 16),
-                  itemCount: 7,
-                  itemBuilder: (context, index) {
-                    String imageUrl = imageUrls[index];
-                    String text = texts[index];
-                    return IconCard(
-                        onTap: () => Navigator.pushNamed(
-                            context, const ReserveDoctor().id),
-                        image: imageUrl,
-                        text: text);
-                  }),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 32),
-                child: Row(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Row(
                   children: [
-                    const Text(
-                      'All Doctors',
+                    CustomArrowBack(),
+                    Text(
+                      'Find Doctor',
                       style: TextStyle(
                           color: darkBlue,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
-                    ),
-                    SizedBox(
-                      width: screenWidth * 0.05,
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 0.5,
-                        color: grey,
-                      ),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
                     )
                   ],
                 ),
-              ),
-              Expanded(
-                child: ListView.separated(
+                const CustomTextFormField(
+                    label: 'Search doctors , articles ....'),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  child: Text(
+                    'Categories',
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: darkBlue,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                GridView.builder(
+                    shrinkWrap: true,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4,
+                        crossAxisSpacing: 4,
+                        mainAxisSpacing: 16),
+                    itemCount: 7,
+                    itemBuilder: (context, index) {
+                      String imageUrl = imageUrls[index];
+                      String text = texts[index];
+                      return IconCard(
+                          onTap: () => Navigator.pushNamed(
+                              context, const ReserveDoctor().id),
+                          image: imageUrl,
+                          text: text);
+                    }),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 32),
+                  child: Row(
+                    children: [
+                      const Text(
+                        'All Doctors',
+                        style: TextStyle(
+                            color: darkBlue,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),
+                      ),
+                      SizedBox(
+                        width: screenWidth * 0.05,
+                      ),
+                      Expanded(
+                        child: Container(
+                          height: 0.5,
+                          color: grey,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                ListView.separated(
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return Material(
@@ -102,8 +102,8 @@ class FindDoctor extends StatelessWidget {
                   },
                   itemCount: 4,
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
