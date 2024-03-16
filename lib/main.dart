@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
         const SignUp10().id: (context) => const SignUp10(),
         const SignUp11().id: (context) => const SignUp11(),
         const SignUp12().id: (context) => const SignUp12(),
-         Login().id: (context) =>  Login(),
+        Login().id: (context) => Login(),
         const ChatScreen().id: (context) => const ChatScreen(),
         const FindDoctor().id: (context) => const FindDoctor(),
         const MessageScreen().id: (context) => const MessageScreen(),
@@ -71,11 +71,8 @@ class MyApp extends StatelessWidget {
         const CheckReservation().id: (context) => const CheckReservation(),
         const ChooseUserType().id: (context) => const ChooseUserType(),
         const DoctorCalendar().id: (context) => const DoctorCalendar(),
-         ShowAppointmentInfoDoctor().id:(context) => ShowAppointmentInfoDoctor(),
-      },
-      debugShowCheckedModeBanner: false,
-      home:  Login(),
-
+        const ShowAppointmentInfoDoctor().id: (context) =>
+            const ShowAppointmentInfoDoctor(),
         const PatientProfile().id: (context) => const PatientProfile(),
         const FAQSScreen().id: (context) => const FAQSScreen(),
         const MedicalRecord().id: (context) => const MedicalRecord()
