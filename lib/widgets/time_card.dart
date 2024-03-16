@@ -16,8 +16,8 @@ class _TimeCardState extends State<TimeCard> {
   Widget build(BuildContext context) {
     Color containerColor = _isPressed ? const Color.fromRGBO(255, 255, 255, 1) : kPrimaryColor;
     Color textColor = _isPressed ? kPrimaryColor : Colors.white;
-    double elevation = _isPressed ? 0 : 4;
-    return GestureDetector(
+    double elevation = _isPressed ? 0 : 10;
+        return GestureDetector(
       onTap: () {
         setState(() {
           _isPressed = !_isPressed;

@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/DoctorCalendar.dart';
+import 'package:med_eg/Views/ShowAppointmentsInfoDoctor.dart';
+import 'package:med_eg/Views/EnterVarifecationCode.dart';
+import 'package:med_eg/Views/PatientHomeScreen.dart';
+import 'package:med_eg/Views/NoPatientAppointmentsScreen.dart';
+import 'package:med_eg/Views/RestPassword.dart';
 import 'package:med_eg/Views/check_reservation.dart';
-import 'package:med_eg/Views/faqs_screen.dart';
+import 'package:med_eg/Views/chooseUserType.dart';
+import 'package:med_eg/Views/createNewPassword.dart';
 import 'package:med_eg/Views/find_doctor.dart';
+import 'package:med_eg/Views/message_screen.dart';
+import 'package:med_eg/Views/faqs_screen.dart';
 import 'package:med_eg/Views/medical_record.dart';
 import 'package:med_eg/Views/patient_profile.dart';
 import 'package:med_eg/Views/reserve_doctor.dart';
@@ -47,11 +56,26 @@ class MyApp extends StatelessWidget {
         const SignUp10().id: (context) => const SignUp10(),
         const SignUp11().id: (context) => const SignUp11(),
         const SignUp12().id: (context) => const SignUp12(),
-        const Login().id: (context) => const Login(),
+         Login().id: (context) =>  Login(),
         const ChatScreen().id: (context) => const ChatScreen(),
         const FindDoctor().id: (context) => const FindDoctor(),
+        const MessageScreen().id: (context) => const MessageScreen(),
+        ResetPassword().id: (context) => ResetPassword(),
+        const EnterVerficationCode().id: (context) =>
+            const EnterVerficationCode(),
+        const CreateNewPassword().id: (context) => const CreateNewPassword(),
+        const PatientHomeScreen().id: (context) => const PatientHomeScreen(),
+        const NoPatientAppoointment().id: (context) =>
+            const NoPatientAppoointment(),
         const ReserveDoctor().id: (context) => const ReserveDoctor(),
         const CheckReservation().id: (context) => const CheckReservation(),
+        const ChooseUserType().id: (context) => const ChooseUserType(),
+        const DoctorCalendar().id: (context) => const DoctorCalendar(),
+         ShowAppointmentInfoDoctor().id:(context) => ShowAppointmentInfoDoctor(),
+      },
+      debugShowCheckedModeBanner: false,
+      home:  Login(),
+
         const PatientProfile().id: (context) => const PatientProfile(),
         const FAQSScreen().id: (context) => const FAQSScreen(),
         const MedicalRecord().id: (context) => const MedicalRecord()

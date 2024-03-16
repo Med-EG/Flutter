@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/chooseUserType.dart';
 import 'package:med_eg/Views/loginScreen.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/OnBoardingDots.dart';
@@ -31,7 +32,7 @@ class _OnBordingState extends State<OnBording> {
           actions: [
             GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, const Login().id);
+                  Navigator.pushNamed(context,  Login().id);
 
                 },
                 child: const Padding(
@@ -49,7 +50,7 @@ class _OnBordingState extends State<OnBording> {
         body: Stack(children: [
           PageView.builder(
               controller: _controller,
-              physics: const NeverScrollableScrollPhysics(),
+              //physics: const NeverScrollableScrollPhysics(),
               itemCount: onBoardingScreens.length,
               onPageChanged: (int index) {
                 setState() {
@@ -81,14 +82,14 @@ class _OnBordingState extends State<OnBording> {
                       //               ),
 
 
-                      // Padding(
-                      //   padding: const EdgeInsets.only(bottom: 5),
-                      //   child: Container(
-                      //     height: screenHieght * 0.03,
-                      //     child:
-                      //         Image.asset('assets/images/PNG/AppLogo.png'),
-                      //   ),
-                      // ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 5),
+                        child: Container(
+                          height: screenHieght * 0.03,
+                          child:
+                              Image.asset('assets/images/PNG/Ellipse 34.png'),
+                        ),
+                      ),
 
 
                       Expanded(
@@ -152,14 +153,17 @@ class _OnBordingState extends State<OnBording> {
                                 SizedBox(height: screenHieght * 0.06),
                                 onBoardingScreens[index]
                                         .isThisLastHomeBordingScreen
-                                    ? CustomButton(
-                                        text: 'Get Started',
-                                        color: kPrimaryColor,
-                                        onTap: () {
-                                          Navigator.pushNamed(
-                                              context,const Login().id);
-                                        },
-                                      )
+                                    ? Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal :10),
+                                      child: CustomButton(
+                                          text: 'Get Started',
+                                          color: kPrimaryColor,
+                                          onTap: () {
+                                            Navigator.pushNamed(
+                                                context,const ChooseUserType().id);
+                                          },
+                                        ),
+                                    )
                                     : FloatingActionButton(
                                         onPressed: () {
                                           _controller.nextPage(

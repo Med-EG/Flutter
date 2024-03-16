@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/Views/chat_screen.dart';
+import 'package:med_eg/Views/NoPatientAppointmentsScreen.dart';
+import 'package:med_eg/Views/find_doctor.dart';
+import 'package:med_eg/Views/message_screen.dart';
 import 'package:med_eg/widgets/DoctorCardListView.dart';
 import 'package:med_eg/widgets/customIconCard.dart';
 import 'package:med_eg/widgets/customSearchBar.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import '../constants/colors.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class PatientHomeScreen extends StatelessWidget {
+  const PatientHomeScreen({super.key});
   final String id='HomeScreen';
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Container(
+        
         decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(color: Colors.grey.withOpacity(0.3))),
@@ -25,7 +28,7 @@ class HomeScreen extends StatelessWidget {
             backgroundColor: Colors.white,
             activeColor:kPrimaryColor,
             gap: 8,
-            
+            selectedIndex: 0,
             onTabChange: (value){},
             tabs: [
               GButton(
@@ -33,11 +36,12 @@ class HomeScreen extends StatelessWidget {
                 text: 'home',
               ),
               GButton(
-                onPressed: (){Navigator.pushNamed(context, ChatScreen().id);},
+                onPressed: (){Navigator.pushNamed(context, const MessageScreen().id);},
                 icon: Icons.chat_bubble_rounded,
                 text: 'Chats',
               ),
               GButton(
+                onPressed: (){Navigator.pushNamed(context, const NoPatientAppoointment().id);},
 
                 icon: Icons.edit_calendar_rounded,
                 text: 'Appointments',
@@ -87,27 +91,30 @@ class HomeScreen extends StatelessWidget {
             children: [
               const Searchbar(),
               const SizedBox(height: 10,),
-              const Row(
+               Row(
                 children: [
-                  Spacer(
+                const  Spacer(
                     flex: 1,
                   ),
-                  IconCard(
-                      image: 'assets/images/PNG/Stethoscope.png',
-                      text: 'Doctors'),
-                  Spacer(
+                  GestureDetector(
+                    onTap: (){Navigator.popAndPushNamed(context,const FindDoctor().id);},
+                    child: const IconCard(
+                        image: 'assets/images/PNG/Stethoscope.png',
+                        text: 'Doctors'),
+                  ),
+                 const Spacer(
                     flex: 1,
                   ),
-                  IconCard(
+                 const IconCard(
                     image: 'assets/images/PNG/Medicine_icon.png',
                     text: 'Medicine',
                   ),
-                  Spacer(
+                  const Spacer(
                     flex: 1,
                   ),
-                  IconCard(
+                  const IconCard(
                       image: 'assets/images/PNG/Record_icon.png', text: 'Record'),
-                  Spacer(
+                  const Spacer(
                     flex: 1,
                   ),
                 ],
@@ -116,7 +123,7 @@ class HomeScreen extends StatelessWidget {
 
               //Need to adjust the image that is in miidile of home screen
               
-              Stack(children: [Image.asset('assets/images/PNG/Rectangle 31.png')]),
+              Image.asset('assets/images/PNG/AdobeStock_103968342_Preview.jpeg'),
               const SizedBox(height: 20,),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
