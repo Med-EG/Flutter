@@ -8,7 +8,7 @@ import '../widgets/days_view.dart';
 import '../widgets/time_view.dart';
 
 class ReserveDoctor extends StatelessWidget {
-  const ReserveDoctor({super.key})
+  const ReserveDoctor({super.key});
   final String id = 'ReserveDoctor';
   @override
   Widget build(BuildContext context) {
