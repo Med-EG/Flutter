@@ -54,7 +54,7 @@ class AppointmentListViewForDoctor extends StatelessWidget {
           itemBuilder: ((context, index) {
             return GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, ShowAppointmentInfoDoctor().id,
+                  Navigator.pushNamed(context, const ShowAppointmentInfoDoctor().id,
                       arguments: appointmentSelected = Appointments[index]);
                 },
                 child: AppointmentCard(appointment: Appointments[index]));
