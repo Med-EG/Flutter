@@ -20,6 +20,7 @@ import 'package:med_eg/Views/signUp11.dart';
 import 'package:med_eg/Views/signUp12.dart';
 import 'package:med_eg/Views/signUp2.dart';
 import 'package:med_eg/Views/signUp3.dart';
+import 'package:med_eg/Views/signUp5.dart';
 import 'package:med_eg/Views/signUp6.dart';
 import 'package:med_eg/Views/signUp7.dart';
 import 'package:med_eg/Views/signUp8.dart';
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
         const SignUp2().id: (context) => const SignUp2(),
         const SignUp3().id: (context) => const SignUp3(),
         const SignUp4().id: (context) => const SignUp4(),
+        const SignUp5().id: (context) => const SignUp5(),
         const SignUp6().id: (context) => const SignUp6(),
         const SignUp7().id: (context) => const SignUp7(),
         const SignUp8().id: (context) => const SignUp8(),
@@ -78,7 +80,7 @@ class MyApp extends StatelessWidget {
         const MedicalRecord().id: (context) => const MedicalRecord()
       },
       debugShowCheckedModeBanner: false,
-      home: const MedicalRecord(),
+      home: const SignUp5(),
     );
   }
 }
