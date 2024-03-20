@@ -80,7 +80,7 @@ class MyApp extends StatelessWidget {
         const MedicalRecord().id: (context) => const MedicalRecord()
       },
       debugShowCheckedModeBanner: false,
-      home: const SignUp5(),
+      home: const SignUp2(),
     );
   }
 }

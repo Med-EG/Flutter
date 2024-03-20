@@ -21,7 +21,7 @@ final String id = 'PatientProfile';
             Navigator.pushNamed(context, const SignUp2().id);
           },),
         ),
-        Padding(
+        const Padding(
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child:
               CustomButton(text: 'General medical info.', color: kPrimaryColor),
