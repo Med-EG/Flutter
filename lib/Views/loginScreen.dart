@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/Views/signUp2.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/helper/API.dart';
@@ -20,14 +19,19 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool _obscureText = true;
-
-  //TextEditingController _passwordController =
-  //  TextEditingController(text: '***');
+  bool showEmailError=false;
+  bool showPasswordError=false;
+final TextEditingController emailController = TextEditingController();
+final TextEditingController passwordController = TextEditingController();
+ Color emailBorderColor = Colors.grey;
+  Color passwordBorderColor = Colors.grey;
+  String emailErrorMessage = '';
+  String passwordErrorMessage = '';
 
   @override
   Widget build(BuildContext context) {
-    String? email;
-    String? password;
+    String email=emailController.text;
+    String password=passwordController.text;
     double screenHieght = MediaQuery.of(context).size.height;
 
     return Scaffold(
@@ -73,10 +77,19 @@ class _LoginState extends State<Login> {
                   Padding(
                     padding: const EdgeInsets.only(right: 10, left: 10),
                     child: TextField(
-                      onChanged: (value) {
-                        email = value;
+                      onSubmitted: (value) {
+                        setState(() {
+                          email = value;
+                        });
                       },
+                      controller: emailController,
+                      
                       decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                           borderSide:  BorderSide(color: emailBorderColor),),
+               
+                        
                         contentPadding: const EdgeInsets.symmetric(
                             vertical: 23, horizontal: 15),
                         hintText: 'E-mail',
@@ -85,13 +98,15 @@ class _LoginState extends State<Login> {
                           'Enter E-mail address',
                           style: TextStyle(color: Colors.grey.withOpacity(0.8)),
                         ),
-                        border: OutlineInputBorder(
+                        enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          // borderSide: const BorderSide(color: kPrimaryColor),
+                           borderSide:  BorderSide(color: emailBorderColor),
+                          
                         ),
                       ),
                     ),
                   ),
+                  Text(emailErrorMessage,style:const TextStyle(color: Colors.red),),
                   const SizedBox(
                     height: 20,
                   ),
@@ -99,9 +114,12 @@ class _LoginState extends State<Login> {
                     padding: const EdgeInsets.only(right: 10, left: 10),
                     child: TextField(
                       obscureText: _obscureText,
-                      onChanged: (value) {
-                        password = value;
+                      onSubmitted: (value) {
+                        setState(() {
+                          password = value;
+                        });
                       },
+                      controller: passwordController,
                       decoration: InputDecoration(
                         contentPadding: const EdgeInsets.symmetric(
                             vertical: 23, horizontal: 15),
@@ -120,13 +138,18 @@ class _LoginState extends State<Login> {
                           'Enter password',
                           style: TextStyle(color: Colors.grey.withOpacity(0.8)),
                         ),
-                        border: OutlineInputBorder(
+                        focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: const BorderSide(color: kPrimaryColor),
+                           borderSide:  BorderSide(color: emailBorderColor),),
+                         enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                           borderSide:  BorderSide(color: emailBorderColor),
+
                         ),
                       ),
                     ),
                   ),
+                  Text(emailErrorMessage,style:const TextStyle(color: Colors.red),),
                   const SizedBox(
                     height: 10,
                   ),
@@ -158,11 +181,36 @@ class _LoginState extends State<Login> {
                       text: 'Login',
                       color: kPrimaryColor,
                       onTap: () async {
-                        // ignore: missing_required_param
-                        await Api().post(url:'https://api-medeg.online/medEG/patient/login',email: 'joseph1marok@gmail.com',password:'11223344' );
-                       
-                        //Navigator.pushNamed(context,const PatientHomeScreen().id);
-                      },
+                        
+                    if (email.isEmpty) {
+                      setState(() {
+                        emailBorderColor = Colors.red;
+                        emailErrorMessage = 'This text field is required';
+                      });
+                    } else {
+                      setState(() {
+                        emailBorderColor = Colors.grey;
+                        emailErrorMessage = '';
+                      });
+                    }
+
+                    if (password.isEmpty) {
+                      setState(() {
+                        passwordBorderColor = Colors.red;
+                        passwordErrorMessage = 'This text field is required';
+                      });
+                    } else {
+                      setState(() {
+                        passwordBorderColor = Colors.grey;
+                        passwordErrorMessage = '';
+                      });
+                    }
+
+                    if (email.isNotEmpty && password.isNotEmpty) {
+                      // Proceed with login functionality
+                      Api().post(url: 'https://api-medeg.online/medEG/patient/login', email: email, password: password);
+                    }
+                  },
                     ),
                   ),
                   SizedBox(
@@ -227,7 +275,7 @@ class _LoginState extends State<Login> {
                     text: 'Login with Google',
                   ),
                   SizedBox(
-                    height: screenHieght * 0.02,
+                    height: screenHieght * 0.015,
                   ),
                   const SignUpWith(
                     image: 'assets/images/PNG/dribbble.png',

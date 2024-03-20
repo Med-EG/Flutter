@@ -45,8 +45,12 @@ class Api {
         print(response.body);
         return data;
       } else {
+        print(response.body);
         throw Exception(
+          
+          
             'There is problem with status code${response.statusCode}with body${response.body}');
+            
       }
     }
     Future<dynamic> put(
