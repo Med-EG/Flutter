@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/Views/signUp3.dart';
 import 'package:med_eg/constants/colors.dart';
+import 'package:med_eg/widgets/custom_form_generalInfo.dart';
 import '../widgets/custom_button.dart';
-import '../widgets/custom_form.dart';
 
 class SignUp5 extends StatelessWidget {
   const SignUp5({super.key});
@@ -39,7 +39,7 @@ class SignUp5 extends StatelessWidget {
                     SizedBox(
                       height: screenHeight * 0.02,
                     ),
-                    const CustomFormWidget(),
+                    const CustomFormGeneralInfo(),
                   ],
                 )),
               ),

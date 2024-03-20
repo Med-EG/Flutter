@@ -9,7 +9,9 @@ class CustomTextFormField extends StatelessWidget {
       this.onChanged,
       this.textinputType,
       this.icon,
-      this.obscureText = false});
+      this.obscureText = false,
+      this.validator,
+      this.controller});
 
   final String label;
   final int maxLines;
@@ -17,23 +19,20 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType? textinputType;
   final IconButton? icon;
   final bool obscureText;
+  final String? Function(String?)? validator;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8),
       child: TextFormField(
+        controller: controller,
         keyboardType: textinputType,
         onChanged: onChanged,
         cursorColor: grey,
         maxLines: maxLines,
         obscureText: obscureText,
-        validator: (value) {
-          if (value?.isEmpty ?? true) {
-            return 'Field is required';
-          } else {
-            return null;
-          }
-        },
+        validator: validator,
         decoration: InputDecoration(
             border: buildBorder(),
             fillColor: offWhite,

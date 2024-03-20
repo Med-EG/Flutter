@@ -5,8 +5,9 @@ import '../constants/colors.dart';
 import '../widgets/custom_button.dart';
 
 class SignUp3 extends StatelessWidget {
-  const SignUp3({super.key});
+  const SignUp3({super.key,  this.firstName = ''});
 final String id = 'SignUp3';
+final String firstName;
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:med_eg/Views/signUp3.dart';
-import 'package:med_eg/constants/colors.dart';
 import '../widgets/custom_arrow_back.dart';
-import '../widgets/custom_button.dart';
 import '../widgets/custom_form.dart';
 import '../widgets/custom_profile_container.dart';
 
@@ -43,16 +40,7 @@ final String id = 'SignUp2';
                   ],
                 )),
               ),
-              SizedBox(
-                height: screenHeight * 0.02,
-              ),
-              CustomButton(
-                text: 'Next',
-                color: kPrimaryColor,
-                onTap: () {
-                  Navigator.pushNamed(context, const SignUp3().id);
-                },
-              )
+             
             ],
           ),
         ),
