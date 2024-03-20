@@ -73,7 +73,7 @@ class _LoginState extends State<Login> {
                   Padding(
                     padding: const EdgeInsets.only(right: 10, left: 10),
                     child: TextField(
-                      onSubmitted: (value) {
+                      onChanged: (value) {
                         email = value;
                       },
                       decoration: InputDecoration(
@@ -99,7 +99,7 @@ class _LoginState extends State<Login> {
                     padding: const EdgeInsets.only(right: 10, left: 10),
                     child: TextField(
                       obscureText: _obscureText,
-                      onSubmitted: (value) {
+                      onChanged: (value) {
                         password = value;
                       },
                       decoration: InputDecoration(
@@ -158,10 +158,10 @@ class _LoginState extends State<Login> {
                       text: 'Login',
                       color: kPrimaryColor,
                       onTap: () async {
-                        await Api().post(
-                            url: 'https://api-medeg.online/medEG/patient/login',
-                            body: {'email': email, 'password': password});
-                        Navigator.pushNamed(context,const PatientHomeScreen().id);
+                        // ignore: missing_required_param
+                        await Api().post(url:'https://api-medeg.online/medEG/patient/login',email: 'joseph1marok@gmail.com',password:'11223344' );
+                       
+                        //Navigator.pushNamed(context,const PatientHomeScreen().id);
                       },
                     ),
                   ),
