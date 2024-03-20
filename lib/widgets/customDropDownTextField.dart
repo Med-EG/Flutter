@@ -34,7 +34,7 @@ class _DropDownTextField1State extends State<DropDownTextField1> {
           border: Border.all(color: Colors.black.withOpacity(0.4))),
       child: DropDownTextField(
         searchDecoration: const InputDecoration(fillColor: Colors.black),
-        enableSearch: true,
+        enableSearch: false,
         textFieldDecoration: const InputDecoration(
             border: InputBorder.none,
             hintText: 'Medicine Name',

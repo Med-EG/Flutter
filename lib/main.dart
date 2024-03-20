@@ -10,6 +10,9 @@ import 'package:med_eg/Views/chooseUserType.dart';
 import 'package:med_eg/Views/createNewPassword.dart';
 import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/message_screen.dart';
+import 'package:med_eg/Views/faqs_screen.dart';
+import 'package:med_eg/Views/medical_record.dart';
+import 'package:med_eg/Views/patient_profile.dart';
 import 'package:med_eg/Views/reserve_doctor.dart';
 import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/Views/signUp10.dart';
@@ -17,6 +20,7 @@ import 'package:med_eg/Views/signUp11.dart';
 import 'package:med_eg/Views/signUp12.dart';
 import 'package:med_eg/Views/signUp2.dart';
 import 'package:med_eg/Views/signUp3.dart';
+import 'package:med_eg/Views/signUp5.dart';
 import 'package:med_eg/Views/signUp6.dart';
 import 'package:med_eg/Views/signUp7.dart';
 import 'package:med_eg/Views/signUp8.dart';
@@ -46,6 +50,7 @@ class MyApp extends StatelessWidget {
         const SignUp2().id: (context) => const SignUp2(),
         const SignUp3().id: (context) => const SignUp3(),
         const SignUp4().id: (context) => const SignUp4(),
+        const SignUp5().id: (context) => const SignUp5(),
         const SignUp6().id: (context) => const SignUp6(),
         const SignUp7().id: (context) => const SignUp7(),
         const SignUp8().id: (context) => const SignUp8(),
@@ -53,7 +58,7 @@ class MyApp extends StatelessWidget {
         const SignUp10().id: (context) => const SignUp10(),
         const SignUp11().id: (context) => const SignUp11(),
         const SignUp12().id: (context) => const SignUp12(),
-         Login().id: (context) =>  Login(),
+        Login().id: (context) => Login(),
         const ChatScreen().id: (context) => const ChatScreen(),
         const FindDoctor().id: (context) => const FindDoctor(),
         const MessageScreen().id: (context) => const MessageScreen(),
@@ -68,10 +73,14 @@ class MyApp extends StatelessWidget {
         const CheckReservation().id: (context) => const CheckReservation(),
         const ChooseUserType().id: (context) => const ChooseUserType(),
         const DoctorCalendar().id: (context) => const DoctorCalendar(),
-         ShowAppointmentInfoDoctor().id:(context) => ShowAppointmentInfoDoctor(),
+        const ShowAppointmentInfoDoctor().id: (context) =>
+            const ShowAppointmentInfoDoctor(),
+        const PatientProfile().id: (context) => const PatientProfile(),
+        const FAQSScreen().id: (context) => const FAQSScreen(),
+        const MedicalRecord().id: (context) => const MedicalRecord()
       },
       debugShowCheckedModeBanner: false,
-      home:  Login(),
+      home: const SignUp2(),
     );
   }
 }

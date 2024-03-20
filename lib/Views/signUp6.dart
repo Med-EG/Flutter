@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/signUp10.dart';
 import 'package:med_eg/Views/signUp11.dart';
-import 'package:med_eg/Views/signUp12.dart';
 import 'package:med_eg/Views/signUp7.dart';
 import 'package:med_eg/Views/signUp8.dart';
 import 'package:med_eg/Views/signUp9.dart';
@@ -115,7 +115,7 @@ final String id = 'SignUp6';
                 text: 'Done',
                 color: kPrimaryColor,
                 onTap: () {
-                  Navigator.pushNamed(context, const SignUp12().id);
+                  Navigator.pushNamed(context, const FindDoctor().id);
                 },
               ),
             )
