@@ -36,12 +36,14 @@ class _CustomFormGeneralInfoState extends State<CustomFormGeneralInfo> {
                 Expanded(
                     child: Padding(
                   padding: EdgeInsets.only(right: 8),
-                  child: DropDownTextField1(),
+                  child: DropDownTextField1(hintText: 'Smoker',
+                  enableSearch: false,),
                 )),
                 Expanded(
                     child: Padding(
                   padding: EdgeInsets.only(left: 8),
-                  child: DropDownTextField1(),
+                  child: DropDownTextField1(hintText: 'Smoking Level',
+                  enableSearch: false,),
                 ))
               ],
             ),
@@ -50,12 +52,14 @@ class _CustomFormGeneralInfoState extends State<CustomFormGeneralInfo> {
                 Expanded(
                     child: Padding(
                   padding: EdgeInsets.only(right: 8),
-                  child: DropDownTextField1(),
+                  child: DropDownTextField1(hintText: 'Alcoholic',
+                  enableSearch: false,),
                 )),
                 Expanded(
                     child: Padding(
                   padding: EdgeInsets.only(left: 8),
-                  child: DropDownTextField1(),
+                  child: DropDownTextField1(hintText: 'Alcoholic Level',
+                  enableSearch: false,),
                 ))
               ],
             ),
@@ -75,7 +79,8 @@ class _CustomFormGeneralInfoState extends State<CustomFormGeneralInfo> {
               label: 'Sleeping Hours',
             ),),
                 Expanded(
-                    child: DropDownTextField1())
+                    child: DropDownTextField1(hintText: 'Sleeping Quality',
+                    enableSearch: false,))
               ],
             ),
           ],

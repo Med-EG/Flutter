@@ -11,21 +11,26 @@ class CustomTextFormField extends StatelessWidget {
       this.icon,
       this.obscureText = false,
       this.validator,
-      this.controller});
+      this.controller,
+      this.readOnly = false,
+      this.hint});
 
+  final bool readOnly;
+   final TextEditingController? controller;
   final String label;
+  final String? hint;
   final int maxLines;
   final void Function(String)? onChanged;
   final TextInputType? textinputType;
   final IconButton? icon;
   final bool obscureText;
   final String? Function(String?)? validator;
-  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8),
       child: TextFormField(
+        readOnly: readOnly,
         controller: controller,
         keyboardType: textinputType,
         onChanged: onChanged,
@@ -37,6 +42,7 @@ class CustomTextFormField extends StatelessWidget {
             border: buildBorder(),
             fillColor: offWhite,
             filled: true,
+            hintText: hint,
             labelText: label,
             labelStyle: const TextStyle(color: lightGrey),
             enabledBorder: buildBorder(grey),

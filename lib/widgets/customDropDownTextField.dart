@@ -2,8 +2,10 @@ import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 
 class DropDownTextField1 extends StatefulWidget {
-  const DropDownTextField1({super.key});
-
+  const DropDownTextField1(
+      {super.key, required this.hintText, this.enableSearch = true});
+  final String hintText;
+  final bool enableSearch;
   @override
   State<DropDownTextField1> createState() => _DropDownTextField1State();
 }
@@ -34,18 +36,19 @@ class _DropDownTextField1State extends State<DropDownTextField1> {
           border: Border.all(color: Colors.black.withOpacity(0.4))),
       child: DropDownTextField(
         searchDecoration: const InputDecoration(fillColor: Colors.black),
-        enableSearch: false,
-        textFieldDecoration: const InputDecoration(
+        enableSearch: widget.enableSearch,
+        textFieldDecoration: InputDecoration(
             border: InputBorder.none,
-            hintText: 'Medicine Name',
+            hintText: widget.hintText,
             fillColor: Colors.white,
             enabledBorder: InputBorder.none,
-            contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20)),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 20)),
         dropDownList: medicineNames,
         onChanged: (value) {
           setState(() {
             selcetedMedicine = value;
-           // print(selcetedMedicine);
+            // print(selcetedMedicine);
           });
         },
       ),
