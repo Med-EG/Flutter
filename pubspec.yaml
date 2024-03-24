@@ -43,8 +43,12 @@ dependencies:
 
 
   flutter_bloc: ^8.1.1
+HEAD
+  modal_progress_hud_nsn: ^0.5.1
+=======
 =======
   shared_preferences: ^2.2.2
+
 
 
 dev_dependencies:

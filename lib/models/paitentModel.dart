@@ -8,10 +8,11 @@ class PaitentInfo {
   final String email;
   final String address;
   final String birthDate;
-  final String phoneNumber;
+  final int phoneNumber;
   final String token;
-  PaitentInfo(this.token,
+  PaitentInfo(
       {required this.firstName,
+      required this.token,
       required this.lastName,
       required this.username,
       required this.password,
@@ -20,5 +21,20 @@ class PaitentInfo {
       required this.email,
       required this.address,
       required this.birthDate,
-      required this.phoneNumber});
+      required this.phoneNumber,});
+
+      factory PaitentInfo.fromJson(json){
+        return PaitentInfo(
+         token: json['token'],
+        firstName: json['patient']['first_name'],
+       lastName: json['patient']['last_name'],
+       username: json['patient']['username'],
+       password: json['patient']['password'],
+       gender: json['patient']['gender'],
+       nationalId: json['patient']['national_id'],
+       email: json['patient']['email'],
+       address: json['patient']['address'],
+       birthDate: json['patient']['birth_date'],
+       phoneNumber: json['patient']['phone_number']);
+}
 }

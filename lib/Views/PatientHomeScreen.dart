@@ -14,6 +14,7 @@ class PatientHomeScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    var paitent = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       bottomNavigationBar: Container(
         

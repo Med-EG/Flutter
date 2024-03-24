@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/Views/DoctorCalendar.dart';
 import 'package:med_eg/Views/ShowAppointmentsInfoDoctor.dart';
 import 'package:med_eg/Views/EnterVarifecationCode.dart';
@@ -25,6 +26,7 @@ import 'package:med_eg/Views/signUp6.dart';
 import 'package:med_eg/Views/signUp7.dart';
 import 'package:med_eg/Views/signUp8.dart';
 import 'package:med_eg/Views/signUp9.dart';
+import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'Views/chat_screen.dart';
 import 'Views/loginScreen.dart';
 import 'Views/signUp4.dart';
@@ -39,48 +41,49 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-          fontFamily: 'Encode Sans Expanded'),
-      routes: {
-        const SignUp1().id: (context) => const SignUp1(),
-        const SignUp2().id: (context) => const SignUp2(),
-        const SignUp3().id: (context) => const SignUp3(),
-        const SignUp4().id: (context) => const SignUp4(),
-        const SignUp5().id: (context) => const SignUp5(),
-        const SignUp6().id: (context) => const SignUp6(),
-        const SignUp7().id: (context) => const SignUp7(),
-        const SignUp8().id: (context) => const SignUp8(),
-        const SignUp9().id: (context) => const SignUp9(),
-        const SignUp10().id: (context) => const SignUp10(),
-        const SignUp11().id: (context) => const SignUp11(),
-        const SignUp12().id: (context) => const SignUp12(),
-        Login().id: (context) => Login(),
-        const ChatScreen().id: (context) => const ChatScreen(),
-        const FindDoctor().id: (context) => const FindDoctor(),
-        const MessageScreen().id: (context) => const MessageScreen(),
-        ResetPassword().id: (context) => ResetPassword(),
-        const EnterVerficationCode().id: (context) =>
-            const EnterVerficationCode(),
-        const CreateNewPassword().id: (context) => const CreateNewPassword(),
-        const PatientHomeScreen().id: (context) => const PatientHomeScreen(),
-        const NoPatientAppoointment().id: (context) =>
-            const NoPatientAppoointment(),
-        const ReserveDoctor().id: (context) => const ReserveDoctor(),
-        const CheckReservation().id: (context) => const CheckReservation(),
-        const ChooseUserType().id: (context) => const ChooseUserType(),
-        const DoctorCalendar().id: (context) => const DoctorCalendar(),
-        const ShowAppointmentInfoDoctor().id: (context) =>
-            const ShowAppointmentInfoDoctor(),
-        const PatientProfile().id: (context) => const PatientProfile(),
-        const FAQSScreen().id: (context) => const FAQSScreen(),
-        const MedicalRecord().id: (context) => const MedicalRecord()
-      },
-      debugShowCheckedModeBanner: false,
-      home: const SignUp2(),
-    );
-  }
-}
+
+    return BlocProvider(
+      create: (context) => LoginCubit(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+            fontFamily: 'Encode Sans Expanded'),
+        routes: {
+          const SignUp1().id: (context) => const SignUp1(),
+          const SignUp2().id: (context) => const SignUp2(),
+          const SignUp3().id: (context) => const SignUp3(),
+          const SignUp4().id: (context) => const SignUp4(),
+          const SignUp6().id: (context) => const SignUp6(),
+          const SignUp7().id: (context) => const SignUp7(),
+          const SignUp8().id: (context) => const SignUp8(),
+          const SignUp9().id: (context) => const SignUp9(),
+          const SignUp10().id: (context) => const SignUp10(),
+          const SignUp11().id: (context) => const SignUp11(),
+          const SignUp12().id: (context) => const SignUp12(),
+          Login().id: (context) => Login(),
+          const ChatScreen().id: (context) => const ChatScreen(),
+          const FindDoctor().id: (context) => const FindDoctor(),
+          const MessageScreen().id: (context) => const MessageScreen(),
+          ResetPassword().id: (context) => ResetPassword(),
+          const EnterVerficationCode().id: (context) =>
+              const EnterVerficationCode(),
+          const CreateNewPassword().id: (context) => const CreateNewPassword(),
+          const PatientHomeScreen().id: (context) => const PatientHomeScreen(),
+          const NoPatientAppoointment().id: (context) =>
+              const NoPatientAppoointment(),
+          const ReserveDoctor().id: (context) => const ReserveDoctor(),
+          const CheckReservation().id: (context) => const CheckReservation(),
+          const ChooseUserType().id: (context) => const ChooseUserType(),
+          const DoctorCalendar().id: (context) => const DoctorCalendar(),
+          ShowAppointmentInfoDoctor().id: (context) =>
+              ShowAppointmentInfoDoctor(),
+        },
+        debugShowCheckedModeBanner: false,
+        home: Login(),
+      ),
+
+   
+  
+  );}}
