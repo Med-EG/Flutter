@@ -26,7 +26,7 @@ class _CreateMedicineAlertState extends State<CreateMedicineAlert> {
                 const SizedBox(
                   height: 60,
                 ),
-                const DropDownTextField1(),
+                const DropDownTextField1(hintText: 'Medicine Name',),
                 const SizedBox(
                   height: 30,
                 ),

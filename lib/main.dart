@@ -11,6 +11,9 @@ import 'package:med_eg/Views/chooseUserType.dart';
 import 'package:med_eg/Views/createNewPassword.dart';
 import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/message_screen.dart';
+import 'package:med_eg/Views/faqs_screen.dart';
+import 'package:med_eg/Views/medical_record.dart';
+import 'package:med_eg/Views/patient_profile.dart';
 import 'package:med_eg/Views/reserve_doctor.dart';
 import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/Views/signUp10.dart';
@@ -18,6 +21,7 @@ import 'package:med_eg/Views/signUp11.dart';
 import 'package:med_eg/Views/signUp12.dart';
 import 'package:med_eg/Views/signUp2.dart';
 import 'package:med_eg/Views/signUp3.dart';
+import 'package:med_eg/Views/signUp5.dart';
 import 'package:med_eg/Views/signUp6.dart';
 import 'package:med_eg/Views/signUp7.dart';
 import 'package:med_eg/Views/signUp8.dart';
@@ -37,6 +41,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: MaterialApp(
@@ -78,6 +83,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: Login(),
       ),
-    );
-  }
-}
+
+   
+  
+  );}}

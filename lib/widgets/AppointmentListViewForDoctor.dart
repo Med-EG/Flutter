@@ -5,7 +5,7 @@ import 'package:med_eg/models/appointmentModel.dart';
 
 class AppointmentListViewForDoctor extends StatelessWidget {
   AppointmentListViewForDoctor({super.key});
-  final List<AppointmentModel> Appointments = const [
+  final List<AppointmentModel> appointments = const [
     AppointmentModel(
         day: 'Sunday ,',
         doctorName: 'Patient 1',
@@ -49,15 +49,15 @@ class AppointmentListViewForDoctor extends StatelessWidget {
     return Expanded(
       child: ListView.builder(
           shrinkWrap: true,
-          itemCount: Appointments.length,
+          itemCount: appointments.length,
           physics: const BouncingScrollPhysics(),
           itemBuilder: ((context, index) {
             return GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, ShowAppointmentInfoDoctor().id,
-                      arguments: appointmentSelected = Appointments[index]);
+                  Navigator.pushNamed(context, const ShowAppointmentInfoDoctor().id,
+                      arguments: appointmentSelected = appointments[index]);
                 },
-                child: AppointmentCard(appointment: Appointments[index]));
+                child: AppointmentCard(appointment: appointments[index]));
           })),
     );
   }

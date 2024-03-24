@@ -9,7 +9,7 @@ import '../widgets/custom_arrow_back.dart';
 
 class FindDoctor extends StatelessWidget {
   const FindDoctor({super.key});
-  final String id = '';
+  final String id = 'FindDoctor';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.width;
