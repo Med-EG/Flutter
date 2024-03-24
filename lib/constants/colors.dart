@@ -5,4 +5,3 @@ const grey = Color(0xff868C9A);
 const lightGrey = Color(0xffB4BAC9);
 const offWhite = Color(0xffF1F3F5);
 const kPrimaryColor = Color(0xFF407CE2);
-const red = Color(0xffe24040);
