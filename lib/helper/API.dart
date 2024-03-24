@@ -29,15 +29,17 @@ Future<dynamic> get({required String url, @required String? token}) async {
       headers.addAll({'Authorization': 'Bearer$token'});
     }
 
-    http.Response responce =
-        await http.post(Uri.parse(url), body: body, headers: headers);
-        if(responce.statusCode==200){
-        Map<String,dynamic>data=jsonDecode(responce.body);
+    http.Response response =
+        await http.post(Uri.parse(url), body: body);
+        if(response.statusCode==200){
+        Map<String,dynamic>data=jsonDecode(response.body);
+          print(response.body);
         return data;
         }
         else
         {
-          throw Exception('There is problem with status code${responce.statusCode}with body${responce.body}');
+           print(response.body);
+          throw Exception('There is problem with status code${response.statusCode}with body${response.body}');
         }
   }
    Future<dynamic> put(

@@ -13,10 +13,11 @@ class CustomTextFormField extends StatelessWidget {
       this.validator,
       this.controller,
       this.readOnly = false,
-      this.hint});
+      this.hint, 
+      this.onFieldSubmitted});
 
   final bool readOnly;
-   final TextEditingController? controller;
+  final TextEditingController? controller;
   final String label;
   final String? hint;
   final int maxLines;
@@ -25,11 +26,13 @@ class CustomTextFormField extends StatelessWidget {
   final IconButton? icon;
   final bool obscureText;
   final String? Function(String?)? validator;
+  final void Function(String)? onFieldSubmitted;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8),
       child: TextFormField(
+        onFieldSubmitted: onFieldSubmitted,
         readOnly: readOnly,
         controller: controller,
         keyboardType: textinputType,
