@@ -20,16 +20,16 @@ final String firstName;
             children: [
               const SuccessSignUp(
                   color: 0xffD9D9D9, image: 'assets/images/SVG/Stroke 3.svg'),
-              const Text.rich(
+               Text.rich(
                 TextSpan(
                   children: [
-                    TextSpan(
+                    const TextSpan(
                         text: 'Welcome ',
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 22)),
                     TextSpan(
-                        text: 'Shady',
-                        style: TextStyle(
+                        text: firstName,
+                        style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             color: kPrimaryColor,
                             fontSize: 22))

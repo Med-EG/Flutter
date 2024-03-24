@@ -14,6 +14,7 @@ final String id = 'SignUp1';
 }
 
 class _SignUp1State extends State<SignUp1> {
+  String _nationalIdController = '';
   bool agree = false;
  TextEditingController nationalIDController = TextEditingController();
   String _message = '';
@@ -58,7 +59,13 @@ class _SignUp1State extends State<SignUp1> {
               SizedBox(
                 height: screenHeight * 0.09,
                 child:
-                    const CustomTextFormField(label: 'National Id', maxLines: 1),
+                     CustomTextFormField(label: 'National Id', maxLines: 1,
+                    onChanged: (value) {
+                      setState(() {
+                        _nationalIdController = value;
+                      });
+                    },
+                    ),
               ),
               SizedBox(
                 height: screenHeight * 0.004,
@@ -134,7 +141,8 @@ class _SignUp1State extends State<SignUp1> {
                 onTap: () {
                   if (nationalIDController.text.length == 14 &&
                       agree == true) {
-                    Navigator.pushNamed(context, const SignUp2().id);
+                    Navigator.pushNamed(context, const SignUp2().id,
+                    arguments: _nationalIdController);
                   } else if (nationalIDController.text.isEmpty ||
                       agree == false) {
                     setState(() {
