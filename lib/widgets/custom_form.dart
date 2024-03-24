@@ -2,45 +2,56 @@ import 'package:flutter/material.dart';
 import 'package:med_eg/widgets/customDropDownTextField.dart';
 import '../Views/signUp3.dart';
 import '../constants/colors.dart';
+import '../helper/API.dart';
 import 'custom_textFormField.dart';
 
 class CustomFormWidget extends StatefulWidget {
-  const CustomFormWidget({super.key});
-
+  CustomFormWidget({super.key});
+  final Future<String?> token = Api().getToken();
   @override
   State<CustomFormWidget> createState() => _CustomFormWidgetState();
 }
 
 class _CustomFormWidgetState extends State<CustomFormWidget> {
-   late TextEditingController dateController;
+  late TextEditingController dateController;
+  late TextEditingController firstNameController;
   bool _obscureText = true;
   bool _obscureText1 = true;
   final GlobalKey<FormState> formkey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.onUserInteraction;
   DateTime _dateTime = DateTime.now();
+  String? password;
+  String? personalImage;
+  String? firstName;
+  String? lastName;
+  String? userName;
+  String? gender;
+  String? email;
+  String? address;
+  String? birthDate;
+  String? phoneNumber;
 
   void _showDatePicker() {
     showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(1920),
-        lastDate: DateTime(2025)).then((value) {
-          setState(() {
-            _dateTime = value!;
-          });
-        });
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(1920),
+            lastDate: DateTime(2025))
+        .then((value) {
+      setState(() {
+        _dateTime = value!;
+      });
+    });
   }
 
   void submitForm() {
     final form = formkey.currentState;
     if (form!.validate()) {
       Navigator.pushNamed(
-          context,
-          const SignUp3(
-            firstName: '',
-          ).id);
-      // Form is validated, you can perform actions like submitting the form data.
-      // Example: submitting data to the server, etc.
+        context,
+        SignUp3().id,
+        arguments: {'firstName': firstNameController.text},
+      );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -52,7 +63,17 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    firstNameController =
+        TextEditingController(); // Initialize controller for first name field
+    dateController = TextEditingController(
+        text: _dateTime.toString()); // Initialize controller for date field
+  }
+
+  @override
   Widget build(BuildContext context) {
+    var nationalID = ModalRoute.of(context)!.settings.arguments;
     double screenHeight = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
@@ -72,6 +93,11 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                     }
                     return null;
                   },
+                  onChanged: (value) {
+                    setState(() {
+                      firstName = value;
+                    });
+                  },
                 )),
                 Expanded(
                     child: CustomTextFormField(
@@ -82,21 +108,30 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                     }
                     return null;
                   },
+                  onChanged: (value) {
+                    setState(() {
+                      lastName = value;
+                    });
+                  },
                 ))
               ],
             ),
             CustomTextFormField(
               label: 'E-mail',
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'E-mail is required';
-                }
-                return null;
+              onChanged: (value) {
+                setState(() {
+                  email = value;
+                });
               },
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
+                onChanged: (value) {
+                  setState(() {
+                    password = value;
+                  });
+                },
                 obscureText: _obscureText,
                 cursorColor: kPrimaryColor,
                 decoration: InputDecoration(
@@ -161,19 +196,30 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                 )),
                 Expanded(
                     child: CustomTextFormField(
+                  onChanged: (value) {
+                    setState(() {
+                      birthDate = value;
+                    });
+                  },
                   readOnly: true,
                   label: 'Date of birth',
                   hint: _dateTime.toString(),
                   icon: IconButton(
                       onPressed: () {
                         _showDatePicker();
-                      }, icon: const Icon(Icons.calendar_month)),
+                      },
+                      icon: const Icon(Icons.calendar_month)),
                 ))
               ],
             ),
-            const CustomTextFormField(
+            CustomTextFormField(
               label: 'Phone number',
-              textinputType: TextInputType.numberWithOptions(),
+              textinputType: const TextInputType.numberWithOptions(),
+              onChanged: (value) {
+                setState(() {
+                  phoneNumber = value;
+                });
+              },
             ),
             Row(
               children: [
@@ -194,13 +240,51 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
                 Expanded(child: CustomTextFormField(label: 'City'))
               ],
             ),
-            const CustomTextFormField(label: 'Street'),
+            CustomTextFormField(
+              label: 'Street',
+              onChanged: (value) {
+                setState(() {
+                  address = value;
+                });
+              },
+            ),
+              CustomTextFormField(
+              label: 'Gender',
+              onChanged: (value) {
+                setState(() {
+                  address = value;
+                });
+              },
+            ),
+              CustomTextFormField(
+              label: 'username',
+              onChanged: (value) {
+                setState(() {
+                  userName = value;
+                });
+              },
+            ),
             SizedBox(
               height: screenHeight * 0.02,
             ),
             GestureDetector(
-              onTap: () {
-                submitForm();
+              onTap: () async {
+                final passwordController = TextEditingController();
+                String? password = passwordController.text;
+                await Api().post(
+                    url: 'https://api-medeg.online/api/medEG/patient/signup',
+                    body: {
+                      'first_name': firstName,
+                      'last_name': lastName,
+                      'username': userName,
+                      'password': password,
+                      'gender': gender,
+                      'birth_date': birthDate,
+                      'phone_number': phoneNumber,
+                      'address': address,
+                      'national_id': nationalID
+
+                    });
               },
               child: Container(
                 height: 57,

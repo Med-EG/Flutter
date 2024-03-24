@@ -36,7 +36,7 @@ final String id = 'SignUp2';
                       height: screenHeight * 0.02,
                     ),
                     const CustomProfileContainer(),
-                    const CustomFormWidget(),
+                     CustomFormWidget(),
                   ],
                 )),
               ),
