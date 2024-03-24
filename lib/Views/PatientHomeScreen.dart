@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:med_eg/Views/NoPatientAppointmentsScreen.dart';
 import 'package:med_eg/Views/find_doctor.dart';
@@ -7,14 +9,17 @@ import 'package:med_eg/widgets/customIconCard.dart';
 import 'package:med_eg/widgets/customSearchBar.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import '../constants/colors.dart';
+import 'package:med_eg/models/paitentModel.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 
 class PatientHomeScreen extends StatelessWidget {
   const PatientHomeScreen({super.key});
   final String id='HomeScreen';
-  
+
   @override
   Widget build(BuildContext context) {
-    var paitent = ModalRoute.of(context)!.settings.arguments;
+      PatientInfo? patient =BlocProvider.of<LoginCubit>(context).paitent;
     return Scaffold(
       bottomNavigationBar: Container(
         
@@ -62,10 +67,10 @@ class PatientHomeScreen extends StatelessWidget {
             decoration:
                 BoxDecoration(borderRadius: BorderRadius.circular(34.5)),
             child: Image.asset(
-              'assets/images/PNG/UserPhoto.png',
+              patient?.personalImage??'assets/images/PNG/PaitentPhotoInAppoinmtent.png',
               height: 47,
               width: 47,
-              //color: Colors.black,
+              
             ),
           ),
         ),

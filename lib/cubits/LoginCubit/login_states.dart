@@ -19,7 +19,7 @@ class InvalidData extends LoginState {
 class Loading extends LoginState {}
 
 class Success extends LoginState {
-  final PaitentInfo paitent;
+  final PatientInfo paitent;
 
   Success({required this.paitent});
 }

@@ -9,14 +9,14 @@ class LoginCubit extends Cubit<LoginState> {
   
   LoginCubit() : super(InitialState());
 
-  PaitentInfo ?paitent;  
+  PatientInfo ?paitent;  
   
   login({required String email, required String password}) async {
     try {
       final response = await Api().post(
           url: 'https://api-medeg.online/medEG/patient/login',
           body: {'email': email, 'password': password});
-      paitent = PaitentInfo.fromJson(response);
+      paitent = PatientInfo.fromJson(response);
       if (paitent != null) {
         emit(Success(paitent: paitent!));
       } else if(email==null){

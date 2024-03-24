@@ -22,7 +22,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  PaitentInfo? paitent;
+  
   bool isLoading = false;
   bool _obscureText = true;
   bool showEmailError = false;
@@ -47,8 +47,7 @@ class _LoginState extends State<Login> {
             child: CircularProgressIndicator(),
           );
         } else if (state is Success) {
-          Navigator.pushNamed(context, PatientHomeScreen().id,
-              arguments: state.paitent);
+          Navigator.pushNamed(context, PatientHomeScreen().id,);
         } else if (state is MissingData) {
           passwordBorderColor = emailBorderColor = Colors.red;
           passwordErrorMessage = emailErrorMessage = state.message;
