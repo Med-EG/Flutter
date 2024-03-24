@@ -1,4 +1,4 @@
-class PaitentInfo {
+class PatientInfo {
   final String firstName;
   final String lastName;
   final String username;
@@ -10,7 +10,8 @@ class PaitentInfo {
   final String birthDate;
   final int phoneNumber;
   final String token;
-  PaitentInfo(
+  final String personalImage;
+  PatientInfo(
       {required this.firstName,
       required this.token,
       required this.lastName,
@@ -21,10 +22,11 @@ class PaitentInfo {
       required this.email,
       required this.address,
       required this.birthDate,
-      required this.phoneNumber,});
+      required this.phoneNumber,
+      required this.personalImage, });
 
-      factory PaitentInfo.fromJson(json){
-        return PaitentInfo(
+      factory PatientInfo.fromJson(json){
+        return PatientInfo(
          token: json['token'],
         firstName: json['patient']['first_name'],
        lastName: json['patient']['last_name'],
@@ -35,6 +37,7 @@ class PaitentInfo {
        email: json['patient']['email'],
        address: json['patient']['address'],
        birthDate: json['patient']['birth_date'],
-       phoneNumber: json['patient']['phone_number']);
+       phoneNumber: json['patient']['phone_number'],
+       personalImage: json['patient']['phone_numberpersonal_image']);
 }
 }
