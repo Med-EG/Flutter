@@ -21,7 +21,7 @@ class ChooseUserType extends StatelessWidget {
             SizedBox(
               height: screenHieght * 0.06,
             ),
-            Container(
+            SizedBox(
                 height: screenHieght * 0.3,
                 width: screenWidth*0.4,
                 child: SvgPicture.asset('assets/images/SVG/Frame (1).svg')),

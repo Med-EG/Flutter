@@ -13,15 +13,15 @@ class ShowPatientAppointments extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-          SizedBox(height: 85,),
-             Text(
+          const SizedBox(height: 85,),
+             const Text(
                 'Appointments',
                 style: TextStyle(
                     color: darkBlue,
                     fontSize: 30,
                     fontWeight: FontWeight.bold),),
                 AppointmentListViewForDoctor(),
-               SizedBox(height: 40,),
+               const SizedBox(height: 40,),
           ],
         ),
       ),

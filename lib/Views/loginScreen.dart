@@ -6,7 +6,6 @@ import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/cubits/LoginCubit/login_states.dart';
 import 'package:med_eg/helper/API.dart';
-import 'package:med_eg/models/paitentModel.dart';
 import 'package:med_eg/widgets/custom_circle_container.dart';
 import 'package:med_eg/widgets/signUP_with.dart';
 import 'package:med_eg/Views/RestPassword.dart';
@@ -43,11 +42,11 @@ class _LoginState extends State<Login> {
     return Scaffold(
       body: BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
         if (state is Loading) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         } else if (state is Success) {
-          Navigator.pushNamed(context, PatientHomeScreen().id,);
+          Navigator.pushNamed(context, const PatientHomeScreen().id,);
         } else if (state is MissingData) {
           passwordBorderColor = emailBorderColor = Colors.red;
           passwordErrorMessage = emailErrorMessage = state.message;

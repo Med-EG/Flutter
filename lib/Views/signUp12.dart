@@ -18,9 +18,9 @@ class SignUp12 extends StatelessWidget {
           children: [
             const SuccessSignUp(
                 color: 0xff98b3e1, image: 'assets/images/SVG/Stroke 3.svg'),
-            CustomTextInformation(text: 'Your medical Record', color: darkBlue),
-            CustomTextInformation(text: 'have been Created', color: darkBlue),
-            CustomTextInformation(text: 'Successfully', color: kPrimaryColor),
+            const CustomTextInformation(text: 'Your medical Record', color: darkBlue),
+            const CustomTextInformation(text: 'have been Created', color: darkBlue),
+            const CustomTextInformation(text: 'Successfully', color: kPrimaryColor),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: CustomButton(

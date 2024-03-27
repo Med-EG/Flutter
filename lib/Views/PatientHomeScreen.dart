@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:med_eg/Views/NoPatientAppointmentsScreen.dart';
 import 'package:med_eg/Views/find_doctor.dart';

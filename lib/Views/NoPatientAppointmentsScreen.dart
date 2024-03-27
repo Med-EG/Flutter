@@ -43,7 +43,7 @@ final String id ='NoPatientAppoointment';
                 icon: Icons.edit_calendar_rounded,
                 text: 'Appointments',
               ),
-              GButton(
+              const GButton(
                 icon: Icons.person_3_rounded,
                 text: 'Profile',
               )

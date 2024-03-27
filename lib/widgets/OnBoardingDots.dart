@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class OnBordingDots extends StatelessWidget{
-   OnBordingDots({required this.dotColor});
+   const OnBordingDots({super.key, required this.dotColor});
 
     final Color dotColor;
   

@@ -49,7 +49,7 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
     if (form!.validate()) {
       Navigator.pushNamed(
         context,
-        SignUp3().id,
+        const SignUp3().id,
         arguments: {'firstName': firstNameController.text},
       );
     } else {

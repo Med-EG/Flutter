@@ -46,7 +46,7 @@ class ShowAppointmentInfoDoctor extends StatelessWidget {
                   SizedBox(height: screenHeight*0.05,),
                   Row(
                     children: [
-                      Spacer(flex: 1,),
+                      const Spacer(flex: 1,),
                       Column(
                         children: [
                           Text(
@@ -93,10 +93,10 @@ class ShowAppointmentInfoDoctor extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: screenHeight*0.15,),
-                  CustomButton(text: 'View Medical Record', color: kPrimaryColor,),
+                  const CustomButton(text: 'View Medical Record', color: kPrimaryColor,),
                   SizedBox(height: screenHeight*0.05,),
                   CustomButton(text: 'Go to chat', color: kPrimaryColor,onTap: () {
-                   Navigator.pushNamed(context, ChatScreen().id);
+                   Navigator.pushNamed(context, const ChatScreen().id);
                  },),
                   SizedBox(height: screenHeight*0.17,),
                  const CustomButton( text: 'Delete appointment', color: Color(0xffe24040)),

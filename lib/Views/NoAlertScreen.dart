@@ -41,8 +41,8 @@ class NoAlertScreen extends StatelessWidget {
               const Spacer(
                 flex: 5,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Row(children: [
                   Spacer(flex: 1,),
                   CustomAddButton(

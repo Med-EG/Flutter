@@ -18,7 +18,6 @@ import 'package:med_eg/Views/signUp11.dart';
 import 'package:med_eg/Views/signUp12.dart';
 import 'package:med_eg/Views/signUp2.dart';
 import 'package:med_eg/Views/signUp3.dart';
-import 'package:med_eg/Views/signUp5.dart';
 import 'package:med_eg/Views/signUp6.dart';
 import 'package:med_eg/Views/signUp7.dart';
 import 'package:med_eg/Views/signUp8.dart';
@@ -73,8 +72,8 @@ class MyApp extends StatelessWidget {
           const CheckReservation().id: (context) => const CheckReservation(),
           const ChooseUserType().id: (context) => const ChooseUserType(),
           const DoctorCalendar().id: (context) => const DoctorCalendar(),
-          ShowAppointmentInfoDoctor().id: (context) =>
-              ShowAppointmentInfoDoctor(),
+          const ShowAppointmentInfoDoctor().id: (context) =>
+              const ShowAppointmentInfoDoctor(),
         },
         debugShowCheckedModeBanner: false,
         home: Login(),
