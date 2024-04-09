@@ -38,6 +38,6 @@ class PatientInfo {
        address: json['patient']['address'],
        birthDate: json['patient']['birth_date'],
        phoneNumber: json['patient']['phone_number'],
-       personalImage: json['patient']['phone_numberpersonal_image']);
+       personalImage: json['patient']['personal_image']);
 }
 }

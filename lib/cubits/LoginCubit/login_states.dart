@@ -4,22 +4,19 @@ class LoginState {}
 
 class InitialState extends LoginState {}
 
-class MissingData extends LoginState {
-  final String message;
-
-  MissingData({required this.message});
-}
-
 class InvalidData extends LoginState {
   final String message;
 
   InvalidData({required this.message});
 }
 
-class Loading extends LoginState {}
+class LoginLoading extends LoginState {}
 
 class Success extends LoginState {
-  final PatientInfo paitent;
+  
+  final PatientInfo patient; 
 
-  Success({required this.paitent});
+  Success({required this.patient});
 }
+
+class ShowPassword extends LoginState {}

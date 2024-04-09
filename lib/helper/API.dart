@@ -1,9 +1,11 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Api {
+ bool errCode=false;
   Future<dynamic> get({required String url, String? token}) async {
     Map<String, String> headers = {};
     if (token != null) {
@@ -22,22 +24,42 @@ class Api {
   }
 
   Future<dynamic> post(
-      {required String url, required dynamic body, String? token}) async {
+      {required String url, required dynamic body, String? token,dynamic headers}) async {
     Map<String, String> headers = {};
+   
     if (token != null) {
       headers.addAll({'Authorization': 'Bearer$token'});
     }
     http.Response response = await http.post(Uri.parse(url),body: body);
+    try{
+    
     if (response.statusCode == 200) {
+      errCode=false;
+      
       Map<String, dynamic> data = jsonDecode(response.body);
       
       print(response.body);
       return data;
-    } else {
+    }
+    else if(response.statusCode==401||response.statusCode==404)
+    {
+      
+      errCode =true;
+       Map<String, dynamic> data = jsonDecode(response.body);
+      
+      print(response.body);
+      return data;
+    }
+     else {
       print(response.body);
       throw Exception(
           'There is problem with status code${response.statusCode}with body${response.body}');
-    }
+      } }
+      on SocketException
+      {}
+      catch(error){
+       
+      }
   }
 
   Future<dynamic> put(

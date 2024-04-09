@@ -17,7 +17,7 @@ class PatientHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      PatientInfo? patient =BlocProvider.of<LoginCubit>(context).paitent;
+      PatientInfo? patient =BlocProvider.of<LoginCubit>(context).patient;
     return Scaffold(
       bottomNavigationBar: Container(
         
@@ -64,15 +64,16 @@ class PatientHomeScreen extends StatelessWidget {
           child: Container(
             decoration:
                 BoxDecoration(borderRadius: BorderRadius.circular(34.5)),
-            child: Image.asset(
-              patient?.personalImage??'assets/images/PNG/PaitentPhotoInAppoinmtent.png',
-              height: 47,
-              width: 47,
+            child: Image.network(
+               'https://api-medeg.online/${patient!.personalImage}',
+              // 'assets/images/PNG/PaitentPhotoInAppoinmtent.png',
+              // height: 47,
+              // width: 47,
               
             ),
           ),
         ),
-        title: const Padding(
+        title:  Padding(
           padding: EdgeInsets.only(top: 12),
           child: Row(
             children: [
@@ -81,8 +82,8 @@ class PatientHomeScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 20),
               ),
               Text(
-                'User',
-                style: TextStyle(fontWeight: FontWeight.bold),
+                patient!.firstName,
+                style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
               )
             ],
           ),
