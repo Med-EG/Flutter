@@ -30,7 +30,7 @@ class AppointmentCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 8),
                   child: Text(
-                    appointment.doctorName,
+                    'Dr.${appointment.doctorFirstName} ${appointment.doctorLastName}',
                     style: const TextStyle(
                         color: darkBlue,
                         fontSize: 22,
@@ -40,18 +40,14 @@ class AppointmentCard extends StatelessWidget {
                 Expanded(
                   child: Row(
                     children: [
-                      Text(
-                        appointment.day,
-                        style: const TextStyle(color: darkBlue, fontSize: 15),
+                      
+                      Center(
+                        child: Text(
+                          appointment.date,
+                          style: const TextStyle(color: darkBlue, fontSize: 15),
+                        ),
                       ),
-                      Text(
-                        appointment.date,
-                        style: const TextStyle(color: darkBlue, fontSize: 15),
-                      ),
-                      Text(
-                        appointment.time,
-                        style: const TextStyle(color: darkBlue, fontSize: 15),
-                      ),
+                      
                     ],
                   ),
                 )

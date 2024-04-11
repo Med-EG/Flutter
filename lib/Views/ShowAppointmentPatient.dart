@@ -20,7 +20,8 @@ class ShowPatientAppointments extends StatelessWidget {
                     color: darkBlue,
                     fontSize: 30,
                     fontWeight: FontWeight.bold),),
-                AppointmentListViewForDoctor(),
+                    //need to make ListView for appointments for the
+              //  AppointmentListViewForDoctor(),
                const SizedBox(height: 40,),
           ],
         ),

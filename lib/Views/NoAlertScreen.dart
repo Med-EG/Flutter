@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/CreateMedicineAlert.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/CustomAddButton.dart';
 
 
 class NoAlertScreen extends StatelessWidget {
   const NoAlertScreen({super.key});
-
+final String id='NoAlertScreen';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,11 +42,14 @@ class NoAlertScreen extends StatelessWidget {
               const Spacer(
                 flex: 5,
               ),
-              const Padding(
+               Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Row(children: [
                   Spacer(flex: 1,),
                   CustomAddButton(
+                    onTap: () {
+                      Navigator.pushNamed(context, CreateMedicineAlert().id);
+                    },
                   borderRadius: 40,
                   plusIcon : true,
                 ),

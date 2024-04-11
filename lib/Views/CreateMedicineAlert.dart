@@ -5,6 +5,7 @@ import 'package:med_eg/widgets/customHalfTextFieldHalfDropDown.dart';
 
 class CreateMedicineAlert extends StatefulWidget {
   const CreateMedicineAlert({super.key});
+  final String id='CreateMedicineAlert';
 
   @override
   State<CreateMedicineAlert> createState() => _CreateMedicineAlertState();

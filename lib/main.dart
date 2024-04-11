@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:med_eg/Views/CreateMedicineAlert.dart';
 import 'package:med_eg/Views/DoctorCalendar.dart';
+import 'package:med_eg/Views/NoAlertScreen.dart';
 import 'package:med_eg/Views/ShowAppointmentsInfoDoctor.dart';
 import 'package:med_eg/Views/EnterVarifecationCode.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
@@ -74,9 +76,11 @@ class MyApp extends StatelessWidget {
           const DoctorCalendar().id: (context) => const DoctorCalendar(),
           const ShowAppointmentInfoDoctor().id: (context) =>
               const ShowAppointmentInfoDoctor(),
+              const NoAlertScreen().id:(context) => const NoAlertScreen(),
+              const CreateMedicineAlert().id :(context) => const CreateMedicineAlert(),
         },
         debugShowCheckedModeBanner: false,
-        home: Login(),
+        home: NoAlertScreen(),
       ),
     );
   }

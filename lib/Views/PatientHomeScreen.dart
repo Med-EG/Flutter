@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/NoAlertScreen.dart';
 import 'package:med_eg/Views/NoPatientAppointmentsScreen.dart';
 import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/message_screen.dart';
@@ -35,7 +36,7 @@ class PatientHomeScreen extends StatelessWidget {
             selectedIndex: 0,
             onTabChange: (value){},
             tabs: [
-              GButton(
+              const GButton(
                 icon: Icons.home_rounded,
                 text: 'home',
               ),
@@ -50,7 +51,7 @@ class PatientHomeScreen extends StatelessWidget {
                 icon: Icons.edit_calendar_rounded,
                 text: 'Appointments',
               ),
-              GButton(
+             const GButton(
                 icon: Icons.person_3_rounded,
                 text: 'Profile',
               )
@@ -74,16 +75,16 @@ class PatientHomeScreen extends StatelessWidget {
           ),
         ),
         title:  Padding(
-          padding: EdgeInsets.only(top: 12),
+          padding:const EdgeInsets.only(top: 12),
           child: Row(
             children: [
-              Text(
+             const Text(
                 'Hello , ',
                 style: TextStyle(fontSize: 20),
               ),
               Text(
-                patient!.firstName,
-                style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
+                patient.firstName,
+                style:const TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
               )
             ],
           ),
@@ -110,7 +111,10 @@ class PatientHomeScreen extends StatelessWidget {
                  const Spacer(
                     flex: 1,
                   ),
-                 const IconCard(
+                  IconCard(
+                  onTap: () {
+                    Navigator.pushNamed(context,const NoAlertScreen().id);
+                  },
                     image: 'assets/images/PNG/Medicine_icon.png',
                     text: 'Medicine',
                   ),

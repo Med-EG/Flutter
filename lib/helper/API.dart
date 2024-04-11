@@ -9,7 +9,7 @@ class Api {
   Future<dynamic> get({required String url, String? token}) async {
     Map<String, String> headers = {};
     if (token != null) {
-      headers.addAll({'Authorization': 'Bearer$token'});
+      headers.addAll({'Authorization': 'Bearer $token'});
     }
 
     http.Response response = await http.get(Uri.parse(url), headers: headers);
@@ -24,7 +24,7 @@ class Api {
   }
 
   Future<dynamic> post(
-      {required String url, required dynamic body, String? token,dynamic headers}) async {
+      {required String url, required dynamic body, String? token}) async {
     Map<String, String> headers = {};
    
     if (token != null) {

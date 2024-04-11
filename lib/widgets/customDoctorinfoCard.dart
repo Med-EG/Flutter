@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/models/doctorInfoModel.dart';
+import 'package:med_eg/models/doctorModel.dart';
 
 class DoctorInfoCard extends StatelessWidget {
   const DoctorInfoCard(
@@ -22,9 +22,9 @@ class DoctorInfoCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(doctor.image),
+              Image.network('https://api-medeg.online/${doctor.doctorImage}'),
               Text(
-                doctor.doctorName,
+                doctor.doctorFirstName,
                 style: const TextStyle(
                     color: darkBlue, fontWeight: FontWeight.bold),
               ),
@@ -50,7 +50,7 @@ class DoctorInfoCard extends StatelessWidget {
                           color: kPrimaryColor,
                         ),
                         Text(
-                          doctor.rate.toString(),
+                          doctor.rating.toString(),
                           style: const TextStyle(color: kPrimaryColor,fontSize: 12),
                         )
                       ],
@@ -59,7 +59,7 @@ class DoctorInfoCard extends StatelessWidget {
                  const Spacer(flex: 4,),
                  const Icon(Icons.location_on_rounded,color: lightGrey,),
                  const Spacer(flex: 1,),
-                  Text(doctor.location,style:const TextStyle(color: lightGrey,fontSize: 13,),),
+                  Text(doctor.country,style:const TextStyle(color: lightGrey,fontSize: 13,),),
                  const Spacer(flex: 6,)
                 ],
                 

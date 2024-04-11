@@ -50,20 +50,12 @@ class ShowAppointmentInfoDoctor extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                            appointmentSelected.doctorName,
+                            appointmentSelected.doctorFirstName,
                             style:const TextStyle(
                                 color: darkBlue,
                                 fontSize: 26,
                                 fontWeight: FontWeight.w600),
                           ),
-                          Text(
-                                appointmentSelected.day,
-                                style:const TextStyle(
-                                    color: darkBlue,
-                                    fontSize: 20,
-                                   // fontWeight: FontWeight.w600
-                                    ),
-                              ),
                           Row(
                             children: [
                               
@@ -75,14 +67,7 @@ class ShowAppointmentInfoDoctor extends StatelessWidget {
                                    // fontWeight: FontWeight.w600
                                     ),
                               ),
-                              Text(
-                                appointmentSelected.time,
-                                style:const TextStyle(
-                                    color: darkBlue,
-                                    fontSize: 20,
-                                   // fontWeight: FontWeight.w600
-                                    ),
-                              ),
+                              
                             ],
                           ),
                         ],

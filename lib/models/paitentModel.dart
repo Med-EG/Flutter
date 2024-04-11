@@ -2,7 +2,7 @@ class PatientInfo {
   final String firstName;
   final String lastName;
   final String username;
-  final String password;
+  final int id;
   final String gender;
   final int nationalId;
   final String email;
@@ -13,10 +13,10 @@ class PatientInfo {
   final String personalImage;
   PatientInfo(
       {required this.firstName,
+      required this.id, 
       required this.token,
       required this.lastName,
       required this.username,
-      required this.password,
       required this.gender,
       required this.nationalId,
       required this.email,
@@ -30,8 +30,8 @@ class PatientInfo {
          token: json['token'],
         firstName: json['patient']['first_name'],
        lastName: json['patient']['last_name'],
+       id: json['patient']['patient_id'],
        username: json['patient']['username'],
-       password: json['patient']['password'],
        gender: json['patient']['gender'],
        nationalId: json['patient']['national_id'],
        email: json['patient']['email'],
