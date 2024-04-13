@@ -68,48 +68,52 @@ class NoPatientAppoointment extends StatelessWidget {
         builder: (BuildContext context,
             AsyncSnapshot<List<AppointmentModel>> snapshot) {
           if (snapshot.hasData) {
-            List<AppointmentModel> appointments = snapshot.data!;
-            return ListView.builder(
-              itemBuilder:(context,index){
-                      return AppointmentCard(appointment: appointments[index]);}
-            ) ; 
-          } else {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Spacer(
-                      flex: 3,
-                    ),
-                    const Text(
-                      'Appointments',
-                      style: TextStyle(
-                          color: darkBlue,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    const Spacer(
-                      flex: 2,
-                    ),
-                    Image.asset('assets/images/PNG/Paper Negative.png'),
-                    const Spacer(
-                      flex: 1,
-                    ),
-                    Text(
-                      'No Appointments',
-                      style: TextStyle(
-                          fontSize: 30, color: Colors.grey.withOpacity(0.4)),
-                    ),
-                    const Spacer(
-                      flex: 5,
-                    ),
-                  ],
+            if (snapshot.data!.length > 0) {
+              List<AppointmentModel> appointments = snapshot.data!;
+              return ListView.builder(itemBuilder: (context, index) {
+                return AppointmentCard(appointment: appointments[index]);
+              });
+            } else if (snapshot.data!.length == 0) {
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Spacer(
+                        flex: 3,
+                      ),
+                      const Text(
+                        'Appointments',
+                        style: TextStyle(
+                            color: darkBlue,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const Spacer(
+                        flex: 2,
+                      ),
+                      Image.asset('assets/images/PNG/Paper Negative.png'),
+                      const Spacer(
+                        flex: 1,
+                      ),
+                      Text(
+                        'No Appointments',
+                        style: TextStyle(
+                            fontSize: 30, color: Colors.grey.withOpacity(0.4)),
+                      ),
+                      const Spacer(
+                        flex: 5,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
+              );
+            }
+          } else {
+            return Center(child: CircularProgressIndicator());
           }
+          return Center();
         },
       ),
     );

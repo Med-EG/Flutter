@@ -80,7 +80,7 @@ class MyApp extends StatelessWidget {
               const CreateMedicineAlert().id :(context) => const CreateMedicineAlert(),
         },
         debugShowCheckedModeBanner: false,
-        home: NoAlertScreen(),
+        home: Login(),
       ),
     );
   }

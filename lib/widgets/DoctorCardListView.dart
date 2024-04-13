@@ -14,23 +14,18 @@ class DoctorCardListView extends StatelessWidget {
           future: GetAllDoctorService().GetAllDoctors(context),
           builder: (BuildContext context,
               AsyncSnapshot<List<DoctorModel>> snapshot) {
-                if(snapshot.hasData)
-                {
-                  List<DoctorModel>doctors=snapshot.data!;
-                  return ListView.builder(
-                    
-                    scrollDirection: Axis.horizontal,
-                    itemCount:doctors.length ,
-                    itemBuilder: (context,index){
-                      return DoctorInfoCard(doctor: doctors[index]);
-                    }
-                  );
-
-                }
-                else{
-                  return const Center(child: CircularProgressIndicator());
-                }
-              },
+            if (snapshot.hasData) {
+              List<DoctorModel> doctors = snapshot.data!;
+              return ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: doctors.length,
+                  itemBuilder: (context, index) {
+                    return DoctorInfoCard(doctor: doctors[index]);
+                  });
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          },
         ));
   }
 }
