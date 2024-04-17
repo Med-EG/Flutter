@@ -6,6 +6,7 @@ import 'package:med_eg/constants/colors.dart';
 // ignore: must_be_immutable
 class HalfTextFieldHalfDropDown extends StatefulWidget {
   final bool isItDoseTextField;
+  final void Function(String)? onChanged;
   final List<DropDownValueModel> timeList = const [
     DropDownValueModel(name: 'AM', value: "AM"),
     DropDownValueModel(
@@ -23,8 +24,11 @@ class HalfTextFieldHalfDropDown extends StatefulWidget {
   HalfTextFieldHalfDropDown({
     super.key,
     required this.isItDoseTextField,
+    this.onChanged
+
   });
   int selectedValue = 0;
+ 
   @override
   State<HalfTextFieldHalfDropDown> createState() =>
       _HalfTextFieldHalfDropDownState();
@@ -41,6 +45,7 @@ class _HalfTextFieldHalfDropDownState extends State<HalfTextFieldHalfDropDown> {
         children: [
           Expanded(
             child: TextField(
+              onChanged: widget.onChanged,
               keyboardType: TextInputType.number,
               //trying to make the textfield only take numbers from 1 to 12 for the time textfield
               // inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^1[012]$'))],
@@ -50,6 +55,7 @@ class _HalfTextFieldHalfDropDownState extends State<HalfTextFieldHalfDropDown> {
                 hintStyle: const TextStyle(color: lightGrey),
                 enabledBorder: buildBorder(grey),
                 focusedBorder: buildBorder(grey),
+                
               ),
             ),
           ),

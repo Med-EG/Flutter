@@ -50,7 +50,7 @@ class SignUp5 extends StatelessWidget {
                 text: 'Next',
                 color: kPrimaryColor,
                 onTap: () {
-                  Navigator.pushNamed(context, const SignUp3(firstName: '',).id);
+                  Navigator.pushNamed(context, const SignUp3().id);
                 },
               )
             ],

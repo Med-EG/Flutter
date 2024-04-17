@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/Views/DoctorCalendar.dart';
+import 'package:med_eg/Views/NoAlertScreen.dart';
 import 'package:med_eg/Views/ShowAppointmentsInfoDoctor.dart';
 import 'package:med_eg/Views/EnterVarifecationCode.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
@@ -9,11 +10,12 @@ import 'package:med_eg/Views/RestPassword.dart';
 import 'package:med_eg/Views/check_reservation.dart';
 import 'package:med_eg/Views/chooseUserType.dart';
 import 'package:med_eg/Views/createNewPassword.dart';
+import 'package:med_eg/Views/edit_medicine_info.dart';
 import 'package:med_eg/Views/find_doctor.dart';
-import 'package:med_eg/Views/message_screen.dart';
-import 'package:med_eg/Views/faqs_screen.dart';
 import 'package:med_eg/Views/medical_record.dart';
-import 'package:med_eg/Views/patient_profile.dart';
+import 'package:med_eg/Views/medical_record2.dart';
+import 'package:med_eg/Views/message_screen.dart';
+import 'package:med_eg/Views/profile03.dart';
 import 'package:med_eg/Views/reserve_doctor.dart';
 import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/Views/signUp10.dart';
@@ -21,15 +23,17 @@ import 'package:med_eg/Views/signUp11.dart';
 import 'package:med_eg/Views/signUp12.dart';
 import 'package:med_eg/Views/signUp2.dart';
 import 'package:med_eg/Views/signUp3.dart';
-import 'package:med_eg/Views/signUp5.dart';
 import 'package:med_eg/Views/signUp6.dart';
 import 'package:med_eg/Views/signUp7.dart';
 import 'package:med_eg/Views/signUp8.dart';
 import 'package:med_eg/Views/signUp9.dart';
+import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
+import 'package:med_eg/widgets/testForm.dart';
 import 'Views/chat_screen.dart';
 import 'Views/loginScreen.dart';
 import 'Views/signUp4.dart';
+import 'cubits/RegisterCubit/sign_up_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,12 +45,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
+            textSelectionTheme: TextSelectionThemeData(
+                selectionColor: kPrimaryColor.withOpacity(0.5),
+                selectionHandleColor: kPrimaryColor),
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
             fontFamily: 'Encode Sans Expanded'),
@@ -77,13 +83,18 @@ class MyApp extends StatelessWidget {
           const CheckReservation().id: (context) => const CheckReservation(),
           const ChooseUserType().id: (context) => const ChooseUserType(),
           const DoctorCalendar().id: (context) => const DoctorCalendar(),
-          ShowAppointmentInfoDoctor().id: (context) =>
-              ShowAppointmentInfoDoctor(),
+          const ShowAppointmentInfoDoctor().id: (context) =>
+              const ShowAppointmentInfoDoctor(),
+          const MedicalRecord().id: (context) => const MedicalRecord(),
+          const MedicalRecord2().id: (context) => const MedicalRecord2(),
+          const EditMedicineInfo().id: (context) => const EditMedicineInfo(),
+          TestForm().id: (context) => TestForm(),
+          const Profile03().id: (context) => const Profile03(),
+          const NoAlertScreen().id: (context) => const NoAlertScreen(),
         },
         debugShowCheckedModeBanner: false,
         home: Login(),
       ),
-
-   
-  
-  );}}
+    );
+  }
+}

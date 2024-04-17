@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:med_eg/Views/edit_medicine_info.dart';
+import 'package:med_eg/Views/medical_record2.dart';
 import 'package:med_eg/constants/colors.dart';
+import 'package:med_eg/models/medicalRecordModel.dart';
+import 'package:med_eg/services/GetBasicMedicalInfo.dart';
 import 'package:med_eg/widgets/custom_button.dart';
+import 'package:med_eg/widgets/general_basic_medical_info.dart';
 
 import '../widgets/custom_details_info.dart';
 import '../widgets/general_info_row.dart';
@@ -75,50 +80,26 @@ class MedicalRecord extends StatelessWidget {
                   text2: 'Info. ',
                   text3: ':',
                 ),
-                const GeneralInfoRow(
-                  text1: 'Weight : ',
-                  text2: '80 KG',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Height : ',
-                  text2: '180 CM',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Blood type : ',
-                  text2: 'A+',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Alcoholic : ',
-                  text2: 'Yes',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Alcoholic Level : ',
-                  text2: 'Low',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Smoker : ',
-                  text2: 'No',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Smoking Level : ',
-                  text2: '-',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Job : ',
-                  text2: 'Teacher',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Married : ',
-                  text2: '4 H',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Sleeping Quality : ',
-                  text2: 'Bad',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Past Fracures : ',
-                  text2: 'Bad',
-                ),
+               FutureBuilder<MedicalRecordModel>(
+  future: GetBasicMedicalInfo().getBasicMedicalInfo(context),
+  builder: (context, snapshot) {
+    if (snapshot.connectionState == ConnectionState.waiting) {
+      return const Center(child: CircularProgressIndicator());
+    } else if (snapshot.hasError) {
+      return Text('Error: ${snapshot.error}');
+    } else if (snapshot.hasData) {
+      MedicalRecordModel? medicalRecord = snapshot.data;
+      if (medicalRecord != null) {
+        return CustomGeneralBasicMedicalInfo(medicalRecord: medicalRecord);
+      } else {
+        return Text('Error: Medical record data is null');
+      }
+    } else {
+      return const Center(child: CircularProgressIndicator());
+    }
+  },
+),
+
                 const CustomTextRichInfo(
                   text1: 'Diseases ',
                   text2: 'Info. ',
@@ -138,14 +119,24 @@ class MedicalRecord extends StatelessWidget {
                   text2: 'Info. ',
                   text3: ':',
                 ),
-                const CustomDetailsInfoRow(
-                  text: '.Aspirin',
-                ),
-                const CustomDetailsInfoRow(
-                  text: '.Lisinopril 50Ml',
-                ),
-                const CustomDetailsInfoRow(
+                CustomDetailsInfoRow(
+                    text: '.Aspirin',
+                    onPressed: () {
+                      Navigator.pushNamed(context, const MedicalRecord2().id);
+                    }),
+                CustomDetailsInfoRow(
+                    text: '.Lisinopril 50Ml',
+                    onPressed: () {
+                      Navigator.pushNamed(context, const MedicalRecord2().id);
+                    }),
+                CustomDetailsInfoRow(
                   text: '.Metformin',
+                  onPressed: () {
+                    Navigator.pushNamed(context, const MedicalRecord2().id);
+                  },
+                  onPressed2: () {
+                    Navigator.pushNamed(context, const EditMedicineInfo().id);
+                  },
                 ),
                 const CustomTextRichInfo(
                   text1: 'Allergies ',
@@ -160,6 +151,7 @@ class MedicalRecord extends StatelessWidget {
                   text2: 'Info. ',
                   text3: ':',
                 ),
+                const CustomDetailsInfoRow(),
                 const CustomTextRichInfo(
                   text1: 'Family ',
                   text2: 'Info. ',
@@ -174,10 +166,10 @@ class MedicalRecord extends StatelessWidget {
                 const CustomDetailsInfoRow(
                   text: '.Second Degree',
                 ),
-               const Padding(
-                 padding: EdgeInsets.symmetric(vertical: 24),
-                 child: CustomButton(text: 'Done'),
-               )
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 24),
+                  child: CustomButton(text: 'Done'),
+                )
               ],
             ),
           ),
@@ -186,7 +178,6 @@ class MedicalRecord extends StatelessWidget {
     );
   }
 }
-
 
 class CustomTextRichInfo extends StatelessWidget {
   const CustomTextRichInfo({
@@ -216,4 +207,3 @@ class CustomTextRichInfo extends StatelessWidget {
     ]));
   }
 }
-

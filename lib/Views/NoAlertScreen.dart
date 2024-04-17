@@ -5,7 +5,7 @@ import 'package:med_eg/widgets/CustomAddButton.dart';
 
 class NoAlertScreen extends StatelessWidget {
   const NoAlertScreen({super.key});
-
+final String id = 'NoAlertScreen';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
