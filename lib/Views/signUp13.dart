@@ -1,12 +1,7 @@
 // ignore_for_file: avoid_print
-
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
-import 'package:image_picker/image_picker.dart';
-import 'package:med_eg/helper/API.dart';
 import 'package:med_eg/widgets/custom_button.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 

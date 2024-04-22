@@ -4,6 +4,7 @@ import 'package:med_eg/Views/NoPatientAppointmentsScreen.dart';
 import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/medical_record.dart';
 import 'package:med_eg/Views/message_screen.dart';
+import 'package:med_eg/Views/patient_profile.dart';
 import 'package:med_eg/widgets/DoctorCardListView.dart';
 import 'package:med_eg/widgets/customIconCard.dart';
 import 'package:med_eg/widgets/customSearchBar.dart';
@@ -55,7 +56,10 @@ class PatientHomeScreen extends StatelessWidget {
                 icon: Icons.edit_calendar_rounded,
                 text: 'Appointments',
               ),
-              const GButton(
+               GButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, const PatientProfile().id);
+                },
                 icon: Icons.person_3_rounded,
                 text: 'Profile',
               )

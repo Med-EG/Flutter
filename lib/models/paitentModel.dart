@@ -25,19 +25,24 @@ class PatientInfo {
       required this.phoneNumber,
       required this.personalImage, });
 
-      factory PatientInfo.fromJson(json){
-        return PatientInfo(
-         token: json['token'],
-        firstName: json['patient']['first_name'],
-       lastName: json['patient']['last_name'],
-       id: json['patient']['patient_id'],
-       username: json['patient']['username'],
-       gender: json['patient']['gender'],
-       nationalId: json['patient']['national_id'],
-       email: json['patient']['email'],
-       address: json['patient']['address'],
-       birthDate: json['patient']['birth_date'],
-       phoneNumber: json['patient']['phone_number'],
-       personalImage: json['patient']['personal_image']);
+     factory PatientInfo.fromJson(Map<String, dynamic>? json) {
+  if (json == null) {
+    throw ArgumentError('JSON data is null');
+  }
+  return PatientInfo(
+    token: json['token'] ?? '',
+    firstName: json['patient']?['first_name'] ?? '',
+    lastName: json['patient']?['last_name'] ?? '',
+    id: json['patient']?['patient_id'] ?? 0,
+    username: json['patient']?['username'] ?? '',
+    gender: json['patient']?['gender'] ?? '',
+    nationalId: json['patient']?['national_id'] ?? 0,
+    email: json['patient']?['email'] ?? '',
+    address: json['patient']?['address'] ?? '',
+    birthDate: json['patient']?['birth_date'] ?? '',
+    phoneNumber: json['patient']?['phone_number'] ?? 0,
+    personalImage: json['patient']?['personal_image'] ?? '',
+  );
 }
+
 }

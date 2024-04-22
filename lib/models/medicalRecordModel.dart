@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 class MedicalRecordModel {
+  final int medicalId;
   final int height;
   final int weight;
   final String blood_type;
@@ -18,7 +19,7 @@ class MedicalRecordModel {
   final String? second_degree;
 
   MedicalRecordModel(
-      {
+      {required this.medicalId,
       required this.height,
       required this.weight,
       required this.blood_type,
@@ -37,6 +38,7 @@ class MedicalRecordModel {
 
   factory MedicalRecordModel.fromJson(json) {
     return MedicalRecordModel(
+        medicalId: json["medical_record_id"],
         height: json["height"],
         weight: json["weight"],
         blood_type: json["blood_type"],

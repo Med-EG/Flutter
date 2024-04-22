@@ -14,7 +14,9 @@ import 'package:med_eg/Views/edit_medicine_info.dart';
 import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/medical_record.dart';
 import 'package:med_eg/Views/medical_record2.dart';
+import 'package:med_eg/Views/medical_record3.dart';
 import 'package:med_eg/Views/message_screen.dart';
+import 'package:med_eg/Views/patient_profile.dart';
 import 'package:med_eg/Views/profile03.dart';
 import 'package:med_eg/Views/reserve_doctor.dart';
 import 'package:med_eg/Views/signUp1.dart';
@@ -33,7 +35,6 @@ import 'package:med_eg/widgets/testForm.dart';
 import 'Views/chat_screen.dart';
 import 'Views/loginScreen.dart';
 import 'Views/signUp4.dart';
-import 'cubits/RegisterCubit/sign_up_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -86,11 +87,13 @@ class MyApp extends StatelessWidget {
           const ShowAppointmentInfoDoctor().id: (context) =>
               const ShowAppointmentInfoDoctor(),
           const MedicalRecord().id: (context) => const MedicalRecord(),
-          const MedicalRecord2().id: (context) => const MedicalRecord2(),
+          MedicalRecord2().id: (context) => MedicalRecord2(),
+          const MedicalRecord3().id: (context) => const MedicalRecord3(),
           const EditMedicineInfo().id: (context) => const EditMedicineInfo(),
           TestForm().id: (context) => TestForm(),
           const Profile03().id: (context) => const Profile03(),
           const NoAlertScreen().id: (context) => const NoAlertScreen(),
+          const PatientProfile().id: (context) => const PatientProfile(),
         },
         debugShowCheckedModeBanner: false,
         home: Login(),

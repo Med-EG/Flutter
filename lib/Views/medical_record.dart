@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:med_eg/Views/edit_medicine_info.dart';
 import 'package:med_eg/Views/medical_record2.dart';
 import 'package:med_eg/constants/colors.dart';
+import 'package:med_eg/models/diseaseInfoModel.dart';
+import 'package:med_eg/models/medicalInfo.dart';
 import 'package:med_eg/models/medicalRecordModel.dart';
 import 'package:med_eg/services/GetBasicMedicalInfo.dart';
+import 'package:med_eg/services/get%20Medicine%20info%20for%20a%20record.dart';
+import 'package:med_eg/services/getDiseaseInfo.dart';
 import 'package:med_eg/widgets/custom_button.dart';
 import 'package:med_eg/widgets/general_basic_medical_info.dart';
-
 import '../widgets/custom_details_info.dart';
-import '../widgets/general_info_row.dart';
+import '../widgets/name_age.dart';
+import 'medical_record3.dart';
 
 class MedicalRecord extends StatelessWidget {
   const MedicalRecord({super.key});
@@ -45,99 +48,135 @@ class MedicalRecord extends StatelessWidget {
                                   fontWeight: FontWeight.w600),
                             ),
                           ),
-                          const Text(
-                            '#123786',
-                            style: TextStyle(
-                                color: kPrimaryColor,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600),
+                          FutureBuilder<MedicalRecordModel>(
+                            future: GetBasicMedicalInfo()
+                                .getBasicMedicalInfo(context),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return const Center(
+                                    child: CircularProgressIndicator());
+                              } else if (snapshot.hasError) {
+                                return Text('Error: ${snapshot.error}');
+                              } else if (snapshot.hasData) {
+                                MedicalRecordModel? medicalRecord =
+                                    snapshot.data;
+                                if (medicalRecord != null) {
+                                  return Column(
+                                    children: [
+                                      Text(
+                                        '#${medicalRecord.medicalId}',
+                                        style: const TextStyle(
+                                          color: kPrimaryColor,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: screenHeight * 0.03,
+                                      ),
+                                      const MyWidget(),
+                                      SizedBox(height: screenHeight * 0.04),
+                                      const Align(
+                                        alignment: Alignment.topLeft,
+                                        child: CustomTextRichInfo(
+                                          text1: 'General ',
+                                          text2: 'Info. ',
+                                          text3: ':',
+                                        ),
+                                      ),
+                                      CustomGeneralBasicMedicalInfo(
+                                          medicalRecord: medicalRecord)
+                                    ],
+                                  );
+                                } else {
+                                  return const Text(
+                                      'Error: Medical record data is null');
+                                }
+                              } else {
+                                return const Center(
+                                    child: CircularProgressIndicator());
+                              }
+                            },
                           ),
                         ],
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: screenHeight * 0.03,
-                ),
-                const Text(
-                  'Mohamed ElSayed',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: darkBlue,
-                      fontWeight: FontWeight.w600),
-                ),
-                const Text(
-                  '27 Years old',
-                  style: TextStyle(
-                      color: darkBlue,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600),
-                ),
-                SizedBox(height: screenHeight * 0.04),
-                const CustomTextRichInfo(
-                  text1: 'General ',
-                  text2: 'Info. ',
-                  text3: ':',
-                ),
-               FutureBuilder<MedicalRecordModel>(
-  future: GetBasicMedicalInfo().getBasicMedicalInfo(context),
-  builder: (context, snapshot) {
-    if (snapshot.connectionState == ConnectionState.waiting) {
-      return const Center(child: CircularProgressIndicator());
-    } else if (snapshot.hasError) {
-      return Text('Error: ${snapshot.error}');
-    } else if (snapshot.hasData) {
-      MedicalRecordModel? medicalRecord = snapshot.data;
-      if (medicalRecord != null) {
-        return CustomGeneralBasicMedicalInfo(medicalRecord: medicalRecord);
-      } else {
-        return Text('Error: Medical record data is null');
-      }
-    } else {
-      return const Center(child: CircularProgressIndicator());
-    }
-  },
-),
-
                 const CustomTextRichInfo(
                   text1: 'Diseases ',
                   text2: 'Info. ',
                   text3: ':',
                 ),
-                const CustomDetailsInfoRow(
-                  text: '.Diabetes',
-                ),
-                const CustomDetailsInfoRow(
-                  text: '.Alzheimer\'s Disease',
-                ),
-                const CustomDetailsInfoRow(
-                  text: '.HIV/AIDS',
-                ),
+                FutureBuilder<List<DiseaseInfoModel>>(
+                    future: GetDiseaseInfoForRecord().getDiseaseInfo(context),
+                    builder: ((context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(child: CircularProgressIndicator());
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else if (snapshot.hasData) {
+                        List<DiseaseInfoModel> diseaseList = snapshot.data!;
+                        return Column(
+                          children: [
+                            for (int i = 0; i < diseaseList.length; i++)
+                              CustomDetailsInfoRow(
+                                text: diseaseList[i].diseaseName,
+                                onPressed: () {},
+                                onPressed2: () {},
+                                onPressed3: () {},
+                              )
+                          ],
+                        );
+                      } else {
+                        return const Center(
+                          child: Text('No medicine information available'),
+                        );
+                      }
+                    })),
                 const CustomTextRichInfo(
                   text1: 'Medication ',
                   text2: 'Info. ',
                   text3: ':',
                 ),
-                CustomDetailsInfoRow(
-                    text: '.Aspirin',
-                    onPressed: () {
-                      Navigator.pushNamed(context, const MedicalRecord2().id);
-                    }),
-                CustomDetailsInfoRow(
-                    text: '.Lisinopril 50Ml',
-                    onPressed: () {
-                      Navigator.pushNamed(context, const MedicalRecord2().id);
-                    }),
-                CustomDetailsInfoRow(
-                  text: '.Metformin',
-                  onPressed: () {
-                    Navigator.pushNamed(context, const MedicalRecord2().id);
-                  },
-                  onPressed2: () {
-                    Navigator.pushNamed(context, const EditMedicineInfo().id);
-                  },
-                ),
+                FutureBuilder<List<MedicalInfoModel>>(
+                    future: GetMedicineInfoForRecord().getMedicineInfo(context),
+                    builder: ((context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(child: CircularProgressIndicator());
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else if (snapshot.hasData) {
+                        List<MedicalInfoModel> medicineList = snapshot.data!;
+                        return Column(
+                          children: [
+                            for (int i = 0; i < medicineList.length; i++)
+                              CustomDetailsInfoRow(
+                                text: medicineList[i].medicineName,
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    MedicalRecord2().id,
+                                    arguments: {
+                                      'medicineId': medicineList[i].medicineId
+                                    }, // Pass unique identifier
+                                  );
+                                },
+                                onPressed2: () {
+                                  Navigator.pushNamed(
+                                      context, const MedicalRecord3().id);
+                                },
+                                onPressed3: () {},
+                              )
+                          ],
+                        );
+                      } else {
+                        return const Center(
+                          child: Text('No medicine information available'),
+                        );
+                      }
+                    })),
                 const CustomTextRichInfo(
                   text1: 'Allergies ',
                   text2: 'Info. ',

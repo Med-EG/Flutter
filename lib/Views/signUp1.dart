@@ -14,7 +14,6 @@ class SignUp1 extends StatefulWidget {
 }
 
 class _SignUp1State extends State<SignUp1> {
-  String _nationalIdController = '';
   bool agree = false;
   TextEditingController nationalIDController = TextEditingController();
   String _errormessage = '';
@@ -28,7 +27,6 @@ class _SignUp1State extends State<SignUp1> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         body: Padding(
