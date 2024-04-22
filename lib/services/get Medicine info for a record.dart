@@ -5,9 +5,7 @@ import 'package:med_eg/helper/API.dart';
 import 'package:med_eg/models/medicalInfo.dart';
 import 'package:med_eg/models/medicalRecordModel.dart';
 import 'package:med_eg/models/paitentModel.dart';
-
 import 'GetBasicMedicalInfo.dart';
-
 class GetMedicineInfoForRecord {
   Future<List<MedicalInfoModel>> getMedicineInfo(BuildContext context) async {
     try {
