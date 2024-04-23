@@ -78,6 +78,24 @@ class Api {
           'There is problem with status code${responce.statusCode}with body${responce.body}');
     }
   }
+  Future<dynamic> delete({required String url, String? token}) async {
+    Map<String, String> headers = {};
+    if (token != null) {
+      headers.addAll({'Authorization': 'Bearer $token'});
+    }
+
+    http.Response response = await http.delete(Uri.parse(url), headers: headers);
+
+    if (response.statusCode == 200) {
+      print(response.body);
+      return jsonDecode(response.body);
+    } else if (response.statusCode == 404 || response.statusCode == 400) {
+      throw Exception('Error: ${response.statusCode} ${response.reasonPhrase}');
+    } else {
+      throw Exception(
+          'There is a problem with status code${response.statusCode}');
+    }
+  }
 
   Future<String?> getToken() async {
     final prefs = await SharedPreferences.getInstance();

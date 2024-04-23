@@ -1,34 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/models/medicalInfo.dart';
-import 'package:med_eg/services/Medicine%20Info.dart';
+import 'package:med_eg/models/allergyInfoModel.dart';
+import 'package:med_eg/services/allergy%20Service.dart';
 import 'package:med_eg/widgets/custom_arrow_back.dart';
 import '../widgets/custom_circle_container.dart';
 
-class MedicalRecord2 extends StatelessWidget {
-  const MedicalRecord2({super.key});
-  final String id = 'MedicalRecord2';
+class MedicalRecord2ForAllergy extends StatelessWidget {
+  const MedicalRecord2ForAllergy({super.key});
+  final String id = 'MedicalRecord2ForAllergy';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     final Map<String, dynamic>? args =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
-    if (args != null && args.containsKey('medicineId')) {
+    if (args != null && args.containsKey('allergyId')) {
       return SafeArea(
-        child: FutureBuilder<List<MedicalInfoModel>>(
-          future: MedicineInfoForRecordService().getMedicineInfoService(context),
+        child: FutureBuilder<List<AllergyInfoModel>>(
+          future: AllergyInfoForRecordService().getAllergyInfoService(context),
           builder: ((context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}');
             } else if (snapshot.hasData) {
-              List<MedicalInfoModel>? medicalInfoModel = snapshot.data;
-              if (medicalInfoModel != null) {
-                final int medicineId = args['medicineId'];
-                final MedicalInfoModel medicineInfo =
-                    medicalInfoModel.firstWhere(
-                  (info) => info.medicineId == medicineId,
+              List<AllergyInfoModel>? allergyInfoModel = snapshot.data;
+              if (allergyInfoModel != null) {
+                final int allergyIdd = args['allergyId'];
+                final AllergyInfoModel allergyInfo =
+                    allergyInfoModel.firstWhere(
+                  (info) => info.allergyId == allergyIdd,
                 );
                 return Scaffold(
                   body: Stack(
@@ -51,7 +51,7 @@ class MedicalRecord2 extends StatelessWidget {
                                   height: screenHeight * 0.03,
                                 ),
                                 const Text(
-                                  'Medicine',
+                                  'Allergy',
                                   style: TextStyle(
                                       fontSize: 30,
                                       color: kPrimaryColor,
@@ -74,13 +74,13 @@ class MedicalRecord2 extends StatelessWidget {
                                       Row(
                                         children: [
                                           const Text(
-                                            'Medicine Name: ',
+                                            'Allergy Name: ',
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 color: darkBlue,
                                                 fontWeight: FontWeight.w600),
                                           ),
-                                          Text(medicineInfo.medicineName,
+                                          Text(allergyInfo.allergyName,
                                               style: const TextStyle(
                                                   fontSize: 16,
                                                   color: kPrimaryColor,
@@ -93,13 +93,13 @@ class MedicalRecord2 extends StatelessWidget {
                                       Row(
                                         children: [
                                           const Text(
-                                            'Dose: ',
+                                            'Allergy Type: ',
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 color: darkBlue,
                                                 fontWeight: FontWeight.w600),
                                           ),
-                                          Text(medicineInfo.dose,
+                                          Text(allergyInfo.allergyType,
                                               style: const TextStyle(
                                                   fontSize: 16,
                                                   color: kPrimaryColor,
@@ -112,32 +112,32 @@ class MedicalRecord2 extends StatelessWidget {
                                       Row(
                                         children: [
                                           const Text(
-                                            'Frequency: ',
+                                            'Severity Level: ',
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 color: darkBlue,
                                                 fontWeight: FontWeight.w600),
                                           ),
-                                          Text(medicineInfo.frequency,
+                                          Text('${allergyInfo.severityLevel}',
                                               style: const TextStyle(
                                                   fontSize: 16,
                                                   color: kPrimaryColor,
                                                   fontWeight: FontWeight.w600))
                                         ],
                                       ),
-                                      SizedBox(
+                                       SizedBox(
                                         height: screenHeight * 0.02,
                                       ),
                                       Row(
                                         children: [
                                           const Text(
-                                            'Notes: ',
+                                            'Body Response: ',
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 color: darkBlue,
                                                 fontWeight: FontWeight.w600),
                                           ),
-                                          Text('${medicineInfo.notes}',
+                                          Text('${allergyInfo.bodyResponse}',
                                               style: const TextStyle(
                                                   fontSize: 16,
                                                   color: kPrimaryColor,
@@ -161,6 +161,7 @@ class MedicalRecord2 extends StatelessWidget {
                                                   fontWeight: FontWeight.w600))
                                         ],
                                       ),
+                                      
                                     ],
                                   ),
                                 ),
@@ -182,7 +183,7 @@ class MedicalRecord2 extends StatelessWidget {
     } else {
       return const Scaffold(
         body: Center(
-          child: Text('No medicine provided'),
+          child: Text('No Disease provided'),
         ),
       );
     }

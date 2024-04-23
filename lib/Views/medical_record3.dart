@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/Views/medical_record.dart';
+import 'package:med_eg/models/medicalInfo.dart';
+import 'package:med_eg/services/Medicine%20Info.dart';
 import '../constants/colors.dart';
 import '../widgets/custom_arrow_back.dart';
 import '../widgets/custom_button.dart';
@@ -7,10 +8,29 @@ import '../widgets/custom_circle_container.dart';
 import '../widgets/custom_textFormField.dart';
 import '../widgets/custom_text_information.dart';
 
-
-class MedicalRecord3 extends StatelessWidget {
+class MedicalRecord3 extends StatefulWidget {
   const MedicalRecord3({super.key});
-final String id = 'MedicalRecord3';
+  static String id = 'MedicalRecord3';
+  @override
+  State<MedicalRecord3> createState() => _MedicalRecord3State();
+}
+
+class _MedicalRecord3State extends State<MedicalRecord3> {
+  String? medicineNamee, frequencyy, dosee, notess;
+  late MedicalInfoModel medicine; // Declare medicine variable
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Retrieve medicine object from arguments map
+    final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, MedicalInfoModel>;
+    medicine = arguments['medicine']!;
+    // Pre-fill form fields with medicine data
+    medicineNamee = medicine.medicineName;
+    dosee = medicine.dose;
+    frequencyy = medicine.frequency;
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -37,14 +57,30 @@ final String id = 'MedicalRecord3';
                       SizedBox(
                         height: screenHeight * 0.075,
                       ),
-                      const CustomTextFormField(label: 'Medicine Name'),
-                      const CustomTextFormField(
-                        label: 'Dose',
+                      CustomTextFormField(
+                        label: 'Medicine Name',
+                        onChanged: (data) {
+                          medicineNamee = data;
+                        },
                       ),
-                      const CustomTextFormField(label: 'Frequency'),
-                      const CustomTextFormField(
+                      CustomTextFormField(
+                        label: 'Dose',
+                        onChanged: (data) {
+                          dosee = data;
+                        },
+                      ),
+                      CustomTextFormField(
+                        label: 'Frequency',
+                        onChanged: (data) {
+                          frequencyy = data;
+                        },
+                      ),
+                      CustomTextFormField(
                         label: 'Notes',
                         maxLines: 3,
+                        onChanged: (data) {
+                          notess = data;
+                        },
                       ),
                       SizedBox(
                         height: screenHeight * 0.14,
@@ -52,8 +88,15 @@ final String id = 'MedicalRecord3';
                       CustomButton(
                         text: 'Save',
                         color: kPrimaryColor,
-                        onTap: () {
-                          Navigator.pushNamed(context, const MedicalRecord().id);
+                        onTap: () async {
+                          setState(() {});
+                          try {
+                            await updateMedicine();
+                             Navigator.pop(context);
+                          } catch (e) {
+                            print(e.toString());
+                          }
+                          
                         },
                       )
                     ],
@@ -65,5 +108,20 @@ final String id = 'MedicalRecord3';
         ),
       ),
     );
+  }
+
+  Future<void> updateMedicine() async {
+    try {
+      await MedicineInfoForRecordService().editMedicineInfoService(
+          context, medicine,
+          medicineName:
+              medicineNamee == null ? medicine.medicineName : medicineNamee!,
+          dose: dosee == null ? medicine.dose : dosee!,
+          frequency: frequencyy == null ? medicine.frequency : frequencyy!);
+
+      Navigator.pop(context);
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }

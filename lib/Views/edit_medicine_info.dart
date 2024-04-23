@@ -52,7 +52,7 @@ final String id = 'EditMedicineInfo';
                         text: 'Save',
                         color: kPrimaryColor,
                         onTap: () {
-                          Navigator.pushNamed(context, const MedicalRecord().id);
+                          Navigator.pushNamed(context,  MedicalRecord().id);
                         },
                       )
                     ],

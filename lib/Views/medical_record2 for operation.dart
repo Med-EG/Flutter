@@ -1,34 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/models/medicalInfo.dart';
-import 'package:med_eg/services/Medicine%20Info.dart';
+import 'package:med_eg/models/operationInfoModel.dart';
 import 'package:med_eg/widgets/custom_arrow_back.dart';
+import '../services/operation Service.dart';
 import '../widgets/custom_circle_container.dart';
 
-class MedicalRecord2 extends StatelessWidget {
-  const MedicalRecord2({super.key});
-  final String id = 'MedicalRecord2';
+class MedicalRecord2ForOperation extends StatelessWidget {
+  const MedicalRecord2ForOperation({super.key});
+  final String id = 'MedicalRecord2ForOperation';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     final Map<String, dynamic>? args =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
-    if (args != null && args.containsKey('medicineId')) {
+    if (args != null && args.containsKey('operationId')) {
       return SafeArea(
-        child: FutureBuilder<List<MedicalInfoModel>>(
-          future: MedicineInfoForRecordService().getMedicineInfoService(context),
+        child: FutureBuilder<List<OperationInfoModel>>(
+          future: OperationInfoForRecordService().getOperationInfoService(context),
           builder: ((context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}');
             } else if (snapshot.hasData) {
-              List<MedicalInfoModel>? medicalInfoModel = snapshot.data;
-              if (medicalInfoModel != null) {
-                final int medicineId = args['medicineId'];
-                final MedicalInfoModel medicineInfo =
-                    medicalInfoModel.firstWhere(
-                  (info) => info.medicineId == medicineId,
+              List<OperationInfoModel>? operationInfoModel = snapshot.data;
+              if (operationInfoModel != null) {
+                final int operationIdd = args['operationId'];
+                final OperationInfoModel operationInfo =
+                    operationInfoModel.firstWhere(
+                  (info) => info.operationId == operationIdd,
                 );
                 return Scaffold(
                   body: Stack(
@@ -51,7 +51,7 @@ class MedicalRecord2 extends StatelessWidget {
                                   height: screenHeight * 0.03,
                                 ),
                                 const Text(
-                                  'Medicine',
+                                  'Operation',
                                   style: TextStyle(
                                       fontSize: 30,
                                       color: kPrimaryColor,
@@ -74,13 +74,13 @@ class MedicalRecord2 extends StatelessWidget {
                                       Row(
                                         children: [
                                           const Text(
-                                            'Medicine Name: ',
+                                            'Operation Name: ',
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 color: darkBlue,
                                                 fontWeight: FontWeight.w600),
                                           ),
-                                          Text(medicineInfo.medicineName,
+                                          Text(operationInfo.operationName,
                                               style: const TextStyle(
                                                   fontSize: 16,
                                                   color: kPrimaryColor,
@@ -93,13 +93,13 @@ class MedicalRecord2 extends StatelessWidget {
                                       Row(
                                         children: [
                                           const Text(
-                                            'Dose: ',
+                                            'Operation Date: ',
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 color: darkBlue,
                                                 fontWeight: FontWeight.w600),
                                           ),
-                                          Text(medicineInfo.dose,
+                                          Text('${operationInfo.operationDate}',
                                               style: const TextStyle(
                                                   fontSize: 16,
                                                   color: kPrimaryColor,
@@ -112,13 +112,13 @@ class MedicalRecord2 extends StatelessWidget {
                                       Row(
                                         children: [
                                           const Text(
-                                            'Frequency: ',
+                                            'Surgeon Name: ',
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 color: darkBlue,
                                                 fontWeight: FontWeight.w600),
                                           ),
-                                          Text(medicineInfo.frequency,
+                                          Text('${operationInfo.surgeonName}',
                                               style: const TextStyle(
                                                   fontSize: 16,
                                                   color: kPrimaryColor,
@@ -131,13 +131,13 @@ class MedicalRecord2 extends StatelessWidget {
                                       Row(
                                         children: [
                                           const Text(
-                                            'Notes: ',
+                                            'Operation notes: ',
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 color: darkBlue,
                                                 fontWeight: FontWeight.w600),
                                           ),
-                                          Text('${medicineInfo.notes}',
+                                          Text('${operationInfo.notes}',
                                               style: const TextStyle(
                                                   fontSize: 16,
                                                   color: kPrimaryColor,
@@ -182,7 +182,7 @@ class MedicalRecord2 extends StatelessWidget {
     } else {
       return const Scaffold(
         body: Center(
-          child: Text('No medicine provided'),
+          child: Text('No Disease provided'),
         ),
       );
     }

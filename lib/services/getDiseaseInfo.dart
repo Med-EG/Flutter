@@ -7,7 +7,7 @@ import 'package:med_eg/models/medicalRecordModel.dart';
 import 'package:med_eg/models/paitentModel.dart';
 import 'GetBasicMedicalInfo.dart';
 
-class GetDiseaseInfoForRecord {
+class DiseaseInfoForRecord {
   Future<List<DiseaseInfoModel>> getDiseaseInfo(BuildContext context) async {
     try {
       PatientInfo? patient = BlocProvider.of<LoginCubit>(context).patient;
