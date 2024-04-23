@@ -19,7 +19,8 @@ class _EnterVerficationCodeState extends State<EnterVerficationCode> {
 
 
 late FocusNode _focusNode;
-void initState() {
+@override
+  void initState() {
     super.initState();
     _focusNode = FocusNode();
     
@@ -78,7 +79,7 @@ void initState() {
                               FocusScope.of(context).nextFocus();
                           }
                         },
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.titleLarge,
                       decoration: InputDecoration(border : OutlineInputBorder(borderRadius: BorderRadius.circular(15))),
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.center ,
@@ -96,7 +97,7 @@ void initState() {
                               FocusScope.of(context).nextFocus();
                           }
                         },
-                        style: Theme.of(context).textTheme.headline6,
+                        style: Theme.of(context).textTheme.titleLarge,
                       decoration: InputDecoration(border : OutlineInputBorder(borderRadius: BorderRadius.circular(15))),
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.center ,
@@ -113,7 +114,7 @@ void initState() {
                               FocusScope.of(context).nextFocus();
                           }
                         },
-                        style: Theme.of(context).textTheme.headline6,
+                        style: Theme.of(context).textTheme.titleLarge,
                       decoration: InputDecoration(border : OutlineInputBorder(borderRadius: BorderRadius.circular(15))),
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.center ,
@@ -130,7 +131,7 @@ void initState() {
                               FocusScope.of(context).nextFocus();
                           }
                         },
-                        style: Theme.of(context).textTheme.headline6,
+                        style: Theme.of(context).textTheme.titleLarge,
                       decoration: InputDecoration(border : OutlineInputBorder(borderRadius: BorderRadius.circular(15))),
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.center ,

@@ -7,41 +7,35 @@ class AppointmentListViewForDoctor extends StatelessWidget {
   AppointmentListViewForDoctor({super.key});
   final List<AppointmentModel> appointments = const [
     AppointmentModel(
-        day: 'Sunday ,',
-        doctorName: 'Patient 1',
+        doctorFirstName: 'Patient 5',
         doctorImage: 'assets/images/PNG/PaitentPhotoInAppoinmtent.png',
         date: '27/1 | ',
-        time: '6:00 PM'),
+        doctorLastName: 'adfasdf'),
     AppointmentModel(
-        day: 'Sunday ,',
-        doctorName: 'Patient 2',
+        doctorFirstName: 'Patient 5',
         doctorImage: 'assets/images/PNG/PaitentPhotoInAppoinmtent.png',
         date: '27/1 | ',
-        time: '6:00 PM'),
+        doctorLastName: 'adfasdf'),
     AppointmentModel(
-        day: 'Sunday ,',
-        doctorName: 'Patient 3',
+        doctorFirstName: 'Patient 5',
         doctorImage: 'assets/images/PNG/PaitentPhotoInAppoinmtent.png',
         date: '27/1 | ',
-        time: '6:00 PM'),
+        doctorLastName: 'adfasdf'),
     AppointmentModel(
-        day: 'Sunday ,',
-        doctorName: 'Patient 4',
+        doctorFirstName: 'Patient 5',
         doctorImage: 'assets/images/PNG/PaitentPhotoInAppoinmtent.png',
         date: '27/1 | ',
-        time: '6:00 PM'),
+        doctorLastName: 'adfasdf'),
     AppointmentModel(
-        day: 'Sunday ,',
-        doctorName: 'Patient 5',
+        doctorFirstName: 'Patient 5',
         doctorImage: 'assets/images/PNG/PaitentPhotoInAppoinmtent.png',
         date: '27/1 | ',
-        time: '6:00 PM'),
+        doctorLastName: 'adfasdf'),
     AppointmentModel(
-        day: 'Sunday',
-        doctorName: 'Patient 6',
+        doctorFirstName: 'Patient 5',
         doctorImage: 'assets/images/PNG/PaitentPhotoInAppoinmtent.png',
-        date: '27/1',
-        time: '6:00'),
+        date: '27/1 | ',
+        doctorLastName: 'adfasdf'),
   ];
   AppointmentModel? appointmentSelected;
   @override

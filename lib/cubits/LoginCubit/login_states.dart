@@ -1,14 +1,9 @@
+import 'package:med_eg/models/doctorModel.dart';
 import 'package:med_eg/models/paitentModel.dart';
 
 class LoginState {}
 
 class InitialState extends LoginState {}
-
-class MissingData extends LoginState {
-  final String message;
-
-  MissingData({required this.message});
-}
 
 class InvalidData extends LoginState {
   final String message;
@@ -16,10 +11,20 @@ class InvalidData extends LoginState {
   InvalidData({required this.message});
 }
 
-class Loading extends LoginState {}
+class LoginLoading extends LoginState {}
 
-class Success extends LoginState {
-  final PatientInfo paitent;
+class SuccessPatient extends LoginState {
+  
+  final PatientInfo patient; 
 
-  Success({required this.paitent});
+  SuccessPatient({required this.patient});
 }
+
+class SuccessDoctor extends LoginState {
+  
+  final DoctorModel doctor; 
+
+  SuccessDoctor({required this.doctor});
+}
+
+class ShowPassword extends LoginState {}

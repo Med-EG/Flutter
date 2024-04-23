@@ -33,7 +33,7 @@ final String id = 'PatientProfile';
             Navigator.pushNamed(context, const FAQSScreen().id);
           },),
         ),
-        Padding(
+        const Padding(
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: CustomButton(text: 'Log out', color: Colors.red),
         ),

@@ -49,7 +49,7 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
     if (form!.validate()) {
       Navigator.pushNamed(
         context,
-        SignUp3().id,
+        const SignUp3().id,
         arguments: {'firstName': firstNameController.text},
       );
     } else {
@@ -189,10 +189,10 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
             ),
             Row(
               children: [
-                const Expanded(
+                 Expanded(
                     child: DropDownTextField1(
                   hintText: 'Gender',
-                  enableSearch: false,
+                  enableSearch: false, data: ['male','female'], onDataSelected: (String ) {  },
                 )),
                 Expanded(
                     child: CustomTextFormField(

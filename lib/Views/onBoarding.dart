@@ -84,7 +84,7 @@ class _OnBordingState extends State<OnBording> {
 
                       Padding(
                         padding: const EdgeInsets.only(bottom: 5),
-                        child: Container(
+                        child: SizedBox(
                           height: screenHieght * 0.03,
                           child:
                               Image.asset('assets/images/PNG/Ellipse 34.png'),
