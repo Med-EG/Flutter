@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/Views/message_screen.dart';
@@ -68,12 +70,7 @@ class NoPatientAppoointment extends StatelessWidget {
         builder: (BuildContext context,
             AsyncSnapshot<List<AppointmentModel>> snapshot) {
           if (snapshot.hasData) {
-            if (snapshot.data!.length > 0) {
-              List<AppointmentModel> appointments = snapshot.data!;
-              return ListView.builder(itemBuilder: (context, index) {
-                return AppointmentCard(appointment: appointments[index]);
-              });
-            } else if (snapshot.data!.length == 0) {
+            if (snapshot.data!.isEmpty) {
               return Center(
                 child: Padding(
                   padding: const EdgeInsets.all(16),
@@ -86,9 +83,10 @@ class NoPatientAppoointment extends StatelessWidget {
                       const Text(
                         'Appointments',
                         style: TextStyle(
-                            color: darkBlue,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold),
+                          color: darkBlue,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       const Spacer(
                         flex: 2,
@@ -100,7 +98,9 @@ class NoPatientAppoointment extends StatelessWidget {
                       Text(
                         'No Appointments',
                         style: TextStyle(
-                            fontSize: 30, color: Colors.grey.withOpacity(0.4)),
+                          fontSize: 30,
+                          color: Colors.grey.withOpacity(0.4),
+                        ),
                       ),
                       const Spacer(
                         flex: 5,
@@ -110,10 +110,39 @@ class NoPatientAppoointment extends StatelessWidget {
                 ),
               );
             }
+            List<AppointmentModel> appointments = snapshot.data!;
+            return Center(
+                child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      
+                       // mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                        const  SizedBox(height: 60,),
+                          
+                          const Text(
+                            'My Appointments',
+                            style: TextStyle(
+                              color: darkBlue,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Container(
+                            height: 250,
+                            child: ListView.builder(
+                              
+                              itemCount: appointments.length,
+                              itemBuilder: (context, index) {
+                                return AppointmentCard(
+                                    appointment: appointments[index]);
+                              },
+                            ),
+                          ),
+                        ])));
           } else {
             return Center(child: CircularProgressIndicator());
           }
-          return Center();
         },
       ),
     );

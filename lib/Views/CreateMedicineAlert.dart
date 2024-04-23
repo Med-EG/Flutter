@@ -1,88 +1,118 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
+import 'package:med_eg/cubits/MedicineAlert/medicine_alert_cubit.dart';
+import 'package:med_eg/models/medicineModel.dart';
+import 'package:med_eg/models/paitentModel.dart';
+import 'package:med_eg/services/get_all_medicines.dart';
 import 'package:med_eg/widgets/CustomAddButton.dart';
 import 'package:med_eg/widgets/customDropDownTextField.dart';
 import 'package:med_eg/widgets/customHalfTextFieldHalfDropDown.dart';
+import 'package:med_eg/widgets/custom_button.dart';
 
-class CreateMedicineAlert extends StatefulWidget {
-  const CreateMedicineAlert({super.key});
-  final String id='CreateMedicineAlert';
+class CreateMedicineAlert extends StatelessWidget {
+  CreateMedicineAlert({super.key});
 
-  @override
-  State<CreateMedicineAlert> createState() => _CreateMedicineAlertState();
-}
-
-List<Widget> widgets = [];
-int counter = 0;
-
-class _CreateMedicineAlertState extends State<CreateMedicineAlert> {
+  final String id = 'CreateMedicineAlert';
+  String selectedMedicine = '';
+  int dose = 0;
+  String enteredData = '';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 60,
-                ),
-                const DropDownTextField1(hintText: 'Medicine Name',),
-                const SizedBox(
-                  height: 30,
-                ),
-                HalfTextFieldHalfDropDown(isItDoseTextField: true),
-                HalfTextFieldHalfDropDown(isItDoseTextField: false),
-                Row(
-                  children: [
-                    const Spacer(
-                      flex: 1,
+    PatientInfo? patient = BlocProvider.of<LoginCubit>(context).patient;
+    return BlocConsumer<MedicineAlertCubit, MedicineAlertState>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        return Scaffold(
+          body: Column(
+            children: [
+              SingleChildScrollView(
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 14),
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 60,
+                        ),
+                        FutureBuilder(
+                          builder: (BuildContext context,
+                              AsyncSnapshot<List<MedicineModel>> snapshot) {
+                            if (snapshot.hasData) {
+                              List<MedicineModel> medicines = snapshot.data!;
+                              List<String> medicineNames = medicines
+                                  .map((medicine) => medicine.medicineName)
+                                  .toList();
+
+                              return DropDownTextField1(
+                                  hintText: 'Medicine name',
+                                  data: medicineNames,
+                                  onDataSelected: (data) {
+                                    selectedMedicine = data;
+                                  });
+                            }
+                            return CircularProgressIndicator();
+                          },
+                          future:
+                              GetAllMedicineService().GetAllMedicines(context),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        HalfTextFieldHalfDropDown(
+                          isItDoseTextField: true,
+                          onDataEntered: (data) {
+                            enteredData = data; // Store the entered data
+                          },
+                        ),
+                        HalfTextFieldHalfDropDown(
+                          isItDoseTextField: false,
+                          onDataEntered: (data) {
+                            enteredData = data; // Store the entered data
+                          },
+                        ),
+                        Row(
+                          children: [
+                            const Spacer(
+                              flex: 1,
+                            ),
+                            CustomAddButton(
+                              borderRadius: 14,
+                              plusIcon: true,
+                              onTap: () {},
+                            )
+                          ],
+                        ),
+                      ],
                     ),
-                    CustomAddButton(
-                      borderRadius: 14,
-                      plusIcon: true,
-                      onTap: () {
-                        setState(() {
-                          widgets.insert(
-                              counter,
-                              Column(
-                                children: [
-                                  HalfTextFieldHalfDropDown(
-                                      isItDoseTextField: false),
-                                  Row(
-                                    children: [
-                                      const Spacer(
-                                        flex: 1,
-                                      ),
-                                      CustomAddButton(
-                                        borderRadius: 14,
-                                        plusIcon: false,
-                                        onTap: () {
-                                          setState(() {
-                                            widgets.removeAt(counter);
-                                            counter-1;
-                                          });
-                                        },
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ));
-                          counter + 1;
-                        });
-                      },
-                    )
-                  ],
+                  ),
                 ),
-                const SizedBox(height: 20),
-                Column(
-                  children: widgets,
-                )
-              ],
-            ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: CustomButton(
+                  text: 'Add Alert',
+                  onTap: () {
+                    var createMedicineAlert =
+                        BlocProvider.of<MedicineAlertCubit>(context);
+                    createMedicineAlert.CreateNewMedicineALert(
+                        patientToken: patient!.token,
+                        body: {
+                          'patient_id': patient.id,
+                          'medicine_name': selectedMedicine,
+                          'medicine_dose': dose
+                        },
+                        url:
+                            'https://api-medeg.online/api/medEG/medicine-alert', times: []);
+                  },
+                ),
+              )
+            ],
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

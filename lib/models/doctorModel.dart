@@ -3,7 +3,7 @@ class DoctorModel {
   final String doctorFirstName;
   final String email;
   final String doctorImage;
-
+  final String token;
   final String specification;
   final String education;
   final String country;
@@ -22,19 +22,21 @@ class DoctorModel {
     required this.price,
     required this.doctorLastName,
     required this.email,
+    required this.token
   });
 
-  factory DoctorModel.fromJson(json) {
+  factory DoctorModel.fromJson(Map<String, dynamic> json) {
     return DoctorModel(
-        education: json['education'],
-        country: json['country'],
-        street: json['street'],
-        doctorImage: json['doctor_image'],
-        doctorFirstName: json['first_name'],
-        specification: json['specialization'],
-        rating: json['rating'],
-        price: json['price'],
-        doctorLastName: json['last_name'],
-        email: json['email']);
+        education: json['doctor']['education'],
+        country: json['doctor']['country'],
+        street: json['doctor']['street'],
+        doctorImage: json['doctor']['doctor_image'],
+        doctorFirstName: json['doctor']['first_name'],
+        specification: json['doctor']['specialization'],
+        rating: json['doctor']['rating'],
+        price: json['doctor']['price'],
+        doctorLastName: json['doctor']['last_name'],
+        email: json['doctor']['email'],
+        token: json['token']);
   }
 }

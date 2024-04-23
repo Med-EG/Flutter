@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
-import 'package:med_eg/Views/NoPatientAppointmentsScreen.dart';
+import 'package:med_eg/Views/PatientAppointmentsScreen.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/message_list_tile.dart';
 

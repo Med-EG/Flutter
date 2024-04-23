@@ -189,10 +189,10 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
             ),
             Row(
               children: [
-                const Expanded(
+                 Expanded(
                     child: DropDownTextField1(
                   hintText: 'Gender',
-                  enableSearch: false,
+                  enableSearch: false, data: ['male','female'], onDataSelected: (String ) {  },
                 )),
                 Expanded(
                     child: CustomTextFormField(

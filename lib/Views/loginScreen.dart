@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:med_eg/Views/DoctorHomeScreen.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/Views/signUp2.dart';
 import 'package:med_eg/constants/colors.dart';
@@ -25,11 +26,11 @@ class Login extends StatelessWidget {
   String emailErrorMessage = '';
   String passwordErrorMessage = '';
   GlobalKey<FormState> formKey = GlobalKey();
-
   Login({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var url = ModalRoute.of(context)!.settings.arguments;
     String email = emailController.text;
     String password = passwordController.text;
     double screenHieght = MediaQuery.of(context).size.height;
@@ -38,10 +39,12 @@ class Login extends StatelessWidget {
       listener: ((context, state) {
         if (state is LoginLoading) {
           isLoading = true;
-        } else if (state is Success) {
-          Navigator.pushNamed(context, const PatientHomeScreen().id);
+        } else if (state is SuccessPatient) {
+          Navigator.pushReplacementNamed(context, const PatientHomeScreen().id);
           isLoading = false;
-        
+        } else if (state is SuccessDoctor) {
+          Navigator.pushReplacementNamed(context, const DoctorHomeScreen().id);
+          isLoading = false;
         } else if (state is ShowPassword) {
           _obscureText = !_obscureText;
         } else if (state is InvalidData) {
@@ -116,13 +119,10 @@ class Login extends StatelessWidget {
                             // BlocProvider.of<LoginCubit>(context).updateEmail(value);
                           },
                           validator: (data) {
-                            if(data!.isEmpty)
-                            {
+                            if (data!.isEmpty) {
                               return 'this field is required';
-                            }
-                            else if(!data.contains('@'))
-                            {
-                                return ' wrong format';
+                            } else if (!data.contains('@')) {
+                              return ' wrong format';
                             }
                           },
                           controller: emailController,
@@ -166,8 +166,7 @@ class Login extends StatelessWidget {
                             // BlocProvider.of<LoginCubit>(context).updatePassword(value);
                           },
                           validator: (data) {
-                            if(data!.isEmpty)
-                            {
+                            if (data!.isEmpty) {
                               return 'this field is required';
                             }
                           },
@@ -245,28 +244,21 @@ class Login extends StatelessWidget {
                           onTap: () async {
                             if (formKey.currentState!.validate()) {
                               var login = BlocProvider.of<LoginCubit>(context);
-                               
-                                login.login(
-                                    url:
-                                        'https://api-medeg.online/api/medEG/patient/login',
-                                    body: {
-                                      'email': email,
-                                      'password': password
-                                    });
 
-                                // Proceed with login functionality
-                                // Api().post(
-                                //     url:
-                                //         'https://api-medeg.online/medEG/patient/login',
-                                //     body: {
-                                //       'email': email,
-                                //       'password': password
-                                //     });
-                              
-                            }
-                            else{
+                              login.login(
+                                url: url.toString(),
+                                body: {'email': email, 'password': password},
+                              );
 
-                            }
+                              // Proceed with login functionality
+                              // Api().post(
+                              //     url:
+                              //         'https://api-medeg.online/medEG/patient/login',
+                              //     body: {
+                              //       'email': email,
+                              //       'password': password
+                              //     });
+                            } else {}
                           },
                         ),
                       ),

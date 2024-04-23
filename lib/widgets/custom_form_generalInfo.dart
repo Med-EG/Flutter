@@ -19,9 +19,9 @@ class _CustomFormGeneralInfoState extends State<CustomFormGeneralInfo> {
       child: Form(
         key: formkey,
         autovalidateMode: autovalidateMode,
-        child: const Column(
+        child:  Column(
           children: [
-            Row(
+          const  Row(
               children: [
                 Expanded(
                     child: CustomTextFormField(
@@ -30,20 +30,20 @@ class _CustomFormGeneralInfoState extends State<CustomFormGeneralInfo> {
                 Expanded(child: CustomTextFormField(label: 'Weight'))
               ],
             ),
-            CustomTextFormField(label: 'BloodType'),
+           const CustomTextFormField(label: 'BloodType'),
             Row(
               children: [
                 Expanded(
                     child: Padding(
                   padding: EdgeInsets.only(right: 8),
                   child: DropDownTextField1(hintText: 'Smoker',
-                  enableSearch: false,),
+                  enableSearch: false, data: ['yes','no'], onDataSelected: (String ) {  },),
                 )),
                 Expanded(
                     child: Padding(
                   padding: EdgeInsets.only(left: 8),
                   child: DropDownTextField1(hintText: 'Smoking Level',
-                  enableSearch: false,),
+                  enableSearch: false, data: ['light smoker','Moderate smoker','Heavy smoker'], onDataSelected: (String ) {  },),
                 ))
               ],
             ),
@@ -53,34 +53,34 @@ class _CustomFormGeneralInfoState extends State<CustomFormGeneralInfo> {
                     child: Padding(
                   padding: EdgeInsets.only(right: 8),
                   child: DropDownTextField1(hintText: 'Alcoholic',
-                  enableSearch: false,),
+                  enableSearch: false, data:['yes','no'], onDataSelected: (String ) {  },),
                 )),
                 Expanded(
                     child: Padding(
                   padding: EdgeInsets.only(left: 8),
                   child: DropDownTextField1(hintText: 'Alcoholic Level',
-                  enableSearch: false,),
+                  enableSearch: false, data:['light alcohlic','Moderate alcohlic','Heavy alcohlic'], onDataSelected: (String ) {  },),
                 ))
               ],
             ),
-            CustomTextFormField(
+           const CustomTextFormField(
               label: 'Job',
             ),
-             CustomTextFormField(
+           const  CustomTextFormField(
               label: 'Marital Status',
             ),
-             CustomTextFormField(
+            const CustomTextFormField(
               label: 'Past Fractures',
             ),
              Row(
               children: [
-                Expanded(
+                const Expanded(
                     child:  CustomTextFormField(
               label: 'Sleeping Hours',
             ),),
                 Expanded(
                     child: DropDownTextField1(hintText: 'Sleeping Quality',
-                    enableSearch: false,))
+                    enableSearch: false, data: ['bad','good','very good'], onDataSelected: (String ) {  },))
               ],
             ),
           ],

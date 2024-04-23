@@ -26,13 +26,15 @@ class Api {
   }
 
   Future<dynamic> post(
-      {required String url, required dynamic body, String? token}) async {
+      {required String url, required Map<String, dynamic> body, String? token}) async {
     Map<String, String> headers = {};
 
     if (token != null) {
-      headers.addAll({'Authorization': 'Bearer$token'});
+      headers.addAll({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer$token'});
     }
-    http.Response response = await http.post(Uri.parse(url), body: body);
+    http.Response response = await http.post(Uri.parse(url),  body: body);
     try {
       if (response.statusCode == 200) {
         errCode = false;
@@ -43,10 +45,10 @@ class Api {
         return data;
       } else if (response.statusCode == 401 || response.statusCode == 404) {
         errCode = true;
-        Map<String, dynamic> data = jsonDecode(response.body);
 
         print(response.body);
-        return data;
+        throw Exception(
+            'Error: ${response.statusCode} ${response.reasonPhrase}');
       } else {
         print(response.body);
         throw Exception(
