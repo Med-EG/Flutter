@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:med_eg/Views/AlertScreen.dart';
+import 'package:med_eg/Views/CreateMedicineAlert.dart';
 import 'package:med_eg/Views/DoctorCalendar.dart';
 import 'package:med_eg/Views/NoAlertScreen.dart';
+import 'package:med_eg/Views/DoctorHomeScreen.dart';
 import 'package:med_eg/Views/ShowAppointmentsInfoDoctor.dart';
 import 'package:med_eg/Views/EnterVarifecationCode.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
-import 'package:med_eg/Views/NoPatientAppointmentsScreen.dart';
+import 'package:med_eg/Views/PatientAppointmentsScreen.dart';
 import 'package:med_eg/Views/RestPassword.dart';
 import 'package:med_eg/Views/check_reservation.dart';
 import 'package:med_eg/Views/chooseUserType.dart';
@@ -20,6 +23,7 @@ import 'package:med_eg/Views/medical_record3.dart';
 import 'package:med_eg/Views/message_screen.dart';
 import 'package:med_eg/Views/patient_profile.dart';
 import 'package:med_eg/Views/profile03.dart';
+import 'package:med_eg/Views/onBoarding.dart';
 import 'package:med_eg/Views/reserve_doctor.dart';
 import 'package:med_eg/Views/signUp1.dart';
 import 'package:med_eg/Views/signUp10.dart';
@@ -32,10 +36,15 @@ import 'package:med_eg/Views/signUp7.dart';
 import 'package:med_eg/Views/signUp8.dart';
 import 'package:med_eg/Views/signUp9.dart';
 import 'package:med_eg/constants/colors.dart';
+import 'package:med_eg/Views/test.dart';
+import 'package:med_eg/Views/test2.dart';
+import 'package:med_eg/cubits/AccountType/account_type_cubit.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/cubits/MedicalRecordCubit/medical_record_cubit.dart';
 import 'package:med_eg/cubits/RegisterCubit/sign_up_cubit.dart';
 import 'package:med_eg/widgets/testForm.dart';
+import 'package:med_eg/cubits/MedicineAlert/medicine_alert_cubit.dart';
+import 'package:med_eg/models/onboardingmodel.dart';
 import 'Views/chat_screen.dart';
 import 'Views/loginScreen.dart';
 import 'Views/medical_record2 for operation.dart';
@@ -100,6 +109,15 @@ class MyApp extends StatelessWidget {
           const DoctorCalendar().id: (context) => const DoctorCalendar(),
           const ShowAppointmentInfoDoctor().id: (context) =>
               const ShowAppointmentInfoDoctor(),
+          AlertScreen().id: (context) => AlertScreen(),
+           DoctorHomeScreen().id:(context) => DoctorHomeScreen(),
+          CreateMedicineAlert().id: (context) => CreateMedicineAlert(),
+          ChooseUserType().id:(context) => ChooseUserType(),
+          OnBording().id:(context) => OnBording(),
+          Test2().id: (context) => Test2()
+
+          const ShowAppointmentInfoDoctor().id: (context) =>
+              const ShowAppointmentInfoDoctor(),
            const MedicalRecord().id: (context) =>  const MedicalRecord(),
           const MedicalRecord2().id: (context) => const MedicalRecord2(),
            MedicalRecord3.id: (context) => const MedicalRecord3(),
@@ -113,8 +131,11 @@ class MyApp extends StatelessWidget {
           const MedicalRecord2ForOperation().id:(context) => const MedicalRecord2ForOperation(),
         },
         debugShowCheckedModeBanner: false,
-        home: Login(),
+        home: DoctorHomeScreen(),
       ),
+    );
+  }
+}
     );
   }
 }

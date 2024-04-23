@@ -20,7 +20,7 @@ final  String id = 'LetsGetStarted';
             SizedBox(
               height: screenHieght * 0.06,
             ),
-            Container(
+            SizedBox(
                 height: screenHieght * 0.30,
                 child: SvgPicture.asset('assets/SVG/Frame.svg')),
             SizedBox(
@@ -55,17 +55,17 @@ final  String id = 'LetsGetStarted';
                 Navigator.pushNamed(context, Login().id);
               },
               child: Container(
-                child: Center(
-                    child: Text(
-                  'Sign up',
-                  style: TextStyle(color: kPrimaryColor, fontSize: 20),
-                )),
                 width: 310,
                 height: 51,
                 decoration: BoxDecoration(
                     border: Border.all(color: kPrimaryColor),
                     borderRadius: BorderRadius.circular(72),
                     color: Colors.white),
+                child: const Center(
+                    child: Text(
+                  'Sign up',
+                  style: TextStyle(color: kPrimaryColor, fontSize: 20),
+                )),
               ),
             )
           ],

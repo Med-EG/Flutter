@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
-import 'package:med_eg/Views/NoPatientAppointmentsScreen.dart';
+import 'package:med_eg/Views/PatientAppointmentsScreen.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/message_list_tile.dart';
 
@@ -47,7 +47,7 @@ final String id = 'MessageScreen';
                 icon: Icons.edit_calendar_rounded,
                 text: 'Appointments',
               ),
-              GButton(
+              const GButton(
                 icon: Icons.person_3_rounded,
                 text: 'Profile',
               )

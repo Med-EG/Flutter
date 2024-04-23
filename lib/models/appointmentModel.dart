@@ -1,11 +1,20 @@
- class AppointmentModel
-{
-final String doctorName;
-final String doctorImage;
-final String day;
-final String date;
-final String time;
+class AppointmentModel {
+  final String doctorFirstName;
+  final String doctorLastName;
+  final String doctorImage;
+  final String date;
 
-  const AppointmentModel( {required this.day,required this.doctorName, required this.doctorImage, required this.date, required this.time});
+  const AppointmentModel({
+      required this.doctorFirstName,
+      required this.doctorLastName,
+      required this.doctorImage,
+      required this.date});
 
+  factory AppointmentModel.fromJson(json) {
+    return AppointmentModel(
+        doctorFirstName: json['doctor']['first_name'],
+        doctorLastName: json['doctor']['last_name'],
+        doctorImage: json['doctor']['doctor_image'],
+        date: json['created_at']);
+  }
 }
