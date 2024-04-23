@@ -91,7 +91,7 @@ class MyApp extends StatelessWidget {
           const ShowAppointmentInfoDoctor().id: (context) =>
               const ShowAppointmentInfoDoctor(),
           AlertScreen().id: (context) => AlertScreen(),
-          const DoctorHomeScreen().id:(context) =>const DoctorHomeScreen(),
+           DoctorHomeScreen().id:(context) => DoctorHomeScreen(),
           CreateMedicineAlert().id: (context) => CreateMedicineAlert(),
           ChooseUserType().id:(context) => ChooseUserType(),
           OnBording().id:(context) => OnBording(),
@@ -99,7 +99,7 @@ class MyApp extends StatelessWidget {
 
         },
         debugShowCheckedModeBanner: false,
-        home: Login(),
+        home: DoctorHomeScreen(),
       ),
     );
   }

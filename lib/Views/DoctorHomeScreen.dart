@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
+import 'package:med_eg/models/doctorModel.dart';
 
 class DoctorHomeScreen extends StatelessWidget {
-  const DoctorHomeScreen({super.key});
-  final String id='DoctorHomeScreen';
-
+   DoctorHomeScreen({super.key});
+  final String id = 'DoctorHomeScreen';
+   
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      
+    DoctorModel?doctor=BlocProvider.of<LoginCubit>(context).doctor;
+    return Scaffold(
       body: Center(
         child: Column(
           children: [
-             Image.asset('assets/images/PNG/AppLogo.png'),
-
+            Image.asset(
+              'assets/images/PNG/AppLogo.png',
+              height: 70,
+            ),
           ],
         ),
       ),

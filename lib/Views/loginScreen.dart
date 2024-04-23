@@ -43,7 +43,7 @@ class Login extends StatelessWidget {
           Navigator.pushReplacementNamed(context, const PatientHomeScreen().id);
           isLoading = false;
         } else if (state is SuccessDoctor) {
-          Navigator.pushReplacementNamed(context, const DoctorHomeScreen().id);
+          Navigator.pushReplacementNamed(context,  DoctorHomeScreen().id);
           isLoading = false;
         } else if (state is ShowPassword) {
           _obscureText = !_obscureText;
