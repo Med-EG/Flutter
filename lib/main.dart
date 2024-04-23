@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/Views/AlertScreen.dart';
 import 'package:med_eg/Views/CreateMedicineAlert.dart';
 import 'package:med_eg/Views/DoctorCalendar.dart';
-import 'package:med_eg/Views/NoAlertScreen.dart';
 import 'package:med_eg/Views/DoctorHomeScreen.dart';
 import 'package:med_eg/Views/ShowAppointmentsInfoDoctor.dart';
 import 'package:med_eg/Views/EnterVarifecationCode.dart';
@@ -114,7 +113,7 @@ class MyApp extends StatelessWidget {
           CreateMedicineAlert().id: (context) => CreateMedicineAlert(),
           ChooseUserType().id:(context) => ChooseUserType(),
           OnBording().id:(context) => OnBording(),
-          Test2().id: (context) => Test2()
+          Test2().id: (context) => Test2(),
 
           const ShowAppointmentInfoDoctor().id: (context) =>
               const ShowAppointmentInfoDoctor(),
@@ -124,7 +123,6 @@ class MyApp extends StatelessWidget {
           const EditMedicineInfo().id: (context) => const EditMedicineInfo(),
           TestForm().id: (context) => TestForm(),
           const Profile03().id: (context) => const Profile03(),
-          const NoAlertScreen().id: (context) => const NoAlertScreen(),
           const PatientProfile().id: (context) => const PatientProfile(),
           const MedicalRecord2ForDisease().id:(context) => const MedicalRecord2ForDisease(),
           const MedicalRecord2ForAllergy().id:(context) => const MedicalRecord2ForAllergy(),
@@ -136,6 +134,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-    );
-  }
-}
+    
