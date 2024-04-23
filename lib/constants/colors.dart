@@ -1,5 +1,7 @@
-const int darkBlue = 0xff213359;
-const int lightGrey = 0xff868C9A;
-const int offWhite = 0xffF1F3F5;
-const int blue = 0xFF407CE2;
+import 'package:flutter/animation.dart';
 
+const darkBlue = Color(0xff213359);
+const grey = Color(0xff868C9A);
+const lightGrey = Color(0xffB4BAC9);
+const offWhite = Color(0xffF1F3F5);
+const kPrimaryColor = Color(0xFF407CE2);
