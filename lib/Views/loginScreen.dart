@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:med_eg/Views/DoctorHomeScreen.dart';
+import 'package:med_eg/Views/DoctorViews/DoctorHomeScreen.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/Views/signUp2.dart';
 import 'package:med_eg/constants/colors.dart';
@@ -30,7 +30,7 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //var url = ModalRoute.of(context)!.settings.arguments;
+    var url = ModalRoute.of(context)!.settings.arguments;
     String email = emailController.text;
     String password = passwordController.text;
     double screenHieght = MediaQuery.of(context).size.height;
@@ -246,7 +246,7 @@ class Login extends StatelessWidget {
                               var login = BlocProvider.of<LoginCubit>(context);
 
                               login.login(
-                                url: 'https://api-medeg.online/api/medEG/patient/login',
+                                url: url.toString(),
                                 body: {'email': email, 'password': password},
                               );
 

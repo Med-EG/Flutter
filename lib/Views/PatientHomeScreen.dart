@@ -3,6 +3,7 @@ import 'package:med_eg/Views/PatientAppointmentsScreen.dart';
 import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/medical_record.dart';
 import 'package:med_eg/Views/message_screen.dart';
+import 'package:med_eg/constants/texts.dart';
 import 'package:med_eg/widgets/DoctorCardListView.dart';
 import 'package:med_eg/widgets/customIconCard.dart';
 import 'package:med_eg/widgets/customSearchBar.dart';
@@ -75,10 +76,8 @@ class PatientHomeScreen extends StatelessWidget {
             child: ClipOval(
               child: Image.network(
                 fit: BoxFit.cover,
-                'https://api-medeg.online/${patient!.personalImage}',
-                // 'assets/images/PNG/PaitentPhotoInAppoinmtent.png',
-                // height: 47,
-                // width: 47,
+                imagePreText+patient!.personalImage,
+                
               ),
             ),
           ),

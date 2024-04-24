@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/Views/AlertScreen.dart';
 import 'package:med_eg/Views/CreateMedicineAlert.dart';
-import 'package:med_eg/Views/DoctorCalendar.dart';
-import 'package:med_eg/Views/DoctorHomeScreen.dart';
+import 'package:med_eg/Views/DoctorViews/DoctorCalendar.dart';
+import 'package:med_eg/Views/DoctorViews/DoctorHomeScreen.dart';
 import 'package:med_eg/Views/ShowAppointmentsInfoDoctor.dart';
 import 'package:med_eg/Views/EnterVarifecationCode.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
@@ -128,7 +128,7 @@ class MyApp extends StatelessWidget {
               const MedicalRecord2ForOperation(),
         },
         debugShowCheckedModeBanner: false,
-        home: Login(),
+        home: OnBording(),
       ),
     );
   }
