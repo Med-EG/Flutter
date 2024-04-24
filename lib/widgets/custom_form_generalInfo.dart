@@ -1,4 +1,3 @@
-import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'customDropDownTextField.dart';
 import 'custom_textFormField.dart';
@@ -47,50 +46,54 @@ class _CustomFormGeneralInfoState extends State<CustomFormGeneralInfo> {
               ],
             ),
             const CustomTextFormField(label: 'BloodType'),
-            const Row(
+            Row(
               children: [
                 Expanded(
                     child: Padding(
                   padding: EdgeInsets.only(right: 8),
-                  child: DropDownTextField1(hintText: 'Smoker',
-                  enableSearch: false, data: ['yes','no'], onDataSelected: (String ) {  },),
                   child: DropDownTextField1(
                     hintText: 'Smoker',
                     enableSearch: false,
+                    data: ['yes', 'no'],
+                    onDataSelected: (String) {},
                   ),
                 )),
                 Expanded(
                     child: Padding(
                   padding: EdgeInsets.only(left: 8),
-                  child: DropDownTextField1(hintText: 'Smoking Level',
-                  enableSearch: false, data: ['light smoker','Moderate smoker','Heavy smoker'], onDataSelected: (String ) {  },),
                   child: DropDownTextField1(
                     hintText: 'Smoking Level',
                     enableSearch: false,
+                    data: ['light smoker', 'Moderate smoker', 'Heavy smoker'],
+                    onDataSelected: (String) {},
                   ),
                 ))
               ],
             ),
-            const Row(
+            Row(
               children: [
                 Expanded(
                     child: Padding(
                   padding: EdgeInsets.only(right: 8),
-                  child: DropDownTextField1(hintText: 'Alcoholic',
-                  enableSearch: false, data:['yes','no'], onDataSelected: (String ) {  },),
                   child: DropDownTextField1(
                     hintText: 'Alcoholic',
                     enableSearch: false,
+                    data: ['yes', 'no'],
+                    onDataSelected: (String) {},
                   ),
                 )),
                 Expanded(
                     child: Padding(
                   padding: EdgeInsets.only(left: 8),
-                  child: DropDownTextField1(hintText: 'Alcoholic Level',
-                  enableSearch: false, data:['light alcohlic','Moderate alcohlic','Heavy alcohlic'], onDataSelected: (String ) {  },),
                   child: DropDownTextField1(
                     hintText: 'Alcoholic Level',
                     enableSearch: false,
+                    data: [
+                      'light alcohlic',
+                      'Moderate alcohlic',
+                      'Heavy alcohlic'
+                    ],
+                    onDataSelected: (String) {},
                   ),
                 ))
               ],
@@ -101,27 +104,23 @@ class _CustomFormGeneralInfoState extends State<CustomFormGeneralInfo> {
             const CustomTextFormField(
               label: 'Marital Status',
             ),
-            const CustomTextFormField(
-            const CustomTextFormField(
+            CustomTextFormField(
               label: 'Past Fractures',
             ),
-            Row(
-              children: [
-                const Expanded(
-                  child: CustomTextFormField(
-                    label: 'Sleeping Hours',
-                  ),
+            Row(children: [
+              const Expanded(
+                child: CustomTextFormField(
+                  label: 'Sleeping Hours',
                 ),
-                Expanded(
-                    child: DropDownTextField1(hintText: 'Sleeping Quality',
-                    enableSearch: false, data: ['bad','good','very good'], onDataSelected: (String ) {  },))
-                    child: dropdownlistItem('Alcoholic level', const [
-                  DropDownValueModel(name: 'Low', value: 'Low'),
-                  DropDownValueModel(name: 'Moderate', value: 'Moderate'),
-                  DropDownValueModel(name: 'High', value: 'High'),
-                ]))
-              ],
-            ),
+              ),
+              Expanded(
+                  child: DropDownTextField1(
+                hintText: 'Sleeping Quality',
+                enableSearch: false,
+                data: ['bad', 'good', 'very good'],
+                onDataSelected: (String) {},
+              ))
+            ])
           ],
         ),
       ),
@@ -132,31 +131,5 @@ class _CustomFormGeneralInfoState extends State<CustomFormGeneralInfo> {
     return OutlineInputBorder(
         borderRadius: BorderRadius.circular(16),
         borderSide: BorderSide(color: color ?? Colors.white));
-  }
-
-  dropdownlistItem(String hintText, List<DropDownValueModel> options) {
-    String selectedItem;
-    return Container(
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: Colors.black.withOpacity(0.4))),
-      child: DropDownTextField(
-        searchDecoration: const InputDecoration(fillColor: Colors.black),
-        textFieldDecoration: InputDecoration(
-            border: InputBorder.none,
-            hintText: hintText,
-            fillColor: Colors.white,
-            enabledBorder: InputBorder.none,
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 20, vertical: 20)),
-        dropDownList: options,
-        onChanged: (value) {
-          setState(() {
-            selectedItem = value;
-          });
-        },
-      ),
-    );
   }
 }

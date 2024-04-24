@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/models/doctorModel.dart';
+import 'package:med_eg/models/doctorModel%20without%20token.dart';
 import 'package:med_eg/services/get_all_doctors.dart';
 import 'package:med_eg/widgets/customDoctorinfoCard.dart';
 
@@ -10,12 +10,12 @@ class DoctorCardListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
         height: 180,
-        child: FutureBuilder<List<DoctorModel>>(
+        child: FutureBuilder<List<DoctorModelWithoutToken>>(
           future: GetAllDoctorService().GetAllDoctors(context),
           builder: (BuildContext context,
-              AsyncSnapshot<List<DoctorModel>> snapshot) {
+              AsyncSnapshot<List<DoctorModelWithoutToken>> snapshot) {
             if (snapshot.hasData) {
-              List<DoctorModel> doctors = snapshot.data!;
+              List<DoctorModelWithoutToken> doctors = snapshot.data!;
               return ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: doctors.length,

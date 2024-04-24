@@ -15,13 +15,12 @@ import 'package:med_eg/services/Medicine%20Info.dart';
 import 'package:med_eg/services/getDiseaseInfo.dart';
 import 'package:med_eg/widgets/custom_button.dart';
 import 'package:med_eg/widgets/general_basic_medical_info.dart';
-import '../models/paitentModel.dart';
+import '../models/patientInfo without token.dart';
 import '../services/GetBasicMedicalInfo.dart';
 import '../services/GetPatientbyID.dart';
 import '../services/operation Service.dart';
 import '../widgets/custom_details_info.dart';
 import 'medical_record3.dart';
-
 class MedicalRecord extends StatelessWidget {
   const MedicalRecord({Key? key}) : super(key: key);
   final String id = 'MedicalRecord';
@@ -83,7 +82,7 @@ class MedicalRecord extends StatelessWidget {
                                       SizedBox(
                                         height: screenHeight * 0.03,
                                       ),
-                                      FutureBuilder<PatientInfo>(
+                                      FutureBuilder<PatientInfoWithoutToken>(
                                         future: GetPatientByID()
                                             .getPatientByID(context),
                                         builder: (context, snapshot) {
@@ -96,7 +95,7 @@ class MedicalRecord extends StatelessWidget {
                                             return Text(
                                                 'Error: ${snapshot.error}');
                                           } else if (snapshot.hasData) {
-                                            PatientInfo? patientInfo =
+                                            PatientInfoWithoutToken? patientInfo =
                                                 snapshot.data;
                                             if (patientInfo != null) {
                                               return Column(
