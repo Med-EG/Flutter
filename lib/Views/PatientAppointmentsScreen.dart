@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/Views/message_screen.dart';
+import 'package:med_eg/Views/patient_profile.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/models/appointmentModel.dart';
 import 'package:med_eg/services/get_Appointmnts_for_paitent.dart';
@@ -57,7 +58,10 @@ class NoPatientAppoointment extends StatelessWidget {
                 icon: Icons.edit_calendar_rounded,
                 text: 'Appointments',
               ),
-              const GButton(
+               GButton(
+                onPressed: (){
+Navigator.pushReplacementNamed(context, const PatientProfile().id);
+                },
                 icon: Icons.person_3_rounded,
                 text: 'Profile',
               )

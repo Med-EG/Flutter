@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/models/doctorModel.dart';
+import 'package:med_eg/models/doctorModel%20without%20token.dart';
 
 class DoctorInfoCard extends StatelessWidget {
   const DoctorInfoCard({
     super.key,
     required this.doctor,
   });
-  final DoctorModel doctor;
+  final DoctorModelWithoutToken doctor;
 
   @override
   Widget build(BuildContext context) {

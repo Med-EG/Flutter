@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:med_eg/Views/AlertScreen.dart';
 import 'package:med_eg/Views/PatientAppointmentsScreen.dart';
 import 'package:med_eg/Views/find_doctor.dart';
+import 'package:med_eg/Views/medical_record.dart';
 import 'package:med_eg/Views/message_screen.dart';
-import 'package:med_eg/Views/test2.dart';
 import 'package:med_eg/widgets/DoctorCardListView.dart';
 import 'package:med_eg/widgets/customIconCard.dart';
 import 'package:med_eg/widgets/customSearchBar.dart';
@@ -12,6 +11,7 @@ import '../constants/colors.dart';
 import 'package:med_eg/models/paitentModel.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
+import 'package:med_eg/Views/patient_profile.dart';
 
 class PatientHomeScreen extends StatelessWidget {
   const PatientHomeScreen({super.key});
@@ -55,9 +55,12 @@ class PatientHomeScreen extends StatelessWidget {
                 icon: Icons.edit_calendar_rounded,
                 text: 'Appointments',
               ),
-              const GButton(
-                icon: Icons.person_3_rounded,
+              GButton(
                 text: 'Profile',
+                icon: Icons.person_3_rounded,
+                onPressed: () {
+                  Navigator.pushNamed(context, const PatientProfile().id);
+                },
               )
             ],
           ),
@@ -124,7 +127,7 @@ class PatientHomeScreen extends StatelessWidget {
                   ),
                   IconCard(
                     onTap: () {
-                      Navigator.pushNamed(context,  'Test2');
+                      Navigator.pushNamed(context, 'Test2');
                     },
                     image: 'assets/images/PNG/Medicine_icon.png',
                     text: 'Medicine',
@@ -132,7 +135,10 @@ class PatientHomeScreen extends StatelessWidget {
                   const Spacer(
                     flex: 1,
                   ),
-                  const IconCard(
+                  IconCard(
+                      onTap: () {
+                        Navigator.pushNamed(context, const MedicalRecord().id);
+                      },
                       image: 'assets/images/PNG/Record_icon.png',
                       text: 'Record'),
                   const Spacer(

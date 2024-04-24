@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/Views/faqs_screen.dart';
+import 'package:med_eg/Views/profile03.dart';
 import 'package:med_eg/Views/signUp2.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/custom_button.dart';
@@ -21,10 +22,14 @@ final String id = 'PatientProfile';
             Navigator.pushNamed(context, const SignUp2().id);
           },),
         ),
-        const Padding(
+         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child:
-              CustomButton(text: 'General medical info.', color: kPrimaryColor),
+              CustomButton(text: 'General medical info.', color: kPrimaryColor,
+             onTap: () {
+               Navigator.pushNamed(context, const Profile03().id);
+             },
+              ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),

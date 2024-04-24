@@ -6,7 +6,7 @@ import '../widgets/custom_profile_container.dart';
 
 class SignUp2 extends StatelessWidget {
   const SignUp2({super.key});
-final String id = 'SignUp2';
+  final String id = 'SignUp2';
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ final String id = 'SignUp2';
                   SizedBox(
                     width: screenWidth * 0.25,
                   ),
-                    SvgPicture.asset('assets/images/SVG/Frame (1).svg')
+                  SvgPicture.asset('assets/images/SVG/Frame (1).svg')
                 ],
               ),
               Expanded(
@@ -36,11 +36,10 @@ final String id = 'SignUp2';
                       height: screenHeight * 0.02,
                     ),
                     const CustomProfileContainer(),
-                     CustomFormWidget(),
+                    CustomFormWidget(),
                   ],
                 )),
               ),
-             
             ],
           ),
         ),

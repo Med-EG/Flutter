@@ -1,5 +1,6 @@
-import 'package:med_eg/models/doctorModel.dart';
-import 'package:med_eg/models/paitentModel.dart';
+
+import '../../models/doctorModel.dart';
+import '../../models/paitentModel.dart';
 
 class LoginState {}
 

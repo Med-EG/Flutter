@@ -30,7 +30,7 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var url = ModalRoute.of(context)!.settings.arguments;
+    //var url = ModalRoute.of(context)!.settings.arguments;
     String email = emailController.text;
     String password = passwordController.text;
     double screenHieght = MediaQuery.of(context).size.height;
@@ -246,7 +246,7 @@ class Login extends StatelessWidget {
                               var login = BlocProvider.of<LoginCubit>(context);
 
                               login.login(
-                                url: url.toString(),
+                                url: 'https://api-medeg.online/api/medEG/patient/login',
                                 body: {'email': email, 'password': password},
                               );
 

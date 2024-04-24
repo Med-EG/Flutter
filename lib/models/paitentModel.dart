@@ -40,4 +40,5 @@ class PatientInfo {
        phoneNumber: json['patient']['phone_number'],
        personalImage: json['patient']['personal_image']);
 }
+
 }
