@@ -116,7 +116,7 @@ class MedicalRecord extends StatelessWidget {
                                                     alignment:
                                                         Alignment.topLeft,
                                                     child: Text(
-                                                      '27 Years old',
+                                                      '22 Years old',
                                                       style: TextStyle(
                                                           color: darkBlue,
                                                           fontSize: 12,
@@ -358,14 +358,17 @@ class MedicalRecord extends StatelessWidget {
                   text2: 'Info. ',
                   text3: ':',
                 ),
-                const CustomDetailsInfoRow(
-                  text: '.Father',
+                 CustomDetailsInfoRow(
+                  text: 'Father',
+                  onPressed: (){
+
+                  },
                 ),
                 const CustomDetailsInfoRow(
-                  text: '.Mother',
+                  text: 'Mother',
                 ),
                 const CustomDetailsInfoRow(
-                  text: '.Second Degree',
+                  text: 'Second Degree',
                 ),
                 const Padding(
                   padding: EdgeInsets.symmetric(vertical: 24),

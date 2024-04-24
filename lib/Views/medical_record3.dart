@@ -24,7 +24,7 @@ class _MedicalRecord3State extends State<MedicalRecord3> {
     super.didChangeDependencies();
     // Retrieve medicine object from arguments map
     final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, MedicalInfoModel>;
-    medicine = arguments['medicine']!;
+    medicine = arguments['medicineId']!;
     // Pre-fill form fields with medicine data
     medicineNamee = medicine.medicineName;
     dosee = medicine.dose;
@@ -92,7 +92,6 @@ class _MedicalRecord3State extends State<MedicalRecord3> {
                           setState(() {});
                           try {
                             await updateMedicine();
-                             Navigator.pop(context);
                           } catch (e) {
                             print(e.toString());
                           }
@@ -111,17 +110,33 @@ class _MedicalRecord3State extends State<MedicalRecord3> {
   }
 
   Future<void> updateMedicine() async {
+  int retryAttempts = 3;
+  while (retryAttempts > 0) {
     try {
       await MedicineInfoForRecordService().editMedicineInfoService(
-          context, medicine,
-          medicineName:
-              medicineNamee == null ? medicine.medicineName : medicineNamee!,
-          dose: dosee == null ? medicine.dose : dosee!,
-          frequency: frequencyy == null ? medicine.frequency : frequencyy!);
+        context,
+        medicine,
+        medicineName: medicineNamee == null ? medicine.medicineName : medicineNamee!,
+        dose: dosee == null ? medicine.dose : dosee!,
+        frequency: frequencyy == null ? medicine.frequency : frequencyy!,
+      );
 
       Navigator.pop(context);
+      return; // Successful, exit the function
     } catch (e) {
       print(e.toString());
+      if (e.toString().contains('status code 429')) {
+        // If status code is 429, wait and retry
+        await Future.delayed(const Duration(seconds: 5)); // Wait for 5 seconds
+        retryAttempts--;
+      } else {
+        // If it's not a 429 error, rethrow the exception
+        rethrow;
+      }
     }
   }
+  // If all retry attempts fail
+  print('Failed after multiple retries');
+}
+
 }
