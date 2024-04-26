@@ -4,6 +4,9 @@ import 'package:med_eg/Views/AlertScreen.dart';
 import 'package:med_eg/Views/CreateMedicineAlert.dart';
 import 'package:med_eg/Views/DoctorViews/DoctorCalendar.dart';
 import 'package:med_eg/Views/DoctorViews/DoctorHomeScreen.dart';
+import 'package:med_eg/Views/DoctorViews/SearchForMedicalRecordByFaceID.dart';
+import 'package:med_eg/Views/DoctorViews/SearchForMedicalRecordByID.dart';
+import 'package:med_eg/Views/DoctorViews/SearchForPatientMedicalRecord.dart';
 import 'package:med_eg/Views/ShowAppointmentsInfoDoctor.dart';
 import 'package:med_eg/Views/EnterVarifecationCode.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
@@ -95,7 +98,7 @@ class MyApp extends StatelessWidget {
           const EnterVerficationCode().id: (context) =>
               const EnterVerficationCode(),
           const CreateNewPassword().id: (context) => const CreateNewPassword(),
-          const PatientHomeScreen().id: (context) => const PatientHomeScreen(),
+           PatientHomeScreen().id: (context) =>  PatientHomeScreen(),
           const NoPatientAppoointment().id: (context) =>
               const NoPatientAppoointment(),
           const ReserveDoctor().id: (context) => const ReserveDoctor(),
@@ -126,6 +129,9 @@ class MyApp extends StatelessWidget {
               const MedicalRecord2ForAllergy(),
           const MedicalRecord2ForOperation().id: (context) =>
               const MedicalRecord2ForOperation(),
+              const SearchForPatientMedicalRecord().id:(context) => const SearchForPatientMedicalRecord(),
+              const SearchForMedicalRecordByFaceID().id:(context) => const SearchForMedicalRecordByFaceID(),
+               SearchForMedicalRecordByID().id:(context) =>  SearchForMedicalRecordByID(),
         },
         debugShowCheckedModeBanner: false,
         home: OnBording(),

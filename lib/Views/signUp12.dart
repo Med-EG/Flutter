@@ -27,7 +27,7 @@ class SignUp12 extends StatelessWidget {
                 text: 'Done',
                 color: kPrimaryColor,
                 onTap: () {
-                  Navigator.pushNamed(context, const PatientHomeScreen().id);
+                  Navigator.pushNamed(context,  PatientHomeScreen().id);
                 },
               ),
             )

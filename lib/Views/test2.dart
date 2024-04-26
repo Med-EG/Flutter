@@ -18,20 +18,21 @@ class Test2 extends StatelessWidget {
       body: Center(
         child: GestureDetector(
           onTap: () async {
-             test.post(
-                url: 'https://api-medeg.online/api/medEG/appointment',
+             Api().post(
+                url: 'https://api-medeg.online/api/medEG/medicine-alert',
                 token: patient!.token,
                 body: {
                   'patient_id': patient.id.toString(),
-                  'doctor_id': idd,
-                  'working_hour_id':dose ,
-                  'working_day_id':medicineName ,
+                  'medicine_name': 'idffffd',
+                  'medicine_dose':'dosjkjke' ,
+                  
                 }
                  );
           },
           child: Container(
+            width: 100,height: 100,
             color: Colors.black38,
-            child: Text('data'),
+            child: Center(child: Text('press')),
           ),
         ),
       ),

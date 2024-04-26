@@ -40,7 +40,7 @@ class Login extends StatelessWidget {
         if (state is LoginLoading) {
           isLoading = true;
         } else if (state is SuccessPatient) {
-          Navigator.pushReplacementNamed(context, const PatientHomeScreen().id);
+          Navigator.pushReplacementNamed(context,  PatientHomeScreen().id);
           isLoading = false;
         } else if (state is SuccessDoctor) {
           Navigator.pushReplacementNamed(context,  DoctorHomeScreen().id);

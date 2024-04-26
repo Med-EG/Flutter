@@ -104,7 +104,7 @@ class MedicalRecord extends StatelessWidget {
                                                     alignment:
                                                         Alignment.topLeft,
                                                     child: Text(
-                                                      '${patientInfo.firstName} ${patientInfo.lastName}',
+                                                      '${patientInfo.firstName.toString()} ${patientInfo.lastName.toString()}',
                                                       style: const TextStyle(
                                                           fontSize: 18,
                                                           color: darkBlue,

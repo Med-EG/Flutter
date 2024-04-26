@@ -32,7 +32,7 @@ class _OnBordingState extends State<OnBording> {
           actions: [
             GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context,  Login().id);
+                  Navigator.pushNamed(context, const ChooseUserType().id);
 
                 },
                 child: const Padding(

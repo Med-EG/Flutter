@@ -35,7 +35,7 @@ class NoPatientAppoointment extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(
                     context,
-                    const PatientHomeScreen().id,
+                     PatientHomeScreen().id,
                   );
                 },
                 icon: Icons.home_rounded,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/helper/API.dart';
+import 'package:med_eg/models/doctorModel.dart';
 import 'package:med_eg/models/medicalInfo.dart';
 import 'package:med_eg/models/medicalRecordModel.dart';
 import 'package:med_eg/models/paitentModel.dart';
@@ -10,8 +11,9 @@ class MedicineInfoForRecordService {
   Future<List<MedicalInfoModel>> getMedicineInfoService(BuildContext context) async {
     try {
       PatientInfo? patient = BlocProvider.of<LoginCubit>(context).patient;
-
-      MedicalRecordModel medicalRecord = await GetBasicMedicalInfo().getBasicMedicalInfo(context);
+      DoctorModel?doctor=BlocProvider.of<LoginCubit>(context).doctor;
+      MedicalRecordModel medicalRecord =  await GetBasicMedicalInfo().getBasicMedicalInfo(context);
+      if(doctor==null){
       List<dynamic> data = await Api().get(
           url:
               'https://api-medeg.online/api/medEG/medication-info/rec/${medicalRecord.medicalId}',
@@ -21,7 +23,20 @@ class MedicineInfoForRecordService {
       for (int i = 0; i < data.length; i++) {
         medicineList.add(MedicalInfoModel.fromJson(data[i]));
       }
-      return medicineList;
+      return medicineList;}
+      else{
+        List<dynamic> data = await Api().get(
+          url:
+              'https://api-medeg.online/api/medEG/medication-info/rec/${medicalRecord.medicalId}',
+          token: doctor.token);
+
+      List<MedicalInfoModel> medicineList = [];
+      for (int i = 0; i < data.length; i++) {
+        medicineList.add(MedicalInfoModel.fromJson(data[i]));
+      }
+      return medicineList;}
+
+      
     } catch (e) {
       print('Error fetching medicines: $e');
       return [];

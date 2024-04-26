@@ -9,12 +9,10 @@ class PatientInfoWithoutToken {
   final String address;
   final String birthDate;
   final int phoneNumber;
-  //final String token;
   final String personalImage;
   PatientInfoWithoutToken(
       {required this.firstName,
       required this.id, 
-      //required this.token,
       required this.lastName,
       required this.username,
       required this.gender,
@@ -25,9 +23,8 @@ class PatientInfoWithoutToken {
       required this.phoneNumber,
       required this.personalImage, });
 
-      factory PatientInfoWithoutToken.fromJson(json){
+      factory PatientInfoWithoutToken.fromJson( json){
         return PatientInfoWithoutToken(
-         //token: json['token'],
         firstName: json['first_name'],
        lastName: json['last_name'],
        id: json['patient_id'],

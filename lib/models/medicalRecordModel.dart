@@ -14,8 +14,8 @@ class MedicalRecordModel {
   final String? past_fracrues;
   final String? sleeping_hours;
   final String? sleeping_quality;
-  final String father;
-  final String mother;
+  final String? father;
+  final String? mother;
   final String? second_degree;
 
   MedicalRecordModel(
@@ -36,23 +36,25 @@ class MedicalRecordModel {
       required this.mother,
       this.second_degree});
 
-  factory MedicalRecordModel.fromJson(json) {
-    return MedicalRecordModel(
-        medicalId: json["medical_record_id"],
-        height: json["height"],
-        weight: json["weight"],
-        blood_type: json["blood_type"],
-        alcoholic: json["alcoholic"] == 1,
-        alcoholic_level: json["alcoholic_level"],
-        smoker: json["smoker"] == 1,
-        smoking_level: json["smoking_level"],
-        job: json["job"],
-        marital_status: json["marital_status"],
-        past_fracrues: json["past_fracrues"],
-        sleeping_hours: json["sleeping_hours"],
-        sleeping_quality: json["sleeping_quality"],
-        father: json["father"],
-        mother: json["mother"],
-        second_degree: json["second_degree"]);
-  }
+  factory MedicalRecordModel.fromJson( json) {
+  return MedicalRecordModel(
+    medicalId: json["medical_record_id"],
+    height: json["height"],
+    weight: json["weight"],
+    blood_type: json["blood_type"],
+    alcoholic: json["alcoholic"] == 1,
+    alcoholic_level: json["alcoholic_level"],
+    smoker: json["smoker"] == 1,
+    smoking_level: json["smoking_level"],
+    job: json["job"],
+    marital_status: json["marital_status"],
+    past_fracrues: json["past_fracrues"],
+    sleeping_hours: json["sleeping_hours"],
+    sleeping_quality: json["sleeping_quality"],
+    father: json["father"],
+    mother: json["mother"],
+    second_degree: json["second_degree"],
+  );
+}
+
 }

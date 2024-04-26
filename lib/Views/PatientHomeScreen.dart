@@ -3,7 +3,7 @@ import 'package:med_eg/Views/PatientAppointmentsScreen.dart';
 import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/medical_record.dart';
 import 'package:med_eg/Views/message_screen.dart';
-import 'package:med_eg/constants/texts.dart';
+import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/widgets/DoctorCardListView.dart';
 import 'package:med_eg/widgets/customIconCard.dart';
 import 'package:med_eg/widgets/customSearchBar.dart';
@@ -11,12 +11,13 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import '../constants/colors.dart';
 import 'package:med_eg/models/paitentModel.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
+
 import 'package:med_eg/Views/patient_profile.dart';
 
 class PatientHomeScreen extends StatelessWidget {
-  const PatientHomeScreen({super.key});
+   PatientHomeScreen({super.key});
   final String id = 'HomeScreen';
+  final _textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +77,7 @@ class PatientHomeScreen extends StatelessWidget {
             child: ClipOval(
               child: Image.network(
                 fit: BoxFit.cover,
-                imagePreText+patient!.personalImage,
+               'https://api-medeg.online/${patient!.personalImage}',
                 
               ),
             ),
@@ -104,7 +105,7 @@ class PatientHomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(18),
           child: Column(
             children: [
-              const Searchbar(),
+               Searchbar(labelText: 'Search for doctor, articles...', controller: _textController, isItForPatientIDSearch: false ,),
               const SizedBox(
                 height: 10,
               ),

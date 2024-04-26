@@ -24,40 +24,46 @@ class Api {
           'There is a problem with status code${response.statusCode}');
     }
   }
+Future<dynamic> post({
+  required String url,
+  required Map<String, dynamic> body,
+  String? token,
+}) async {
+  Map<String, String> headers = {};
 
-  Future<dynamic> post(
-      {required String url, required Map<String, dynamic> body, String? token}) async {
-    Map<String, String> headers = {};
-
-    if (token != null) {
-      headers.addAll({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer$token'});
-    }
-    http.Response response = await http.post(Uri.parse(url),  body: body);
-    try {
-      if (response.statusCode == 200) {
-        errCode = false;
-
-        Map<String, dynamic> data = jsonDecode(response.body);
-
-        print(response.body);
-        return data;
-      } else if (response.statusCode == 401 || response.statusCode == 404) {
-        errCode = true;
-
-        print(response.body);
-        throw Exception(
-            'Error: ${response.statusCode} ${response.reasonPhrase}');
-      } else {
-        print(response.body);
-        throw Exception(
-            'There is problem with status code${response.statusCode}with body${response.body}');
-      }
-    } on SocketException {
-    } catch (error) {}
+  if (token != null) {
+    headers.addAll({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token', // Added a space after 'Bearer'
+    });
+  } else {
+    headers = {'Content-Type': 'application/json'};
   }
 
+  http.Response response = await http.post(
+    Uri.parse(url),
+    headers: headers,
+    body: jsonEncode(body), // Encode body to JSON
+  );
+
+  try {
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    } else if (response.statusCode == 401 || response.statusCode == 404) {
+      throw Exception(
+          'Error: ${response.statusCode} ${response.reasonPhrase}');
+    } else {
+      throw Exception(
+          'There is a problem with status code ${response.statusCode} with body ${response.body}');
+    }
+  } on SocketException {
+    // Handle SocketException
+    throw Exception('SocketException occurred');
+  } catch (error) {
+    // Handle other errors
+    throw Exception('An error occurred: $error');
+  }
+}
   Future<dynamic> put(
       {required String url,
       @required dynamic body,

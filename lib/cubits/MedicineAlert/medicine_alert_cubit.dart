@@ -51,7 +51,7 @@ class MedicineAlertCubit extends Cubit<MedicineAlertState> {
     Future<List<MedicineAlertModel>> GetAllAlerts(BuildContext context) async {
       try {
         PatientInfo? patient = BlocProvider.of<LoginCubit>(context).patient;
-        List<dynamic> data = await Api().get(
+        Map<String,dynamic> data = await Api().get(
           url:
               'https://api-medeg.online/api/medEG/medicine-alert/patient${patient!.id}',
           token: patient.token,
