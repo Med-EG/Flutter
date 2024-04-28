@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:med_eg/Views/CreateMedicineAlert.dart';
 import 'package:med_eg/Views/test.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/cubits/MedicineAlert/medicine_alert_cubit.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:med_eg/Views/DoctorViews/SearchForMedicalRecordByID.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/cubits/MedicalRecordCubit/medical_record_cubit.dart';
 import 'package:med_eg/helper/API.dart';
@@ -19,14 +18,14 @@ class GetBasicMedicalInfo {
     if(doctor==null){
     Map<String,dynamic> data = await Api().get(
       
-        url: 'https://api-medeg.online/api/medEG/record/${patient!.id}',
+        url: 'https://api-medeg.online/api/medEG/record/${patient!.medicalRecordID}',
         token: patient.token);
 
     return MedicalRecordModel.fromJson(data);}
     else{
       Map<String,dynamic> data = await Api().get(
       
-        url: 'https://api-medeg.online/api/medEG/record/${patientIDD.toString()}',
+        url: 'https://api-medeg.online/api/medEG/record/$patientIDD',
         token: doctor.token);
         return MedicalRecordModel.fromJson(data);
 

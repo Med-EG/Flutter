@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/DoctorViews/DoctorCalendar.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForPatientMedicalRecord.dart';
 import 'package:med_eg/widgets/Doctor_widgets/CustomCardForDoctorHomeScreen.dart';
 
@@ -12,6 +13,7 @@ class DoctorHomePageCardListView extends StatelessWidget {
         text: 'Appointments',
         icon:Icons.edit_calendar_rounded,
         ontap: () {
+          Navigator.pushNamed(context, DoctorCalendar().id);
           
         }, height: 200, width: 125,
       ),

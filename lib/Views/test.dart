@@ -45,16 +45,16 @@ class _CreateMedicineAlertState extends State<Test> {
                     ),
                     FutureBuilder(
                       builder: (BuildContext context,
-                          AsyncSnapshot<List<MedicineModel>> snapshot) {
+                          AsyncSnapshot<List<String>> snapshot) {
                         if (snapshot.hasData) {
-                          List<MedicineModel> medicines = snapshot.data!;
-                          List<String> medicineNames = medicines
-                              .map((medicine) => medicine.medicineName)
-                              .toList();
+                          List<String> medicines = snapshot.data!;
+                          // List<String> medicineNames = medicines
+                          //     .map((medicine) => medicine.medicineName)
+                          //     .toList();
 
                           return DropDownTextField1(
                               hintText: 'Medicine name',
-                              data: medicineNames,
+                              data: medicines,
                               onDataSelected: (data) {
                                 selectedMedicine = data;
                                 setState(() {

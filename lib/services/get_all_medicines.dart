@@ -3,13 +3,13 @@ import 'package:med_eg/helper/API.dart';
 import 'package:med_eg/models/medicineModel.dart';
 
 class GetAllMedicineService{
-  Future<List<MedicineModel>> GetAllMedicines(BuildContext context) async {
+  Future<List<String>> GetAllMedicines(BuildContext context) async {
     try {
   List<dynamic> data = await Api().get(url: 'https://api-medeg.online/api/medEG/medication',);
   
-  List<MedicineModel> medicines = [];
+  List<String> medicines = [];
   for (int i = 0; i < data.length; i++) {
-    medicines.add(MedicineModel.fromJson(data[i]));
+    medicines.add(data[i]);
   } 
   return medicines;
 } catch (e) {

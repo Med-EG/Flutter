@@ -23,7 +23,7 @@ class PatientInfoWithoutToken {
       required this.phoneNumber,
       required this.personalImage, });
 
-      factory PatientInfoWithoutToken.fromJson( json){
+      factory PatientInfoWithoutToken.fromJson(json){
         return PatientInfoWithoutToken(
         firstName: json['first_name'],
        lastName: json['last_name'],

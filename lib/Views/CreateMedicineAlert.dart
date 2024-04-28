@@ -10,6 +10,7 @@ import 'package:med_eg/widgets/customDropDownTextField.dart';
 import 'package:med_eg/widgets/customHalfTextFieldHalfDropDown.dart';
 import 'package:med_eg/widgets/custom_button.dart';
 
+// ignore: must_be_immutable
 class CreateMedicineAlert extends StatelessWidget {
   CreateMedicineAlert({super.key});
 
@@ -39,16 +40,16 @@ class CreateMedicineAlert extends StatelessWidget {
                         ),
                         FutureBuilder(
                           builder: (BuildContext context,
-                              AsyncSnapshot<List<MedicineModel>> snapshot) {
+                              AsyncSnapshot<List<String>> snapshot) {
                             if (snapshot.hasData) {
-                              List<MedicineModel> medicines = snapshot.data!;
-                              List<String> medicineNames = medicines
-                                  .map((medicine) => medicine.medicineName)
-                                  .toList();
+                              List<String> medicines = snapshot.data!;
+                              // List<String> medicineNames = medicines
+                              //     .map((medicine) => medicine.medicineName)
+                              //     .toList();
 
                               return DropDownTextField1(
                                   hintText: 'Medicine name',
-                                  data: medicineNames,
+                                  data: medicines,
                                   onDataSelected: (data) {
                                     selectedMedicine = data;
                                   });

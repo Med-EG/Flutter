@@ -370,9 +370,11 @@ class MedicalRecord extends StatelessWidget {
                 const CustomDetailsInfoRow(
                   text: 'Second Degree',
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 24),
-                  child: CustomButton(text: 'Done'),
+                  child: CustomButton(text: 'Done',onTap: () {
+                    Navigator.pop(context);
+                  },),
                 )
               ],
             ),

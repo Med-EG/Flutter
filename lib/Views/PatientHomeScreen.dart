@@ -127,7 +127,7 @@ class PatientHomeScreen extends StatelessWidget {
                   ),
                   IconCard(
                     onTap: () {
-                      Navigator.pushNamed(context, 'Test2');
+                      Navigator.pushNamed(context, 'Test');
                     },
                     image: 'assets/images/PNG/Medicine_icon.png',
                     text: 'Medicine',

@@ -6,9 +6,10 @@ import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/Views/message_screen.dart';
 import 'package:med_eg/Views/patient_profile.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/models/appointmentModel.dart';
+import 'package:med_eg/models/appointmentModelForPatientSide.dart';
 import 'package:med_eg/services/get_Appointmnts_for_paitent.dart';
-import 'package:med_eg/widgets/customAppointmentCard.dart';
+import 'package:med_eg/widgets/AppointmentCardForPatientSide.dart';
+import 'package:med_eg/widgets/Doctor_widgets/AppointmentCardForDoctorSide.dart';
 
 class NoPatientAppoointment extends StatelessWidget {
   const NoPatientAppoointment({super.key});
@@ -69,10 +70,10 @@ Navigator.pushReplacementNamed(context, const PatientProfile().id);
           ),
         ),
       ),
-      body: FutureBuilder<List<AppointmentModel>>(
+      body: FutureBuilder<List<AppointmentModelForPatientSide>>(
         future: GetAllAppointmentService().GetAllAppontmentsForPatient(context),
         builder: (BuildContext context,
-            AsyncSnapshot<List<AppointmentModel>> snapshot) {
+            AsyncSnapshot<List<AppointmentModelForPatientSide>> snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data!.isEmpty) {
               return Center(
@@ -114,7 +115,7 @@ Navigator.pushReplacementNamed(context, const PatientProfile().id);
                 ),
               );
             }
-            List<AppointmentModel> appointments = snapshot.data!;
+            List<AppointmentModelForPatientSide> appointments = snapshot.data!;
             return Center(
                 child: Padding(
                     padding: const EdgeInsets.all(16),
@@ -132,15 +133,20 @@ Navigator.pushReplacementNamed(context, const PatientProfile().id);
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          Container(
-                            height: 250,
-                            child: ListView.builder(
-                              
-                              itemCount: appointments.length,
-                              itemBuilder: (context, index) {
-                                return AppointmentCard(
-                                    appointment: appointments[index]);
-                              },
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                              child: Container(
+                                height: 250,
+                                child: ListView.builder(
+                                  
+                                  itemCount: appointments.length,
+                                  itemBuilder: (context, index) {
+                                    return AppointmentCardForPatientSide(
+                                        appointment: appointments[index]);
+                                  },
+                                ),
+                              ),
                             ),
                           ),
                         ])));

@@ -1,4 +1,5 @@
 class DoctorModel {
+  final int id;
   final String doctorLastName;
   final String doctorFirstName;
   final String email;
@@ -11,22 +12,23 @@ class DoctorModel {
   final int rating;
   final String price;
 
-  const DoctorModel({
-    required this.education,
-    required this.country,
-    required this.street,
-    required this.doctorImage,
-    required this.doctorFirstName,
-    required this.specification,
-    required this.rating,
-    required this.price,
-    required this.doctorLastName,
-    required this.email,
-    required this.token
-  });
+  const DoctorModel(
+      {required this.id,
+      required this.education,
+      required this.country,
+      required this.street,
+      required this.doctorImage,
+      required this.doctorFirstName,
+      required this.specification,
+      required this.rating,
+      required this.price,
+      required this.doctorLastName,
+      required this.email,
+      required this.token});
 
   factory DoctorModel.fromJson(Map<String, dynamic> json) {
     return DoctorModel(
+        id: json['doctor']['doctor_id'],
         education: json['doctor']['education'],
         country: json['doctor']['country'],
         street: json['doctor']['street'],

@@ -11,8 +11,10 @@ class PatientInfo {
   final int phoneNumber;
   final String token;
   final String personalImage;
+  final int medicalRecordID;
   PatientInfo(
-      {required this.firstName,
+      {required this.medicalRecordID,
+      required this.firstName,
       required this.id, 
       required this.token,
       required this.lastName,
@@ -38,7 +40,9 @@ class PatientInfo {
        address: json['patient']['address'],
        birthDate: json['patient']['birth_date'],
        phoneNumber: json['patient']['phone_number'],
-       personalImage: json['patient']['personal_image']);
+       personalImage: json['patient']['personal_image'],
+       medicalRecordID: json['patient']['basic_medical_info']['medical_record_id']
+       );
 }
 
 }

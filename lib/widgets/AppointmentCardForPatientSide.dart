@@ -1,16 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/models/appointmentModel.dart';
+import 'package:med_eg/models/appointmentModelForPatientSide.dart';
 
-class AppointmentCard extends StatelessWidget {
-  const AppointmentCard({super.key, required this.appointment});
+class AppointmentCardForPatientSide extends StatelessWidget {
+  AppointmentCardForPatientSide({
+    super.key,
+    required this.appointment,
+  });
 
-  final AppointmentModel appointment;
+  final AppointmentModelForPatientSide appointment;
 
   @override
   Widget build(BuildContext context) {
-    final formattedDate = DateFormat('yyyy-MM-dd / hh:mm a').format(DateTime.parse(appointment.date));
+    late String time;
+    final List<String> timeComponents = appointment.time.split(':');
+    final int hour = int.parse(timeComponents[0]);
+    final int minute = int.parse(timeComponents[1]);
+
+    if (hour < 12) {
+      time = appointment.time + ' AM';
+    } else {
+      time = '${hour - 12}:$minute PM';
+    }
+    final formattedDate =
+        DateFormat('yyyy-MM-dd / ').format(DateTime.parse(appointment.date));
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -31,9 +45,6 @@ class AppointmentCard extends StatelessWidget {
                   child: Image.network(
                     fit: BoxFit.cover,
                     'https://api-medeg.online/${appointment.doctorImage}',
-                    // 'assets/images/PNG/PaitentPhotoInAppoinmtent.png',
-                    // height: 47,
-                    // width: 47,
                   ),
                 ),
               ),
@@ -56,9 +67,12 @@ class AppointmentCard extends StatelessWidget {
                       Center(
                         child: Text(
                           formattedDate,
-                          style:
-                              const TextStyle(color: darkBlue, fontSize: 15),
+                          style: const TextStyle(color: darkBlue, fontSize: 15),
                         ),
+                      ),
+                      Text(
+                        time,
+                        style: const TextStyle(color: darkBlue, fontSize: 15),
                       ),
                     ],
                   ),
