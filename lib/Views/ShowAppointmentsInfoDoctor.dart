@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:med_eg/Views/chatTest.dart';
 import 'package:med_eg/Views/chat_screen.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/models/appointmentModel.dart';
@@ -81,7 +82,7 @@ class ShowAppointmentInfoDoctor extends StatelessWidget {
                   const CustomButton(text: 'View Medical Record', color: kPrimaryColor,),
                   SizedBox(height: screenHeight*0.05,),
                   CustomButton(text: 'Go to chat', color: kPrimaryColor,onTap: () {
-                   Navigator.pushNamed(context, const ChatScreen().id);
+                   Navigator.pushNamed(context,  ChatTest().id);
                  },),
                   SizedBox(height: screenHeight*0.17,),
                  const CustomButton( text: 'Delete appointment', color: Color(0xffe24040)),

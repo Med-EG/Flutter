@@ -1,4 +1,5 @@
 class DoctorModel {
+  final int doctorId;
   final String doctorLastName;
   final String doctorFirstName;
   final String email;
@@ -12,6 +13,7 @@ class DoctorModel {
   final String price;
 
   const DoctorModel({
+    required this.doctorId, 
     required this.education,
     required this.country,
     required this.street,
@@ -27,6 +29,7 @@ class DoctorModel {
 
   factory DoctorModel.fromJson(Map<String, dynamic> json) {
     return DoctorModel(
+       doctorId: json['doctor']['doctor_id'],
         education: json['doctor']['education'],
         country: json['doctor']['country'],
         street: json['doctor']['street'],

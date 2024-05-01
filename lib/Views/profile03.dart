@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/models/medicalRecordModel.dart';
-import 'package:med_eg/services/Edit%20Medical%20Record.dart';
 import 'package:med_eg/widgets/custom_button.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../widgets/custom_textFormField.dart';

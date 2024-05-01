@@ -8,9 +8,7 @@ import 'package:med_eg/models/paitentModel.dart';
 import 'package:med_eg/services/get_MedicineALerts.dart';
 import 'package:med_eg/widgets/customHalfTextFieldHalfDropDown.dart';
 import 'package:meta/meta.dart';
-
 part 'medicine_alert_state.dart';
-
 class MedicineAlertCubit extends Cubit<MedicineAlertState> {
   MedicineAlertCubit() : super(MedicineAlertInitial());
 

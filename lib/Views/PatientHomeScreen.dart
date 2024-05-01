@@ -11,9 +11,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import '../constants/colors.dart';
 import 'package:med_eg/models/paitentModel.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:med_eg/Views/patient_profile.dart';
-
 class PatientHomeScreen extends StatelessWidget {
    PatientHomeScreen({super.key});
   final String id = 'HomeScreen';
@@ -44,7 +42,7 @@ class PatientHomeScreen extends StatelessWidget {
               ),
               GButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, const MessageScreen().id);
+                  Navigator.pushNamed(context,  const MessageScreen().id);
                 },
                 icon: Icons.chat_bubble_rounded,
                 text: 'Chats',
@@ -71,7 +69,7 @@ class PatientHomeScreen extends StatelessWidget {
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.only(left: 12, top: 12),
-          child: Container(
+          child: SizedBox(
             width: 70,
             height: 70,
             child: ClipOval(

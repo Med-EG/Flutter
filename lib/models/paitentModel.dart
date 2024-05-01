@@ -11,6 +11,7 @@ class PatientInfo {
   final int phoneNumber;
   final String token;
   final String personalImage;
+ final int medicalRecordID;
   PatientInfo(
       {required this.firstName,
       required this.id, 
@@ -23,7 +24,8 @@ class PatientInfo {
       required this.address,
       required this.birthDate,
       required this.phoneNumber,
-      required this.personalImage, });
+      required this.personalImage, 
+      required this.medicalRecordID});
 
       factory PatientInfo.fromJson(json){
         return PatientInfo(
@@ -38,7 +40,9 @@ class PatientInfo {
        address: json['patient']['address'],
        birthDate: json['patient']['birth_date'],
        phoneNumber: json['patient']['phone_number'],
-       personalImage: json['patient']['personal_image']);
+       personalImage: json['patient']['personal_image'],
+       medicalRecordID: json['patient']['basic_medical_info']['medical_record_id']
+       );
 }
 
 }

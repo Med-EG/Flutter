@@ -1,13 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/models/doctorModel.dart';
 import 'package:med_eg/widgets/Doctor_widgets/DoctorHomePageCardListView.dart';
 
 class DoctorHomeScreen extends StatelessWidget {
-  DoctorHomeScreen({super.key});
+  const DoctorHomeScreen({super.key});
   final String id = 'DoctorHomeScreen';
 
   @override

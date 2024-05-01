@@ -3,6 +3,7 @@ import 'package:med_eg/Views/ShowAppointmentsInfoDoctor.dart';
 import 'package:med_eg/widgets/customAppointmentCard.dart';
 import 'package:med_eg/models/appointmentModel.dart';
 
+// ignore: must_be_immutable
 class AppointmentListViewForDoctor extends StatelessWidget {
   AppointmentListViewForDoctor({super.key});
   final List<AppointmentModel> appointments = const [

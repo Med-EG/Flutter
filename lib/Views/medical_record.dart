@@ -15,15 +15,21 @@ import 'package:med_eg/services/Medicine%20Info.dart';
 import 'package:med_eg/services/getDiseaseInfo.dart';
 import 'package:med_eg/widgets/custom_button.dart';
 import 'package:med_eg/widgets/general_basic_medical_info.dart';
-import '../models/patientInfo without token.dart';
 import '../services/GetBasicMedicalInfo.dart';
-import '../services/GetPatientbyID.dart';
 import '../services/operation Service.dart';
 import '../widgets/custom_details_info.dart';
 import 'medical_record3.dart';
-class MedicalRecord extends StatelessWidget {
+
+class MedicalRecord extends StatefulWidget {
   const MedicalRecord({Key? key}) : super(key: key);
   final String id = 'MedicalRecord';
+  @override
+  State<MedicalRecord> createState() => _MedicalRecordState();
+}
+
+class _MedicalRecordState extends State<MedicalRecord> {
+
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -68,7 +74,11 @@ class MedicalRecord extends StatelessWidget {
                               } else if (snapshot.hasData) {
                                 MedicalRecordModel? medicalRecord =
                                     snapshot.data;
+
                                 if (medicalRecord != null) {
+                                  DateTime today = DateTime.now();
+                                  DateTime dob = DateTime.parse(medicalRecord.birthDate);
+                                  int age = today.year - dob.year;
                                   return Column(
                                     children: [
                                       Text(
@@ -82,29 +92,11 @@ class MedicalRecord extends StatelessWidget {
                                       SizedBox(
                                         height: screenHeight * 0.03,
                                       ),
-                                      FutureBuilder<PatientInfoWithoutToken>(
-                                        future: GetPatientByID()
-                                            .getPatientByID(context),
-                                        builder: (context, snapshot) {
-                                          if (snapshot.connectionState ==
-                                              ConnectionState.waiting) {
-                                            return const Center(
-                                                child:
-                                                    CircularProgressIndicator());
-                                          } else if (snapshot.hasError) {
-                                            return Text(
-                                                'Error: ${snapshot.error}');
-                                          } else if (snapshot.hasData) {
-                                            PatientInfoWithoutToken? patientInfo =
-                                                snapshot.data;
-                                            if (patientInfo != null) {
-                                              return Column(
-                                                children: [
-                                                  Align(
+                                      Align(
                                                     alignment:
                                                         Alignment.topLeft,
                                                     child: Text(
-                                                      '${patientInfo.firstName.toString()} ${patientInfo.lastName.toString()}',
+                                                      '${medicalRecord.patientFirstName} ${medicalRecord.patientLastName}',
                                                       style: const TextStyle(
                                                           fontSize: 18,
                                                           color: darkBlue,
@@ -112,29 +104,18 @@ class MedicalRecord extends StatelessWidget {
                                                               FontWeight.w600),
                                                     ),
                                                   ),
-                                                  const Align(
+                                                   Align(
                                                     alignment:
                                                         Alignment.topLeft,
                                                     child: Text(
-                                                      '22 Years old',
-                                                      style: TextStyle(
+                                                      '${age.toString()} years old',
+                                                      style: const TextStyle(
                                                           color: darkBlue,
                                                           fontSize: 12,
                                                           fontWeight:
                                                               FontWeight.w600),
                                                     ),
                                                   ),
-                                                ],
-                                              );
-                                            } else {
-                                              return const Text(
-                                                  'Error: Medical record data is null');
-                                            }
-                                          } else {
-                                            return const CircularProgressIndicator();
-                                          }
-                                        },
-                                      ),
                                       SizedBox(height: screenHeight * 0.04),
                                       const Align(
                                         alignment: Alignment.topLeft,
@@ -192,7 +173,9 @@ class MedicalRecord extends StatelessWidget {
                                 );
                               },
                               onPressed2: () {},
-                              onPressed3: () {},
+                              onPressed3: () {
+                                
+                              },
                             )
                         ],
                       );
@@ -240,11 +223,14 @@ class MedicalRecord extends StatelessWidget {
                                     arguments: {'medicineId': medicineList[i]});
                               },
                               onPressed3: () {
-                                MedicineInfoForRecordService()
+                                setState(() {
+                                  MedicineInfoForRecordService()
                                     .deleteMedicineInfo(
                                   context: context,
                                   medicalInfoModel: medicineList[i],
                                 );
+                                });
+                                
                               },
                             )
                         ],
@@ -358,11 +344,9 @@ class MedicalRecord extends StatelessWidget {
                   text2: 'Info. ',
                   text3: ':',
                 ),
-                 CustomDetailsInfoRow(
+                CustomDetailsInfoRow(
                   text: 'Father',
-                  onPressed: (){
-
-                  },
+                  onPressed: () {},
                 ),
                 const CustomDetailsInfoRow(
                   text: 'Mother',
@@ -370,9 +354,14 @@ class MedicalRecord extends StatelessWidget {
                 const CustomDetailsInfoRow(
                   text: 'Second Degree',
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(vertical: 24),
-                  child: CustomButton(text: 'Done'),
+                  child: CustomButton(
+                    text: 'Done',
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
                 )
               ],
             ),

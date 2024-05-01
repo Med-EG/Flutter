@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/DoctorViews/Doctor%20Profile.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForPatientMedicalRecord.dart';
 import 'package:med_eg/widgets/Doctor_widgets/CustomCardForDoctorHomeScreen.dart';
 
@@ -25,7 +26,9 @@ class DoctorHomePageCardListView extends StatelessWidget {
       CustomCardForDoctorHomeScreen(
         text: 'My Profile',
         icon:Icons.person_3_rounded,
-        ontap: () {},height: 200, width: 125
+        ontap: () {
+          Navigator.pushNamed(context, const DoctorProfile().id);
+        },height: 200, width: 125
       ),
       CustomCardForDoctorHomeScreen(
         text: 'Chats',

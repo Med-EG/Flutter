@@ -5,9 +5,7 @@ import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/helper/API.dart';
 import 'package:med_eg/models/doctorModel.dart';
 import 'package:med_eg/models/paitentModel.dart';
-
 import '../models/patientInfo without token.dart';
-
 class GetPatientByID {
   Future<PatientInfoWithoutToken> getPatientByID(
     BuildContext context,

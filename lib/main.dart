@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/Views/AlertScreen.dart';
 import 'package:med_eg/Views/CreateMedicineAlert.dart';
+import 'package:med_eg/Views/DoctorViews/Doctor%20Profile.dart';
 import 'package:med_eg/Views/DoctorViews/DoctorCalendar.dart';
 import 'package:med_eg/Views/DoctorViews/DoctorHomeScreen.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForMedicalRecordByFaceID.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForMedicalRecordByID.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForPatientMedicalRecord.dart';
+import 'package:med_eg/Views/DoctorViews/edit%20basic%20info%20for%20doctor.dart';
 import 'package:med_eg/Views/ShowAppointmentsInfoDoctor.dart';
 import 'package:med_eg/Views/EnterVarifecationCode.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
@@ -16,6 +18,7 @@ import 'package:med_eg/Views/check_reservation.dart';
 import 'package:med_eg/Views/chooseUserType.dart';
 import 'package:med_eg/Views/createNewPassword.dart';
 import 'package:med_eg/Views/edit_medicine_info.dart';
+import 'package:med_eg/Views/faqs_screen.dart';
 import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/medical_record.dart';
 import 'package:med_eg/Views/medical_record2%20for%20allergy.dart';
@@ -41,9 +44,10 @@ import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/Views/test2.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/cubits/MedicalRecordCubit/medical_record_cubit.dart';
+import 'package:med_eg/cubits/MessageCubit/message_cubit.dart';
 import 'package:med_eg/cubits/RegisterCubit/sign_up_cubit.dart';
 import 'package:med_eg/widgets/testForm.dart';
-import 'Views/chat_screen.dart';
+import 'Views/chatTest.dart';
 import 'Views/loginScreen.dart';
 import 'Views/medical_record2 for operation.dart';
 import 'Views/signUp4.dart';
@@ -68,6 +72,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => MedicalRecordCubit(),
         ),
+        BlocProvider(
+          create: (context) => MessageCubit(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -91,14 +98,14 @@ class MyApp extends StatelessWidget {
           const SignUp11().id: (context) => const SignUp11(),
           const SignUp12().id: (context) => const SignUp12(),
           Login().id: (context) => Login(),
-          const ChatScreen().id: (context) => const ChatScreen(),
+          //ChatScreen().id: (context) =>  ChatScreen(),
           const FindDoctor().id: (context) => const FindDoctor(),
           const MessageScreen().id: (context) => const MessageScreen(),
           ResetPassword().id: (context) => ResetPassword(),
           const EnterVerficationCode().id: (context) =>
               const EnterVerficationCode(),
           const CreateNewPassword().id: (context) => const CreateNewPassword(),
-           PatientHomeScreen().id: (context) =>  PatientHomeScreen(),
+          PatientHomeScreen().id: (context) => PatientHomeScreen(),
           const NoPatientAppoointment().id: (context) =>
               const NoPatientAppoointment(),
           const ReserveDoctor().id: (context) => const ReserveDoctor(),
@@ -129,12 +136,19 @@ class MyApp extends StatelessWidget {
               const MedicalRecord2ForAllergy(),
           const MedicalRecord2ForOperation().id: (context) =>
               const MedicalRecord2ForOperation(),
-              const SearchForPatientMedicalRecord().id:(context) => const SearchForPatientMedicalRecord(),
-              const SearchForMedicalRecordByFaceID().id:(context) => const SearchForMedicalRecordByFaceID(),
-               SearchForMedicalRecordByID().id:(context) =>  SearchForMedicalRecordByID(),
+          const SearchForPatientMedicalRecord().id: (context) =>
+              const SearchForPatientMedicalRecord(),
+          const SearchForMedicalRecordByFaceID().id: (context) =>
+              const SearchForMedicalRecordByFaceID(),
+          SearchForMedicalRecordByID().id: (context) =>
+              SearchForMedicalRecordByID(),
+          ChatTest().id: (context) => ChatTest(),
+          const DoctorProfile().id: (context) => const DoctorProfile(),
+          const FAQSScreen().id: (context) => const FAQSScreen(),
+          const EditBasicInfoForDoctor().id: (context) => const EditBasicInfoForDoctor(),
         },
         debugShowCheckedModeBanner: false,
-        home: OnBording(),
+        home: const OnBording(),
       ),
     );
   }

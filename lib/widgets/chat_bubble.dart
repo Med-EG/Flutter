@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../constants/colors.dart';
+import '../models/message model.dart';
 
 class ChatBubble extends StatelessWidget {
   const ChatBubble({Key? key}) : super(key: key);
@@ -53,8 +54,8 @@ class ChatBubble extends StatelessWidget {
 
 
 class ChatBubbleForFriend extends StatelessWidget {
-  const ChatBubbleForFriend({super.key});
-
+  const ChatBubbleForFriend({super.key, required this.messageContent});
+final MessageModel messageContent; 
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -69,9 +70,9 @@ class ChatBubbleForFriend extends StatelessWidget {
               bottomLeft: Radius.circular(16),
             ),
             color: kPrimaryColor),
-        child: const Text(
-          'Lorem ipsum dolor sit amet, consectetur ,Lorem ipsum dolor sit amet, consectetur',
-          style: TextStyle(color: Colors.white),
+        child:  Text(
+          messageContent.content,
+          style: const TextStyle(color: Colors.white),
         ),
       ),
     );

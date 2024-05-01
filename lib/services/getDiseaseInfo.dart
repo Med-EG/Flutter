@@ -15,10 +15,13 @@ class DiseaseInfoForRecord {
        DoctorModel?doctor=BlocProvider.of<LoginCubit>(context).doctor;
 
       MedicalRecordModel medicalRecord = await GetBasicMedicalInfo().getBasicMedicalInfo(context);
+      print('Medical Record ID: ${medicalRecord.medicalId}');
       List<dynamic> data = await Api().get(
           url:
               'https://api-medeg.online/api/medEG/disease-info/rec/${medicalRecord.medicalId}',
           token: patient?.token??doctor?.token);
+          print('API Response: $data');
+
 
       List<DiseaseInfoModel> diseaseList = [];
       for (int i = 0; i < data.length; i++) {
@@ -26,7 +29,7 @@ class DiseaseInfoForRecord {
       }
       return diseaseList;
     } catch (e) {
-      print('Error fetching medicines: $e');
+      print('Error fetching diseases: $e');
       return [];
     }
   }

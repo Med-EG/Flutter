@@ -4,6 +4,7 @@ import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/helper/API.dart';
 import 'package:med_eg/models/paitentModel.dart';
 
+// ignore: must_be_immutable
 class Test2 extends StatelessWidget {
    Test2({super.key});
   final id = 'Test2';

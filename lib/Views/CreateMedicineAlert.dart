@@ -10,6 +10,7 @@ import 'package:med_eg/widgets/customDropDownTextField.dart';
 import 'package:med_eg/widgets/customHalfTextFieldHalfDropDown.dart';
 import 'package:med_eg/widgets/custom_button.dart';
 
+// ignore: must_be_immutable
 class CreateMedicineAlert extends StatelessWidget {
   CreateMedicineAlert({super.key});
 

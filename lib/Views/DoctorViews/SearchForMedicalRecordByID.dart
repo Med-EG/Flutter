@@ -1,4 +1,3 @@
-  import 'package:flutter/cupertino.dart';
   import 'package:flutter/material.dart';
   import 'package:flutter_bloc/flutter_bloc.dart';
   import 'package:med_eg/Views/medical_record.dart';
@@ -31,7 +30,7 @@
           isLoading = true;
         }
         if (state is MedicalRecordSuccessState) {
-          Navigator.pushReplacementNamed(context, MedicalRecord().id);
+          Navigator.pushReplacementNamed(context, const MedicalRecord().id);
         }
         if (state is MedicalRecordFailureState) {
           showDialog(
@@ -82,11 +81,11 @@
                             ),
                           ],
                         ),
-                        Spacer(flex: 1,),
+                        const Spacer(flex: 1,),
                         Searchbar(
                           labelText: 'Search for record by patient ID', controller: _textController, isItForPatientIDSearch: true,
                         ),
-                        Spacer(flex: 1,),
+                        const Spacer(flex: 1,),
                         CustomButton(
                           text: 'Search',
                           onTap: () async {
@@ -136,7 +135,7 @@
                             }
                           },
                         ),
-                        Spacer(flex: 2)
+                        const Spacer(flex: 2)
                       ],
                     ),
                   ),

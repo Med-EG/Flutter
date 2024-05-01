@@ -10,8 +10,11 @@ class DoctorModelWithoutToken {
   final String street;
   final int rating;
   final String price;
-
+  final int licenseId;
+final int doctorId;
   const DoctorModelWithoutToken({
+    required this.licenseId,
+    required this.doctorId,
     required this.education,
     required this.country,
     required this.street,
@@ -27,6 +30,8 @@ class DoctorModelWithoutToken {
 
   factory DoctorModelWithoutToken.fromJson(Map<String, dynamic> json) {
     return DoctorModelWithoutToken(
+      licenseId: json['license_id'],
+      doctorId: json['doctor_id'],
         education: json['education'],
         country: json['country'],
         street: json['street'],

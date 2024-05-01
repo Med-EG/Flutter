@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/Views/chooseUserType.dart';
-import 'package:med_eg/Views/loginScreen.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/OnBoardingDots.dart';
 import 'package:med_eg/models/onboardingmodel.dart';

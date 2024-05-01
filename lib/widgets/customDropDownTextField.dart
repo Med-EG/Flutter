@@ -1,6 +1,5 @@
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
-import 'package:med_eg/Views/CreateMedicineAlert.dart';
 
 class DropDownTextField1 extends StatefulWidget {
    DropDownTextField1(

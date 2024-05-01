@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/Views/loginScreen.dart';
-import 'package:med_eg/cubits/AccountType/account_type_cubit.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import '../widgets/custom_button.dart';
 

@@ -1,42 +1,134 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/constants/colors.dart';
+import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/widgets/chat_bubble.dart';
 import 'package:med_eg/widgets/custom_textFormField.dart';
+import '../cubits/LoginCubit/login_states.dart';
+import '../cubits/MessageCubit/message_cubit.dart';
+import '../models/paitentModel.dart';
 import '../widgets/custom_arrow_back.dart';
+
+// ignore: must_be_immutable
 class ChatScreen extends StatelessWidget {
-  const ChatScreen({super.key});
-final String id = 'chatScreen';
+  ChatScreen({
+    super.key,
+  });
+  final String id = 'chatScreen';
+  final TextEditingController _messageController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    final chatId = args['chatId'];
+    final doctorFirstName = args['doctorFirstName'];
+    final doctorLastName = args['doctorLastName'];
+    PatientInfo? patient;
+    final LoginState loginState = context.watch<LoginCubit>().state;
+    if (loginState is SuccessPatient) {
+      patient = loginState.patient;
+    }
     double screenWidth = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const CustomArrowBack(),
-                SizedBox(
-                  width: screenWidth * 0.125,
-                ),
-                const Text(
-                  'Dr.Mohamed Essa',
-                  style: TextStyle(
-                      color: darkBlue, fontWeight: FontWeight.bold, fontSize: 16),
-                )
-              ],
-            ),
-            Expanded(
-              child: ListView.builder(itemBuilder: (context, index) {
-                return const ChatBubbleForFriend();
-              }),
-            ),
-            const CustomTextFormField(label: 'type message here...')
-          ]),
+        body: BlocListener<MessageCubit, MessageState>(
+          listener: (context, state) {
+            if (state is MessageSuccess) {
+              _messageController.text = '';
+              print('Message Sent Succefully');
+            } else if (state is MessageFailure) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Something error')));
+              print(state.errMessage);
+            }
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const CustomArrowBack(),
+                  SizedBox(
+                    width: screenWidth * 0.125,
+                  ),
+                  Text(
+                    'Dr. $doctorFirstName $doctorLastName',
+                    style: const TextStyle(
+                        color: darkBlue,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16),
+                  )
+                ],
+              ),
+              Expanded(
+                child: ListView.builder(itemBuilder: (context, index) {
+                  return const ChatBubbleForFriend();
+                }),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: CustomTextFormField(
+                    label: 'type message here...',
+                    controller: _messageController,
+                  )),
+                  Expanded(
+                    child: BlocProvider.value(
+                      value: BlocProvider.of<MessageCubit>(context),
+                      child: IconButton(
+                        icon: const Icon(Icons.send),
+                        onPressed: () {
+                          if (patient != null &&
+                              _messageController.text.isNotEmpty) {
+                            context.read<MessageCubit>().sendmessageMethod(
+                                patientInfo: patient,
+                                url:
+                                    'https://api-medeg.online/api/medEG/message',
+                                body: {
+                                  'chat_id': chatId,
+                                  'sender': patient.id.toString(),
+                                  'content': _messageController.text
+                                });
+                            print(_messageController.text);
+                            print('patient id: ${patient.id}');
+                            print('chat id: $chatId');
+                          } else {
+                            print('send fail');
+                          }
+                        },
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ]),
+          ),
         ),
       ),
     );
+/* 
+    var message = BlocProvider.of<MessageCubit>(context);
+                        message.messageMethod(
+                          body: {
+                            'chat_id': 8,
+                            'sender': patient!.id,
+                            'content': messageText
+                          }
+                        );
+                        print('success $_messageController');
+                        _messageController.clear(); */
   }
+
+/* void _sendMessage(BuildContext context) {
+    final messageCubit = BlocProvider.of<MessageCubit>(context);
+    messageCubit.sendMessage(
+      chatId: chatId,
+      sender: patient.id,
+      content: _messageController.text,
+    );
+    _messageController.clear();
+  } */
 }
+ */

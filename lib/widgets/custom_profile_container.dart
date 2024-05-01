@@ -30,10 +30,9 @@ class _CustomProfileContainerState extends State<CustomProfileContainer> {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-
     return Container(
-      height: screenHeight * 0.2,
-      width: screenWidth * 0.2,
+      height: screenHeight * 0.3,
+      width: screenWidth * 0.3,
       decoration: const BoxDecoration(
         color: Color(0xffE7E7E7),
         shape: BoxShape.circle,
@@ -49,17 +48,17 @@ class _CustomProfileContainerState extends State<CustomProfileContainer> {
                 : Container(),
           ),
           Positioned(
-            bottom: 0,
-            right: 110,
+            bottom: screenHeight * 0.06,
+            right: screenWidth * 0.001,
             child: Container(
-              height: screenHeight*0.05,
-              width: screenHeight*0.05,
+              height: screenHeight * 0.05,
+              width: screenHeight * 0.05,
               decoration: const BoxDecoration(
-                color: kPrimaryColor,
-                shape: BoxShape.circle
-              ),
+                  color: kPrimaryColor, shape: BoxShape.circle),
               child: IconButton(
-                icon: const Icon(Icons.add,),
+                icon: const Icon(
+                  Icons.add,
+                ),
                 color: Colors.white,
                 onPressed: () {
                   showDialog(
