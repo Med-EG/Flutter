@@ -47,7 +47,7 @@ class Api {
     );
 
     try {
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 ||response.statusCode == 201) {
         return jsonDecode(response.body);
       } else if (response.statusCode == 401 || response.statusCode == 404) {
         throw Exception(

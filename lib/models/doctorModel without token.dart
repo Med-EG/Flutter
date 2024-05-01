@@ -1,9 +1,9 @@
 class DoctorModelWithoutToken {
+  final int doctorID;
   final String doctorLastName;
   final String doctorFirstName;
   final String email;
   final String doctorImage;
-  //final String token;
   final String specification;
   final String education;
   final String country;
@@ -12,6 +12,7 @@ class DoctorModelWithoutToken {
   final String price;
 
   const DoctorModelWithoutToken({
+    required this.doctorID,
     required this.education,
     required this.country,
     required this.street,
@@ -22,11 +23,11 @@ class DoctorModelWithoutToken {
     required this.price,
     required this.doctorLastName,
     required this.email,
-   // required this.token
   });
 
   factory DoctorModelWithoutToken.fromJson(Map<String, dynamic> json) {
     return DoctorModelWithoutToken(
+      doctorID: json['doctor_id'],
         education: json['education'],
         country: json['country'],
         street: json['street'],
@@ -37,7 +38,6 @@ class DoctorModelWithoutToken {
         price: json['price'],
         doctorLastName: json['last_name'],
         email: json['email'],
-       // token: json['token']
         );
   }
 }

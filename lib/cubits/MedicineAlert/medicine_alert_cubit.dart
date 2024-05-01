@@ -1,3 +1,4 @@
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,7 +7,6 @@ import 'package:med_eg/helper/API.dart';
 import 'package:med_eg/models/MedicineAlertModel.dart';
 import 'package:med_eg/models/paitentModel.dart';
 import 'package:med_eg/services/get_MedicineALerts.dart';
-import 'package:med_eg/widgets/customHalfTextFieldHalfDropDown.dart';
 import 'package:meta/meta.dart';
 
 part 'medicine_alert_state.dart';
@@ -14,22 +14,32 @@ part 'medicine_alert_state.dart';
 class MedicineAlertCubit extends Cubit<MedicineAlertState> {
   MedicineAlertCubit() : super(MedicineAlertInitial());
 
-  GetAllAlertsService alerts = GetAllAlertsService();
-  MedicineAlertModel? _medicineAlertModel;
-  CreateNewMedicineALert(
-      {required String patientToken,
-      required dynamic body,
-      required String url,required List<String>times}) async {
+  MedicineAlertModelWithoutTimes? _medicineAlertModel;
+  CreateNewMedicineALert({
+    required String patientToken,
+    required dynamic body,
+    required String url,
+    required List<String> times,
+  }) async {
     try {
       emit(Loading());
 
       final response =
           await Api().post(url: url, body: body, token: patientToken);
-      _medicineAlertModel = MedicineAlertModel.fromJson(response);
-      CreateNewMedicineALertTime;
-    for(int i=0;i<times.length;i++){
-       await Api().post(url: 'https://api-medeg.online/api/medEG/alert-times', body:{'alertTime': times[i]} ,token: patientToken);
-    }
+      _medicineAlertModel = MedicineAlertModelWithoutTimes.fromJson(response);
+      //  CreateNewMedicineALertTime;
+      print(times);
+      for (int i = 0; i < times.length; i++) {
+        print(times[i]);
+        await Api().post(
+            url: 'https://api-medeg.online/api/medEG/alert-times',
+            body: {
+              'alert_time': times[i].toString(),
+              'alert_id': _medicineAlertModel!.alertID
+            },
+            token: patientToken);
+        emit(ShowAllMedicineAlerts());
+      }
     } catch (e) {}
   }
 
@@ -51,7 +61,7 @@ class MedicineAlertCubit extends Cubit<MedicineAlertState> {
     Future<List<MedicineAlertModel>> GetAllAlerts(BuildContext context) async {
       try {
         PatientInfo? patient = BlocProvider.of<LoginCubit>(context).patient;
-        Map<String,dynamic> data = await Api().get(
+        Map<String, dynamic> data = await Api().get(
           url:
               'https://api-medeg.online/api/medEG/medicine-alert/patient${patient!.id}',
           token: patient.token,
@@ -61,7 +71,7 @@ class MedicineAlertCubit extends Cubit<MedicineAlertState> {
         for (int i = 0; i < data.length; i++) {
           alerts.add(MedicineAlertModel.fromJson(data[i]));
         }
-        emit(ShowAllMedicineAlerts(medicines: alerts));
+        emit(ShowAllMedicineAlerts());
         return alerts;
       } catch (e) {
         print('Error fetching appointments: $e');
@@ -73,13 +83,13 @@ class MedicineAlertCubit extends Cubit<MedicineAlertState> {
     }
   }
 
-  // ignore: non_constant_identifier_names
-  CreateNewTimeTextField({
-    required Function(String) onDataEntered,
-}) {
-  emit(AddNewTimetextField());
-    return HalfTextFieldHalfDropDown(
-        isItDoseTextField: false, onDataEntered: onDataEntered);
-}
-
+  DeleteMedicineAlert(
+      {required String patientToken, required String medicineID}) async {
+    emit(Loading());
+    Api().delete(
+        url:
+            'https://api-medeg.online/api/medEG/medicine-alert/delete/$medicineID',
+        token: patientToken);
+    emit(ShowAllMedicineAlerts());
+  }
 }

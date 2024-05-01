@@ -118,7 +118,7 @@ Navigator.pushReplacementNamed(context, const PatientProfile().id);
             List<AppointmentModelForPatientSide> appointments = snapshot.data!;
             return Center(
                 child: Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(5),
                     child: Column(
                       
                        // mainAxisAlignment: MainAxisAlignment.center,
@@ -135,7 +135,7 @@ Navigator.pushReplacementNamed(context, const PatientProfile().id);
                           ),
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                              padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 10),
                               child: Container(
                                 height: 250,
                                 child: ListView.builder(
