@@ -11,9 +11,10 @@ class PatientInfo {
   final int phoneNumber;
   final String token;
   final String personalImage;
- final int medicalRecordID;
+  final int medicalRecordID;
   PatientInfo(
-      {required this.firstName,
+      {required this.medicalRecordID,
+      required this.firstName,
       required this.id, 
       required this.token,
       required this.lastName,

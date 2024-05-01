@@ -1,115 +1,227 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:med_eg/Views/PatientAlertsScreen.dart';
+import 'package:med_eg/Views/test2.dart';
+import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/cubits/MedicineAlert/medicine_alert_cubit.dart';
-import 'package:med_eg/models/medicineModel.dart';
 import 'package:med_eg/models/paitentModel.dart';
-import 'package:med_eg/services/get_all_medicines.dart';
-import 'package:med_eg/widgets/CustomAddButton.dart';
-import 'package:med_eg/widgets/customDropDownTextField.dart';
-import 'package:med_eg/widgets/customHalfTextFieldHalfDropDown.dart';
+import 'package:med_eg/widgets/TestTimePiker.dart';
+import 'package:med_eg/widgets/custom_arrow_back.dart';
 import 'package:med_eg/widgets/custom_button.dart';
+import 'package:med_eg/widgets/custom_circle_container.dart';
 
-// ignore: must_be_immutable
-class CreateMedicineAlert extends StatelessWidget {
-  CreateMedicineAlert({super.key});
-
+class CreateMedicineAlert extends StatefulWidget {
+  const CreateMedicineAlert({Key? key}) : super(key: key);
   final String id = 'CreateMedicineAlert';
-  String selectedMedicine = '';
-  int dose = 0;
-  String enteredData = '';
+
+  @override
+  State<CreateMedicineAlert> createState() => _CreateMedicineAlertState();
+}
+
+List<Widget> widgets = [];
+int counter = 0;
+List<String> times = [];
+String selectedTimee = '';
+
+class _CreateMedicineAlertState extends State<CreateMedicineAlert> {
+  late String selectedMedicine;
+  late String enteredData;
+  GlobalKey<FormState> formKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    selectedMedicine = '';
+    enteredData = '';
+  }
+
   @override
   Widget build(BuildContext context) {
     PatientInfo? patient = BlocProvider.of<LoginCubit>(context).patient;
     return BlocConsumer<MedicineAlertCubit, MedicineAlertState>(
       listener: (context, state) {
-        // TODO: implement listener
+        if(state is ShowAllMedicineAlerts)
+        {
+          Navigator.pushReplacementNamed(context,PatientAlertsScreen().id);
+        }
       },
       builder: (context, state) {
         return Scaffold(
-          body: Column(
+          body: Stack(
             children: [
-              SingleChildScrollView(
+              const Positioned(
+                right: -80,
+                top: -80,
+                child: CustomCircleContainer(),
+              ),
+              const Positioned(
+                left: -180,
+                bottom: -180,
+                child: CustomCircleContainer(),
+              ),
+              Form(
+                key: formKey,
                 child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 14),
+                  child: SingleChildScrollView(
                     child: Column(
+                      mainAxisSize:
+                          MainAxisSize.max, // Set the mainAxisSize to min
                       children: [
-                        const SizedBox(
-                          height: 60,
-                        ),
-                        FutureBuilder(
-                          builder: (BuildContext context,
-                              AsyncSnapshot<List<MedicineModel>> snapshot) {
-                            if (snapshot.hasData) {
-                              List<MedicineModel> medicines = snapshot.data!;
-                              List<String> medicineNames = medicines
-                                  .map((medicine) => medicine.medicineName)
-                                  .toList();
-
-                              return DropDownTextField1(
-                                  hintText: 'Medicine name',
-                                  data: medicineNames,
-                                  onDataSelected: (data) {
-                                    selectedMedicine = data;
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 14),
+                          child: Column(
+                            children: [
+                              const Row(
+                                children: [
+                                  CustomArrowBack(),
+                                  Spacer(
+                                    flex: 1,
+                                  ),
+                                  SizedBox(height: 50),
+                                ],
+                              ), // Adjusted spacing
+                              const Text(
+                                'Creating alert',
+                                style: TextStyle(
+                                  color: darkBlue,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 100), // Adjusted spacing
+                              SearchBarForMedicines(
+                                onMedicineSelected: (medicine) {
+                                  setState(() {
+                                    selectedMedicine = medicine;
+                                    print(selectedMedicine);
                                   });
-                            }
-                            return CircularProgressIndicator();
-                          },
-                          future:
-                              GetAllMedicineService().GetAllMedicines(context),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        HalfTextFieldHalfDropDown(
-                          isItDoseTextField: true,
-                          onDataEntered: (data) {
-                            enteredData = data; // Store the entered data
-                          },
-                        ),
-                        HalfTextFieldHalfDropDown(
-                          isItDoseTextField: false,
-                          onDataEntered: (data) {
-                            enteredData = data; // Store the entered data
-                          },
-                        ),
-                        Row(
-                          children: [
-                            const Spacer(
-                              flex: 1,
-                            ),
-                            CustomAddButton(
-                              borderRadius: 14,
-                              plusIcon: true,
-                              onTap: () {},
-                            )
-                          ],
+                                },
+                              ),
+                              const SizedBox(height: 40), // Adjusted spacing
+                              TextFormField(
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter data';
+                                  }
+                                },
+                                keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                  //hintText: "Dose",
+                                  labelText: "dose",
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    borderSide:
+                                        const BorderSide(color: kPrimaryColor),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    borderSide:
+                                        const BorderSide(color: kPrimaryColor),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    borderSide:
+                                        const BorderSide(color: kPrimaryColor),
+                                  ),
+                                ),
+                                onChanged: (value) {
+                                  enteredData = value;
+                                },
+                              ),
+                              const SizedBox(height: 20), // Adjusted spacing
+                              TimePiker(
+                                onTimeSelected: (selectedTime) {
+                                  setState(() {
+                                    selectedTimee = selectedTime;
+
+                                    times.add(selectedTime);
+                                  });
+                                },
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 30),
+                                child: CustomButton(
+                                  text: 'add another time',
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: Text('Select Time'),
+                                          content: TimePiker(
+                                            onTimeSelected: (selectedTime) {
+                                              setState(() {
+                                                selectedTimee = selectedTime;
+
+                                                times.add(selectedTime);
+                                              });
+                                            },
+                                          ),
+                                          actions: <Widget>[
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: Text('Cancel'),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                // You can handle adding the selected time here
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: Text('OK'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  },
+                                  color: const Color.fromARGB(255, 45, 111, 79),
+                                ),
+                              ),
+
+                              const SizedBox(height: 60), // Adjusted spacing
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 15),
+                                child: CustomButton(
+                                  text: 'Add Alert',
+                                  onTap: () {
+                                    if (formKey.currentState!.validate()) {
+                                      var createMedicineAlert1 =
+                                          BlocProvider.of<MedicineAlertCubit>(
+                                              context);
+                                      createMedicineAlert1
+                                          .CreateNewMedicineALert(
+                                        patientToken: patient!.token,
+                                        body: {
+                                          'patient_id': patient.id,
+                                          'medicine_name': selectedMedicine,
+                                          'medicine_dose': enteredData,
+                                        },
+                                        url:
+                                            'https://api-medeg.online/api/medEG/medicine-alert',
+                                        times: times,
+                                      );
+                                     
+                                    }
+                                  },
+                                ),
+                              ),
+                              const SizedBox(height: 20), // Adjusted spacing
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: CustomButton(
-                  text: 'Add Alert',
-                  onTap: () {
-                    var createMedicineAlert =
-                        BlocProvider.of<MedicineAlertCubit>(context);
-                    createMedicineAlert.CreateNewMedicineALert(
-                        patientToken: patient!.token,
-                        body: {
-                          'patient_id': patient.id,
-                          'medicine_name': selectedMedicine,
-                          'medicine_dose': dose
-                        },
-                        url:
-                            'https://api-medeg.online/api/medEG/medicine-alert', times: []);
-                  },
-                ),
-              )
             ],
           ),
         );

@@ -158,7 +158,7 @@ class _OnBordingState extends State<OnBording> {
                                           text: 'Get Started',
                                           color: kPrimaryColor,
                                           onTap: () {
-                                            Navigator.pushNamed(
+                                            Navigator.pushReplacementNamed(
                                                 context,const ChooseUserType().id);
                                           },
                                         ),

@@ -75,7 +75,11 @@ class _MedicalRecordState extends State<MedicalRecord> {
                                 MedicalRecordModel? medicalRecord =
                                     snapshot.data;
 
+
                                 if (medicalRecord != null) {
+                                  DateTime today = DateTime.now();
+                                  DateTime dob = DateTime.parse(medicalRecord.birthDate);
+                                  int age = today.year - dob.year;
                                   DateTime today = DateTime.now();
                                   DateTime dob = DateTime.parse(medicalRecord.birthDate);
                                   int age = today.year - dob.year;
@@ -93,9 +97,11 @@ class _MedicalRecordState extends State<MedicalRecord> {
                                         height: screenHeight * 0.03,
                                       ),
                                       Align(
+                                      Align(
                                                     alignment:
                                                         Alignment.topLeft,
                                                     child: Text(
+                                                      '${medicalRecord.patientFirstName} ${medicalRecord.patientLastName}',
                                                       '${medicalRecord.patientFirstName} ${medicalRecord.patientLastName}',
                                                       style: const TextStyle(
                                                           fontSize: 18,
@@ -105,9 +111,12 @@ class _MedicalRecordState extends State<MedicalRecord> {
                                                     ),
                                                   ),
                                                    Align(
+                                                   Align(
                                                     alignment:
                                                         Alignment.topLeft,
                                                     child: Text(
+                                                      '${age.toString()} years old',
+                                                      style: const TextStyle(
                                                       '${age.toString()} years old',
                                                       style: const TextStyle(
                                                           color: darkBlue,
@@ -115,6 +124,7 @@ class _MedicalRecordState extends State<MedicalRecord> {
                                                           fontWeight:
                                                               FontWeight.w600),
                                                     ),
+                                                  ),
                                                   ),
                                       SizedBox(height: screenHeight * 0.04),
                                       const Align(
@@ -345,7 +355,9 @@ class _MedicalRecordState extends State<MedicalRecord> {
                   text3: ':',
                 ),
                 CustomDetailsInfoRow(
+                CustomDetailsInfoRow(
                   text: 'Father',
+                  onPressed: () {},
                   onPressed: () {},
                 ),
                 const CustomDetailsInfoRow(
@@ -355,7 +367,14 @@ class _MedicalRecordState extends State<MedicalRecord> {
                   text: 'Second Degree',
                 ),
                 Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(vertical: 24),
+                  child: CustomButton(
+                    text: 'Done',
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
                   child: CustomButton(
                     text: 'Done',
                     onTap: () {

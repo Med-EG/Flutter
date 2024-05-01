@@ -30,7 +30,7 @@
           isLoading = true;
         }
         if (state is MedicalRecordSuccessState) {
-          Navigator.pushReplacementNamed(context, const MedicalRecord().id);
+          Navigator.pushReplacementNamed(context,const MedicalRecord().id);
         }
         if (state is MedicalRecordFailureState) {
           showDialog(
@@ -81,11 +81,11 @@
                             ),
                           ],
                         ),
-                        const Spacer(flex: 1,),
+                       const Spacer(flex: 1,),
                         Searchbar(
-                          labelText: 'Search for record by patient ID', controller: _textController, isItForPatientIDSearch: true,
+                          labelText: 'Search for record by medical record ID', controller: _textController, isItForPatientIDSearch: true,
                         ),
-                        const Spacer(flex: 1,),
+                       const Spacer(flex: 1,),
                         CustomButton(
                           text: 'Search',
                           onTap: () async {
@@ -106,9 +106,11 @@
                               if (response != null) {
                                 MedicalRecordModel _medicalRecordModel =
                                     MedicalRecordModel.fromJson(response);
+                                // ignore: use_build_context_synchronously
                                 BlocProvider.of<MedicalRecordCubit>(context)
                                     .success(_medicalRecordModel,);
                               } else {
+                                // ignore: use_build_context_synchronously
                                 BlocProvider.of<MedicalRecordCubit>(context)
                                     .failure('try again');
                               }
@@ -135,7 +137,7 @@
                             }
                           },
                         ),
-                        const Spacer(flex: 2)
+                       const Spacer(flex: 2)
                       ],
                     ),
                   ),

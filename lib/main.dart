@@ -1,6 +1,6 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:med_eg/Views/AlertScreen.dart';
 import 'package:med_eg/Views/CreateMedicineAlert.dart';
 import 'package:med_eg/Views/DoctorViews/Doctor%20Profile.dart';
 import 'package:med_eg/Views/DoctorViews/DoctorCalendar.dart';
@@ -8,6 +8,7 @@ import 'package:med_eg/Views/DoctorViews/DoctorHomeScreen.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForMedicalRecordByFaceID.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForMedicalRecordByID.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForPatientMedicalRecord.dart';
+import 'package:med_eg/Views/PatientAlertsScreen.dart';
 import 'package:med_eg/Views/DoctorViews/edit%20basic%20info%20for%20doctor.dart';
 import 'package:med_eg/Views/ShowAppointmentsInfoDoctor.dart';
 import 'package:med_eg/Views/EnterVarifecationCode.dart';
@@ -40,10 +41,12 @@ import 'package:med_eg/Views/signUp6.dart';
 import 'package:med_eg/Views/signUp7.dart';
 import 'package:med_eg/Views/signUp8.dart';
 import 'package:med_eg/Views/signUp9.dart';
+import 'package:med_eg/Views/test.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/Views/test2.dart';
+import 'package:med_eg/controllers/notification_controller.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/cubits/MedicalRecordCubit/medical_record_cubit.dart';
+import 'package:med_eg/cubits/MedicineAlert/medicine_alert_cubit.dart';
 import 'package:med_eg/cubits/MessageCubit/message_cubit.dart';
 import 'package:med_eg/cubits/RegisterCubit/sign_up_cubit.dart';
 import 'package:med_eg/widgets/testForm.dart';
@@ -52,12 +55,46 @@ import 'Views/loginScreen.dart';
 import 'Views/medical_record2 for operation.dart';
 import 'Views/signUp4.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AwesomeNotifications().initialize(null, [
+    NotificationChannel(
+        channelGroupKey: 'basic_channel_group',
+        channelKey: 'basic_channel',
+        channelName: 'Basic Notification',
+        channelDescription: 'Basic Notification channel')
+  ], channelGroups: [
+    NotificationChannelGroup(
+        channelGroupKey: 'basic_channel_group', channelGroupName: 'Basic Group')
+  ]);
+  bool isAllowedToSendNotification =
+      await AwesomeNotifications().isNotificationAllowed();
+  if (!isAllowedToSendNotification) {
+    await AwesomeNotifications().requestPermissionToSendNotifications();
+  }
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    AwesomeNotifications().setListeners(
+        onActionReceivedMethod: NotificationController.onActionReciveMethod,
+        onDismissActionReceivedMethod: NotificationController.onDismissActionReciveMethod,
+        onNotificationDisplayedMethod: NotificationController.onNotificationDisplayMethod,
+        onNotificationCreatedMethod: NotificationController.onNotificationCreateMethod,
+        );
+
+    super.initState();
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -72,6 +109,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => MedicalRecordCubit(),
         ),
+        BlocProvider(
+          create: (context) => MedicineAlertCubit(),
+        )
         BlocProvider(
           create: (context) => MessageCubit(),
         ),
@@ -106,6 +146,7 @@ class MyApp extends StatelessWidget {
               const EnterVerficationCode(),
           const CreateNewPassword().id: (context) => const CreateNewPassword(),
           PatientHomeScreen().id: (context) => PatientHomeScreen(),
+          PatientHomeScreen().id: (context) => PatientHomeScreen(),
           const NoPatientAppoointment().id: (context) =>
               const NoPatientAppoointment(),
           const ReserveDoctor().id: (context) => const ReserveDoctor(),
@@ -114,12 +155,10 @@ class MyApp extends StatelessWidget {
           const DoctorCalendar().id: (context) => const DoctorCalendar(),
           const ShowAppointmentInfoDoctor().id: (context) =>
               const ShowAppointmentInfoDoctor(),
-          AlertScreen().id: (context) => AlertScreen(),
           DoctorHomeScreen().id: (context) => DoctorHomeScreen(),
           CreateMedicineAlert().id: (context) => CreateMedicineAlert(),
           const ChooseUserType().id: (context) => const ChooseUserType(),
           const OnBording().id: (context) => const OnBording(),
-          Test2().id: (context) => Test2(),
           const PatientProfile().id: (context) => const PatientProfile(),
           const ShowAppointmentInfoDoctor().id: (context) =>
               const ShowAppointmentInfoDoctor(),
@@ -136,6 +175,14 @@ class MyApp extends StatelessWidget {
               const MedicalRecord2ForAllergy(),
           const MedicalRecord2ForOperation().id: (context) =>
               const MedicalRecord2ForOperation(),
+          const SearchForPatientMedicalRecord().id: (context) =>
+              const SearchForPatientMedicalRecord(),
+          const SearchForMedicalRecordByFaceID().id: (context) =>
+              const SearchForMedicalRecordByFaceID(),
+          SearchForMedicalRecordByID().id: (context) =>
+              SearchForMedicalRecordByID(),
+          PatientAlertsScreen().id: (context) => PatientAlertsScreen(),
+        //  Test().id: (context) => Test(),
           const SearchForPatientMedicalRecord().id: (context) =>
               const SearchForPatientMedicalRecord(),
           const SearchForMedicalRecordByFaceID().id: (context) =>

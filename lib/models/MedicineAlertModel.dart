@@ -1,6 +1,6 @@
 class MedicineAlertModel {
   final String medicineName;
-  final int dose;
+  final String dose;
   final int alertID;
   final List<AlertTimeModel> alertTimes;
 
@@ -25,7 +25,7 @@ class MedicineAlertModel {
 class AlertTimeModel {
   final int alertID;
   final int alertTimeID;
-  final DateTime alertTime;
+  final String alertTime;
 
   AlertTimeModel(
       {required this.alertID,
@@ -35,6 +35,23 @@ class AlertTimeModel {
     return AlertTimeModel(
         alertID: json['alert_id'],
         alertTimeID: json['id'],
-        alertTime: DateTime.parse(json['alert_time']));
+        alertTime:json['alert_time']);
+  }
+}
+
+class MedicineAlertModelWithoutTimes {
+  final String medicineName;
+  final String dose;
+  final int alertID;
+
+  MedicineAlertModelWithoutTimes(
+      {required this.medicineName, required this.dose, required this.alertID});
+
+  factory MedicineAlertModelWithoutTimes.fromJson(json) {
+    return MedicineAlertModelWithoutTimes(
+      medicineName: json['medicine_name'],
+      dose: json['medicine_dose'],
+      alertID: json['alert_id'],
+    );
   }
 }

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/PatientAlertsScreen.dart';
 import 'package:med_eg/Views/PatientAppointmentsScreen.dart';
 import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/medical_record.dart';
 import 'package:med_eg/Views/message_screen.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
+import 'package:med_eg/widgets/AutoCompleteSearch.dart';
 import 'package:med_eg/widgets/DoctorCardListView.dart';
 import 'package:med_eg/widgets/customIconCard.dart';
-import 'package:med_eg/widgets/customSearchBar.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import '../constants/colors.dart';
 import 'package:med_eg/models/paitentModel.dart';
@@ -103,7 +104,7 @@ class PatientHomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(18),
           child: Column(
             children: [
-               Searchbar(labelText: 'Search for doctor, articles...', controller: _textController, isItForPatientIDSearch: false ,),
+              MySearchApp(),
               const SizedBox(
                 height: 10,
               ),
@@ -125,7 +126,7 @@ class PatientHomeScreen extends StatelessWidget {
                   ),
                   IconCard(
                     onTap: () {
-                      Navigator.pushNamed(context, 'Test2');
+                      Navigator.pushNamed(context, PatientAlertsScreen().id);
                     },
                     image: 'assets/images/PNG/Medicine_icon.png',
                     text: 'Medicine',
