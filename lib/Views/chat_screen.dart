@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/chat_bubble.dart';
 import 'package:med_eg/widgets/custom_textFormField.dart';
-
 import '../widgets/custom_arrow_back.dart';
-
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
 final String id = 'chatScreen';
