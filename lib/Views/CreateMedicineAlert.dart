@@ -6,7 +6,7 @@ import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/cubits/MedicineAlert/medicine_alert_cubit.dart';
 import 'package:med_eg/models/paitentModel.dart';
-import 'package:med_eg/widgets/TestTimePiker.dart';
+import 'package:med_eg/widgets/TimePicker.dart';
 import 'package:med_eg/widgets/custom_arrow_back.dart';
 import 'package:med_eg/widgets/custom_button.dart';
 import 'package:med_eg/widgets/custom_circle_container.dart';
@@ -89,7 +89,7 @@ class _CreateMedicineAlertState extends State<CreateMedicineAlert> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              const SizedBox(height: 100), // Adjusted spacing
+                              const SizedBox(height: 100),
                               SearchBarForMedicines(
                                 onMedicineSelected: (medicine) {
                                   setState(() {
@@ -98,7 +98,7 @@ class _CreateMedicineAlertState extends State<CreateMedicineAlert> {
                                   });
                                 },
                               ),
-                              const SizedBox(height: 40), // Adjusted spacing
+                              const SizedBox(height: 40), 
                               TextFormField(
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
@@ -130,7 +130,7 @@ class _CreateMedicineAlertState extends State<CreateMedicineAlert> {
                                 },
                               ),
                               const SizedBox(height: 20), // Adjusted spacing
-                              TimePiker(
+                              TimePicker(
                                 onTimeSelected: (selectedTime) {
                                   setState(() {
                                     selectedTimee = selectedTime;
@@ -142,48 +142,47 @@ class _CreateMedicineAlertState extends State<CreateMedicineAlert> {
                               const SizedBox(
                                 height: 20,
                               ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 30),
-                                child: CustomButton(
-                                  text: 'add another time',
-                                  onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
-                                          title: Text('Select Time'),
-                                          content: TimePiker(
-                                            onTimeSelected: (selectedTime) {
-                                              setState(() {
-                                                selectedTimee = selectedTime;
-
-                                                times.add(selectedTime);
-                                              });
-                                            },
-                                          ),
-                                          actions: <Widget>[
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.of(context).pop();
-                                              },
-                                              child: Text('Cancel'),
-                                            ),
-                                            TextButton(
-                                              onPressed: () {
-                                                // You can handle adding the selected time here
-                                                Navigator.of(context).pop();
-                                              },
-                                              child: Text('OK'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  },
-                                  color: const Color.fromARGB(255, 45, 111, 79),
-                                ),
-                              ),
+                              // Padding(
+                              //   padding:
+                              //       const EdgeInsets.symmetric(horizontal: 30),
+                              //   child: CustomButton(
+                              //     text: 'add another time',
+                              //     onTap: () {
+                              //       showDialog(
+                              //         context: context,
+                              //         builder: (BuildContext context) {
+                              //           return AlertDialog(
+                              //             title: Text('Select Time'),
+                              //             content: TimePicker(
+                              //               onTimeSelected: (selectedTime) {
+                              //                 setState(() {
+                              //                   selectedTimee = selectedTime;
+                              //                   times.add(selectedTime);
+                              //                 });
+                              //               },
+                              //             ),
+                              //             actions: <Widget>[
+                              //               TextButton(
+                              //                 onPressed: () {
+                              //                   Navigator.of(context).pop();
+                              //                 },
+                              //                 child: Text('Cancel'),
+                              //               ),
+                              //               TextButton(
+                              //                 onPressed: () {
+                              //                   // You can handle adding the selected time here
+                              //                   Navigator.of(context).pop();
+                              //                 },
+                              //                 child: Text('OK'),
+                              //               ),
+                              //             ],
+                              //           );
+                              //         },
+                              //       );
+                              //     },
+                              //     color: const Color.fromARGB(255, 45, 111, 79),
+                              //   ),
+                              // ),
 
                               const SizedBox(height: 60), // Adjusted spacing
                               Padding(

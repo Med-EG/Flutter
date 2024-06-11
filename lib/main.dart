@@ -1,6 +1,8 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:med_eg/Views/AssistantViews/AssistantCalendar.dart';
+import 'package:med_eg/Views/AssistantViews/ModifyAppointmentView.dart';
 import 'package:med_eg/Views/CreateMedicineAlert.dart';
 import 'package:med_eg/Views/DoctorViews/DoctorCalendar.dart';
 import 'package:med_eg/Views/DoctorViews/DoctorHomeScreen.dart';
@@ -8,7 +10,7 @@ import 'package:med_eg/Views/DoctorViews/SearchForMedicalRecordByFaceID.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForMedicalRecordByID.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForPatientMedicalRecord.dart';
 import 'package:med_eg/Views/PatientAlertsScreen.dart';
-import 'package:med_eg/Views/ShowAppointmentsInfoDoctor.dart';
+import 'package:med_eg/Views/DoctorViews/ShowAppointmentsInfoDoctor.dart';
 import 'package:med_eg/Views/EnterVarifecationCode.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/Views/PatientAppointmentsScreen.dart';
@@ -45,6 +47,7 @@ import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/cubits/MedicalRecordCubit/medical_record_cubit.dart';
 import 'package:med_eg/cubits/MedicineAlert/medicine_alert_cubit.dart';
 import 'package:med_eg/cubits/RegisterCubit/sign_up_cubit.dart';
+import 'package:med_eg/models/doctorAssistantModel.dart';
 import 'package:med_eg/widgets/testForm.dart';
 import 'Views/chat_screen.dart';
 import 'Views/loginScreen.dart';
@@ -174,10 +177,12 @@ class _MyAppState extends State<MyApp> {
           SearchForMedicalRecordByID().id: (context) =>
               SearchForMedicalRecordByID(),
           PatientAlertsScreen().id: (context) => PatientAlertsScreen(),
+          DoctorAssistantCalendar().id:(context) => DoctorAssistantCalendar(),
+          ModifyAppointment().id:(context) => ModifyAppointment(),
         //  Test().id: (context) => Test(),
         },
         debugShowCheckedModeBanner: false,
-        home: OnBording(),
+        home: ChooseUserType(),
       ),
     );
   }

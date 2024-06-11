@@ -9,7 +9,6 @@ import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/models/appointmentModelForPatientSide.dart';
 import 'package:med_eg/services/get_Appointmnts_for_paitent.dart';
 import 'package:med_eg/widgets/AppointmentCardForPatientSide.dart';
-import 'package:med_eg/widgets/Doctor_widgets/AppointmentCardForDoctorSide.dart';
 
 class NoPatientAppoointment extends StatelessWidget {
   const NoPatientAppoointment({super.key});

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/models/DoctorWorkingDaysModel.dart';
-import 'package:med_eg/models/doctorModel%20without%20token.dart';
 import 'package:med_eg/services/get_all_WorkinDaysForDoctor.dart';
 import 'package:med_eg/widgets/time_card.dart';
 

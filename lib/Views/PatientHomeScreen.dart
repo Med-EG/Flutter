@@ -18,7 +18,6 @@ import 'package:med_eg/Views/patient_profile.dart';
 class PatientHomeScreen extends StatelessWidget {
    PatientHomeScreen({super.key});
   final String id = 'HomeScreen';
-  final _textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

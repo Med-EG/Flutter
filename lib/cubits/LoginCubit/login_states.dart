@@ -1,4 +1,6 @@
 
+import 'package:med_eg/models/doctorAssistantModel.dart';
+
 import '../../models/doctorModel.dart';
 import '../../models/paitentModel.dart';
 
@@ -28,4 +30,10 @@ class SuccessDoctor extends LoginState {
   SuccessDoctor({required this.doctor});
 }
 
+class SuccessDoctorAssistant extends LoginState {
+  
+  final DoctorAssistant assistant; 
+
+  SuccessDoctorAssistant({required this.assistant});
+}
 class ShowPassword extends LoginState {}

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/helper/API.dart';
-import 'package:med_eg/models/medicineModel.dart';
 
 class GetAllMedicineService{
   Future<List<String>> GetAllMedicines(BuildContext context) async {
