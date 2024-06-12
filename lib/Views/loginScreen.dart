@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/Views/AssistantViews/AssistantCalendar.dart';
-import 'package:med_eg/Views/DoctorViews/DoctorCalendar.dart';
+import 'package:med_eg/Views/DefaultView.dart';
 import 'package:med_eg/Views/DoctorViews/DoctorHomeScreen.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/Views/signUp2.dart';
@@ -42,7 +42,7 @@ class Login extends StatelessWidget {
         if (state is LoginLoading) {
           isLoading = true;
         } else if (state is SuccessPatient) {
-          Navigator.pushReplacementNamed(context,  PatientHomeScreen().id);
+          Navigator.pushReplacementNamed(context,  DefaultView().id);
           isLoading = false;
         } else if (state is SuccessDoctor) {
           Navigator.pushReplacementNamed(context,  DoctorHomeScreen().id);

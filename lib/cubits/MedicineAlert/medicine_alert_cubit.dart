@@ -6,7 +6,6 @@ import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/helper/API.dart';
 import 'package:med_eg/models/MedicineAlertModel.dart';
 import 'package:med_eg/models/paitentModel.dart';
-import 'package:med_eg/services/get_MedicineALerts.dart';
 import 'package:meta/meta.dart';
 
 part 'medicine_alert_state.dart';

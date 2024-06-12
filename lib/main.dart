@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/Views/AssistantViews/AssistantCalendar.dart';
 import 'package:med_eg/Views/AssistantViews/ModifyAppointmentView.dart';
 import 'package:med_eg/Views/CreateMedicineAlert.dart';
+import 'package:med_eg/Views/DefaultView.dart';
 import 'package:med_eg/Views/DoctorViews/DoctorCalendar.dart';
 import 'package:med_eg/Views/DoctorViews/DoctorHomeScreen.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForMedicalRecordByFaceID.dart';
@@ -40,14 +41,12 @@ import 'package:med_eg/Views/signUp6.dart';
 import 'package:med_eg/Views/signUp7.dart';
 import 'package:med_eg/Views/signUp8.dart';
 import 'package:med_eg/Views/signUp9.dart';
-import 'package:med_eg/Views/test.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/controllers/notification_controller.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/cubits/MedicalRecordCubit/medical_record_cubit.dart';
 import 'package:med_eg/cubits/MedicineAlert/medicine_alert_cubit.dart';
 import 'package:med_eg/cubits/RegisterCubit/sign_up_cubit.dart';
-import 'package:med_eg/models/doctorAssistantModel.dart';
 import 'package:med_eg/widgets/testForm.dart';
 import 'Views/chat_screen.dart';
 import 'Views/loginScreen.dart';
@@ -85,11 +84,14 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     AwesomeNotifications().setListeners(
-        onActionReceivedMethod: NotificationController.onActionReciveMethod,
-        onDismissActionReceivedMethod: NotificationController.onDismissActionReciveMethod,
-        onNotificationDisplayedMethod: NotificationController.onNotificationDisplayMethod,
-        onNotificationCreatedMethod: NotificationController.onNotificationCreateMethod,
-        );
+      onActionReceivedMethod: NotificationController.onActionReciveMethod,
+      onDismissActionReceivedMethod:
+          NotificationController.onDismissActionReciveMethod,
+      onNotificationDisplayedMethod:
+          NotificationController.onNotificationDisplayMethod,
+      onNotificationCreatedMethod:
+          NotificationController.onNotificationCreateMethod,
+    );
 
     super.initState();
   }
@@ -142,8 +144,8 @@ class _MyAppState extends State<MyApp> {
               const EnterVerficationCode(),
           const CreateNewPassword().id: (context) => const CreateNewPassword(),
           PatientHomeScreen().id: (context) => PatientHomeScreen(),
-          const NoPatientAppoointment().id: (context) =>
-              const NoPatientAppoointment(),
+          const PatientAppoointment().id: (context) =>
+              const PatientAppoointment(),
           const ReserveDoctor().id: (context) => const ReserveDoctor(),
           const CheckReservation().id: (context) => const CheckReservation(),
           const ChooseUserType().id: (context) => const ChooseUserType(),
@@ -172,17 +174,18 @@ class _MyAppState extends State<MyApp> {
               const MedicalRecord2ForOperation(),
           const SearchForPatientMedicalRecord().id: (context) =>
               const SearchForPatientMedicalRecord(),
-          const SearchForMedicalRecordByFaceID().id: (context) =>
-              const SearchForMedicalRecordByFaceID(),
+          SearchForMedicalRecordByFaceID().id: (context) =>
+              SearchForMedicalRecordByFaceID(),
           SearchForMedicalRecordByID().id: (context) =>
               SearchForMedicalRecordByID(),
           PatientAlertsScreen().id: (context) => PatientAlertsScreen(),
-          DoctorAssistantCalendar().id:(context) => DoctorAssistantCalendar(),
-          ModifyAppointment().id:(context) => ModifyAppointment(),
-        //  Test().id: (context) => Test(),
+          DoctorAssistantCalendar().id: (context) => DoctorAssistantCalendar(),
+          ModifyAppointment().id: (context) => ModifyAppointment(),
+          DefaultView().id:(context) => DefaultView(),
+          //  Test().id: (context) => Test(),
         },
         debugShowCheckedModeBanner: false,
-        home: ChooseUserType(),
+        home: OnBording(),
       ),
     );
   }
