@@ -180,7 +180,7 @@ class Login extends StatelessWidget {
                             suffixIcon: IconButton(
                                 onPressed: () {
                                   BlocProvider.of<LoginCubit>(context)
-                                      .PasswordVisabilty();
+                                      .passwordVisabilty();
                                 },
                                 icon: Icon(_obscureText
                                     ? Icons.visibility_off_outlined

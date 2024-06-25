@@ -3,13 +3,14 @@ import 'package:med_eg/Views/check_reservation.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/custom_arrow_back.dart';
 import 'package:med_eg/widgets/custom_button.dart';
-import 'package:med_eg/widgets/find_doctor_card.dart';
+import '../models/doctorModel without token.dart';
 import '../widgets/days_view.dart';
-import '../widgets/time_view.dart';
+import '../widgets/find_doctor_card.dart';
 
 class ReserveDoctor extends StatelessWidget {
-  const ReserveDoctor({super.key});
-  final String id = 'ReserveDoctor';
+  const ReserveDoctor({super.key, required this.doctor});
+  static const String id = 'ReserveDoctor';
+  final DoctorModelWithoutToken doctor;
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -22,7 +23,7 @@ class ReserveDoctor extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const CustomArrowBack(),
-              const FindDoctorCard(),
+              FindDoctorCard(doctor: doctor,),
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 16),
                 child: Text(
@@ -32,7 +33,7 @@ class ReserveDoctor extends StatelessWidget {
                 ),
               ),
               DaysView(screenHeight: screenHeight, screenWidth: screenWidth),
-              TimeView(screenHeight: screenHeight, screenWidth: screenWidth),
+              // TimeView(screenHeight: screenHeight, screenWidth: screenWidth), 
               Expanded(
                 child: Align(
                   alignment: Alignment.bottomCenter,

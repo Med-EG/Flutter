@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
@@ -32,7 +34,7 @@ class DoctorHomeScreen extends StatelessWidget {
              const SizedBox(
                 height: 40,
               ),
-              Container(
+              SizedBox(
                 width: 100,
                 height: 100,
                 child: ClipOval(
@@ -51,7 +53,7 @@ class DoctorHomeScreen extends StatelessWidget {
                     flex: 1,
                   ),
                  const Text(
-                    'Hello , DR ',
+                    'Hello, DR ',
                     style: TextStyle(fontSize: 20),
                   ),
                   Text(
@@ -67,7 +69,7 @@ class DoctorHomeScreen extends StatelessWidget {
                 ],
               ),
              const SizedBox(height: 30,),
-              Expanded(child: DoctorHomePageCardListView()),
+              const Expanded(child: DoctorHomePageCardListView()),
             ],
           ),
         ),

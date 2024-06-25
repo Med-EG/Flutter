@@ -36,7 +36,7 @@ int x=0;
     }
   }
 
-  PasswordVisabilty() {
+  passwordVisabilty() {
     emit(ShowPassword());
   }
 }

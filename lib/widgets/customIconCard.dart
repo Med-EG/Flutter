@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class IconCard extends StatelessWidget {
-  const IconCard({super.key, required this.image, required this.text, this.onTap});
-  final String image;
+  const IconCard({super.key,required this.text, this.onTap});
   final String text;
   final void Function()? onTap;
 
@@ -22,16 +21,19 @@ class IconCard extends StatelessWidget {
                     blurRadius: 10),
               ]),
               height: screenHeight * 0.05,
-              child: Image.asset(
-                image,
-                height: 50,
-              ),
+              
             ),
           ),
-          Text(
-            text,
-            style:const TextStyle(color: Color(0xFFc9cdda),
-            fontSize: 12
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                text,
+                style:const TextStyle(color: Color(0xFFc9cdda),
+                fontSize: 8
+                ),
+              ),
             ),
           )
         ],

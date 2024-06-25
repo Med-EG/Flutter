@@ -18,8 +18,8 @@ class MedicalRecordModel {
   final String? past_fracrues;
   final String? sleeping_hours;
   final String? sleeping_quality;
-  final String? father;
-  final String? mother;
+  final String father;
+  final String mother;
   final String? second_degree;
 
   MedicalRecordModel(

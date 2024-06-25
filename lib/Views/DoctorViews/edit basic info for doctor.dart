@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:med_eg/widgets/custom_button.dart';
 import 'package:med_eg/widgets/custom_profile_container.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-
 import '../../constants/colors.dart';
-import '../../models/doctorModel without token.dart';
-import '../../services/doctor services/edit doctor info .dart';
 import '../../widgets/custom_textFormField.dart';
 
 // ignore: must_be_immutable

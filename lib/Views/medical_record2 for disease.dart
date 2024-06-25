@@ -1,7 +1,8 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/models/diseaseInfoModel.dart';
-import 'package:med_eg/services/getDiseaseInfo.dart';
+import 'package:med_eg/services/DiseaseInfo%20Service.dart';
 import 'package:med_eg/widgets/custom_arrow_back.dart';
 import '../widgets/custom_circle_container.dart';
 

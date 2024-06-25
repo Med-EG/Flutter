@@ -26,7 +26,7 @@ class EditDoctorInfo {
     try {
         DoctorModel? doctor = BlocProvider.of<LoginCubit>(context).doctor;
       final response = await Api().put(
-          url: 'https://api-medeg.online/api/medEG/doctor/${doctor!.doctorId}',
+          url: 'https://api-medeg.online/api/medEG/doctor/${doctor!.id}',
           body: {
             'first_name': drfirstName,
             'last_name': drLastName,

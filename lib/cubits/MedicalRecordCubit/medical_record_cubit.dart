@@ -6,6 +6,7 @@ part 'medical_record_state.dart';
 class MedicalRecordCubit extends Cubit<MedicalRecordState> {
    int patientIDGetByDoctorSearch=0;
    int patientID=0;
+   MedicalRecordModel? medicalRecordId;
   MedicalRecordCubit() : super(MedicalRecordLoadingState());
   void satrtLoading() => emit(MedicalRecordLoadingState());
   void success(MedicalRecordModel medicalRecord) =>

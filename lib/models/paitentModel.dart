@@ -25,8 +25,7 @@ class PatientInfo {
       required this.address,
       required this.birthDate,
       required this.phoneNumber,
-      required this.personalImage, 
-      required this.medicalRecordID});
+      required this.personalImage, });
 
       factory PatientInfo.fromJson(json){
         return PatientInfo(

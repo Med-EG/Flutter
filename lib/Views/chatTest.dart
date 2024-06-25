@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/constants/colors.dart';
@@ -9,8 +10,6 @@ import '../cubits/LoginCubit/login_states.dart';
 import '../cubits/MessageCubit/message_cubit.dart';
 import '../models/paitentModel.dart';
 import '../widgets/custom_arrow_back.dart';
-
-// ignore: must_be_immutable
 class ChatTest extends StatelessWidget {
   ChatTest({
     super.key,
@@ -70,7 +69,7 @@ class ChatTest extends StatelessWidget {
                   child: ListView.builder(
                       itemCount: listOfMessages.length,
                       itemBuilder: (context, index) {
-                        return ChatBubbleForFriend(
+                        return ChatBubbleBlue(
                           messageContent: listOfMessages[index],
                         );
                       }),
@@ -90,7 +89,7 @@ class ChatTest extends StatelessWidget {
                               _messageController.text.isNotEmpty) {
                             var sendMessage =
                                 BlocProvider.of<MessageCubit>(context);
-                            sendMessage.sendmessageMethod(
+                            sendMessage.sendmessageMethodForPatient(
                                 patientInfo: patient,
                                 url:
                                     'https://api-medeg.online/api/medEG/message',

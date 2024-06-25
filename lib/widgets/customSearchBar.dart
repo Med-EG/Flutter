@@ -1,8 +1,9 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
 
 class Searchbar extends StatelessWidget {
-   Searchbar({
+   const Searchbar({
     Key? key,
     required this.labelText,
     required this.controller, 

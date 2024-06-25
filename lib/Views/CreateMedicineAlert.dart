@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/Views/PatientAlertsScreen.dart';
@@ -142,48 +143,48 @@ class _CreateMedicineAlertState extends State<CreateMedicineAlert> {
                               const SizedBox(
                                 height: 20,
                               ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 30),
-                                child: CustomButton(
-                                  text: 'add another time',
-                                  onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
-                                          title: Text('Select Time'),
-                                          content: TimePiker(
-                                            onTimeSelected: (selectedTime) {
-                                              setState(() {
-                                                selectedTimee = selectedTime;
+                              // Padding(
+                              //   padding:
+                              //       const EdgeInsets.symmetric(horizontal: 30),
+                              //   child: CustomButton(
+                              //     text: 'add another time',
+                              //     onTap: () {
+                              //       showDialog(
+                              //         context: context,
+                              //         builder: (BuildContext context) {
+                              //           return AlertDialog(
+                              //             title: Text('Select Time'),
+                              //             content: TimePiker(
+                              //               onTimeSelected: (selectedTime) {
+                              //                 setState(() {
+                              //                   selectedTimee = selectedTime;
 
-                                                times.add(selectedTime);
-                                              });
-                                            },
-                                          ),
-                                          actions: <Widget>[
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.of(context).pop();
-                                              },
-                                              child: Text('Cancel'),
-                                            ),
-                                            TextButton(
-                                              onPressed: () {
-                                                // You can handle adding the selected time here
-                                                Navigator.of(context).pop();
-                                              },
-                                              child: Text('OK'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  },
-                                  color: const Color.fromARGB(255, 45, 111, 79),
-                                ),
-                              ),
+                              //                   times.add(selectedTime);
+                              //                 });
+                              //               },
+                              //             ),
+                              //             actions: <Widget>[
+                              //               TextButton(
+                              //                 onPressed: () {
+                              //                   Navigator.of(context).pop();
+                              //                 },
+                              //                 child: Text('Cancel'),
+                              //               ),
+                              //               TextButton(
+                              //                 onPressed: () {
+                              //                   // You can handle adding the selected time here
+                              //                   Navigator.of(context).pop();
+                              //                 },
+                              //                 child: Text('OK'),
+                              //               ),
+                              //             ],
+                              //           );
+                              //         },
+                              //       );
+                              //     },
+                              //     color: const Color.fromARGB(255, 45, 111, 79),
+                              //   ),
+                              // ),
 
                               const SizedBox(height: 60), // Adjusted spacing
                               Padding(

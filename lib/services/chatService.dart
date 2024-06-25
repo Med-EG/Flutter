@@ -1,5 +1,7 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:med_eg/models/doctorModel.dart';
 import '../cubits/LoginCubit/login_cubit.dart';
 import '../helper/API.dart';
 import '../models/chat model.dart';
@@ -10,17 +12,36 @@ class ChatService {
       BuildContext context) async {
     try {
       PatientInfo? patient = BlocProvider.of<LoginCubit>(context).patient;
-       
-      // PatientInfoWithoutToken patientId = await GetPatientByID().getPatientByID(context);
+
       List<dynamic> data = await Api().get(
           url: 'https://api-medeg.online/api/medEG/chat/patient/${patient!.id}',
           token: patient.token);
-      List<ChatModel> chatList = [];
-      for (int i = 0; i < data.length; i++) {
-        ChatModel chat = ChatModel.fromJson(data[i]);
-        chatList.add(chat);
+      Map<int, ChatModel> uniqueChats = {};
+      for (var item in data) {
+        ChatModel chat = ChatModel.fromJson(item);
+        uniqueChats[chat.doctorId] = chat;
       }
-      return chatList;
+      return uniqueChats.values.toList();
+    } catch (e) {
+      print('Error fetching Chats: $e');
+      return [];
+    }
+  }
+
+  Future<List<ChatModel>> getAllPatientsForOneDoctor(
+      BuildContext context) async {
+    try {
+      DoctorModel? doctor = BlocProvider.of<LoginCubit>(context).doctor;
+      List<dynamic> data = await Api().get(
+          url: 'https://api-medeg.online/api/medEG/chat/doctor/${doctor!.id}',
+          token: doctor.token);
+           
+      Map<int, ChatModel> uniqueChats = {};
+      for (var item in data) {
+        ChatModel chat = ChatModel.fromJson(item);
+        uniqueChats[chat.patientId] = chat;
+      }
+      return uniqueChats.values.toList();
     } catch (e) {
       print('Error fetching Chats: $e');
       return [];

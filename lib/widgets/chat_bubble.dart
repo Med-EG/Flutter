@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 import '../models/message model.dart';
 
-class ChatBubble extends StatelessWidget {
-  const ChatBubble({Key? key}) : super(key: key);
+class ChatBubbleGrey extends StatelessWidget {
+  const ChatBubbleGrey({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +53,8 @@ class ChatBubble extends StatelessWidget {
 }
 
 
-class ChatBubbleForFriend extends StatelessWidget {
-  const ChatBubbleForFriend({super.key, required this.messageContent});
+class ChatBubbleBlue extends StatelessWidget {
+  const ChatBubbleBlue({super.key, required this.messageContent});
 final MessageModel messageContent; 
   @override
   Widget build(BuildContext context) {

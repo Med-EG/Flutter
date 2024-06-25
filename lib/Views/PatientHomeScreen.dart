@@ -1,8 +1,9 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:med_eg/Views/PatientAlertsScreen.dart';
 import 'package:med_eg/Views/PatientAppointmentsScreen.dart';
 import 'package:med_eg/Views/find_doctor.dart';
-import 'package:med_eg/Views/medical_record.dart';
+import 'package:med_eg/Views/medical_record_copy.dart';
 import 'package:med_eg/Views/message_screen.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/widgets/AutoCompleteSearch.dart';
@@ -14,9 +15,8 @@ import 'package:med_eg/models/paitentModel.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/Views/patient_profile.dart';
 class PatientHomeScreen extends StatelessWidget {
-   PatientHomeScreen({super.key});
+   const PatientHomeScreen({super.key});
   final String id = 'HomeScreen';
-  final _textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +104,7 @@ class PatientHomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(18),
           child: Column(
             children: [
-              MySearchApp(),
+              const MySearchApp(),
               const SizedBox(
                 height: 10,
               ),
@@ -118,7 +118,7 @@ class PatientHomeScreen extends StatelessWidget {
                       Navigator.popAndPushNamed(context, const FindDoctor().id);
                     },
                     child: const IconCard(
-                        image: 'assets/images/PNG/Stethoscope.png',
+                        //image: 'assets/images/PNG/Stethoscope.png',
                         text: 'Doctors'),
                   ),
                   const Spacer(
@@ -128,7 +128,7 @@ class PatientHomeScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.pushNamed(context, PatientAlertsScreen().id);
                     },
-                    image: 'assets/images/PNG/Medicine_icon.png',
+                   // image: 'assets/images/PNG/Medicine_icon.png',
                     text: 'Medicine',
                   ),
                   const Spacer(
@@ -136,9 +136,9 @@ class PatientHomeScreen extends StatelessWidget {
                   ),
                   IconCard(
                       onTap: () {
-                        Navigator.pushNamed(context, const MedicalRecord().id);
+                        Navigator.pushNamed(context,  const MedicalRecordCopy().id);
                       },
-                      image: 'assets/images/PNG/Record_icon.png',
+                     // image: 'assets/images/PNG/Record_icon.png',
                       text: 'Record'),
                   const Spacer(
                     flex: 1,

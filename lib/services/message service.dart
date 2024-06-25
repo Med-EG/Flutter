@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:med_eg/cubits/MessageCubit/message_cubit.dart';
 import 'package:med_eg/helper/API.dart';
 import 'package:med_eg/models/paitentModel.dart';
-import 'package:med_eg/services/chatService.dart';
 import '../cubits/LoginCubit/login_cubit.dart';
-import '../models/chat model.dart';
 import '../models/message model.dart';
 
 class MessageService{
@@ -33,18 +30,20 @@ class MessageService{
     }
   }
  Future<List<MessageModel>> getMessageById(
-      BuildContext context) async {
+      BuildContext context, int chatId) async {
     try {
       PatientInfo? patient = BlocProvider.of<LoginCubit>(context).patient;
       List<dynamic> data = await Api().get(
-          url: 'https://api-medeg.online/api/medEG/message/chat/${19}',
+          url: 'https://api-medeg.online/api/medEG/message/chat/$chatId',
           token: patient!.token);
-      List<MessageModel> messageList = [];
-      for (int i = 0; i < data.length; i++) {
-        MessageModel outMessage = MessageModel.fromJson(data[i]);
+      List<MessageModel> messages = data.map((json) => MessageModel.fromJson(json)).toList();
+      return messages;
+      // for (int i = 0; i < data.length; i++) 
+     /*  for(var item in data){
+        MessageModel outMessage = MessageModel.fromJson(item);
         messageList.add(outMessage);
       }
-      return messageList;
+      return messageList; */
     } catch (e) {
       print('Error fetching messages: $e');
       return [];

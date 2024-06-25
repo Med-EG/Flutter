@@ -1,5 +1,5 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
@@ -31,7 +31,7 @@ class MedicineAlertCard extends StatelessWidget {
         //width: 200,
         height: 100,
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 120, 184, 234),
+            color: const Color.fromARGB(255, 120, 184, 234),
             borderRadius: BorderRadius.circular(20)),
         child: Padding(
           padding: const EdgeInsets.all(15),
@@ -65,7 +65,7 @@ class MedicineAlertCard extends StatelessWidget {
               Row(
                 children: [
                   for (int i = 0; i < times.length; i++) Text("${times[i]}      "),
-                  Spacer(
+                  const Spacer(
                     flex: 1,
                   ),
                   GestureDetector(
@@ -76,7 +76,7 @@ class MedicineAlertCard extends StatelessWidget {
                             return AlertDialog(
                               title: const Text("Error"),
                               content:
-                                  Text("Are you sure you want to delete this"),
+                                  const Text("Are you sure you want to delete this"),
                               actions: <Widget>[
                                 TextButton(
                                   child: const Text("Yes"),
@@ -100,7 +100,7 @@ class MedicineAlertCard extends StatelessWidget {
                           },
                         );
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.delete_forever,
                         color: Colors.red,
                         size: 30,

@@ -6,7 +6,7 @@ import 'package:med_eg/models/DoctorWorkingDaysModel.dart';
 import 'package:med_eg/models/doctorModel.dart';
 
 class GetWorkingDaysForDoctorService {
-  Future<List<WorkingDaysModel>> GetWorkingDaysForDoctor(
+  Future<List<WorkingDaysModel>> getWorkingDaysForDoctor(
       BuildContext context) async {
     try {
       DoctorModel? doctor = BlocProvider.of<LoginCubit>(context).doctor;

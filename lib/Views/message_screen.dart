@@ -10,6 +10,7 @@ import 'package:med_eg/widgets/message_list_tile.dart';
 class MessageScreen extends StatelessWidget {
   const MessageScreen({super.key});
   final String id = 'MessageScreen';
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -17,10 +18,10 @@ class MessageScreen extends StatelessWidget {
       child: BlocConsumer<MessageCubit, MessageState>(
         listener: (context, state) {
           if (state is MessageSuccess) {
-            print('Message Sent Succefully');
+            print('Message Sent Successfully');
           } else if (state is MessageFailure) {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(const SnackBar(content: Text('Something error')));
+            ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Something went wrong')));
             print(state.errMessage);
           }
         },
@@ -46,11 +47,11 @@ class MessageScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(
                           context,
-                          PatientHomeScreen().id,
+                          const PatientHomeScreen().id,
                         );
                       },
                       icon: Icons.home_rounded,
-                      text: 'home',
+                      text: 'Home',
                     ),
                     GButton(
                       onPressed: () {
@@ -72,15 +73,16 @@ class MessageScreen extends StatelessWidget {
                     const GButton(
                       icon: Icons.person_3_rounded,
                       text: 'Profile',
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
             body: Center(
               child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(children: [
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  children: [
                     SizedBox(
                       height: screenHeight * 0.05,
                     ),
@@ -94,8 +96,10 @@ class MessageScreen extends StatelessWidget {
                     SizedBox(
                       height: screenHeight * 0.05,
                     ),
-                    const MessageListTile()
-                  ])),
+                    const MessageListTileForPatient(),
+                  ],
+                ),
+              ),
             ),
           );
         },

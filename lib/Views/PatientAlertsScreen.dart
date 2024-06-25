@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/Views/CreateMedicineAlert.dart';
 import 'package:med_eg/constants/colors.dart';
@@ -12,6 +11,7 @@ import 'package:med_eg/widgets/custom_MedicineAlertCard.dart';
 import 'package:med_eg/widgets/custom_arrow_back.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+// ignore: must_be_immutable
 class PatientAlertsScreen extends StatelessWidget {
   PatientAlertsScreen({super.key});
   final String id = 'PatientAlertsScreen';
@@ -59,12 +59,12 @@ class PatientAlertsScreen extends StatelessWidget {
                                   plusIcon: true,
                                   onTap: () {
                                     Navigator.pushNamed(
-                                        context, CreateMedicineAlert().id);
+                                        context, const CreateMedicineAlert().id);
                                   },
                                 )
                               ],
                             ),
-                            Spacer(
+                            const Spacer(
                               flex: 1,
                             ),
                             const Text(
@@ -123,13 +123,13 @@ class PatientAlertsScreen extends StatelessWidget {
                                         onTap: () {
                                           Navigator.pushReplacementNamed(
                                               context,
-                                              CreateMedicineAlert().id);
+                                              const CreateMedicineAlert().id);
                                         },
                                       )
                                     ],
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 const Text(
@@ -140,14 +140,14 @@ class PatientAlertsScreen extends StatelessWidget {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 40,
                                 ),
                                 Expanded(
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 5, vertical: 10),
-                                    child: Container(
+                                    child: SizedBox(
                                       height: 250,
                                       child: ListView.builder(
                                         itemCount: alerts.length,
@@ -161,7 +161,7 @@ class PatientAlertsScreen extends StatelessWidget {
                                 ),
                               ])));
                 } else {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 }
               },
             ),

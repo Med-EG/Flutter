@@ -11,7 +11,7 @@ class GetDoctorService {
     DoctorModel? doctor = BlocProvider.of<LoginCubit>(context).doctor;
 
     Map<String, dynamic> data = await Api().get(
-        url: 'https://api-medeg.online/api/medEG/record/${doctor!.doctorId}',
+        url: 'https://api-medeg.online/api/medEG/record/${doctor!.id}',
         token: doctor.token);
     return DoctorModelWithoutToken.fromJson(data);
   }
