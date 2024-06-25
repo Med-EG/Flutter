@@ -1,7 +1,10 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:med_eg/Views/AssistantViews/AssistantCalendar.dart';
+import 'package:med_eg/Views/AssistantViews/ModifyAppointmentView.dart';
 import 'package:med_eg/Views/CreateMedicineAlert.dart';
+import 'package:med_eg/Views/DefaultView.dart';
 import 'package:med_eg/Views/DoctorViews/Doctor%20Message.dart';
 import 'package:med_eg/Views/DoctorViews/Doctor%20Profile.dart';
 import 'package:med_eg/Views/DoctorViews/DoctorCalendar.dart';
@@ -11,6 +14,7 @@ import 'package:med_eg/Views/DoctorViews/SearchForMedicalRecordByFaceID.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForMedicalRecordByID.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForPatientMedicalRecord.dart';
 import 'package:med_eg/Views/PatientAlertsScreen.dart';
+import 'package:med_eg/Views/DoctorViews/ShowAppointmentsInfoDoctor.dart';
 import 'package:med_eg/Views/DoctorViews/edit%20basic%20info%20for%20doctor.dart';
 import 'package:med_eg/Views/ShowAppointmentsInfoDoctor.dart';
 import 'package:med_eg/Views/EnterVarifecationCode.dart';
@@ -103,6 +107,14 @@ class _MyAppState extends State<MyApp> {
       onNotificationCreatedMethod:
           NotificationController.onNotificationCreateMethod,
     );
+      onActionReceivedMethod: NotificationController.onActionReciveMethod,
+      onDismissActionReceivedMethod:
+          NotificationController.onDismissActionReciveMethod,
+      onNotificationDisplayedMethod:
+          NotificationController.onNotificationDisplayMethod,
+      onNotificationCreatedMethod:
+          NotificationController.onNotificationCreateMethod,
+    );
 
     super.initState();
   }
@@ -159,6 +171,10 @@ class _MyAppState extends State<MyApp> {
           const EnterVerficationCode().id: (context) =>
               const EnterVerficationCode(),
           const CreateNewPassword().id: (context) => const CreateNewPassword(),
+          PatientHomeScreen().id: (context) => PatientHomeScreen(),
+          const PatientAppoointment().id: (context) =>
+              const PatientAppoointment(),
+          const ReserveDoctor().id: (context) => const ReserveDoctor(),
           const PatientHomeScreen().id: (context) => const PatientHomeScreen(),
           const NoPatientAppoointment().id: (context) =>
               const NoPatientAppoointment(),
@@ -190,11 +206,15 @@ class _MyAppState extends State<MyApp> {
               const MedicalRecord2ForOperation(),
           const SearchForPatientMedicalRecord().id: (context) =>
               const SearchForPatientMedicalRecord(),
-          const SearchForMedicalRecordByFaceID().id: (context) =>
-              const SearchForMedicalRecordByFaceID(),
+          SearchForMedicalRecordByFaceID().id: (context) =>
+              SearchForMedicalRecordByFaceID(),
           SearchForMedicalRecordByID().id: (context) =>
               SearchForMedicalRecordByID(),
           PatientAlertsScreen().id: (context) => PatientAlertsScreen(),
+          DoctorAssistantCalendar().id: (context) => DoctorAssistantCalendar(),
+          ModifyAppointment().id: (context) => ModifyAppointment(),
+          DefaultView().id:(context) => DefaultView(),
+          //  Test().id: (context) => Test(),
           const SearchForPatientMedicalRecord().id: (context) =>
               const SearchForPatientMedicalRecord(),
           const SearchForMedicalRecordByFaceID().id: (context) =>

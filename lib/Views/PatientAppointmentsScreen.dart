@@ -9,8 +9,8 @@ import 'package:med_eg/models/appointmentModelForPatientSide.dart';
 import 'package:med_eg/services/get_Appointmnts_for_paitent.dart';
 import 'package:med_eg/widgets/AppointmentCardForPatientSide.dart';
 
-class NoPatientAppoointment extends StatelessWidget {
-  const NoPatientAppoointment({super.key});
+class PatientAppoointment extends StatelessWidget {
+  const PatientAppoointment({super.key});
   final String id = 'NoPatientAppoointment';
   @override
   Widget build(BuildContext context) {
@@ -158,3 +158,23 @@ class NoPatientAppoointment extends StatelessWidget {
     );
   }
 }
+ Future<bool> _showExitConfirmationDialog(BuildContext context) async {
+    return await showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text('Exit App'),
+            content: Text('Are you sure you want to exit the app?'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: Text('No'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                child: Text('Yes'),
+              ),
+            ],
+          ),
+        ) ??
+        false;
+  }

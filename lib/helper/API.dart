@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Api {
@@ -36,7 +35,7 @@ class Api {
     if (token != null) {
       headers.addAll({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token', // Added a space after 'Bearer'
+        'Authorization': 'Bearer $token', 
       });
     } else {
       headers = {'Content-Type': 'application/json'};
@@ -84,7 +83,7 @@ class Api {
     if (token != null) {
       headers.addAll({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token', // Added a space after 'Bearer'
+        'Authorization': 'Bearer $token', 
       });
     } else {
       headers = {'Content-Type': 'application/json'};

@@ -35,7 +35,7 @@ class AlertTimeModel {
     return AlertTimeModel(
         alertID: json['alert_id'],
         alertTimeID: json['id'],
-        alertTime:json['alert_time']);
+        alertTime: json['alert_time']);
   }
 }
 
@@ -53,5 +53,25 @@ class MedicineAlertModelWithoutTimes {
       dose: json['medicine_dose'],
       alertID: json['alert_id'],
     );
+  }
+}
+
+class AlertTimeModelForNotification {
+  final int alertID;
+  final int alertTimeID;
+  final String alertTime;
+  final String medicineName;
+
+  AlertTimeModelForNotification(
+      {required this.alertID,
+      required this.alertTimeID,
+      required this.alertTime,
+      required this.medicineName});
+  factory AlertTimeModelForNotification.fromJson(json) {
+    return AlertTimeModelForNotification(
+        alertID: json['alert_id'],
+        alertTimeID: json['id'],
+        alertTime: json['alert_time'],
+        medicineName: json['medicine_alert']['medicine_name']);
   }
 }

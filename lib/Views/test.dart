@@ -27,7 +27,7 @@ class Test extends StatelessWidget {
             }
 
             // Example time in HH:MM format (replace with your desired time)
-            String timeString = '12:54';
+            String timeString = '13:19';
 
             // Parse the time string to obtain the hour and minute values
             List<String> parts = timeString.split(':');

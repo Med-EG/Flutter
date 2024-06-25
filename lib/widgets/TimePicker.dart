@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class TimePiker extends StatefulWidget {
+class TimePicker extends StatefulWidget {
   final ValueChanged<String>? onTimeSelected; // Define the callback
 
-  const TimePiker({Key? key, this.onTimeSelected}) : super(key: key);
+  const TimePicker({Key? key, this.onTimeSelected}) : super(key: key);
 
   @override
-  State<TimePiker> createState() => _TimePikerState();
+  State<TimePicker> createState() => _TimePikerState();
 }
 
-class _TimePikerState extends State<TimePiker> {
+class _TimePikerState extends State<TimePicker> {
   TimeOfDay selectedTime = TimeOfDay.now();
 
   String formatTimeOfDay(TimeOfDay time) {

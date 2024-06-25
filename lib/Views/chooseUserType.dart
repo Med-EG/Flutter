@@ -70,7 +70,10 @@ class ChooseUserType extends StatelessWidget {
                   text: 'Doctor assistant',
                   color: kPrimaryColor,
                   onTap: () {
-                   
+                   BlocProvider.of<LoginCubit>(context).x=3;
+                    Navigator.pushReplacementNamed(context, Login().id,
+                        arguments:
+                            'https://api-medeg.online/api/medEG/doctor/assistant/login');
                   },
                 )
               ],

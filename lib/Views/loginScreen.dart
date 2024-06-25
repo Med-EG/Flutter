@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:med_eg/Views/AssistantViews/AssistantCalendar.dart';
+import 'package:med_eg/Views/DefaultView.dart';
 import 'package:med_eg/Views/DoctorViews/DoctorHomeScreen.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/Views/signUp2.dart';
@@ -37,12 +39,15 @@ class Login extends StatelessWidget {
         if (state is LoginLoading) {
           isLoading = true;
         } else if (state is SuccessPatient) {
-          Navigator.pushReplacementNamed(context,  PatientHomeScreen().id);
+          Navigator.pushReplacementNamed(context,  DefaultView().id);
           isLoading = false;
         } else if (state is SuccessDoctor) {
           Navigator.pushReplacementNamed(context,  DoctorHomeScreen().id);
           isLoading = false;
-        } else if (state is ShowPassword) {
+        }else if(state is SuccessDoctorAssistant){
+          Navigator.pushReplacementNamed(context, DoctorAssistantCalendar().id);
+        }
+         else if (state is ShowPassword) {
           _obscureText = !_obscureText;
         } else if (state is InvalidData) {
           isLoading = false;

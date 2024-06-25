@@ -1,9 +1,11 @@
-// ignore_for_file: file_names
+import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/Views/CreateMedicineAlert.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/cubits/MedicineAlert/medicine_alert_cubit.dart';
+import 'package:med_eg/helper/NotificationHelper.dart';
 import 'package:med_eg/models/MedicineAlertModel.dart';
 import 'package:med_eg/services/get_MedicineALerts.dart';
 import 'package:med_eg/widgets/CustomAddButton.dart';
@@ -18,6 +20,7 @@ class PatientAlertsScreen extends StatelessWidget {
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
+    
     return BlocConsumer<MedicineAlertCubit, MedicineAlertState>(
       listener: (context, state) {
         if(state is Loading)
@@ -26,10 +29,11 @@ class PatientAlertsScreen extends StatelessWidget {
         }
         else if(state is ShowAllMedicineAlerts)
         {
-          isLoading =false;
+          isLoading=false;
         }
       },
       builder: (context, state) {
+        NotificationHelper().notificationListCreation(context);
         return Scaffold(
           body: ModalProgressHUD(
             inAsyncCall: isLoading,
@@ -59,12 +63,12 @@ class PatientAlertsScreen extends StatelessWidget {
                                   plusIcon: true,
                                   onTap: () {
                                     Navigator.pushNamed(
-                                        context, const CreateMedicineAlert().id);
+                                        context,const CreateMedicineAlert().id);
                                   },
                                 )
                               ],
                             ),
-                            const Spacer(
+                           const Spacer(
                               flex: 1,
                             ),
                             const Text(
@@ -123,7 +127,7 @@ class PatientAlertsScreen extends StatelessWidget {
                                         onTap: () {
                                           Navigator.pushReplacementNamed(
                                               context,
-                                              const CreateMedicineAlert().id);
+                                             const CreateMedicineAlert().id);
                                         },
                                       )
                                     ],

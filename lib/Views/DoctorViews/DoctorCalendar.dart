@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:med_eg/Views/ShowAppointmentsInfoDoctor.dart';
+import 'package:med_eg/Views/DoctorViews/ShowAppointmentsInfoDoctor.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/models/appointmentModelForDoctorSide.dart';
 import 'package:med_eg/services/get_Appointments_for_doctor.dart';
@@ -42,7 +42,7 @@ class _DoctorCalendarState extends State<DoctorCalendar> {
                       ),
                      const Center(
                         child:  Text(
-                          'Appointments',
+                          'My Appointments',
                           style: TextStyle(
                             color: darkBlue,
                             fontSize: 30,
