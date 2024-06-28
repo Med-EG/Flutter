@@ -12,12 +12,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 class PatientHomeScreen extends StatelessWidget {
-   PatientHomeScreen({super.key});
+   const PatientHomeScreen({super.key});
   final String id = 'HomeScreen';
 
   @override
   Widget build(BuildContext context) {
+    double screenHieght = MediaQuery.of(context).size.height;
     PatientInfo? patient = BlocProvider.of<LoginCubit>(context).patient; 
+    // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
         return await _showExitConfirmationDialog(context);
@@ -27,7 +29,7 @@ class PatientHomeScreen extends StatelessWidget {
         appBar: AppBar(
           leading: Padding(
             padding: const EdgeInsets.only(left: 12, top: 12),
-            child: Container(
+            child: SizedBox(
               width: 70,
               height: 70,
               child: ClipOval(
@@ -102,16 +104,18 @@ class PatientHomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 10,
+                 SizedBox(
+                  height:  screenHieght*.02,
                 ),
       
-                //Need to adjust the image that is in miidile of home screen
-      
-                Image.asset(
-                    'assets/images/PNG/AdobeStock_103968342_Preview.jpeg'),
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: screenHieght*.23,
+                  child: Image.asset(
+                    fit: BoxFit.fill,
+                      'assets/images/PNG/HomePageImage.png'),
+                ),
+                 SizedBox(
+                  height:  screenHieght*.025,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -137,8 +141,8 @@ class PatientHomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
+                 SizedBox(
+                  height:  screenHieght*.025,
                 ),
                 const DoctorCardListView()
               ],
@@ -154,16 +158,16 @@ class PatientHomeScreen extends StatelessWidget {
     return await showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text('Exit App'),
-            content: Text('Are you sure you want to exit the app?'),
+            title: const Text('Exit App'),
+            content: const Text('Are you sure you want to exit the app?'),
             actions: <Widget>[
               TextButton(
                 onPressed: () => Navigator.of(context).pop(false),
-                child: Text('No'),
+                child: const Text('No'),
               ),
               TextButton(
                 onPressed: () => Navigator.of(context).pop(true),
-                child: Text('Yes'),
+                child: const Text('Yes'),
               ),
             ],
           ),

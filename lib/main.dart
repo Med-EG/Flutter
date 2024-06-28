@@ -43,9 +43,9 @@ import 'package:med_eg/Views/signUp8.dart';
 import 'package:med_eg/Views/signUp9.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/controllers/notification_controller.dart';
+import 'package:med_eg/cubits/FaceScannerCubit/face_scanner_cubit.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/cubits/MedicalRecordCubit/medical_record_cubit.dart';
-import 'package:med_eg/cubits/MedicineAlert/medicine_alert_cubit.dart';
 import 'package:med_eg/cubits/RegisterCubit/sign_up_cubit.dart';
 import 'package:med_eg/widgets/testForm.dart';
 import 'Views/chat_screen.dart';
@@ -92,7 +92,6 @@ class _MyAppState extends State<MyApp> {
       onNotificationCreatedMethod:
           NotificationController.onNotificationCreateMethod,
     );
-
     super.initState();
   }
 
@@ -111,7 +110,7 @@ class _MyAppState extends State<MyApp> {
           create: (context) => MedicalRecordCubit(),
         ),
         BlocProvider(
-          create: (context) => MedicineAlertCubit(),
+          create: (context) => FaceScannerCubit(),
         )
       ],
       child: MaterialApp(
@@ -153,7 +152,7 @@ class _MyAppState extends State<MyApp> {
           const ShowAppointmentInfoDoctor().id: (context) =>
               const ShowAppointmentInfoDoctor(),
           DoctorHomeScreen().id: (context) => DoctorHomeScreen(),
-          CreateMedicineAlert().id: (context) => CreateMedicineAlert(),
+         const CreateMedicineAlert().id: (context) =>const CreateMedicineAlert(),
           const ChooseUserType().id: (context) => const ChooseUserType(),
           const OnBording().id: (context) => const OnBording(),
           const PatientProfile().id: (context) => const PatientProfile(),
@@ -179,13 +178,13 @@ class _MyAppState extends State<MyApp> {
           SearchForMedicalRecordByID().id: (context) =>
               SearchForMedicalRecordByID(),
           PatientAlertsScreen().id: (context) => PatientAlertsScreen(),
-          DoctorAssistantCalendar().id: (context) => DoctorAssistantCalendar(),
-          ModifyAppointment().id: (context) => ModifyAppointment(),
-          DefaultView().id:(context) => DefaultView(),
+         const DoctorAssistantCalendar().id: (context) =>const DoctorAssistantCalendar(),
+         const ModifyAppointment().id: (context) => const ModifyAppointment(),
+        const  DefaultView().id:(context) =>const DefaultView(),
           //  Test().id: (context) => Test(),
         },
         debugShowCheckedModeBanner: false,
-        home: OnBording(),
+        home: ChooseUserType(),
       ),
     );
   }

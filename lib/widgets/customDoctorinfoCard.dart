@@ -21,7 +21,7 @@ class DoctorInfoCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               border: Border.all(color: Colors.grey.withOpacity(0.4))),
           width: 140,
-          height: 150,
+          height: 155,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -29,7 +29,7 @@ class DoctorInfoCard extends StatelessWidget {
               const SizedBox(
                 height: 5,
               ),
-              Container(
+              SizedBox(
                 height: 70,
                 width: 70,
                 child: ClipOval(
@@ -62,7 +62,7 @@ class DoctorInfoCard extends StatelessWidget {
                       color: const Color(0xFFd7e1f4).withOpacity(0.5),
                     ),
                     width: 47,
-                    height: 30,
+                    height: 25,
                     child: Row(
                       children: [
                         const Icon(

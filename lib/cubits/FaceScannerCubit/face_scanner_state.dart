@@ -7,6 +7,16 @@ final class FaceScannerInitial extends FaceScannerState {}
 
 final class Loading extends FaceScannerState {}
 
-final class Success extends FaceScannerState {}
+final class Success extends FaceScannerState {
 
-final class Failed extends FaceScannerState {}
+  final String returendID;
+
+  Success({required this.returendID});
+}
+
+final class Failure extends FaceScannerState {
+
+  final String returendError;
+
+  Failure({required this.returendError});
+}
