@@ -121,7 +121,7 @@ class _ModifyAppointmentState extends State<ModifyAppointment> {
                     onTap: () async {
                       List<WorkingDaysModel> workingDays =
                           await GetWorkingDaysForDoctorService()
-                                  .GetWorkingDaysForDoctor(context);
+                                  .getWorkingDaysForDoctor(context);
                               
 
                       if (selectedTimee == '' || selectedDate == '') {

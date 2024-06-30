@@ -18,9 +18,9 @@ class DoctorMessage extends StatelessWidget {
     return SafeArea(
       child: BlocConsumer<MessageCubit, MessageState>(
         listener: (context, state) {
-          if (state is MessageSuccess) {
+          if (state is MessageSuccessSendMessage) {
             print('Message Sent Successfully');
-          } else if (state is MessageFailure) {
+          } else if (state is MessageFailureSendMessage) {
             ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Something went wrong')));
             print(state.errMessage);
@@ -48,7 +48,7 @@ class DoctorMessage extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(
                           context,
-                          const PatientHomeScreen().id,
+                           PatientHomeScreen().id,
                         );
                       },
                       icon: Icons.home_rounded,
@@ -65,7 +65,7 @@ class DoctorMessage extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(
                           context,
-                          const NoPatientAppoointment().id,
+                          const PatientAppoointment().id,
                         );
                       },
                       icon: Icons.edit_calendar_rounded,
@@ -97,7 +97,7 @@ class DoctorMessage extends StatelessWidget {
                     SizedBox(
                       height: screenHeight * 0.05,
                     ),
-                    const MessageListTileForDoctor(),
+                   const MessageListTileForDoctor(),
                   ],
                 ),
               ),

@@ -16,6 +16,7 @@ class GetBasicMedicalInfo {
     // Define retry parameters for exponential backoff
     const int maxRetries = 5;
     const Duration initialRetryDelay = Duration(seconds: 1);
+     const Duration maxRetryDelay = Duration(minutes: 1);
     int retries = 0;
     Duration retryDelay = initialRetryDelay;
 
@@ -45,7 +46,7 @@ class GetBasicMedicalInfo {
             // Increment retry count and exponentially increase delay
             retries++;
             await Future.delayed(retryDelay);
-            retryDelay *= 2; // Exponential backoff
+            retryDelay = retryDelay * 2 < maxRetryDelay ? retryDelay * 2 : maxRetryDelay; // Exponential backoff
           } else {
             // Max retries reached, throw the exception
             throw Exception('Max retries exceeded: ${e.toString()}');

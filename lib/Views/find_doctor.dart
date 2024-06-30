@@ -227,58 +227,70 @@ class _FindDoctorState extends State<FindDoctor> {
                 FutureBuilder<List<DoctorModelWithoutToken>>(
                   future: GetAllDoctorService().GetAllDoctors(context),
                   builder: (context, doctorSnapshot) {
-                    if (doctorSnapshot.connectionState == ConnectionState.waiting) {
+                    if (doctorSnapshot.connectionState ==
+                        ConnectionState.waiting) {
                       return const Center(
                         child: CircularProgressIndicator(),
                       );
                     } else if (doctorSnapshot.hasError) {
-                      return Center(child: Text('Error: ${doctorSnapshot.error}'));
+                      return Center(
+                          child: Text('Error: ${doctorSnapshot.error}'));
                     } else if (doctorSnapshot.hasData) {
                       allDoctors = doctorSnapshot.data!;
                       return FutureBuilder<List<DoctorSpecializationModel>>(
                         future: DoctorSpecifyService().fetchSpecialization(),
                         builder: (context, snapshot) {
-                          if (snapshot.connectionState == ConnectionState.waiting) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
                             return const Center(
                               child: SizedBox(
                                 height: 10,
                               ),
                             );
                           } else if (snapshot.hasError) {
-                            return Center(child: Text('Error: ${snapshot.error}'));
+                            return Center(
+                                child: Text('Error: ${snapshot.error}'));
                           } else if (snapshot.hasData) {
                             List<DoctorSpecializationModel> specializationList =
                                 snapshot.data!;
-                            List<DoctorSpecializationModel> displayedSpecializations =
-                                seeAll ? specializationList : specializationList.take(11).toList();
+                            List<DoctorSpecializationModel>
+                                displayedSpecializations = seeAll
+                                    ? specializationList
+                                    : specializationList.take(11).toList();
                             return GridView.builder(
                               shrinkWrap: true,
-                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 3,
                               ),
-                              itemCount: seeAll ? displayedSpecializations.length + 1 : 12,
+                              itemCount: seeAll
+                                  ? displayedSpecializations.length + 1
+                                  : 12,
                               itemBuilder: (context, index) {
-                                if (seeAll && index == displayedSpecializations.length) {
-                                  return IconCard(
+                                if (seeAll &&
+                                    index == displayedSpecializations.length) {
+                                  /*  return IconCard(
                                     onTap: () {
                                       setState(() {
                                         seeAll = false;
                                       });
                                     },
                                     text: 'See Less',
-                                  );
+                                  ); */
                                 } else if (!seeAll && index == 11) {
-                                  return IconCard(
+                                  /*  return IconCard(
+                                    image: ,
                                     onTap: () {
                                       setState(() {
                                         seeAll = true;
                                       });
                                     },
                                     text: 'See All',
-                                  );
+                                  ); */
                                 }
-                                String text = displayedSpecializations[index].name;
-                                return IconCard(
+                                String text =
+                                    displayedSpecializations[index].name;
+                                /*   return IconCard(
                                   onTap: () => Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -289,7 +301,7 @@ class _FindDoctorState extends State<FindDoctor> {
                                     ),
                                   ),
                                   text: text,
-                                );
+                                ); */
                               },
                             );
                           } else {
@@ -354,7 +366,8 @@ class _FindDoctorState extends State<FindDoctor> {
                                 ),
                               ),
                               SizedBox(
-                                height: MediaQuery.of(context).size.height * 0.05,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.05,
                               ),
                             ],
                           );

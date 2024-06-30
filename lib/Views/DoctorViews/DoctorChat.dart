@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
+import 'package:med_eg/models/doctorModel.dart';
 import 'package:med_eg/models/message%20model.dart';
 import 'package:med_eg/widgets/chat_bubble.dart';
 import 'package:med_eg/widgets/custom_textFormField.dart';
 import '../../cubits/LoginCubit/login_states.dart';
 import '../../cubits/MessageCubit/message_cubit.dart';
-import '../../models/paitentModel.dart';
 import '../../widgets/custom_arrow_back.dart';
 class DoctorChat extends StatelessWidget {
   DoctorChat({
@@ -16,31 +16,44 @@ class DoctorChat extends StatelessWidget {
   });
   final String id = 'DoctorChat';
   final TextEditingController _messageController = TextEditingController();
-
+  final ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     List<MessageModel> listOfMessages =
-        BlocProvider.of<MessageCubit>(context).listOfMessages;
+        BlocProvider.of<MessageCubit>(context).listOfMessagesOfDoctor;
     final args =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final chatId = args['chatId'];
-    final doctorFirstName = args['doctorFirstName'];
-    final doctorLastName = args['doctorLastName'];
-    PatientInfo? patient;
+    final patientFirstName = args['patientFirstName'];
+    final patientLastName= args['patientLastName'];
+    DoctorModel? doctor;
     final LoginState loginState = context.watch<LoginCubit>().state;
-    if (loginState is SuccessPatient) {
-      patient = loginState.patient;
+    if (loginState is SuccessDoctor) {
+      doctor = loginState.doctor;
     }
     double screenWidth = MediaQuery.of(context).size.width;
+     void scrollToBottom() {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (_scrollController.hasClients) {
+          _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+        }
+      });
+    }
     return SafeArea(
       child: BlocConsumer<MessageCubit, MessageState>(
         listener: (context, state) {
-          if (state is MessageSuccess) {
+          if (state is MessageSuccessSendMessage) {
             _messageController.text = '';
-            print('Message Sent Succefully');
-          } else if (state is MessageFailure) {
+            scrollToBottom();
+          } else if (state is MessageFailureSendMessage) {
             ScaffoldMessenger.of(context)
                 .showSnackBar(const SnackBar(content: Text('Something error')));
+            print(state.errMessage);
+          } else if (state is DoctorMessageGetAll) {
+listOfMessages = BlocProvider.of<MessageCubit>(context).listOfMessagesOfDoctor;
+          } else if (state is MessageFailureGetMessage) {
+            ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Failed to fetch messages')));
             print(state.errMessage);
           }
         },
@@ -57,7 +70,7 @@ class DoctorChat extends StatelessWidget {
                       width: screenWidth * 0.125,
                     ),
                     Text(
-                      'Dr. $doctorFirstName $doctorLastName',
+                      '$patientFirstName $patientLastName',
                       style: const TextStyle(
                           color: darkBlue,
                           fontWeight: FontWeight.bold,
@@ -67,6 +80,7 @@ class DoctorChat extends StatelessWidget {
                 ),
                 Expanded(
                   child: ListView.builder(
+                    controller: _scrollController,
                       itemCount: listOfMessages.length,
                       itemBuilder: (context, index) {
                         return ChatBubbleBlue(
@@ -85,21 +99,21 @@ class DoctorChat extends StatelessWidget {
                       child: IconButton(
                         icon: const Icon(Icons.send),
                         onPressed: () {
-                          if (patient != null &&
+                          if (doctor != null &&
                               _messageController.text.isNotEmpty) {
                             var sendMessage =
                                 BlocProvider.of<MessageCubit>(context);
-                            sendMessage.sendmessageMethodForPatient(
-                                patientInfo: patient,
+                            sendMessage.sendmessageMethodForDoctor(
+                                doctorModel: doctor,
                                 url:
                                     'https://api-medeg.online/api/medEG/message',
                                 body: {
                                   'chat_id': chatId,
-                                  'sender': patient.id.toString(),
+                                  'sender': doctor.id.toString(),
                                   'content': _messageController.text
                                 });
                             print(_messageController.text);
-                            print('patient id: ${patient.id}');
+                            print('Doctor id: ${doctor.id}');
                             print('chat id: $chatId');
                           } else {
                             print('send fail');

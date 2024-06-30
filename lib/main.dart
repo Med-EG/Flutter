@@ -106,14 +106,6 @@ class _MyAppState extends State<MyApp> {
       onNotificationCreatedMethod:
           NotificationController.onNotificationCreateMethod,
     );
-      onActionReceivedMethod: NotificationController.onActionReciveMethod,
-      onDismissActionReceivedMethod:
-          NotificationController.onDismissActionReciveMethod,
-      onNotificationDisplayedMethod:
-          NotificationController.onNotificationDisplayMethod,
-      onNotificationCreatedMethod:
-          NotificationController.onNotificationCreateMethod,
-    );
 
     super.initState();
   }
@@ -173,10 +165,9 @@ class _MyAppState extends State<MyApp> {
           PatientHomeScreen().id: (context) => PatientHomeScreen(),
           const PatientAppoointment().id: (context) =>
               const PatientAppoointment(),
-          const ReserveDoctor().id: (context) => const ReserveDoctor(),
-          const PatientHomeScreen().id: (context) => const PatientHomeScreen(),
-          const NoPatientAppoointment().id: (context) =>
-              const NoPatientAppoointment(),
+           PatientHomeScreen().id: (context) =>  PatientHomeScreen(),
+          const PatientAppoointment().id: (context) =>
+              const PatientAppoointment(),
           const CheckReservation().id: (context) => const CheckReservation(),
           const ChooseUserType().id: (context) => const ChooseUserType(),
           const DoctorCalendar().id: (context) => const DoctorCalendar(),
@@ -205,19 +196,16 @@ class _MyAppState extends State<MyApp> {
               const MedicalRecord2ForOperation(),
           const SearchForPatientMedicalRecord().id: (context) =>
               const SearchForPatientMedicalRecord(),
-          SearchForMedicalRecordByFaceID().id: (context) =>
-              SearchForMedicalRecordByFaceID(),
           SearchForMedicalRecordByID().id: (context) =>
               SearchForMedicalRecordByID(),
           PatientAlertsScreen().id: (context) => PatientAlertsScreen(),
-          DoctorAssistantCalendar().id: (context) => DoctorAssistantCalendar(),
-          ModifyAppointment().id: (context) => ModifyAppointment(),
-          DefaultView().id:(context) => DefaultView(),
-          //  Test().id: (context) => Test(),
+          const DoctorAssistantCalendar().id: (context) => const DoctorAssistantCalendar(),
+          const ModifyAppointment().id: (context) => const ModifyAppointment(),
+          const DefaultView().id:(context) => const DefaultView(),
           const SearchForPatientMedicalRecord().id: (context) =>
               const SearchForPatientMedicalRecord(),
-          const SearchForMedicalRecordByFaceID().id: (context) =>
-              const SearchForMedicalRecordByFaceID(),
+           SearchForMedicalRecordByFaceID().id: (context) =>
+               SearchForMedicalRecordByFaceID(),
           SearchForMedicalRecordByID().id: (context) =>
               SearchForMedicalRecordByID(),
           ChatTest().id: (context) => ChatTest(),
@@ -242,6 +230,7 @@ class _MyAppState extends State<MyApp> {
               const MedicalRecord2ForSecondDegree(),
               const DoctorMessage().id:(context) => const DoctorMessage(),
                DoctorChat().id:(context) =>  DoctorChat(),
+               
         },
         onGenerateRoute: (settings) {
           if (settings.name == ReserveDoctor.id) {

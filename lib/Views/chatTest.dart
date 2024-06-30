@@ -10,22 +10,23 @@ import '../cubits/LoginCubit/login_states.dart';
 import '../cubits/MessageCubit/message_cubit.dart';
 import '../models/paitentModel.dart';
 import '../widgets/custom_arrow_back.dart';
+
 class ChatTest extends StatelessWidget {
   ChatTest({
     super.key,
   });
   final String id = 'ChatTest';
   final TextEditingController _messageController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     List<MessageModel> listOfMessages =
-        BlocProvider.of<MessageCubit>(context).listOfMessages;
+        BlocProvider.of<MessageCubit>(context).listOfMessagesOfPatient;
     final args =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final chatId = args['chatId'];
     final doctorFirstName = args['doctorFirstName'];
     final doctorLastName = args['doctorLastName'];
+    final patientt = BlocProvider.of<LoginCubit>(context).patient;
     PatientInfo? patient;
     final LoginState loginState = context.watch<LoginCubit>().state;
     if (loginState is SuccessPatient) {
@@ -35,12 +36,18 @@ class ChatTest extends StatelessWidget {
     return SafeArea(
       child: BlocConsumer<MessageCubit, MessageState>(
         listener: (context, state) {
-          if (state is MessageSuccess) {
+          if (state is MessageSuccessSendMessage) {
             _messageController.text = '';
             print('Message Sent Succefully');
-          } else if (state is MessageFailure) {
+          } else if (state is MessageFailureSendMessage) {
             ScaffoldMessenger.of(context)
                 .showSnackBar(const SnackBar(content: Text('Something error')));
+            print(state.errMessage);
+          } else if (state is PatientMessageGetAll) {
+listOfMessages = BlocProvider.of<MessageCubit>(context).listOfMessagesOfPatient;
+          } else if (state is MessageFailureGetMessage) {
+            ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Failed to fetch messages')));
             print(state.errMessage);
           }
         },
@@ -101,7 +108,9 @@ class ChatTest extends StatelessWidget {
                             print(_messageController.text);
                             print('patient id: ${patient.id}');
                             print('chat id: $chatId');
+                            sendMessage.getAllMessagesOfPatien(url: 'https://api-medeg.online/api/medEG/message/chat/$chatId', token: patientt!.token);
                           } else {
+                            
                             print('send fail');
                           }
                         },

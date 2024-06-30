@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class IconCard extends StatelessWidget {
-  const IconCard({super.key,required this.text, this.onTap});
+  const IconCard({super.key,required this.text, this.onTap, required this.image});
   final String text;
+   final String image;
   final void Function()? onTap;
 
   @override

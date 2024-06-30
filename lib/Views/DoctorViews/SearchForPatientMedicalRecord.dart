@@ -28,7 +28,7 @@ class SearchForPatientMedicalRecord extends StatelessWidget {
                 'assets/images/PNG/AppLogo.png',
                 height: 50,
               ),
-              Spacer(
+              const Spacer(
                 flex: 1,
               ),
               const Row(

@@ -34,7 +34,7 @@ class PatientAppoointment extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(
                     context,
-                    const PatientHomeScreen().id,
+                     PatientHomeScreen().id,
                   );
                 },
                 icon: Icons.home_rounded,
@@ -51,7 +51,7 @@ class PatientAppoointment extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(
                     context,
-                    const NoPatientAppoointment().id,
+                    const PatientAppoointment().id,
                   );
                 },
                 icon: Icons.edit_calendar_rounded,
