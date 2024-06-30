@@ -16,7 +16,6 @@ import 'package:med_eg/Views/DoctorViews/SearchForPatientMedicalRecord.dart';
 import 'package:med_eg/Views/PatientAlertsScreen.dart';
 import 'package:med_eg/Views/DoctorViews/ShowAppointmentsInfoDoctor.dart';
 import 'package:med_eg/Views/DoctorViews/edit%20basic%20info%20for%20doctor.dart';
-import 'package:med_eg/Views/ShowAppointmentsInfoDoctor.dart';
 import 'package:med_eg/Views/EnterVarifecationCode.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/Views/PatientAppointmentsScreen.dart';
