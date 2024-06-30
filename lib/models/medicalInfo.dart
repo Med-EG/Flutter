@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 class MedicalInfoModel {
   final int medicineId;
   final String medicineName;

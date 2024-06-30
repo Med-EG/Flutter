@@ -61,7 +61,7 @@ class CustomGeneralBasicMedicalInfo extends StatelessWidget {
           text1: 'Past Fracures : ',
           text2: medicalRecord.past_fracrues,
         ),
-          GeneralInfoRow(
+        /*   GeneralInfoRow(
           text1: 'Father : ',
           text2: medicalRecord.father,
         ),
@@ -72,7 +72,7 @@ class CustomGeneralBasicMedicalInfo extends StatelessWidget {
           GeneralInfoRow(
           text1: 'Second Degree : ',
           text2: medicalRecord.second_degree,
-        ),
+        ), */
       ],
     );
   }

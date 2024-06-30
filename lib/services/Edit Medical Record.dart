@@ -30,7 +30,7 @@ class EditMedicalRecord {
     try {
       PatientInfo? patient = BlocProvider.of<LoginCubit>(context).patient;
       DoctorModel?doctor=BlocProvider.of<LoginCubit>(context).doctor;
-    final int? patientIDD= BlocProvider.of<MedicalRecordCubit>(context).patientIDGetByDoctorSearch;
+    final int patientIDD= BlocProvider.of<MedicalRecordCubit>(context).patientIDGetByDoctorSearch;
        if(doctor==null){
       Map<String, dynamic> data = await Api().put(
           url: 'https://api-medeg.online/api/medEG/record/${patient!.medicalRecordID}',

@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/models/operationInfoModel.dart';

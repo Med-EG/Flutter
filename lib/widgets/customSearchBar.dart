@@ -4,6 +4,7 @@ import 'package:med_eg/constants/colors.dart';
 
 class Searchbar extends StatelessWidget {
    const Searchbar({
+   const Searchbar({
     Key? key,
     required this.labelText,
     required this.controller, 

@@ -7,9 +7,7 @@ import 'package:med_eg/helper/API.dart';
 import 'package:med_eg/models/MedicineAlertModel.dart';
 import 'package:med_eg/models/paitentModel.dart';
 import 'package:meta/meta.dart';
-
 part 'medicine_alert_state.dart';
-
 class MedicineAlertCubit extends Cubit<MedicineAlertState> {
   MedicineAlertCubit() : super(MedicineAlertInitial());
 

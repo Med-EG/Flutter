@@ -1,35 +1,31 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/models/allergyInfoModel.dart';
-import 'package:med_eg/services/allergy%20Service.dart';
+import 'package:med_eg/services/GetBasicMedicalInfo.dart';
 import 'package:med_eg/widgets/custom_arrow_back.dart';
+import '../models/medicalRecordModel.dart';
 import '../widgets/custom_circle_container.dart';
 
-class MedicalRecord2ForAllergy extends StatelessWidget {
-  const MedicalRecord2ForAllergy({super.key});
-  final String id = 'MedicalRecord2ForAllergy';
+class MedicalRecord2ForFather extends StatelessWidget {
+  const MedicalRecord2ForFather({super.key});
+  final String id = 'MedicalRecord2ForFather';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     final Map<String, dynamic>? args =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
-    if (args != null && args.containsKey('allergyId')) {
+    if (args != null && args.containsKey('father')) {
       return SafeArea(
-        child: FutureBuilder<List<AllergyInfoModel>>(
-          future: AllergyInfoForRecordService().getAllergyInfoService(context),
+        child: FutureBuilder<MedicalRecordModel>(
+          future: GetBasicMedicalInfo().getBasicMedicalInfo(context),
           builder: ((context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}');
             } else if (snapshot.hasData) {
-              List<AllergyInfoModel>? allergyInfoModel = snapshot.data;
-              if (allergyInfoModel != null) {
-                final int allergyIdd = args['allergyId'];
-                final AllergyInfoModel allergyInfo =
-                    allergyInfoModel.firstWhere(
-                  (info) => info.allergyId == allergyIdd,
-                );
+              MedicalRecordModel? medicalRecord = snapshot.data;
+              if (medicalRecord != null) {
                 return Scaffold(
                   body: Stack(
                     children: [
@@ -51,7 +47,7 @@ class MedicalRecord2ForAllergy extends StatelessWidget {
                                   height: screenHeight * 0.03,
                                 ),
                                 const Text(
-                                  'Allergy',
+                                  'Relative',
                                   style: TextStyle(
                                       fontSize: 30,
                                       color: kPrimaryColor,
@@ -74,70 +70,13 @@ class MedicalRecord2ForAllergy extends StatelessWidget {
                                       Row(
                                         children: [
                                           const Text(
-                                            'Allergy Name: ',
+                                            'Father: ',
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 color: darkBlue,
                                                 fontWeight: FontWeight.w600),
                                           ),
-                                          Text(allergyInfo.allergyName,
-                                              style: const TextStyle(
-                                                  fontSize: 16,
-                                                  color: kPrimaryColor,
-                                                  fontWeight: FontWeight.w600))
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: screenHeight * 0.02,
-                                      ),
-                                      Row(
-                                        children: [
-                                          const Text(
-                                            'Allergy Type: ',
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                color: darkBlue,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Text(allergyInfo.allergyType,
-                                              style: const TextStyle(
-                                                  fontSize: 16,
-                                                  color: kPrimaryColor,
-                                                  fontWeight: FontWeight.w600))
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: screenHeight * 0.02,
-                                      ),
-                                      Row(
-                                        children: [
-                                          const Text(
-                                            'Severity Level: ',
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                color: darkBlue,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Text('${allergyInfo.severityLevel}',
-                                              style: const TextStyle(
-                                                  fontSize: 16,
-                                                  color: kPrimaryColor,
-                                                  fontWeight: FontWeight.w600))
-                                        ],
-                                      ),
-                                       SizedBox(
-                                        height: screenHeight * 0.02,
-                                      ),
-                                      Row(
-                                        children: [
-                                          const Text(
-                                            'Body Response: ',
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                color: darkBlue,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Text('${allergyInfo.bodyResponse}',
+                                          Text(medicalRecord.father,
                                               style: const TextStyle(
                                                   fontSize: 16,
                                                   color: kPrimaryColor,

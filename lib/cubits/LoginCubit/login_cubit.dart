@@ -37,7 +37,7 @@ class LoginCubit extends Cubit<LoginState> {
     }
   }
 
-  PasswordVisabilty() {
+  passwordVisabilty() {
     emit(ShowPassword());
   }
 }

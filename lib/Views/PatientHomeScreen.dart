@@ -63,7 +63,7 @@ class PatientHomeScreen extends StatelessWidget {
             padding: const EdgeInsets.all(18),
             child: Column(
               children: [
-                MySearchApp(),
+                const MySearchApp(),
                 const SizedBox(
                   height: 10,
                 ),

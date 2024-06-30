@@ -3,12 +3,14 @@ import 'package:med_eg/Views/faqs_screen.dart';
 import 'package:med_eg/Views/profile03.dart';
 import 'package:med_eg/Views/signUp2.dart';
 import 'package:med_eg/constants/colors.dart';
+import 'package:med_eg/services/Log%20Out%20service.dart';
 import 'package:med_eg/widgets/custom_button.dart';
 import '../widgets/top_half_blue.dart';
+import 'chooseUserType.dart';
 
 class PatientProfile extends StatelessWidget {
   const PatientProfile({super.key});
-final String id = 'PatientProfile';
+  final String id = 'PatientProfile';
   @override
   Widget build(BuildContext context) {
     return  WillPopScope(

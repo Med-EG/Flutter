@@ -1,3 +1,5 @@
+
+
 class DiseaseInfoModel {
   final int diseaseId;
   final String diseaseName;
@@ -12,7 +14,6 @@ class DiseaseInfoModel {
     return DiseaseInfoModel(
         diseaseId: json['id'],
         diseaseName: json['disease_name'],
-
         notes: json['notes']);
   }
 }

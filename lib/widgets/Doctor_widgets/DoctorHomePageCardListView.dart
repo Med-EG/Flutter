@@ -1,10 +1,13 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
+import 'package:med_eg/Views/DoctorViews/Doctor%20Message.dart';
 import 'package:med_eg/Views/DoctorViews/DoctorCalendar.dart';
+import 'package:med_eg/Views/DoctorViews/Doctor%20Profile.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForPatientMedicalRecord.dart';
 import 'package:med_eg/widgets/Doctor_widgets/CustomCardForDoctorHomeScreen.dart';
 
 class DoctorHomePageCardListView extends StatelessWidget {
-  DoctorHomePageCardListView({super.key});
+  const DoctorHomePageCardListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class DoctorHomePageCardListView extends StatelessWidget {
         text: 'Appointments',
         icon:Icons.edit_calendar_rounded,
         ontap: () {
-          Navigator.pushNamed(context, DoctorCalendar().id);
+          Navigator.pushNamed(context, const DoctorCalendar().id);
           
         }, height: 200, width: 125,
       ),
@@ -27,12 +30,16 @@ class DoctorHomePageCardListView extends StatelessWidget {
       CustomCardForDoctorHomeScreen(
         text: 'My Profile',
         icon:Icons.person_3_rounded,
-        ontap: () {},height: 200, width: 125
+        ontap: () {
+          Navigator.pushNamed(context, const DoctorProfile().id);
+        },height: 200, width: 125
       ),
       CustomCardForDoctorHomeScreen(
         text: 'Chats',
         icon:Icons.chat_bubble_rounded,
-        ontap: () {},height: 200, width: 125
+        ontap: () {
+          Navigator.pushNamed(context, const DoctorMessage().id);
+        },height: 200, width: 125
       ),
     ];
     return Padding(

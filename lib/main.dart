@@ -5,13 +5,17 @@ import 'package:med_eg/Views/AssistantViews/AssistantCalendar.dart';
 import 'package:med_eg/Views/AssistantViews/ModifyAppointmentView.dart';
 import 'package:med_eg/Views/CreateMedicineAlert.dart';
 import 'package:med_eg/Views/DefaultView.dart';
+import 'package:med_eg/Views/DoctorViews/Doctor%20Message.dart';
+import 'package:med_eg/Views/DoctorViews/Doctor%20Profile.dart';
 import 'package:med_eg/Views/DoctorViews/DoctorCalendar.dart';
+import 'package:med_eg/Views/DoctorViews/DoctorChat.dart';
 import 'package:med_eg/Views/DoctorViews/DoctorHomeScreen.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForMedicalRecordByFaceID.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForMedicalRecordByID.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForPatientMedicalRecord.dart';
 import 'package:med_eg/Views/PatientAlertsScreen.dart';
 import 'package:med_eg/Views/DoctorViews/ShowAppointmentsInfoDoctor.dart';
+import 'package:med_eg/Views/DoctorViews/edit%20basic%20info%20for%20doctor.dart';
 import 'package:med_eg/Views/EnterVarifecationCode.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/Views/PatientAppointmentsScreen.dart';
@@ -20,12 +24,15 @@ import 'package:med_eg/Views/check_reservation.dart';
 import 'package:med_eg/Views/chooseUserType.dart';
 import 'package:med_eg/Views/createNewPassword.dart';
 import 'package:med_eg/Views/edit_medicine_info.dart';
+import 'package:med_eg/Views/faqs_screen.dart';
 import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/medical_record.dart';
 import 'package:med_eg/Views/medical_record2%20for%20allergy.dart';
 import 'package:med_eg/Views/medical_record2%20for%20disease.dart';
+import 'package:med_eg/Views/medical_record2%20for%20father.dart';
 import 'package:med_eg/Views/medical_record2.dart';
 import 'package:med_eg/Views/medical_record3.dart';
+import 'package:med_eg/Views/medical_record_copy.dart';
 import 'package:med_eg/Views/message_screen.dart';
 import 'package:med_eg/Views/patient_profile.dart';
 import 'package:med_eg/Views/profile03.dart';
@@ -41,6 +48,7 @@ import 'package:med_eg/Views/signUp6.dart';
 import 'package:med_eg/Views/signUp7.dart';
 import 'package:med_eg/Views/signUp8.dart';
 import 'package:med_eg/Views/signUp9.dart';
+import 'package:med_eg/Views/update_allergy_screen.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/controllers/notification_controller.dart';
 import 'package:med_eg/cubits/FaceScannerCubit/face_scanner_cubit.dart';
@@ -48,10 +56,14 @@ import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/cubits/MedicalRecordCubit/medical_record_cubit.dart';
 import 'package:med_eg/cubits/RegisterCubit/sign_up_cubit.dart';
 import 'package:med_eg/widgets/testForm.dart';
-import 'Views/chat_screen.dart';
+import 'Views/chatTest.dart';
+import 'Views/doctorBySpecialization.dart';
 import 'Views/loginScreen.dart';
+import 'Views/medical_record2 for mother.dart';
 import 'Views/medical_record2 for operation.dart';
+import 'Views/medical_record2 for second degree.dart';
 import 'Views/signUp4.dart';
+import 'Views/update_medicine_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -128,14 +140,13 @@ class _MyAppState extends State<MyApp> {
           const SignUp3().id: (context) => const SignUp3(),
           const SignUp4().id: (context) => const SignUp4(),
           const SignUp6().id: (context) => const SignUp6(),
-          const SignUp7().id: (context) => const SignUp7(),
+          SignUp7().id: (context) => SignUp7(),
           const SignUp8().id: (context) => const SignUp8(),
           const SignUp9().id: (context) => const SignUp9(),
           const SignUp10().id: (context) => const SignUp10(),
           const SignUp11().id: (context) => const SignUp11(),
           const SignUp12().id: (context) => const SignUp12(),
           Login().id: (context) => Login(),
-          const ChatScreen().id: (context) => const ChatScreen(),
           const FindDoctor().id: (context) => const FindDoctor(),
           const MessageScreen().id: (context) => const MessageScreen(),
           ResetPassword().id: (context) => ResetPassword(),
@@ -145,7 +156,9 @@ class _MyAppState extends State<MyApp> {
           PatientHomeScreen().id: (context) => PatientHomeScreen(),
           const PatientAppoointment().id: (context) =>
               const PatientAppoointment(),
-          const ReserveDoctor().id: (context) => const ReserveDoctor(),
+           PatientHomeScreen().id: (context) =>  PatientHomeScreen(),
+          const PatientAppoointment().id: (context) =>
+              const PatientAppoointment(),
           const CheckReservation().id: (context) => const CheckReservation(),
           const ChooseUserType().id: (context) => const ChooseUserType(),
           const DoctorCalendar().id: (context) => const DoctorCalendar(),
@@ -173,8 +186,6 @@ class _MyAppState extends State<MyApp> {
               const MedicalRecord2ForOperation(),
           const SearchForPatientMedicalRecord().id: (context) =>
               const SearchForPatientMedicalRecord(),
-          SearchForMedicalRecordByFaceID().id: (context) =>
-              SearchForMedicalRecordByFaceID(),
           SearchForMedicalRecordByID().id: (context) =>
               SearchForMedicalRecordByID(),
           PatientAlertsScreen().id: (context) => PatientAlertsScreen(),

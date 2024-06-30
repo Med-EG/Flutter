@@ -1,8 +1,9 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:med_eg/Views/DoctorViews/DoctorCalendar.dart';
-import 'package:med_eg/Views/chat_screen.dart';
+import 'package:med_eg/Views/chatTest.dart';
 import 'package:med_eg/Views/medical_record.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
@@ -90,7 +91,7 @@ class ShowAppointmentInfoDoctor extends StatelessWidget {
                       const Spacer(
                         flex: 4,
                       ),
-                      Container(
+                      SizedBox(
                         height: 120,
                         width: 120,
                         child: ClipOval(
@@ -134,7 +135,7 @@ class ShowAppointmentInfoDoctor extends StatelessWidget {
                     text: 'Go to chat',
                     color: kPrimaryColor,
                     onTap: () {
-                      Navigator.pushNamed(context, const ChatScreen().id);
+                      Navigator.pushNamed(context,  ChatTest().id);
                     },
                   ),
                   SizedBox(
@@ -142,7 +143,7 @@ class ShowAppointmentInfoDoctor extends StatelessWidget {
                   ),
                   CustomButton(
                     text: 'Delete appointment',
-                    color: Color(0xffe24040),
+                    color: const Color(0xffe24040),
                     onTap: () async {
                       await Api().delete(
                           url:

@@ -3,8 +3,6 @@ import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/custom_arrow_back.dart';
 import 'package:med_eg/widgets/custom_button.dart';
 import 'package:med_eg/widgets/custom_checkBox.dart';
-
-import '../widgets/find_doctor_card.dart';
 import '../widgets/success_signUp.dart';
 
 class CheckReservation extends StatelessWidget {
@@ -22,7 +20,7 @@ class CheckReservation extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const CustomArrowBack(),
-              const FindDoctorCard(),
+              // const FindDoctorCard(),
               SizedBox(height: screenHeight * 0.02),
               GreyLine(screenWidth: screenWidth),
               SizedBox(height: screenHeight * 0.02),

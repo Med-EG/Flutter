@@ -15,7 +15,7 @@ class DefaultView extends StatefulWidget {
 
 class _DefaultViewState extends State<DefaultView> {
   int _currentindex = 0;
-  List <Widget>views=<Widget>[PatientHomeScreen(),MessageScreen(),PatientAppoointment(),PatientProfile()];
+  List <Widget>views=<Widget>[const PatientHomeScreen(),const MessageScreen(),const PatientAppoointment(),const PatientProfile()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -14,7 +14,6 @@ import 'package:med_eg/widgets/custom_circle_container.dart';
 import 'package:med_eg/Views/RestPassword.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../widgets/custom_button.dart';
-
 // ignore: must_be_immutable
 class Login extends StatelessWidget {
   final String id = 'Login';
@@ -30,7 +29,6 @@ class Login extends StatelessWidget {
   String passwordErrorMessage = '';
   GlobalKey<FormState> formKey = GlobalKey();
   Login({super.key});
-
   @override
   Widget build(BuildContext context) {
     var url = ModalRoute.of(context)!.settings.arguments;
@@ -195,7 +193,7 @@ class Login extends StatelessWidget {
                             suffixIcon: IconButton(
                                 onPressed: () {
                                   BlocProvider.of<LoginCubit>(context)
-                                      .PasswordVisabilty();
+                                      .passwordVisabilty();
                                 },
                                 icon: Icon(_obscureText
                                     ? Icons.visibility_off_outlined
