@@ -44,8 +44,13 @@ class TopHalfBlueScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(32),
                             color: Colors.black,
                           ),
-                          child: Image.network(
-                              'https://api-medeg.online/${medicalRecord.patientImage}'),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(32),
+                            child: Image.network(
+                                'https://api-medeg.online/${medicalRecord.patientImage}',
+                                fit: BoxFit.cover,
+                                ),
+                          ),
                         ),
                         const SizedBox(height: 16),
                         Text(

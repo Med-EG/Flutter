@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/custom_button.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import '../models/medical Record model copy.dart';
+import '../services/Edit Medical Record.dart';
 import '../widgets/custom_textFormField.dart';
 
 // ignore: must_be_immutable
@@ -29,6 +30,7 @@ class _Profile03State extends State<Profile03> {
   int? heightt, weightt;
   bool? alcoholicc, smokerr;
    bool isLoading = false;
+    Future<MedicalRecordModelCopy>? futureRecord;
   /*late final int height;
   late final int weight;
   late final String bloodType;
@@ -47,173 +49,174 @@ class _Profile03State extends State<Profile03> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: ModalProgressHUD(
-        inAsyncCall: isLoading,
-        child: Scaffold(
-          body: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-              child: Form(
-                key: formkey,
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      const Text(
-                        "General medical information",
-                        style: TextStyle(
-                            fontSize: 32,
-                            color: kPrimaryColor,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                              child: CustomTextFormField(
-                            onChanged: (data) {
-                              heightt = int.parse(data);
-                            },
-                            label: 'Height',
-                          )),
-                          Expanded(
-                              child: CustomTextFormField(
-                                  onChanged: (data) {
-                                    weightt = int.parse(data);
-                                  },
-                                  label: 'Weight'))
-                        ],
-                      ),
-                      CustomTextFormField(
+      child: Scaffold(
+        body: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+            child: Form(
+              key: formkey,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const Text(
+                      "General medical information",
+                      style: TextStyle(
+                          fontSize: 32,
+                          color: kPrimaryColor,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                            child: CustomTextFormField(
                           onChanged: (data) {
-                            bloodTypee = data;
+                            heightt = int.parse(data);
                           },
-                          label: 'BloodType'),
-                      Row(
-                        children: [
-                          Expanded(
-                              child: Padding(
-                            padding: const EdgeInsets.only(right: 8),
+                          label: 'Height',
+                        )),
+                        Expanded(
                             child: CustomTextFormField(
-                              onChanged: (data) {
-                                smokerr = bool.parse(data);
-                              },
-                              label: 'Smoker',
-                            ),
-                          )),
-                          Expanded(
-                              child: Padding(
-                            padding: const EdgeInsets.only(left: 8),
-                            child: CustomTextFormField(
-                              onChanged: (data) {
-                                smokerLevell = data;
-                              },
-                              label: 'Smoking Level',
-                            ),
-                          ))
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                              child: Padding(
-                            padding: const EdgeInsets.only(right: 8),
-                            child: CustomTextFormField(
-                              onChanged: (data) {
-                                alcoholicc = bool.parse(data);
-                              },
-                              label: 'Alcoholic',
-                            ),
-                          )),
-                          Expanded(
-                              child: Padding(
-                            padding: const EdgeInsets.only(left: 8),
-                            child: CustomTextFormField(
-                              onChanged: (data) {
-                                alcoholicLevell = data;
-                              },
-                              label: 'Alcoholic Level',
-                            ),
-                          ))
-                        ],
-                      ),
-                      CustomTextFormField(
+                                onChanged: (data) {
+                                  weightt = int.parse(data);
+                                },
+                                label: 'Weight'))
+                      ],
+                    ),
+                    CustomTextFormField(
                         onChanged: (data) {
-                          jobb = data;
+                          bloodTypee = data;
                         },
-                        label: 'Job',
-                      ),
-                      CustomTextFormField(
-                        onChanged: (data) {
-                          maritalStatuss = data;
-                        },
-                        label: 'Marital Status',
-                      ),
-                      CustomTextFormField(
-                        onChanged: (data) {
-                          pastFracuess = data;
-                        },
-                        label: 'Past Fractures',
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: CustomTextFormField(
-                              onChanged: (data) {
-                                sleepingHourss = data;
-                              },
-                              label: 'Sleeping Hours',
-                            ),
+                        label: 'BloodType'),
+                    Row(
+                      children: [
+                        Expanded(
+                            child: Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: CustomTextFormField(
+                            onChanged: (data) {
+                              smokerr = data.toLowerCase() == 'true';
+                            },
+                            label: 'Smoker',
                           ),
-                          Expanded(
-                            child: CustomTextFormField(
-                              onChanged: (data) {
-                                sleepingQualityy = data;
-                              },
-                              label: 'Sleeping Quality',
-                            ),
-                          )
-                        ],
-                      ),
-                      CustomButton(
-                          onTap: () {
-                            isLoading = true;
-                            setState(() {
-                              
-                            });
-                           try{
-                           /*  EditMedicalRecord().editMedicalInfo(context,
-                                height: heightt == null? medicalrecord.height: heightt!,
-                                weight: weightt== null? medicalrecord.weight: heightt!,
-                                blood_type: bloodTypee!,
-                                alcoholic: alcoholicc!,
-                                alcoholic_level: alcoholicLevell!,
-                                smoker: smokerr!,
-                                smoking_level: smokerLevell!,
-                                job: jobb!,
-                                marital_status: maritalStatuss!,
-                                father: fatherr!,
-                                mother: motherr!);
-                                print('Success');*/
-                           }catch(e)
-                           {
-                            print(e.toString());
-                           }
-                           isLoading = false;
-                           setState(() {
-                             
-                           });
+                        )),
+                        Expanded(
+                            child: Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: CustomTextFormField(
+                            onChanged: (data) {
+                              smokerLevell = data;
+                            },
+                            label: 'Smoking Level',
+                          ),
+                        ))
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                            child: Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: CustomTextFormField(
+                            onChanged: (data) {
+                              alcoholicc =data.toLowerCase() == 'true';
+                            },
+                            label: 'Alcoholic',
+                          ),
+                        )),
+                        Expanded(
+                            child: Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: CustomTextFormField(
+                            onChanged: (data) {
+                              alcoholicLevell = data;
+                            },
+                            label: 'Alcoholic Level',
+                          ),
+                        ))
+                      ],
+                    ),
+                    CustomTextFormField(
+                      onChanged: (data) {
+                        jobb = data;
+                      },
+                      label: 'Job',
+                    ),
+                    CustomTextFormField(
+                      onChanged: (data) {
+                        maritalStatuss = data;
+                      },
+                      label: 'Marital Status',
+                    ),
+                    CustomTextFormField(
+                      onChanged: (data) {
+                        pastFracuess = data;
+                      },
+                      label: 'Past Fractures',
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomTextFormField(
+                            onChanged: (data) {
+                              sleepingHourss = data;
+                            },
+                            label: 'Sleeping Hours',
+                          ),
+                        ),
+                        Expanded(
+                          child: CustomTextFormField(
+                            onChanged: (data) {
+                              sleepingQualityy = data;
+                            },
+                            label: 'Sleeping Quality',
+                          ),
+                        )
+                      ],
+                    ),
+                    CustomButton(
+                        onTap: () {
+                               setState(() {
+                          futureRecord = EditMedicalRecord().editMedicalInfo(
+                            context,
+                            height: heightt!,
+                            weight: weightt!,
+                            blood_type: bloodTypee!,
+                            alcoholic: alcoholicc!,
+                            alcoholic_level: alcoholicLevell!,
+                            smoker: smokerr!,
+                            smoking_level: smokerLevell!,
+                            job: jobb!,
+                            marital_status: maritalStatuss!,
+                            past_fracrues: pastFracuess,
+                            sleeping_hours: sleepingHourss,
+                            sleeping_quality: sleepingQualityy,
+                            /* father: fatherr!,
+                            mother: motherr!,
+                            second_degree: secondDegreee, */
+                          );
+                        });
+                        },
+                        text: 'Save Changes'),
+                        futureRecord != null
+                      ? FutureBuilder<MedicalRecordModelCopy>(
+                          future: futureRecord,
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState == ConnectionState.waiting) {
+                              return const Center(child: CircularProgressIndicator());
+                            } else if (snapshot.hasError) {
+                              return Text('Error: ${snapshot.error}');
+                            } else if (snapshot.hasData) {
+                              return const Text('Record updated successfully!');
+                            } else {
+                              return Container();
+                            }
                           },
-                          text: 'Save Changes')
-                    ],
-                  ),
+                        )
+                      : Container(),
+                  ],
                 ),
-              )),
-        ),
+              ),
+            )),
       ),
     );
-  }
-
-  OutlineInputBorder buildBorder([color]) {
-    return OutlineInputBorder(
-        borderRadius: BorderRadius.circular(16),
-        borderSide: BorderSide(color: color ?? Colors.white));
   }
 }

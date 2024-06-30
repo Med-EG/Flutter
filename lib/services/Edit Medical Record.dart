@@ -7,10 +7,10 @@ import 'package:med_eg/helper/API.dart';
 import 'package:med_eg/models/doctorModel.dart';
 import 'package:med_eg/models/paitentModel.dart';
 
-import '../models/medicalRecordModel.dart';
+import '../models/medical Record model copy.dart';
 
 class EditMedicalRecord {
-  Future<MedicalRecordModel> editMedicalInfo(BuildContext context,
+  Future<MedicalRecordModelCopy> editMedicalInfo(BuildContext context,
       {
       required int height,
       required int weight,
@@ -24,9 +24,9 @@ class EditMedicalRecord {
       String? past_fracrues,
       String? sleeping_hours,
       String? sleeping_quality,
-      required String father,
+     /*  required String father,
       required String mother,
-      String? second_degree}) async {
+      String? second_degree */}) async {
     try {
       PatientInfo? patient = BlocProvider.of<LoginCubit>(context).patient;
       DoctorModel?doctor=BlocProvider.of<LoginCubit>(context).doctor;
@@ -47,12 +47,12 @@ class EditMedicalRecord {
             'past_fracrues':past_fracrues,
             'sleeping_hours':sleeping_hours,
             'sleeping_quality':sleeping_quality,
-            'father':father,
+            /* 'father':father,
             'mother':mother,
-            'second_degree':second_degree
+            'second_degree':second_degree */
           },
           token: patient.token);
-      return MedicalRecordModel.fromJson(data);
+      return MedicalRecordModelCopy.fromJson(data);
        }
        else
        {
@@ -71,12 +71,12 @@ class EditMedicalRecord {
             'past_fracrues':past_fracrues,
             'sleeping_hours':sleeping_hours,
             'sleeping_quality':sleeping_quality,
-            'father':father,
+        /*     'father':father,
             'mother':mother,
-            'second_degree':second_degree
+            'second_degree':second_degree */
           },
           token: doctor.token);
-      return MedicalRecordModel.fromJson(data);
+      return MedicalRecordModelCopy.fromJson(data);
        }
     } catch (e) {
       print('Error fetching records: $e');
