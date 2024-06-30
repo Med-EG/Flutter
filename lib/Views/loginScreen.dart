@@ -1,15 +1,16 @@
+// ignore_for_file: body_might_complete_normally_nullable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:med_eg/Views/AssistantViews/AssistantCalendar.dart';
 import 'package:med_eg/Views/DefaultView.dart';
 import 'package:med_eg/Views/DoctorViews/DoctorHomeScreen.dart';
-import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/Views/signUp2.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/cubits/LoginCubit/login_states.dart';
 import 'package:med_eg/widgets/custom_circle_container.dart';
-import 'package:med_eg/widgets/signUP_with.dart';
 import 'package:med_eg/Views/RestPassword.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../widgets/custom_button.dart';
@@ -34,18 +35,19 @@ class Login extends StatelessWidget {
     String email = emailController.text;
     String password = passwordController.text;
     double screenHieght = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return BlocConsumer<LoginCubit, LoginState>(
       listener: ((context, state) {
         if (state is LoginLoading) {
           isLoading = true;
         } else if (state is SuccessPatient) {
-          Navigator.pushReplacementNamed(context,  DefaultView().id);
+          Navigator.pushReplacementNamed(context, const DefaultView().id);
           isLoading = false;
         } else if (state is SuccessDoctor) {
           Navigator.pushReplacementNamed(context,  DoctorHomeScreen().id);
           isLoading = false;
         }else if(state is SuccessDoctorAssistant){
-          Navigator.pushReplacementNamed(context, DoctorAssistantCalendar().id);
+          Navigator.pushReplacementNamed(context, const DoctorAssistantCalendar().id);
         }
          else if (state is ShowPassword) {
           _obscureText = !_obscureText;
@@ -83,7 +85,7 @@ class Login extends StatelessWidget {
                   left: -180, bottom: -180, child: CustomCircleContainer()),
               ListView(children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 10),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -106,20 +108,26 @@ class Login extends StatelessWidget {
                             style: TextStyle(
                                 color: darkBlue,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 20),
+                                fontSize: 25),
                           ),
                           const Spacer(
                             flex: 3,
                           )
                         ],
                       ),
-                      const SizedBox(height: 50),
+                        SizedBox(
+                    height: screenHieght * 0.3,
+                    width: screenWidth * 0.4,
+                    child: SvgPicture.asset('assets/images/SVG/Frame (1).svg')),
+                      
                       Padding(
                         padding: const EdgeInsets.only(right: 10, left: 10),
                         child: TextFormField(
                           onChanged: (value) {
-                            // BlocProvider.of<LoginCubit>(context).updateEmail(value);
+                            
                           },
+                          // ignore: duplicate_ignore
+                          // ignore: body_might_complete_normally_nullable
                           validator: (data) {
                             if (data!.isEmpty) {
                               return 'this field is required';
@@ -213,7 +221,7 @@ class Login extends StatelessWidget {
                         style: const TextStyle(color: Colors.red),
                       ),
                       const SizedBox(
-                        height: 10,
+                        height: 5,
                       ),
                       Row(
                         children: [
@@ -289,49 +297,7 @@ class Login extends StatelessWidget {
                       SizedBox(
                         height: screenHieght * 0.06,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 74,
-                            height: 1,
-                            color: const Color(0xffB4BAC9),
-                          ),
-                          const Text(
-                            ' Or ',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14,
-                                color: Color(0xffB4BAC9)),
-                          ),
-                          Container(
-                            width: 74,
-                            height: 1,
-                            color: const Color(0xffB4BAC9),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: screenHieght * 0.03,
-                      ),
-                      const SignUpWith(
-                        image: 'assets/images/PNG/facebook.png',
-                        text: 'Login with Facebook',
-                      ),
-                      SizedBox(
-                        height: screenHieght * 0.02,
-                      ),
-                      const SignUpWith(
-                        image: 'assets/images/PNG/google.png',
-                        text: 'Login with Google',
-                      ),
-                      SizedBox(
-                        height: screenHieght * 0.015,
-                      ),
-                      const SignUpWith(
-                        image: 'assets/images/PNG/dribbble.png',
-                        text: 'Login with your E-mail',
-                      ),
+                     
                     ],
                   ),
                 ),

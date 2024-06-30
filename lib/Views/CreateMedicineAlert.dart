@@ -95,7 +95,6 @@ class _CreateMedicineAlertState extends State<CreateMedicineAlert> {
                                 onMedicineSelected: (medicine) {
                                   setState(() {
                                     selectedMedicine = medicine;
-                                    print(selectedMedicine);
                                   });
                                 },
                               ),
@@ -105,6 +104,7 @@ class _CreateMedicineAlertState extends State<CreateMedicineAlert> {
                                   if (value == null || value.isEmpty) {
                                     return 'Please enter data';
                                   }
+                                  return null;
                                 },
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(

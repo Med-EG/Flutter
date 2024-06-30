@@ -1,8 +1,9 @@
-// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:med_eg/constants/colors.dart';
 
 class Searchbar extends StatelessWidget {
+   const Searchbar({
    const Searchbar({
     Key? key,
     required this.labelText,
@@ -21,6 +22,7 @@ class Searchbar extends StatelessWidget {
         if (data!.isEmpty) {
           return 'this field is required';
         }
+        return null;
       },
       onTap: ontap,
      keyboardType: isItForPatientIDSearch

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForMedicalRecordByFaceID.dart';
 import 'package:med_eg/Views/DoctorViews/SearchForMedicalRecordByID.dart';
 import 'package:med_eg/constants/colors.dart';
+import 'package:med_eg/helper/API.dart';
 import 'package:med_eg/widgets/Doctor_widgets/CustomCardForDoctorHomeScreen.dart';
 import 'package:med_eg/widgets/custom_arrow_back.dart';
 
@@ -46,7 +47,7 @@ class SearchForPatientMedicalRecord extends StatelessWidget {
                             fontSize: 25,
                             fontWeight: FontWeight.bold),
                       ),
-                       Text(
+                      Text(
                         ' by...',
                         style: TextStyle(
                             color: kPrimaryColor,
@@ -60,31 +61,34 @@ class SearchForPatientMedicalRecord extends StatelessWidget {
                   ),
                 ],
               ),
-              Spacer(
+              const Spacer(
                 flex: 1,
               ),
               CustomCardForDoctorHomeScreen(
                   text: 'ID',
                   icon: Icons.person_search_rounded,
                   ontap: () {
-                     Navigator.pushNamed(
+                    Navigator.pushNamed(
                         context, SearchForMedicalRecordByID().id);
                   },
                   height: 140,
                   width: 300),
-              Spacer(
+              const Spacer(
                 flex: 1,
               ),
               CustomCardForDoctorHomeScreen(
                   text: 'Face ID',
                   icon: Icons.face_6_rounded,
-                  ontap: () {
+                  ontap: () async {
                     Navigator.pushNamed(
-                        context, SearchForMedicalRecordByFaceID().id);
+                        context, const SearchForMedicalRecordByFaceID().id);
+                    await Api().generateEncodings(
+                        url: 'http://172.30.48.210:80/generate-encodings',
+                        folderPath: 'Images');
                   },
                   height: 140,
                   width: 300),
-              Spacer(
+              const Spacer(
                 flex: 2,
               ),
             ],

@@ -17,7 +17,9 @@ class PatientHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHieght = MediaQuery.of(context).size.height;
     PatientInfo? patient = BlocProvider.of<LoginCubit>(context).patient; 
+    // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
         return await _showExitConfirmationDialog(context);
@@ -102,16 +104,18 @@ class PatientHomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 10,
+                 SizedBox(
+                  height:  screenHieght*.02,
                 ),
       
-                //Need to adjust the image that is in miidile of home screen
-      
-                Image.asset(
-                    'assets/images/PNG/AdobeStock_103968342_Preview.jpeg'),
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: screenHieght*.23,
+                  child: Image.asset(
+                    fit: BoxFit.fill,
+                      'assets/images/PNG/HomePageImage.png'),
+                ),
+                 SizedBox(
+                  height:  screenHieght*.025,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -137,8 +141,8 @@ class PatientHomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
+                 SizedBox(
+                  height:  screenHieght*.025,
                 ),
                 const DoctorCardListView()
               ],

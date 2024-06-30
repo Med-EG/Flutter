@@ -51,11 +51,9 @@ import 'package:med_eg/Views/signUp9.dart';
 import 'package:med_eg/Views/update_allergy_screen.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/controllers/notification_controller.dart';
+import 'package:med_eg/cubits/FaceScannerCubit/face_scanner_cubit.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/cubits/MedicalRecordCubit/medical_record_cubit.dart';
-import 'package:med_eg/cubits/Medicine%20Cubit/medicine_cubit.dart';
-import 'package:med_eg/cubits/MedicineAlert/medicine_alert_cubit.dart';
-import 'package:med_eg/cubits/MessageCubit/message_cubit.dart';
 import 'package:med_eg/cubits/RegisterCubit/sign_up_cubit.dart';
 import 'package:med_eg/widgets/testForm.dart';
 import 'Views/chatTest.dart';
@@ -106,7 +104,6 @@ class _MyAppState extends State<MyApp> {
       onNotificationCreatedMethod:
           NotificationController.onNotificationCreateMethod,
     );
-
     super.initState();
   }
 
@@ -125,14 +122,8 @@ class _MyAppState extends State<MyApp> {
           create: (context) => MedicalRecordCubit(),
         ),
         BlocProvider(
-          create: (context) => MedicineAlertCubit(),
-        ),
-        BlocProvider(
-          create: (context) => MessageCubit(),
-        ),
-        BlocProvider(
-          create: (context) => MedicineCubit(),
-        ),
+          create: (context) => FaceScannerCubit(),
+        )
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -173,9 +164,8 @@ class _MyAppState extends State<MyApp> {
           const DoctorCalendar().id: (context) => const DoctorCalendar(),
           const ShowAppointmentInfoDoctor().id: (context) =>
               const ShowAppointmentInfoDoctor(),
-          const DoctorHomeScreen().id: (context) => const DoctorHomeScreen(),
-          const CreateMedicineAlert().id: (context) =>
-              const CreateMedicineAlert(),
+          DoctorHomeScreen().id: (context) => DoctorHomeScreen(),
+         const CreateMedicineAlert().id: (context) =>const CreateMedicineAlert(),
           const ChooseUserType().id: (context) => const ChooseUserType(),
           const OnBording().id: (context) => const OnBording(),
           const PatientProfile().id: (context) => const PatientProfile(),
@@ -199,52 +189,13 @@ class _MyAppState extends State<MyApp> {
           SearchForMedicalRecordByID().id: (context) =>
               SearchForMedicalRecordByID(),
           PatientAlertsScreen().id: (context) => PatientAlertsScreen(),
-          const DoctorAssistantCalendar().id: (context) => const DoctorAssistantCalendar(),
-          const ModifyAppointment().id: (context) => const ModifyAppointment(),
-          const DefaultView().id:(context) => const DefaultView(),
-          const SearchForPatientMedicalRecord().id: (context) =>
-              const SearchForPatientMedicalRecord(),
-           SearchForMedicalRecordByFaceID().id: (context) =>
-               SearchForMedicalRecordByFaceID(),
-          SearchForMedicalRecordByID().id: (context) =>
-              SearchForMedicalRecordByID(),
-          ChatTest().id: (context) => ChatTest(),
-          const DoctorProfile().id: (context) => const DoctorProfile(),
-          const FAQSScreen().id: (context) => const FAQSScreen(),
-          const EditBasicInfoForDoctor().id: (context) =>
-              const EditBasicInfoForDoctor(),
-          const MedicalRecordCopy().id: (context) => const MedicalRecordCopy(),
-          const UpdateAllergyScreen().id: (context) =>
-              const UpdateAllergyScreen(),
-          const UpdateMedicineScreen().id: (context) =>
-              const UpdateMedicineScreen(),
-          DoctorBySpecialization.id: (context) => const DoctorBySpecialization(
-                specialization: '',
-                allDoctors: [],
-              ),
-          const MedicalRecord2ForFather().id: (context) =>
-              const MedicalRecord2ForFather(),
-          const MedicalRecord2ForMother().id: (context) =>
-              const MedicalRecord2ForMother(),
-          const MedicalRecord2ForSecondDegree().id: (context) =>
-              const MedicalRecord2ForSecondDegree(),
-              const DoctorMessage().id:(context) => const DoctorMessage(),
-               DoctorChat().id:(context) =>  DoctorChat(),
-               
-        },
-        onGenerateRoute: (settings) {
-          if (settings.name == ReserveDoctor.id) {
-            final args = settings.arguments as Map<String, dynamic>;
-            return MaterialPageRoute(builder: (context) {
-              return ReserveDoctor(
-                doctor: args['doctor'],
-              );
-            });
-          }
-          return null;
+         const DoctorAssistantCalendar().id: (context) =>const DoctorAssistantCalendar(),
+         const ModifyAppointment().id: (context) => const ModifyAppointment(),
+        const  DefaultView().id:(context) =>const DefaultView(),
+          //  Test().id: (context) => Test(),
         },
         debugShowCheckedModeBanner: false,
-        home: const OnBording(),
+        home: ChooseUserType(),
       ),
     );
   }
