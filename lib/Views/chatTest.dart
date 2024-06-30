@@ -76,9 +76,16 @@ listOfMessages = BlocProvider.of<MessageCubit>(context).listOfMessagesOfPatient;
                   child: ListView.builder(
                       itemCount: listOfMessages.length,
                       itemBuilder: (context, index) {
-                        return ChatBubbleBlue(
-                          messageContent: listOfMessages[index],
-                        );
+                         if (patientt!.id.toString() == listOfMessages[index].sender) {
+                         return ChatBubbleBlue(
+                            messageContent: listOfMessages[index],
+                          ); 
+                        }else
+                       {
+                          return ChatBubbleGrey(
+                           messageContent: listOfMessages[index],
+                        ); 
+                       }
                       }),
                 ),
                 Row(

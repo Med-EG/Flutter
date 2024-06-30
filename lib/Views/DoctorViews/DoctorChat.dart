@@ -10,6 +10,7 @@ import 'package:med_eg/widgets/custom_textFormField.dart';
 import '../../cubits/LoginCubit/login_states.dart';
 import '../../cubits/MessageCubit/message_cubit.dart';
 import '../../widgets/custom_arrow_back.dart';
+
 class DoctorChat extends StatelessWidget {
   DoctorChat({
     super.key,
@@ -25,20 +26,21 @@ class DoctorChat extends StatelessWidget {
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final chatId = args['chatId'];
     final patientFirstName = args['patientFirstName'];
-    final patientLastName= args['patientLastName'];
-    DoctorModel? doctor;
+    final patientLastName = args['patientLastName'];
+    DoctorModel? doctor = BlocProvider.of<LoginCubit>(context).doctor;
     final LoginState loginState = context.watch<LoginCubit>().state;
     if (loginState is SuccessDoctor) {
       doctor = loginState.doctor;
     }
     double screenWidth = MediaQuery.of(context).size.width;
-     void scrollToBottom() {
+    void scrollToBottom() {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (_scrollController.hasClients) {
           _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
         }
       });
     }
+
     return SafeArea(
       child: BlocConsumer<MessageCubit, MessageState>(
         listener: (context, state) {
@@ -51,7 +53,7 @@ class DoctorChat extends StatelessWidget {
             print(state.errMessage);
           } else if (state is DoctorMessageGetAll) {
 listOfMessages = BlocProvider.of<MessageCubit>(context).listOfMessagesOfDoctor;
-          } else if (state is MessageFailureGetMessage) {
+          }  else if (state is MessageFailureGetMessage) {
             ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Failed to fetch messages')));
             print(state.errMessage);
@@ -80,12 +82,19 @@ listOfMessages = BlocProvider.of<MessageCubit>(context).listOfMessagesOfDoctor;
                 ),
                 Expanded(
                   child: ListView.builder(
-                    controller: _scrollController,
+                      controller: _scrollController,
                       itemCount: listOfMessages.length,
                       itemBuilder: (context, index) {
-                        return ChatBubbleBlue(
-                          messageContent: listOfMessages[index],
-                        );
+                        if (doctor!.id.toString() == listOfMessages[index].sender) {
+                         return ChatBubbleBlue(
+                            messageContent: listOfMessages[index],
+                          ); 
+                        }else
+                       {
+                          return ChatBubbleGrey(
+                           messageContent: listOfMessages[index],
+                        ); 
+                       }
                       }),
                 ),
                 Row(
@@ -115,6 +124,7 @@ listOfMessages = BlocProvider.of<MessageCubit>(context).listOfMessagesOfDoctor;
                             print(_messageController.text);
                             print('Doctor id: ${doctor.id}');
                             print('chat id: $chatId');
+                             sendMessage.getAllMessagesOfDoctor(url: 'https://api-medeg.online/api/medEG/message/chat/$chatId', token: doctor.token);
                           } else {
                             print('send fail');
                           }
