@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:med_eg/Views/PatientAlertsScreen.dart';
 import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/medical_record.dart';
+import 'package:med_eg/Views/medical_record_copy.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/widgets/AutoCompleteSearch.dart';
 import 'package:med_eg/widgets/DoctorCardListView.dart';
@@ -95,7 +96,7 @@ class PatientHomeScreen extends StatelessWidget {
                     ),
                     IconCard(
                         onTap: () {
-                          Navigator.pushNamed(context, const MedicalRecord().id);
+                          Navigator.pushNamed(context, const MedicalRecordCopy().id);
                         },
                         image: 'assets/images/PNG/Record_icon.png',
                         text: 'Record'),

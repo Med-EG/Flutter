@@ -19,8 +19,9 @@ class FindDoctorCard extends StatelessWidget {
                         width: 100,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.black),
-                       /*  child: Image.asset(
+                            color: Colors.white
+                           ),
+                       /*  child: Image.network(
                           doctor!.doctorImage,
                           fit: BoxFit.cover,
                         ) */),

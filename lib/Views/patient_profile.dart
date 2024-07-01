@@ -44,10 +44,52 @@ class PatientProfile extends StatelessWidget {
               Navigator.pushNamed(context, const FAQSScreen().id);
             },),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: CustomButton(text: 'Log out', color: Colors.red),
-          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: CustomButton(
+              onTap: () async {
+                bool confirm = await showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: const Text('Confirm Logout'),
+                      content: const Text('Are you sure you want to log out?'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop(false);
+                          },
+                          child: const Text('No'),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop(true);
+                          },
+                          child: const Text('Yes'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+
+                if (confirm == true) {
+                  bool loggedOut = await LogOutService().patientLogOut(context);
+                  if (loggedOut) {
+                    // ignore: use_build_context_synchronously
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, const ChooseUserType().id, (route) => false);
+                  } else {
+                    // ignore: use_build_context_synchronously
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text(
+                          'No internet connection or server error. Please try again later.'),
+                    ));
+                  }
+                }
+              },
+              text: 'Log out',
+              color: Colors.red,
+            )),
         ],
       )),
     );

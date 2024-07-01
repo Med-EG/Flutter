@@ -269,28 +269,27 @@ class _FindDoctorState extends State<FindDoctor> {
                               itemBuilder: (context, index) {
                                 if (seeAll &&
                                     index == displayedSpecializations.length) {
-                                  /*  return IconCard(
+                                   return IconCardWithoutImage(
                                     onTap: () {
                                       setState(() {
                                         seeAll = false;
                                       });
                                     },
                                     text: 'See Less',
-                                  ); */
+                                  );
                                 } else if (!seeAll && index == 11) {
-                                  /*  return IconCard(
-                                    image: ,
+                                   return IconCardWithoutImage(
                                     onTap: () {
                                       setState(() {
                                         seeAll = true;
                                       });
                                     },
                                     text: 'See All',
-                                  ); */
+                                  );
                                 }
                                 String text =
                                     displayedSpecializations[index].name;
-                                /*   return IconCard(
+                                  return IconCardWithoutImage(
                                   onTap: () => Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -301,7 +300,7 @@ class _FindDoctorState extends State<FindDoctor> {
                                     ),
                                   ),
                                   text: text,
-                                ); */
+                                );
                               },
                             );
                           } else {

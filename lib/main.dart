@@ -54,6 +54,7 @@ import 'package:med_eg/controllers/notification_controller.dart';
 import 'package:med_eg/cubits/FaceScannerCubit/face_scanner_cubit.dart';
 import 'package:med_eg/cubits/LoginCubit/login_cubit.dart';
 import 'package:med_eg/cubits/MedicalRecordCubit/medical_record_cubit.dart';
+import 'package:med_eg/cubits/MessageCubit/message_cubit.dart';
 import 'package:med_eg/cubits/RegisterCubit/sign_up_cubit.dart';
 import 'package:med_eg/widgets/testForm.dart';
 import 'Views/chatTest.dart';
@@ -123,7 +124,10 @@ class _MyAppState extends State<MyApp> {
         ),
         BlocProvider(
           create: (context) => FaceScannerCubit(),
-        )
+        ),
+         BlocProvider(
+          create: (context) => MessageCubit(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -192,10 +196,13 @@ class _MyAppState extends State<MyApp> {
          const DoctorAssistantCalendar().id: (context) =>const DoctorAssistantCalendar(),
          const ModifyAppointment().id: (context) => const ModifyAppointment(),
         const  DefaultView().id:(context) =>const DefaultView(),
+        const DoctorProfile().id:(context) => const DoctorProfile(),
+        const DoctorMessage().id:(context) => const DoctorMessage(),
+        ChatTest().id:(context) => ChatTest(),
           //  Test().id: (context) => Test(),
         },
         debugShowCheckedModeBanner: false,
-        home: ChooseUserType(),
+        home: const ChooseUserType(),
       ),
     );
   }
