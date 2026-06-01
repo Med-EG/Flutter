@@ -4,11 +4,17 @@ import 'package:med_eg/constants/colors.dart';
 class CustomAddButton extends StatelessWidget {
   const CustomAddButton(
       {super.key,
+      this.height = 40,
+      this.width = 40,
+      this.size = 40,
       required this.borderRadius,
       required this.plusIcon,
       this.onTap});
   final double borderRadius;
   final bool plusIcon;
+  final double size;
+  final double height;
+  final double width;
   final void Function()? onTap;
 
   @override
@@ -16,8 +22,8 @@ class CustomAddButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 40,
-        width: 40,
+        height: height,
+        width: width,
         decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
@@ -32,7 +38,7 @@ class CustomAddButton extends StatelessWidget {
         child: Icon(
           plusIcon ? Icons.add : Icons.remove,
           color: Colors.white,
-          size: 40,
+          size: size,
         ),
       ),
     );

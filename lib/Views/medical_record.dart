@@ -1,184 +1,459 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:med_eg/Views/medical_record2%20for%20allergy.dart';
+import 'package:med_eg/Views/medical_record2%20for%20disease.dart';
+import 'package:med_eg/Views/medical_record2%20for%20operation.dart';
+import 'package:med_eg/Views/medical_record2.dart';
+import 'package:med_eg/Views/signUp10.dart';
+import 'package:med_eg/Views/signUp11.dart';
+import 'package:med_eg/Views/signUp7.dart';
+import 'package:med_eg/Views/signUp8.dart';
+import 'package:med_eg/Views/signUp9.dart';
 import 'package:med_eg/constants/colors.dart';
+import 'package:med_eg/models/allergyInfoModel.dart';
+import 'package:med_eg/models/diseaseInfoModel.dart';
+import 'package:med_eg/models/medicalInfo.dart';
+import 'package:med_eg/models/medicalRecordModel.dart';
+import 'package:med_eg/models/operationInfoModel.dart';
+import 'package:med_eg/services/allergy%20Service.dart';
+import 'package:med_eg/services/Medicine%20Info.dart';
+import 'package:med_eg/services/DiseaseInfo%20Service.dart';
 import 'package:med_eg/widgets/custom_button.dart';
-
+import 'package:med_eg/widgets/general_basic_medical_info.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import '../services/GetBasicMedicalInfo.dart';
+import '../services/operation Service.dart';
+import '../widgets/CustomAddButton.dart';
 import '../widgets/custom_details_info.dart';
-import '../widgets/general_info_row.dart';
+import 'medical_record3.dart';
 
-class MedicalRecord extends StatelessWidget {
-  const MedicalRecord({super.key});
+class MedicalRecord extends StatefulWidget {
+  const MedicalRecord({Key? key}) : super(key: key);
   final String id = 'MedicalRecord';
+  @override
+  State<MedicalRecord> createState() => _MedicalRecordState();
+}
+
+class _MedicalRecordState extends State<MedicalRecord> {
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            child: SvgPicture.asset(
-                                'assets/images/SVG/Frame (1).svg'),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(bottom: 8),
-                            child: Text(
-                              'Medical Record ID',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: darkBlue,
-                                  fontWeight: FontWeight.w600),
+      child: ModalProgressHUD(
+        inAsyncCall: isLoading,
+        child: Scaffold(
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              child: SvgPicture.asset(
+                                  'assets/images/SVG/Frame (1).svg'),
                             ),
-                          ),
-                          const Text(
-                            '#123786',
-                            style: TextStyle(
-                                color: kPrimaryColor,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ],
+                            const Padding(
+                              padding: EdgeInsets.only(bottom: 8),
+                              child: Text(
+                                'Medical Record ID',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    color: darkBlue,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                            FutureBuilder<MedicalRecordModel>(
+                              future: GetBasicMedicalInfo()
+                                  .getBasicMedicalInfo(context),
+                              builder: (context, snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  isLoading = true;
+                                  return const SizedBox();
+                                } else if (snapshot.hasError) {
+                                  return Text('Error: ${snapshot.error}');
+                                } else if (snapshot.hasData) {
+                                  MedicalRecordModel? medicalRecord =
+                                      snapshot.data;
+
+                                  if (medicalRecord != null) {
+                                    DateTime today = DateTime.now();
+                                    DateTime dob =
+                                        DateTime.parse(medicalRecord.birthDate);
+                                    int age = today.year - dob.year;
+
+                                    return Column(
+                                      children: [
+                                        Text(
+                                          '#${medicalRecord.medicalId}',
+                                          style: const TextStyle(
+                                            color: kPrimaryColor,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: screenHeight * 0.03,
+                                        ),
+                                        Align(
+                                          alignment: Alignment.topLeft,
+                                          child: Text(
+                                            '${medicalRecord.patientFirstName} ${medicalRecord.patientLastName}',
+                                            style: const TextStyle(
+                                                fontSize: 18,
+                                                color: darkBlue,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment: Alignment.topLeft,
+                                          child: Text(
+                                            '${age.toString()} years old',
+                                            style: const TextStyle(
+                                                color: darkBlue,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ),
+                                        SizedBox(height: screenHeight * 0.04),
+                                        const Align(
+                                          alignment: Alignment.topLeft,
+                                          child: CustomTextRichInfo(
+                                            text1: 'General ',
+                                            text2: 'Info. ',
+                                            text3: ':',
+                                          ),
+                                        ),
+                                        CustomGeneralBasicMedicalInfo(
+                                            medicalRecord: medicalRecord)
+                                      ],
+                                    );
+                                  } else {
+                                    return const Text(
+                                        'Error: Medical record data is null');
+                                  }
+                                } else {
+                                  return const Center(
+                                      child: CircularProgressIndicator());
+                                }
+                              },
+                            ),
+                          ],
+                        ),
                       ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const CustomTextRichInfo(
+                        text1: 'Diseases ',
+                        text2: 'Info. ',
+                        text3: ':',
+                      ),
+                      CustomAddButton(
+                        onTap: () {
+                          Navigator.pushNamed(context,  SignUp7().id);
+                        },
+                        borderRadius: 8,
+                        plusIcon: true,
+                        height: 20,
+                        width: 20,
+                        size: 20,
+                      )
+                    ],
+                  ),
+                  FutureBuilder<List<DiseaseInfoModel>>(
+                    future: DiseaseInfoForRecord().getDiseaseInfo(context),
+                    builder: ((context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        isLoading = true;
+                        return const SizedBox();
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else if (snapshot.hasData) {
+                        List<DiseaseInfoModel> diseaseList = snapshot.data!;
+                         if (diseaseList.isEmpty) {
+                          return const CustomDetailsInfoRow();
+                        }
+                        return Column(
+                          children: [
+                            for (int i = 0; i < diseaseList.length; i++)
+                              CustomDetailsInfoRow(
+                                text: diseaseList[i].diseaseName,
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    const MedicalRecord2ForDisease().id,
+                                    arguments: {
+                                      'diseaseId': diseaseList[i].diseaseId
+                                    }, // Pass unique identifier
+                                  );
+                                },
+                                onPressed2: () {},
+                                onPressed3: () {},
+                              )
+                          ],
+                        );
+                      } else {
+                        return const Center(
+                          child: Text('None'),
+                        );
+                      }
+                    }),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const CustomTextRichInfo(
+                        text1: 'Medication ',
+                        text2: 'Info. ',
+                        text3: ':',
+                      ),
+                      CustomAddButton(
+                        onTap: () {
+                          Navigator.pushNamed(context, const SignUp8().id);
+                        },
+                        borderRadius: 8,
+                        plusIcon: true,
+                        height: 20,
+                        width: 20,
+                        size: 20,
+                      )
+                    ],
+                  ),
+                  FutureBuilder<List<MedicalInfoModel>>(
+                    future: MedicineInfoForRecordService()
+                        .getMedicineInfoService(context),
+                    builder: ((context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                       isLoading = true;
+                        return const SizedBox();
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else if (snapshot.hasData) {
+                        List<MedicalInfoModel> medicineList = snapshot.data!;
+                        if (medicineList.isEmpty) {
+                          return const CustomDetailsInfoRow();
+                        }
+                        return Column(
+                          children: [
+                            for (int i = 0; i < medicineList.length; i++)
+                              CustomDetailsInfoRow(
+                                text: medicineList[i].medicineName,
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    const MedicalRecord2().id,
+                                    arguments: {
+                                      'medicineId': medicineList[i].medicineId
+                                    }, // Pass unique identifier
+                                  );
+                                },
+                                onPressed2: () {
+                                  Navigator.pushNamed(
+                                      context, MedicalRecord3.id, arguments: {
+                                    'medicineId': medicineList[i]
+                                  });
+                                },
+                                onPressed3: () {
+                                  setState(() {
+                                    MedicineInfoForRecordService()
+                                        .deleteMedicineInfo(
+                                      context: context,
+                                      medicalInfoModel: medicineList[i],
+                                    );
+                                  });
+                                },
+                              )
+                          ],
+                        );
+                      } else {
+                        return const Center(
+                          child: Text('No medicine information available'),
+                        );
+                      }
+                    }),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const CustomTextRichInfo(
+                        text1: 'Allergies ',
+                        text2: 'Info. ',
+                        text3: ':',
+                      ),
+                      CustomAddButton(
+                        onTap: () {
+                          Navigator.pushNamed(context, const SignUp9().id);
+                        },
+                        borderRadius: 8,
+                        plusIcon: true,
+                        height: 20,
+                        width: 20,
+                        size: 20,
+                      )
+                    ],
+                  ),
+                  FutureBuilder<List<AllergyInfoModel>>(
+                    future: AllergyInfoForRecordService()
+                        .getAllergyInfoService(context),
+                    builder: ((context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                       isLoading = true;
+                        return const SizedBox();
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else if (snapshot.hasData) {
+                        List<AllergyInfoModel> allergyList = snapshot.data!;
+                        if (allergyList.isEmpty) {
+                          return const CustomDetailsInfoRow();
+                        }
+                        return Column(
+                          children: [
+                            for (int i = 0; i < allergyList.length; i++)
+                              CustomDetailsInfoRow(
+                                text: allergyList[i].allergyName,
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    const MedicalRecord2ForAllergy().id,
+                                    arguments: {
+                                      'allergyId': allergyList[i].allergyId
+                                    }, // Pass unique identifier
+                                  );
+                                },
+                                onPressed2: () {},
+                                onPressed3: () {
+                                  AllergyInfoForRecordService()
+                                      .deleteAllergyInfo(
+                                          context: context,
+                                          allergyInfoModel: allergyList[i]);
+                                },
+                              )
+                          ],
+                        );
+                      } else {
+                        return const Center(
+                          child: Text('None'),
+                        );
+                      }
+                    }),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const CustomTextRichInfo(
+                        text1: 'Operations ',
+                        text2: 'Info. ',
+                        text3: ':',
+                      ),
+                      CustomAddButton(
+                        onTap: () {
+                          Navigator.pushNamed(context, const SignUp10().id);
+                        },
+                        borderRadius: 8,
+                        plusIcon: true,
+                        height: 20,
+                        width: 20,
+                        size: 20,
+                      )
+                    ],
+                  ),
+                  FutureBuilder<List<OperationInfoModel>>(
+                    future: OperationInfoForRecordService()
+                        .getOperationInfoService(context),
+                    builder: ((context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        isLoading = true;
+                        return const SizedBox();
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else if (snapshot.hasData) {
+                        List<OperationInfoModel> operationList = snapshot.data!;
+                        if (operationList.isEmpty) {
+                          return const CustomDetailsInfoRow();
+                        }
+                        return Column(
+                          children: [
+                            for (int i = 0; i < operationList.length; i++)
+                              CustomDetailsInfoRow(
+                                text: operationList[i].operationName,
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    const MedicalRecord2ForOperation().id,
+                                    arguments: {
+                                      'operationId':
+                                          operationList[i].operationId
+                                    }, // Pass unique identifier
+                                  );
+                                },
+                                onPressed2: () {},
+                                onPressed3: () {
+                                  OperationInfoForRecordService()
+                                      .deleteOperationInfo(
+                                          context: context,
+                                          operationInfoModel: operationList[i]);
+                                },
+                              )
+                          ],
+                        );
+                      } else {
+                        return const Center(
+                          child: Text('None'),
+                        );
+                      }
+                    }),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const CustomTextRichInfo(
+                        text1: 'Relatives ',
+                        text2: 'Info. ',
+                        text3: ':',
+                      ),
+                      CustomAddButton(
+                        onTap: () {
+                          Navigator.pushNamed(context, const SignUp11().id);
+                        },
+                        borderRadius: 8,
+                        plusIcon: true,
+                        height: 20,
+                        width: 20,
+                        size: 20,
+                      )
+                    ],
+                  ),
+                  CustomDetailsInfoRow(
+                    text: 'Father',
+                    onPressed: () {},
+                  ),
+                  const CustomDetailsInfoRow(
+                    text: 'Mother',
+                  ),
+                  const CustomDetailsInfoRow(
+                    text: 'Second Degree',
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 24),
+                    child: CustomButton(
+                      text: 'Done',
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: screenHeight * 0.03,
-                ),
-                const Text(
-                  'Mohamed ElSayed',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: darkBlue,
-                      fontWeight: FontWeight.w600),
-                ),
-                const Text(
-                  '27 Years old',
-                  style: TextStyle(
-                      color: darkBlue,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600),
-                ),
-                SizedBox(height: screenHeight * 0.04),
-                const CustomTextRichInfo(
-                  text1: 'General ',
-                  text2: 'Info. ',
-                  text3: ':',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Weight : ',
-                  text2: '80 KG',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Height : ',
-                  text2: '180 CM',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Blood type : ',
-                  text2: 'A+',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Alcoholic : ',
-                  text2: 'Yes',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Alcoholic Level : ',
-                  text2: 'Low',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Smoker : ',
-                  text2: 'No',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Smoking Level : ',
-                  text2: '-',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Job : ',
-                  text2: 'Teacher',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Married : ',
-                  text2: '4 H',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Sleeping Quality : ',
-                  text2: 'Bad',
-                ),
-                const GeneralInfoRow(
-                  text1: 'Past Fracures : ',
-                  text2: 'Bad',
-                ),
-                const CustomTextRichInfo(
-                  text1: 'Diseases ',
-                  text2: 'Info. ',
-                  text3: ':',
-                ),
-                const CustomDetailsInfoRow(
-                  text: '.Diabetes',
-                ),
-                const CustomDetailsInfoRow(
-                  text: '.Alzheimer\'s Disease',
-                ),
-                const CustomDetailsInfoRow(
-                  text: '.HIV/AIDS',
-                ),
-                const CustomTextRichInfo(
-                  text1: 'Medication ',
-                  text2: 'Info. ',
-                  text3: ':',
-                ),
-                const CustomDetailsInfoRow(
-                  text: '.Aspirin',
-                ),
-                const CustomDetailsInfoRow(
-                  text: '.Lisinopril 50Ml',
-                ),
-                const CustomDetailsInfoRow(
-                  text: '.Metformin',
-                ),
-                const CustomTextRichInfo(
-                  text1: 'Allergies ',
-                  text2: 'Info. ',
-                  text3: ':',
-                ),
-                const CustomDetailsInfoRow(
-                  text: '.Pollen Allergy (Hay Fever)',
-                ),
-                const CustomTextRichInfo(
-                  text1: 'Operation ',
-                  text2: 'Info. ',
-                  text3: ':',
-                ),
-                const CustomTextRichInfo(
-                  text1: 'Family ',
-                  text2: 'Info. ',
-                  text3: ':',
-                ),
-                const CustomDetailsInfoRow(
-                  text: '.Father',
-                ),
-                const CustomDetailsInfoRow(
-                  text: '.Mother',
-                ),
-                const CustomDetailsInfoRow(
-                  text: '.Second Degree',
-                ),
-               const Padding(
-                 padding: EdgeInsets.symmetric(vertical: 24),
-                 child: CustomButton(text: 'Done'),
-               )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -187,17 +462,18 @@ class MedicalRecord extends StatelessWidget {
   }
 }
 
-
 class CustomTextRichInfo extends StatelessWidget {
   const CustomTextRichInfo({
-    super.key,
+    Key? key,
     required this.text1,
     required this.text2,
     required this.text3,
-  });
+  }) : super(key: key);
+
   final String text1;
   final String text2;
   final String text3;
+
   @override
   Widget build(BuildContext context) {
     return Text.rich(TextSpan(children: [
@@ -217,3 +493,67 @@ class CustomTextRichInfo extends StatelessWidget {
   }
 }
 
+
+/* class MedicalRecord extends StatelessWidget {
+  const MedicalRecord({Key? key}) : super(key: key);
+  final String id = 'MedicalRecord';
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<MedicineCubit, MedicineState>(
+      listener: (context, state) {
+        if (state is MedicineLoading) {
+          _buildLoadingWidget();
+        } else if (state is MedicineSuccess) {
+          print('Success');
+        } else if (state is MedicineFailure) {
+          print('Failed');
+        }
+      },
+      builder: (context, state) {
+        if (state is MedicineLoading) {
+          return _buildLoadingWidget();
+        } else if (state is MedicineSuccess) {
+          return _buildMedicineList(state);
+        } else if (state is MedicineFailure) {
+          return _buildErrorWidget(state.errMessage);
+        } else {
+          // Default fallback UI
+          print('the state issss: $state');
+          return Container();
+        }
+      },
+    );
+  }
+
+  Widget _buildLoadingWidget() {
+    return Scaffold(
+      body: Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+  }
+
+  Widget _buildMedicineList(MedicineSuccess state) {
+    return Scaffold(
+      body: ListView.builder(
+        itemCount: state.medicineList.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(state.medicineList[index].medicineName),
+            onTap: () {
+              // Handle item tap
+            },
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildErrorWidget(String errorMessage) {
+    return Scaffold(
+      body: Center(
+        child: Text(errorMessage),
+      ),
+    );
+  }
+} */

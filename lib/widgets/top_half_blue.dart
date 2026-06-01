@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:med_eg/models/medicalRecordModel.dart';
 import '../constants/colors.dart';
+import '../services/GetBasicMedicalInfo.dart';
 
 class TopHalfBlueScreen extends StatelessWidget {
   const TopHalfBlueScreen({Key? key}) : super(key: key);
@@ -14,37 +15,109 @@ class TopHalfBlueScreen extends StatelessWidget {
         Container(
           height: screenHeight * 0.4,
           decoration: BoxDecoration(
-              color: kPrimaryColor,
-              borderRadius: BorderRadius.vertical(
-                  bottom: Radius.elliptical(
-                      MediaQuery.of(context).size.width, 50))),
+            color: kPrimaryColor,
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.elliptical(screenWidth, 50),
+            ),
+          ),
           child: Center(
-            child: Stack(
-              children: [
-                Positioned(
-                  top: screenHeight * .125,
-                  left: screenWidth * .15,
-                  child: Container(
-                    height: screenHeight * 0.15,
-                    width: screenWidth * 0.3,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(32),
-                        color: Colors.black),
-                    child: SvgPicture.asset('assets/images/SVG/google.svg'),
-                  ),
-                ),
-                Positioned(
-                    bottom: 20,
-                    right: -10,
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white),
-                    )),
-
-              ],
+            child: FutureBuilder<MedicalRecordModel>(
+              future: GetBasicMedicalInfo().getBasicMedicalInfo(context),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else if (snapshot.hasData) {
+                  MedicalRecordModel? medicalRecord = snapshot.data;
+                  if (medicalRecord != null) {
+                    DateTime today = DateTime.now();
+                    DateTime dob = DateTime.parse(medicalRecord.birthDate);
+                    int age = today.year - dob.year;
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: screenHeight * 0.15,
+                          width: screenWidth * 0.3,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(32),
+                            color: Colors.black,
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(32),
+                            child: Image.network(
+                                'https://api-medeg.online/${medicalRecord.patientImage}',
+                                fit: BoxFit.cover,
+                                ),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          "${medicalRecord.patientFirstName} ${medicalRecord.patientLastName}",
+                          style: const TextStyle(
+                              fontSize: 22, color: Colors.white),
+                        ),
+                        const SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              children: [
+                                Text(
+                                  age.toString(),
+                                  style: const TextStyle(
+                                      fontSize: 18, color: Colors.white),
+                                ),
+                                SizedBox(height: screenHeight * 0.01),
+                                const Text(
+                                  'Age',
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.white),
+                                )
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  '${medicalRecord.height}',
+                                  style: const TextStyle(
+                                      fontSize: 18, color: Colors.white),
+                                ),
+                                SizedBox(height: screenHeight * 0.01),
+                                const Text(
+                                  'Height',
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.white),
+                                )
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  '${medicalRecord.weight}',
+                                  style: const TextStyle(
+                                      fontSize: 18, color: Colors.white),
+                                ),
+                                SizedBox(height: screenHeight * 0.01),
+                                const Text(
+                                  'Weight',
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.white),
+                                )
+                              ],
+                            )
+                          ],
+                        )
+                      ],
+                    );
+                  } else {
+                    return const Text('Error: Medical record data is null');
+                  }
+                } else {
+                  return const CircularProgressIndicator();
+                }
+              },
             ),
           ),
         ),

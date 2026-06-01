@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:med_eg/Views/chooseUserType.dart';
-import 'package:med_eg/Views/loginScreen.dart';
 import 'package:med_eg/constants/colors.dart';
 import 'package:med_eg/widgets/OnBoardingDots.dart';
 import 'package:med_eg/models/onboardingmodel.dart';
@@ -32,7 +31,7 @@ class _OnBordingState extends State<OnBording> {
           actions: [
             GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context,  Login().id);
+                  Navigator.pushNamed(context, const ChooseUserType().id);
 
                 },
                 child: const Padding(
@@ -159,7 +158,7 @@ class _OnBordingState extends State<OnBording> {
                                           text: 'Get Started',
                                           color: kPrimaryColor,
                                           onTap: () {
-                                            Navigator.pushNamed(
+                                            Navigator.pushReplacementNamed(
                                                 context,const ChooseUserType().id);
                                           },
                                         ),
