@@ -1,19 +1,43 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:med_eg/Views/signUp6.dart';
+import 'package:med_eg/Views/medical_record_copy.dart';
+import 'package:med_eg/services/Medicine%20Info.dart';
 import '../constants/colors.dart';
 import '../widgets/custom_arrow_back.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_circle_container.dart';
 import '../widgets/custom_textFormField.dart';
 import '../widgets/custom_text_information.dart';
-
-
 class SignUp8 extends StatelessWidget {
   const SignUp8({super.key});
-final String id = 'SignUp8';
+  final String id = 'SignUp8';
   @override
   Widget build(BuildContext context) {
+    final int medicalId = ModalRoute.of(context)!.settings.arguments as int;
     double screenHeight = MediaQuery.of(context).size.height;
+    TextEditingController medicineNameController = TextEditingController();
+    TextEditingController doseController = TextEditingController();
+    TextEditingController frequencyController = TextEditingController();
+    TextEditingController notesController = TextEditingController();
+
+    Future <void> addMedicine() async {
+      try {
+        await MedicineInfoForRecordService().addService(
+          context: context,
+          medicineName: medicineNameController.text,
+          dose: doseController.text,
+          frequency: frequencyController.text,
+          medicalRecordId: medicalId,
+          notes: notesController.text.isNotEmpty ? notesController.text : null,
+          doctorId: null,
+        );
+         // ignore: use_build_context_synchronously
+         Navigator.pushNamed(context, const MedicalRecordCopy().id);
+      } catch (e) {
+         print('Error adding medicine: $e');
+      }
+    }
+
     return SafeArea(
       child: Scaffold(
         body: Stack(
@@ -37,14 +61,20 @@ final String id = 'SignUp8';
                       SizedBox(
                         height: screenHeight * 0.075,
                       ),
-                      const CustomTextFormField(label: 'Medicine Name'),
-                      const CustomTextFormField(
-                        label: 'Dose',
+                      CustomTextFormField(label: 'Medicine Name',
+                      controller: medicineNameController,
                       ),
-                      const CustomTextFormField(label: 'Frequency'),
-                      const CustomTextFormField(
+                       CustomTextFormField(
+                        label: 'Dose',
+                        controller: doseController,
+                      ),
+                       CustomTextFormField(label: 'Frequency',
+                       controller: frequencyController,
+                       ),
+                       CustomTextFormField(
                         label: 'Notes',
                         maxLines: 3,
+                        controller: notesController,
                       ),
                       SizedBox(
                         height: screenHeight * 0.14,
@@ -52,8 +82,8 @@ final String id = 'SignUp8';
                       CustomButton(
                         text: 'Save',
                         color: kPrimaryColor,
-                        onTap: () {
-                          Navigator.pushNamed(context, const SignUp6().id);
+                        onTap: () async{
+                          await addMedicine();
                         },
                       )
                     ],

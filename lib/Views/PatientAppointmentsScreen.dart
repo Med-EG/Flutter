@@ -1,16 +1,16 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:med_eg/Views/PatientHomeScreen.dart';
 import 'package:med_eg/Views/message_screen.dart';
+import 'package:med_eg/Views/patient_profile.dart';
 import 'package:med_eg/constants/colors.dart';
-import 'package:med_eg/models/appointmentModel.dart';
+import 'package:med_eg/models/appointmentModelForPatientSide.dart';
 import 'package:med_eg/services/get_Appointmnts_for_paitent.dart';
-import 'package:med_eg/widgets/customAppointmentCard.dart';
+import 'package:med_eg/widgets/AppointmentCardForPatientSide.dart';
 
-class NoPatientAppoointment extends StatelessWidget {
-  const NoPatientAppoointment({super.key});
+class PatientAppoointment extends StatelessWidget {
+  const PatientAppoointment({super.key});
   final String id = 'NoPatientAppoointment';
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class NoPatientAppoointment extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(
                     context,
-                    const PatientHomeScreen().id,
+                     PatientHomeScreen().id,
                   );
                 },
                 icon: Icons.home_rounded,
@@ -51,13 +51,17 @@ class NoPatientAppoointment extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(
                     context,
-                    const NoPatientAppoointment().id,
+                    const PatientAppoointment().id,
                   );
                 },
                 icon: Icons.edit_calendar_rounded,
                 text: 'Appointments',
               ),
-              const GButton(
+              GButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(
+                      context, const PatientProfile().id);
+                },
                 icon: Icons.person_3_rounded,
                 text: 'Profile',
               )
@@ -65,10 +69,10 @@ class NoPatientAppoointment extends StatelessWidget {
           ),
         ),
       ),
-      body: FutureBuilder<List<AppointmentModel>>(
+      body: FutureBuilder<List<AppointmentModelForPatientSide>>(
         future: GetAllAppointmentService().GetAllAppontmentsForPatient(context),
         builder: (BuildContext context,
-            AsyncSnapshot<List<AppointmentModel>> snapshot) {
+            AsyncSnapshot<List<AppointmentModelForPatientSide>> snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data!.isEmpty) {
               return Center(
@@ -110,16 +114,17 @@ class NoPatientAppoointment extends StatelessWidget {
                 ),
               );
             }
-            List<AppointmentModel> appointments = snapshot.data!;
+            List<AppointmentModelForPatientSide> appointments = snapshot.data!;
             return Center(
                 child: Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(5),
                     child: Column(
-                      
-                       // mainAxisAlignment: MainAxisAlignment.center,
+
+                        // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                        const  SizedBox(height: 60,),
-                          
+                          const SizedBox(
+                            height: 60,
+                          ),
                           const Text(
                             'My Appointments',
                             style: TextStyle(
@@ -128,23 +133,48 @@ class NoPatientAppoointment extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          Container(
-                            height: 250,
-                            child: ListView.builder(
-                              
-                              itemCount: appointments.length,
-                              itemBuilder: (context, index) {
-                                return AppointmentCard(
-                                    appointment: appointments[index]);
-                              },
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 5, vertical: 10),
+                              child: SizedBox(
+                                height: 250,
+                                child: ListView.builder(
+                                  itemCount: appointments.length,
+                                  itemBuilder: (context, index) {
+                                    return AppointmentCardForPatientSide(
+                                        appointment: appointments[index]);
+                                  },
+                                ),
+                              ),
                             ),
                           ),
                         ])));
           } else {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
         },
       ),
     );
   }
 }
+ Future<bool> _showExitConfirmationDialog(BuildContext context) async {
+    return await showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text('Exit App'),
+            content: Text('Are you sure you want to exit the app?'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: Text('No'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                child: Text('Yes'),
+              ),
+            ],
+          ),
+        ) ??
+        false;
+  }

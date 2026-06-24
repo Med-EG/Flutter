@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:med_eg/Views/find_doctor.dart';
 import 'package:med_eg/Views/signUp10.dart';
@@ -71,7 +72,7 @@ final String id = 'SignUp6';
                   child: NewRecordContainer(
                     text: 'Disease',
                     image: 'assets/images/SVG/Virus.svg',
-                    onTap: () => Navigator.pushNamed(context, const SignUp7().id),
+                    onTap: () => Navigator.pushNamed(context,  SignUp7().id),
                   ),
                 ),
                 Expanded(

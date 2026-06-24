@@ -12,7 +12,7 @@ class GetAllAlertsService {
       PatientInfo? patient = BlocProvider.of<LoginCubit>(context).patient;
       List<dynamic> data = await Api().get(
         url:
-            'https://api-medeg.online/api/medEG/medicine-alert/patient${patient!.id}',
+            'https://api-medeg.online/api/medEG/medicine-alert/patient/${patient!.id}',
         token: patient.token,
       );
 

@@ -5,13 +5,14 @@ import '../constants/colors.dart';
 import '../widgets/custom_button.dart';
 
 class SignUp3 extends StatelessWidget {
-  const SignUp3({super.key,  this.firstName = ''});
+  const SignUp3({super.key});
 final String id = 'SignUp3';
-final String firstName;
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+    var firstName = ModalRoute.of(context)!.settings.arguments;
     return SafeArea(
       child: Scaffold(
         body: Center(
@@ -28,7 +29,7 @@ final String firstName;
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 22)),
                     TextSpan(
-                        text: firstName,
+                        text: firstName.toString(),
                         style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             color: kPrimaryColor,

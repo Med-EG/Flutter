@@ -26,6 +26,7 @@ class HalfTextFieldHalfDropDown extends StatefulWidget {
     required this.isItDoseTextField, required this.onDataEntered,
   });
   int selectedValue = 0;
+ 
   @override
   State<HalfTextFieldHalfDropDown> createState() =>
       _HalfTextFieldHalfDropDownState();
@@ -54,6 +55,7 @@ class _HalfTextFieldHalfDropDownState extends State<HalfTextFieldHalfDropDown> {
                 hintStyle: const TextStyle(color: lightGrey),
                 enabledBorder: buildBorder(grey),
                 focusedBorder: buildBorder(grey),
+                
               ),
             ),
           ),
